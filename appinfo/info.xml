@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+    <id>cfgsharelinks</id>
+    <name>Configurable Share Links</name>
+    <summary>App adding the ability to specify share tokens</summary>
+    <description><![CDATA[App that allows users to specify share tokens]]></description>
+    <version>0.0.1</version>
+    <licence>agpl</licence>
+    <author mail="filip@joska.dev" >Filip Joska</author>
+    <namespace>CfgShareLinks</namespace>
+    <category>tools</category>
+    <bugs>https://github.com/jimmyl0l3c/cfg-share-links</bugs>
+    <dependencies>
+        <nextcloud min-version="19" max-version="22"/>
+    </dependencies>
+    <navigations>
+        <navigation>
+            <name>Configurable Share Links</name>
+            <route>cfgsharelinks.page.index</route>
+        </navigation>
+    </navigations>
+</info>
