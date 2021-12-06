@@ -3,7 +3,6 @@
 namespace OCA\CfgShareLinks\Controller;
 
 use OCA\CfgShareLinks\AppInfo\Application;
-use OCA\CfgShareLinks\Service\ShareManager;
 use OCA\CfgShareLinks\Service\ShareService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
@@ -46,7 +45,7 @@ class ShareController extends Controller
      */
     public function update(string $id,
                            string $tokenCandidate): DataResponse {
-        return $this->handleNotFound(function () use ($id, $tokenCandidate) {
+        return $this->handleException(function () use ($id, $tokenCandidate) {
             return $this->service->update($id, $tokenCandidate, $this->userId);
         });
     }

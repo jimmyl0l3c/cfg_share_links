@@ -2,17 +2,17 @@
 
 namespace OCA\CfgShareLinks\Service;
 
-use Exception;
-use OCA\CfgShareLinks\Db\NoteMapper;
-use OCP\AppFramework\Http;
-use OCP\AppFramework\Http\DataResponse;
+use OC\User\NoUserException;
+use OCA\CfgShareLinks\Db\ShareMapper;
 use OCP\AppFramework\OCS\OCSBadRequestException;
 use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\Constants;
 use OCP\Files\IRootFolder;
+use OCP\Files\Node;
 use OCP\Files\NotFoundException;
+use OCP\Files\NotPermittedException;
 use OCP\IL10N;
 use OCP\Lock\ILockingProvider;
 use OCP\Lock\LockedException;
@@ -23,7 +23,7 @@ use OCP\Share\IShare;
 
 class ShareService
 {
-    /** @var NoteMapper */
+    /** @var ShareMapper */
     private $mapper;
 
     /** @var IManager */
@@ -34,19 +34,17 @@ class ShareService
     private $currentUser;
     /** @var IL10N */
     private $l;
-    /** @var \OCP\Files\Node */
+    /** @var Node */
     private $lockedNode;
 
     public function __construct(
-        NoteMapper   $mapper,
-
+        ShareMapper $mapper,
         IManager $shareManager,
-        IRootFolder  $rootFolder,
-        string       $userId = nullW,
-        IL10N        $l10n
+        IRootFolder $rootFolder,
+        string $userId = null,
+        IL10N $l10n
     ) {
         $this->mapper = $mapper;
-
         $this->shareManager = $shareManager;
         $this->rootFolder = $rootFolder;
         $this->currentUser = $userId;
@@ -56,15 +54,16 @@ class ShareService
     /**
      * @throws NotFoundException
      * @throws OCSNotFoundException
-     * @throws \OCP\Files\NotPermittedException
+     * @throws NotPermittedException
      * @throws OCSException
      * @throws OCSBadRequestException
      * @throws OCSForbiddenException
-     * @throws \OC\User\NoUserException
-     * @throws ShareServiceException
+     * @throws NoUserException
+     * @throws InvalidTokenException
+     * @throws TokenNotUniqueException
      */
-    public function create(string $path, int $shareType, string $tokenCandidate, string $userId)
-    { // TODO: change exceptions
+    public function create(string $path, int $shareType, string $tokenCandidate, string $userId): array
+    {
         if ($shareType != IShare::TYPE_LINK) {
             throw new OCSBadRequestException($this->l->t('Unknown share type'));
         }
@@ -86,16 +85,8 @@ class ShareService
             throw new OCSNotFoundException($this->l->t('Wrong path, file/folder doesn\'t exist'));
         }
 
-        // Validity check
-        if (!$this->isTokenValid($tokenCandidate)) {
-            throw new ShareServiceException('Invalid Token');
-        }
-
-        // Unique check
-        try {
-            $this->shareManager->getShareByToken($tokenCandidate);
-            throw new ShareServiceException('Token is not unique');
-        } catch (ShareNotFound $e) {}
+        // check token validity
+        $this->tokenChecks($tokenCandidate);
 
         $share = $this->shareManager->newShare();
 
@@ -116,8 +107,8 @@ class ShareService
 
         $share->setShareType($shareType);
         $share->setSharedBy($this->currentUser);
-//        $share->setToken($tokenCandidate);
 
+        // Create share in the database
         try {
             $share = $this->shareManager->createShare($share);
         } catch (GenericShareException $e) {
@@ -130,15 +121,105 @@ class ShareService
         }
 
         $share->setToken($tokenCandidate);
+
         // Update share in db
-        try {
-            $this->shareManager->updateShare($share);
-        } catch (Exception $e) {
-            throw new ShareServiceException('Invalid Token');
+        $this->shareManager->updateShare($share);
+
+        return $this->serializeShare($share);
+    }
+
+    /**
+     * @param string $id share FullId
+     * @param string $tokenCandidate
+     * @param string $userId
+     * @return array
+     * @throws InvalidTokenException
+     * @throws ShareNotFound
+     * @throws TokenNotUniqueException
+     * @throws OCSBadRequestException
+     */
+    public function update(string $id, string $tokenCandidate, string $userId): array
+    {
+        // check token validity
+        $this->tokenChecks($tokenCandidate);
+
+        // Get share
+        $share = $this->shareManager->getShareById($id);
+
+        if ($share->getShareType() !== IShare::TYPE_LINK) {
+            throw new OCSBadRequestException('Invalid share type');
         }
 
-//        $output = $this->formatShare($share);
-        $output = [
+        // TODO: check whether user can edit the share
+
+        // Update token
+        $share->setToken($tokenCandidate);
+
+        // Update share in db
+        $this->shareManager->updateShare($share);
+
+        return $this->serializeShare($share);
+    }
+
+    /**
+     * @throws InvalidTokenException
+     * @throws TokenNotUniqueException
+     */
+    private function tokenChecks(string $tokenCandidate) {
+        // Validity check
+        if (!$this->isTokenValid($tokenCandidate)) {
+            throw new InvalidTokenException('Invalid Token');
+        }
+
+        // Unique check
+        try {
+            $this->shareManager->getShareByToken($tokenCandidate);
+            throw new TokenNotUniqueException('Token is not unique');
+        } catch (ShareNotFound $e) {}
+    }
+
+    private function isTokenValid(string $token): bool
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+';
+
+        if ($token == null || strlen($token) < 1) {
+            return false;
+        }
+
+        foreach($token as $char)
+        {
+            if(!in_array($char, (array)$characters))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Lock a Node
+     *
+     * @param Node $node
+     * @throws LockedException
+     */
+    private function lock(Node $node) {
+        $node->lock(ILockingProvider::LOCK_SHARED);
+        $this->lockedNode = $node;
+    }
+
+    /**
+     * Cleanup the remaining locks
+     * @throws LockedException
+     */
+    public function cleanup() {
+        if ($this->lockedNode !== null) {
+            $this->lockedNode->unlock(ILockingProvider::LOCK_SHARED);
+        }
+    }
+
+    private function serializeShare(IShare $share): array
+    {
+        return [
             'id' => $share->getId(),
             'share_type' => $share->getShareType(),
             'uid_owner' => $share->getSharedBy(),
@@ -155,89 +236,5 @@ class ShareService
             'label' => $share->getLabel(),
             'displayname_file_owner' => $share->getShareOwner(),
         ];
-
-        return $output;
-    }
-
-    /**
-     * Lock a Node
-     *
-     * @param \OCP\Files\Node $node
-     * @throws LockedException
-     */
-    private function lock(\OCP\Files\Node $node) {
-        $node->lock(ILockingProvider::LOCK_SHARED);
-        $this->lockedNode = $node;
-    }
-
-    /**
-     * Cleanup the remaining locks
-     * @throws LockedException
-     */
-    public function cleanup() {
-        if ($this->lockedNode !== null) {
-            $this->lockedNode->unlock(ILockingProvider::LOCK_SHARED);
-        }
-    }
-
-    /**
-     * @param string $id share FullId
-     * @param string $tokenCandidate
-     * @param string $userId
-     * @throws ShareServiceException
-     */
-    public function update(string $id, string $tokenCandidate, string $userId): DataResponse
-    {
-        // TODO: handle empty tokenCandidate
-
-        // Check if token is valid
-        if (!$this->isTokenValid($tokenCandidate)) {
-            throw new ShareServiceException('Invalid Token'); // TODO: change exceptions
-        }
-
-//        return $this->shareManager->test();
-        // Check if token is unique
-        try {
-            $this->shareManager->getShareByToken($tokenCandidate);
-//            return ['message' => 'this should fall'];
-            throw new ShareServiceException('Token is not unique');// TODO: change exceptions
-        } catch (ShareNotFound $e) {
-            // Get share
-            $share = $this->shareManager->getShareById($id); // throws exception if not found
-
-            // TODO: check where it is link share
-            // TODO: check whether user can edit the share
-//            $message = ['message' => $share->getFullId()];
-//            return $message;
-
-            // Update token
-            $share->setToken($tokenCandidate);
-
-            // Update share in db
-            try {
-                $this->shareManager->updateShare($share);
-                return new DataResponse(); // TODO: change this
-            } catch (Exception $e) {
-                throw new ShareServiceException('Invalid Token');
-            }
-        }
-    }
-
-    private function isTokenValid(string $token): bool
-    {
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+';
-        foreach($token as $char)
-        {
-            if(!in_array($char, (array)$characters))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public function setShareManager(ShareManager $shareManager)
-    {
-        $this->shareManager = $shareManager;
     }
 }
