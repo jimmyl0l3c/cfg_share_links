@@ -54,13 +54,13 @@ class ShareService
     /**
      * @throws NotFoundException
      * @throws OCSNotFoundException
-     * @throws NotPermittedException
      * @throws OCSException
      * @throws OCSBadRequestException
      * @throws OCSForbiddenException
      * @throws NoUserException
      * @throws InvalidTokenException
      * @throws TokenNotUniqueException
+     * @throws NotPermittedException
      */
     public function create(string $path, int $shareType, string $tokenCandidate, string $userId): array
     {
@@ -134,9 +134,9 @@ class ShareService
      * @param string $userId
      * @return array
      * @throws InvalidTokenException
-     * @throws ShareNotFound
      * @throws TokenNotUniqueException
      * @throws OCSBadRequestException
+     * @throws ShareNotFound
      */
     public function update(string $id, string $tokenCandidate, string $userId): array
     {
