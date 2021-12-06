@@ -17822,7 +17822,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_6__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)('/apps/cfgsharelinks/new'), {
                   path: '/Readme.md',
                   shareType: 3,
-                  tokenCandidate: 'test_token'
+                  tokenCandidate: 'new_token'
                 });
 
               case 4:
@@ -54396,4 +54396,4 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.mixin({
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-main.js.map?v=dde3126987707258c433
+//# sourceMappingURL=cfgsharelinks-main.js.map?v=8673be93791666bbf491

@@ -167,7 +167,7 @@ export default {
 				const response = await axios.post(generateUrl('/apps/cfgsharelinks/new'), {
 					path: '/Readme.md',
 					shareType: 3,
-					tokenCandidate: 'test_token',
+					tokenCandidate: 'new_token',
 				})
 				console.info(response)
 				this.response = response
