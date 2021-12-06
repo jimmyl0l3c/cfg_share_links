@@ -26,7 +26,7 @@ class ShareService
     /** @var NoteMapper */
     private $mapper;
 
-    /** @var ShareManager */
+    /** @var IManager */
     private $shareManager;
     /** @var IRootFolder */
     private $rootFolder;
@@ -53,8 +53,18 @@ class ShareService
         $this->l = $l10n;
     }
 
-    public function create(string $path, int $shareType, string $tokenCandidate, string $userId): DataResponse
-    {
+    /**
+     * @throws NotFoundException
+     * @throws OCSNotFoundException
+     * @throws \OCP\Files\NotPermittedException
+     * @throws OCSException
+     * @throws OCSBadRequestException
+     * @throws OCSForbiddenException
+     * @throws \OC\User\NoUserException
+     * @throws ShareServiceException
+     */
+    public function create(string $path, int $shareType, string $tokenCandidate, string $userId)
+    { // TODO: change exceptions
         if ($shareType != IShare::TYPE_LINK) {
             throw new OCSBadRequestException($this->l->t('Unknown share type'));
         }
@@ -76,6 +86,17 @@ class ShareService
             throw new OCSNotFoundException($this->l->t('Wrong path, file/folder doesn\'t exist'));
         }
 
+        // Validity check
+        if (!$this->isTokenValid($tokenCandidate)) {
+            throw new ShareServiceException('Invalid Token');
+        }
+
+        // Unique check
+        try {
+            $this->shareManager->getShareByToken($tokenCandidate);
+            throw new ShareServiceException('Token is not unique');
+        } catch (ShareNotFound $e) {}
+
         $share = $this->shareManager->newShare();
 
         $share->setNode($path);
@@ -95,8 +116,7 @@ class ShareService
 
         $share->setShareType($shareType);
         $share->setSharedBy($this->currentUser);
-
-        $share->setToken($tokenCandidate);
+//        $share->setToken($tokenCandidate);
 
         try {
             $share = $this->shareManager->createShare($share);
@@ -109,13 +129,34 @@ class ShareService
             throw new OCSForbiddenException($e->getMessage(), $e);
         }
 
-        $output = $this->formatShare($share);
+        $share->setToken($tokenCandidate);
+        // Update share in db
+        try {
+            $this->shareManager->updateShare($share);
+        } catch (Exception $e) {
+            throw new ShareServiceException('Invalid Token');
+        }
 
-        return new DataResponse($output);
+//        $output = $this->formatShare($share);
+        $output = [
+            'id' => $share->getId(),
+            'share_type' => $share->getShareType(),
+            'uid_owner' => $share->getSharedBy(),
+            'displayname_owner' => $share->getSharedBy(),
+            // recipient permissions
+            'permissions' => $share->getPermissions(),
+            // current user permissions on this share
+            'stime' => $share->getShareTime()->getTimestamp(),
+            'parent' => null,
+            'expiration' => null,
+            'token' => $share->getToken(),
+            'uid_file_owner' => $share->getShareOwner(),
+            'note' => $share->getNote(),
+            'label' => $share->getLabel(),
+            'displayname_file_owner' => $share->getShareOwner(),
+        ];
 
-        // TODO: validity check
-        // TODO: unique check
-        // TODO: create share
+        return $output;
     }
 
     /**
@@ -145,7 +186,7 @@ class ShareService
      * @param string $userId
      * @throws ShareServiceException
      */
-    public function update(string $id, string $tokenCandidate, string $userId)
+    public function update(string $id, string $tokenCandidate, string $userId): DataResponse
     {
         // TODO: handle empty tokenCandidate
 
