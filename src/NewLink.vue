@@ -4,10 +4,10 @@
 			:title="'Custom token link'"
 			:bold="false">
 			<template #icon>
-				<Avatar user="admin" display-name="Admin" />
+				<Avatar :is-no-user="true" display-name="Share" icon-class="avatar-link-share icon-public-white" />
 			</template>
 			<template #subtitle>
-				Make a custom token link
+				<input v-model="tokenCandidate" placeholder="Enter custom token">
 			</template>
 			<template #actions>
 				<ActionInput icon="icon-edit">
@@ -21,7 +21,7 @@
 		<ListItemIcon
 			:is-no-user="false"
 			display-name="Share"
-			icon="icon-public-white"
+			icon-class="avatar-link-share icon-public-white"
 			:title="getPath"
 			:subtitle="getFullPath">
 			<Actions>
@@ -72,6 +72,7 @@ export default {
 			loading: true,
 			response: null,
 			err: null,
+			tokenCandidate: null,
 		}
 	},
 
@@ -133,8 +134,8 @@ export default {
 }
 </script>
 
-<style scoped>
-#subtitle {
-	color: gray;
+<style lang="scss" scoped>
+::v-deep .avatar-link-share {
+	background-color: #c40c0c;
 }
 </style>
