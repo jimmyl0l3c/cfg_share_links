@@ -7,13 +7,10 @@
 				<Avatar :is-no-user="true" display-name="Share" icon-class="avatar-link-icon icon-public-white" />
 			</template>
 			<template #subtitle>
-				<input v-model="tokenCandidate" placeholder="Enter custom token">
+				<input v-model="tokenCandidate" class="token-input" placeholder="Enter custom token">
 			</template>
 			<template #actions>
-				<ActionInput icon="icon-edit">
-					Specify custom token
-				</ActionInput>
-				<ActionButton icon="icon-add">
+				<ActionButton icon="icon-add" @click="createCustomLink">
 					Add
 				</ActionButton>
 			</template>
@@ -36,7 +33,6 @@
 <script>
 import Actions from '@nextcloud/vue/dist/Components/Actions'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
-import ActionInput from '@nextcloud/vue/dist/Components/ActionInput'
 import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 import ListItemIcon from '@nextcloud/vue/dist/Components/ListItemIcon'
@@ -52,7 +48,6 @@ export default {
 	components: {
 		Actions,
 		ActionButton,
-		ActionInput,
 		Avatar,
 		ListItem,
 		ListItemIcon,
@@ -70,8 +65,6 @@ export default {
 		return {
 			updating: false,
 			loading: true,
-			response: null,
-			err: null,
 			tokenCandidate: null,
 		}
 	},
@@ -108,26 +101,45 @@ export default {
 			console.info(data)
 		},
 
+		isTokenValid(token) {
+			if (!token || token.length <= 1) {
+				return false
+			}
+
+			const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+'
+
+			for (const c of token) {
+				if (!characters.includes(c)) {
+					return false
+				}
+			}
+
+			return true
+		},
+
 		async createCustomLink() {
 			this.updating = true
+			const token = this.tokenCandidate
+			if (!this.isTokenValid(token)) {
+				showError(t('cfgsharelinks', 'Invalid token'))
+				return
+			}
+
 			const data = {
 				path: this.getFullPath,
 				shareType: 3,
-				tokenCandidate: 'new_token', // TODO: pass token from input, check validity
+				tokenCandidate: token,
 			}
 
 			try {
 				const response = await axios.post(generateUrl('/apps/cfgsharelinks/new'), data)
 				console.info(response)
-				this.response = response
-				this.err = null
 				showSuccess(t('cfgsharelinks', 'New success'))
 			} catch (e) {
 				console.error(e)
-				this.response = e.response
-				this.err = e
 				showError(t('cfgsharelinks', 'New error'))
 			}
+
 			this.updating = false
 		},
 	},
@@ -135,6 +147,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.token-input {
+	width: 80%;
+}
 ::v-deep .avatar-link-icon {
 	background-color: #c40c0c;
 }
