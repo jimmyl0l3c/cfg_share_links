@@ -15,24 +15,11 @@
 				@click="testUpdate" />
 		</AppNavigation>
 		<AppContent>
-			<div v-if="currentNote">
-				<input ref="title"
-					v-model="currentNote.title"
-					type="text"
-					:disabled="updating">
-				<textarea ref="content" v-model="currentNote.content" :disabled="updating" />
-				<input type="button"
-					class="primary"
-					:value="t('cfgsharelinks', 'Save')"
-					:disabled="updating || !savePossible"
-					@click="saveNote">
-			</div>
-			<div v-else-if="response" style="height: 80%;display: flex;align-items: center;justify-content: center;">
-				<div v-html="filteredResponse(err != null)">
-				</div>
+			<div v-if="response" style="height: 80%;display: flex;align-items: center;justify-content: center;">
+				<div v-html="filteredResponse(err != null)" />
 			</div>
 			<div v-else id="emptycontent">
-				<div class="icon-file" />
+				<div class="icon-public" />
 				<h2>{{ t('cfgsharelinks', 'Press any test button') }}</h2>
 			</div>
 		</AppContent>
@@ -63,13 +50,14 @@ export default {
 			updating: false,
 			loading: true,
 			response: null,
-			err: null
+			err: null,
 		}
 	},
 	computed: {
 		/**
 		 * Return the currently selected note object
-		 * @returns {Object|null}
+		 *
+		 * @return {object | null}
 		 */
 		currentNote() {
 			if (this.currentNoteId === null) {
@@ -80,7 +68,8 @@ export default {
 
 		/**
 		 * Returns true if a note is selected and its title is not empty
-		 * @returns {Boolean}
+		 *
+		 * @return {boolean}
 		 */
 		savePossible() {
 			return this.currentNote && this.currentNote.title !== ''
@@ -121,7 +110,8 @@ export default {
 		},
 		/**
 		 * Create a new note and focus the note content field automatically
-		 * @param {Object} note Note object
+		 *
+		 * @param {object} note Note object
 		 */
 		openNote(note) {
 			if (this.updating) {
@@ -207,7 +197,8 @@ export default {
 		},
 		/**
 		 * Create a new note by sending the information to the server
-		 * @param {Object} note Note object
+		 *
+		 * @param {object} note Note object
 		 */
 		async createNote(note) {
 			this.updating = true
@@ -224,7 +215,8 @@ export default {
 		},
 		/**
 		 * Update an existing note on the server
-		 * @param {Object} note Note object
+		 *
+		 * @param {object} note Note object
 		 */
 		async updateNote(note) {
 			this.updating = true
@@ -238,7 +230,8 @@ export default {
 		},
 		/**
 		 * Delete a note, remove it from the frontend and show a hint
-		 * @param {Object} note Note object
+		 *
+		 * @param {object} note Note object
 		 */
 		async deleteNote(note) {
 			try {

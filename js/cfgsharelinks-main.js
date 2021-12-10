@@ -17956,19 +17956,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -17996,7 +17983,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   computed: {
     /**
      * Return the currently selected note object
-     * @returns {Object|null}
+     *
+     * @return {object | null}
      */
     currentNote: function currentNote() {
       var _this = this;
@@ -18012,7 +18000,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     /**
      * Returns true if a note is selected and its title is not empty
-     * @returns {Boolean}
+     *
+     * @return {boolean}
      */
     savePossible: function savePossible() {
       return this.currentNote && this.currentNote.title !== '';
@@ -18083,7 +18072,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     /**
      * Create a new note and focus the note content field automatically
-     * @param {Object} note Note object
+     *
+     * @param {object} note Note object
      */
     openNote: function openNote(note) {
       var _this3 = this;
@@ -18232,7 +18222,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     /**
      * Create a new note by sending the information to the server
-     * @param {Object} note Note object
+     *
+     * @param {object} note Note object
      */
     createNote: function createNote(note) {
       var _this7 = this;
@@ -18280,7 +18271,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     /**
      * Update an existing note on the server
-     * @param {Object} note Note object
+     *
+     * @param {object} note Note object
      */
     updateNote: function updateNote(note) {
       var _this8 = this;
@@ -18319,7 +18311,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     /**
      * Delete a note, remove it from the frontend and show a hint
-     * @param {Object} note Note object
+     *
+     * @param {object} note Note object
      */
     deleteNote: function deleteNote(note) {
       var _this9 = this;
@@ -45359,63 +45352,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("AppContent", [
-        _vm.currentNote
-          ? _c("div", [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.currentNote.title,
-                    expression: "currentNote.title"
-                  }
-                ],
-                ref: "title",
-                attrs: { type: "text", disabled: _vm.updating },
-                domProps: { value: _vm.currentNote.title },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.currentNote, "title", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.currentNote.content,
-                    expression: "currentNote.content"
-                  }
-                ],
-                ref: "content",
-                attrs: { disabled: _vm.updating },
-                domProps: { value: _vm.currentNote.content },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.currentNote, "content", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "primary",
-                attrs: {
-                  type: "button",
-                  value: _vm.t("cfgsharelinks", "Save"),
-                  disabled: _vm.updating || !_vm.savePossible
-                },
-                on: { click: _vm.saveNote }
-              })
-            ])
-          : _vm.response
+        _vm.response
           ? _c(
               "div",
               {
@@ -45435,7 +45372,7 @@ var render = function() {
               ]
             )
           : _c("div", { attrs: { id: "emptycontent" } }, [
-              _c("div", { staticClass: "icon-file" }),
+              _c("div", { staticClass: "icon-public" }),
               _vm._v(" "),
               _c("h2", [
                 _vm._v(_vm._s(_vm.t("cfgsharelinks", "Press any test button")))
@@ -54610,4 +54547,4 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.mixin({
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-main.js.map?v=1bfd61fc8b42f6e6f240
+//# sourceMappingURL=cfgsharelinks-main.js.map?v=eee729d7ac35eee182d4

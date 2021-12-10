@@ -25,7 +25,7 @@ import Vue from 'vue'
 // import App from './App'
 // import RenameLink from './RenameLink'
 import NewLink from './NewLink'
-// import { translate as t, translatePlural as n } from '@nextcloud/l10n'
+import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 
 // eslint-disable-next-line
 // __webpack_public_path__ = generateFilePath(appName, '', 'js/')
@@ -33,23 +33,18 @@ import NewLink from './NewLink'
 Vue.prototype.OC = window.OC
 Vue.prototype.OCA = window.OCA
 
-// Vue.mixin({
-// methods: {
-// t,
-// n,
-// },
-// })
-
-// const View = Vue.extend(RenameLink)
-// let TabInstance = null
+Vue.mixin({
+	methods: {
+		t,
+		n,
+	},
+})
 
 // Add rename button
 window.addEventListener('DOMContentLoaded', () => {
-	// eslint-disable-next-line no-console
-	console.log('CFGSHARE LOADED')
+	console.info('CFGSHARE LOADED')
 	if (OCA.Sharing && OCA.Sharing.ExternalLinkActions) { // TODO: use ExternalSHareActions instead
-		// eslint-disable-next-line no-console
-		console.log('CFGSHARE IF')
+		console.info('CFGSHARE IF')
 		OCA.Sharing.ExternalLinkActions.registerAction({
 			url: link => `https://share.diasporafoundation.org/?url=${link}`,
 			name: 'Test action',
@@ -60,21 +55,35 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Add new section
 let sectionInstance = null
+let props = null
 const View = Vue.extend(NewLink)
+
 window.addEventListener('DOMContentLoaded', function() {
 	if (OCA.Sharing && OCA.Sharing.ShareTabSections) {
 		OCA.Sharing.ShareTabSections.registerSection(
-			async (el, fileInfo) => {
-				if (sectionInstance) {
-					sectionInstance.$destroy()
-				}
+			(el, fileInfo) => {
+				if (typeof fileInfo !== 'undefined' && typeof el !== 'undefined') {
+					// if instance exists, just update props
+					if (sectionInstance && window.document.contains(sectionInstance.$el) && props) {
+						props.fileInfo = fileInfo
+					} else { // create new instance
+						if (sectionInstance) {
+							// if sectionInstance.$el doesnt exist anymore (after changing folder for example)
+							sectionInstance.$destroy()
+						}
 
-				sectionInstance = new View({
-					props: { fileInfo },
-				})
+						sectionInstance = new View({
+							props: { fileInfo },
+						})
 
-				if (typeof el !== 'undefined') {
-					sectionInstance.$mount(el[0])
+						props = Vue.observable({
+						 ...sectionInstance._props,
+						 ...{ fileInfo },
+						})
+						sectionInstance._props = props
+
+						sectionInstance.$mount(el[0])
+					}
 				}
 			})
 	}
