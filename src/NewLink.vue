@@ -109,14 +109,12 @@ export default {
 
 		async createCustomLink() {
 			this.updating = true
-			const filePath = this.fileInfo.path.concat(this.fileInfo.name)
 			const data = {
-				path: filePath,
+				path: this.getFullPath,
 				shareType: 3,
-				tokenCandidate: 'new_token',
+				tokenCandidate: 'new_token', // TODO: pass token from input, check validity
 			}
-			// eslint-disable-next-line no-console
-			console.log(data)
+
 			try {
 				const response = await axios.post(generateUrl('/apps/cfgsharelinks/new'), data)
 				console.info(response)
@@ -131,8 +129,7 @@ export default {
 			}
 			this.updating = false
 		},
-	}
-	,
+	},
 }
 </script>
 
