@@ -23,11 +23,24 @@ import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
 import App from './App'
+// import RenameLink from './RenameLink'
+import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 
 // eslint-disable-next-line
 __webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
-Vue.mixin({ methods: { t, n } })
+// Vue.prototype.OC = window.OC
+// Vue.prototype.OCA = window.OCA
+
+Vue.mixin({
+	methods: {
+		t,
+		n,
+	},
+})
+
+// const View = Vue.extend(RenameLink)
+// let TabInstance = null
 
 export default new Vue({
 	el: '#content',

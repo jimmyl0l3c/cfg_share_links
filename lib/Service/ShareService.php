@@ -178,6 +178,7 @@ class ShareService
         } catch (ShareNotFound $e) {}
     }
 
+    // TODO: throw exception instead of true/false
     private function isTokenValid(string $token): bool
     {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+';
