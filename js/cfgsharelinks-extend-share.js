@@ -24164,7 +24164,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "[data-v-474998d1] .avatar-link-share {\n  background-color: #c40c0c;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "[data-v-474998d1] .avatar-link-icon {\n  background-color: #c40c0c;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -54481,7 +54481,7 @@ var render = function() {
                   attrs: {
                     "is-no-user": true,
                     "display-name": "Share",
-                    "icon-class": "avatar-link-share icon-public-white"
+                    "icon-class": "avatar-link-icon icon-public-white"
                   }
                 })
               ]
@@ -54540,7 +54540,7 @@ var render = function() {
           attrs: {
             "is-no-user": false,
             "display-name": "Share",
-            "icon-class": "avatar-link-share icon-public-white",
+            "icon-class": "avatar-link-icon icon-public-white",
             title: _vm.getPath,
             subtitle: _vm.getFullPath
           }
@@ -67697,4 +67697,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-extend-share.js.map?v=2f480ea290c4336645a0
+//# sourceMappingURL=cfgsharelinks-extend-share.js.map?v=81cac8b406d2050d2200
