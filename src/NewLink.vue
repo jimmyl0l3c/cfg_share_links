@@ -1,10 +1,47 @@
 <template>
 	<ul>
+		<ListItemIcon
+			:is-no-user="false"
+			display-name="Share"
+			icon-class="avatar-link-icon icon-public-white"
+			title="Custom link token"
+			subtitle="Create link with custom share token">
+			<Actions :force-menu="true">
+				<ActionInput icon="icon-edit">
+					Enter token
+				</ActionInput>
+			</Actions>
+		</ListItemIcon>
+		<ListItemIcon
+			:is-no-user="false"
+			display-name="Share"
+			icon-class="avatar-link-icon icon-public-white"
+			:title="getPath"
+			:subtitle="getFullPath">
+			<Actions>
+				<ActionButton icon="icon-add" @click="showModal">
+					Add
+				</ActionButton>
+			</Actions>
+		</ListItemIcon>
+		<Modal v-if="modal" size="small" @close="closeModal">
+			<div class="modal-content">
+				<div>
+					<b>Create custom link</b>
+					<input v-model="tokenCandidate" class="token-input" placeholder="Enter custom token">
+				</div>
+				<button @click="closeModal">
+					Add
+				</button>
+			</div>
+		</Modal>
 		<ListItem
-			:title="'Custom token link'"
+			:title="'Custom link'"
 			:bold="false">
 			<template #icon>
-				<Avatar :is-no-user="true" display-name="Share" icon-class="avatar-link-icon icon-public-white" />
+				<Avatar :is-no-user="true"
+					display-name="Share"
+					icon-class="avatar-link-icon icon-public-white" />
 			</template>
 			<template #subtitle>
 				<input v-model="tokenCandidate" class="token-input" placeholder="Enter custom token">
@@ -15,27 +52,18 @@
 				</ActionButton>
 			</template>
 		</ListItem>
-		<ListItemIcon
-			:is-no-user="false"
-			display-name="Share"
-			icon-class="avatar-link-icon icon-public-white"
-			:title="getPath"
-			:subtitle="getFullPath">
-			<Actions>
-				<ActionButton icon="icon-add" @click="debugFileInfo">
-					Add
-				</ActionButton>
-			</Actions>
-		</ListItemIcon>
 	</ul>
 </template>
 
 <script>
 import Actions from '@nextcloud/vue/dist/Components/Actions'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
+import ActionInput from '@nextcloud/vue/dist/Components/ActionInput'
 import Avatar from '@nextcloud/vue/dist/Components/Avatar'
+// import Button from '@nextcloud/vue/dist/Components/Button' TODO: use if available (not in 4.3.0)
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 import ListItemIcon from '@nextcloud/vue/dist/Components/ListItemIcon'
+import Modal from '@nextcloud/vue/dist/Components/Modal'
 
 import '@nextcloud/dialogs/styles/toast.scss'
 import { generateUrl } from '@nextcloud/router'
@@ -48,9 +76,11 @@ export default {
 	components: {
 		Actions,
 		ActionButton,
+		ActionInput,
 		Avatar,
 		ListItem,
 		ListItemIcon,
+		Modal,
 	},
 
 	props: {
@@ -66,6 +96,7 @@ export default {
 			updating: false,
 			loading: true,
 			tokenCandidate: null,
+			modal: false,
 		}
 	},
 
@@ -92,6 +123,12 @@ export default {
 	},
 
 	methods: {
+		showModal() {
+			this.modal = true
+		},
+		closeModal() {
+			this.modal = false
+		},
 		debugFileInfo() {
 			const data = {
 				path: this.getFullPath,
@@ -147,6 +184,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.modal-content {
+	margin: 50px;
+	text-align: center;
+}
 .token-input {
 	width: 80%;
 }
