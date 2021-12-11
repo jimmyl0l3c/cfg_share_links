@@ -22,9 +22,8 @@
 // import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
-// import App from './App'
-// import RenameLink from './RenameLink'
 import NewLink from './NewLink'
+import RenameLink from './RenameLink'
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 
 // eslint-disable-next-line
@@ -40,15 +39,29 @@ Vue.mixin({
 	},
 })
 
-// Add rename button
+console.debug('CfgShareLinks init')
+
+// Add rename input
 window.addEventListener('DOMContentLoaded', () => {
-	console.info('CFGSHARE LOADED')
-	if (OCA.Sharing && OCA.Sharing.ExternalLinkActions) { // TODO: use ExternalSHareActions instead
-		console.info('CFGSHARE IF')
-		OCA.Sharing.ExternalLinkActions.registerAction({
-			url: link => `https://share.diasporafoundation.org/?url=${link}`,
-			name: 'Test action',
-			icon: 'app',
+	if (OCA.Sharing && OCA.Sharing.ExternalShareActions) {
+		OCA.Sharing.ExternalShareActions.registerAction({
+			id: 'rename-token',
+			data: (action) => {
+				return {
+					text: '',
+					share: action.share,
+					fileInfo: action.fileInfo,
+					is: RenameLink,
+				}
+			},
+			shareType: [OC.Share.SHARE_TYPE_LINK, OC.Share.SHARE_TYPE_EMAIL],
+			handlers: {
+				update: (e) => {
+					console.info(e)
+					// console.info(this.$data.text)
+					console.info('clicked')
+				},
+			},
 		})
 	}
 })

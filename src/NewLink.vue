@@ -142,7 +142,8 @@ export default {
 			if (!token || token.length <= 1) {
 				return false
 			}
-
+			console.info(this)
+			console.info(typeof this)
 			const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+'
 
 			for (const c of token) {
