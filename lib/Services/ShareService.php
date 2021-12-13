@@ -3,12 +3,14 @@
 namespace OCA\CfgShareLinks\Service;
 
 use OC\User\NoUserException;
-use OCA\CfgShareLinks\Db\ShareMapper;
+use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\OCS\OCSBadRequestException;
 use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\Constants;
+use OCP\DB\Exception;
 use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
@@ -23,28 +25,27 @@ use OCP\Share\IShare;
 
 class ShareService
 {
-    /** @var ShareMapper */
-    private $mapper;
-
+    /** @var CfgShareService */
+    private $dbService;
     /** @var IManager */
     private $shareManager;
     /** @var IRootFolder */
     private $rootFolder;
-    /** @var string */
-    private $currentUser;
     /** @var IL10N */
     private $l;
     /** @var Node */
     private $lockedNode;
+    /** @var string */
+    private $currentUser;
 
     public function __construct(
-        ShareMapper $mapper,
+        CfgShareService $dbService,
         IManager $shareManager,
         IRootFolder $rootFolder,
         string $userId = null,
         IL10N $l10n
     ) {
-        $this->mapper = $mapper;
+        $this->dbService = $dbService;
         $this->shareManager = $shareManager;
         $this->rootFolder = $rootFolder;
         $this->currentUser = $userId;
@@ -61,6 +62,7 @@ class ShareService
      * @throws InvalidTokenException
      * @throws TokenNotUniqueException
      * @throws NotPermittedException
+     * @throws Exception
      */
     public function create(string $path, int $shareType, string $tokenCandidate, string $userId): array
     {
@@ -125,6 +127,9 @@ class ShareService
         // Update share in db
         $this->shareManager->updateShare($share);
 
+        // Add record to cfg_shares
+        $this->dbService->create($share->getFullId(), $share->getToken());
+
         return $this->serializeShare($share);
     }
 
@@ -133,10 +138,13 @@ class ShareService
      * @param string $tokenCandidate
      * @param string $userId
      * @return array
+     * @throws Exception
      * @throws InvalidTokenException
-     * @throws TokenNotUniqueException
      * @throws OCSBadRequestException
      * @throws ShareNotFound
+     * @throws TokenNotUniqueException
+     * @throws DoesNotExistException
+     * @throws MultipleObjectsReturnedException
      */
     public function update(string $id, string $tokenCandidate, string $userId): array
     {
@@ -158,6 +166,9 @@ class ShareService
         // Update share in db
         $this->shareManager->updateShare($share);
 
+        // Update cfg_share record
+        $this->dbService->updateByShareFullId($share->getFullId(), $share->getToken());
+
         return $this->serializeShare($share);
     }
 
@@ -167,9 +178,7 @@ class ShareService
      */
     private function tokenChecks(string $tokenCandidate) {
         // Validity check
-        if (!$this->isTokenValid($tokenCandidate)) {
-            throw new InvalidTokenException('Invalid Token');
-        }
+        $this->checkTokenValidity($tokenCandidate);
 
         // Unique check
         try {
@@ -178,23 +187,24 @@ class ShareService
         } catch (ShareNotFound $e) {}
     }
 
-    // TODO: throw exception instead of true/false
-    private function isTokenValid(string $token): bool
+    /**
+     * @throws InvalidTokenException
+     */
+    private function checkTokenValidity(string $token)
     {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+';
 
         if ($token == null || strlen($token) < 1) {
-            return false;
+            throw new InvalidTokenException('Short token');
         }
 
-        foreach($token as $char)
+        foreach($token as $char) // TODO: get rid of warning
         {
             if(!in_array($char, (array)$characters))
             {
-                return false;
+                throw new InvalidTokenException('Invalid character');
             }
         }
-        return true;
     }
 
     /**

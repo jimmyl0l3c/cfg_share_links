@@ -3,11 +3,9 @@
 namespace OCA\CfgShareLinks\AppInfo;
 
 use OCP\AppFramework\App;
-use OCP\EventDispatcher\Event;
 use OCP\EventDispatcher\IEventDispatcher;
-use OCP\Util;
 
-class Application extends App{
+class Application extends App { // TODO: handle share deletion
 	public const APP_ID = 'cfgsharelinks';
 
 	public function __construct() {
