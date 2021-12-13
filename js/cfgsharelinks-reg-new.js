@@ -21068,6 +21068,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -21197,45 +21200,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 token = _this2.tokenCandidate;
 
                 if (_this2.isTokenValid(token)) {
-                  _context2.next = 5;
+                  _context2.next = 6;
                   break;
                 }
 
                 (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showError)(t('cfgsharelinks', 'Invalid token'));
+                _this2.updating = false;
                 return _context2.abrupt("return");
 
-              case 5:
+              case 6:
                 data = {
                   path: _this2.getFullPath,
                   shareType: 3,
                   tokenCandidate: token
                 };
-                _context2.prev = 6;
-                _context2.next = 9;
+                _context2.prev = 7;
+                _context2.next = 10;
                 return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_10__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_8__.generateUrl)('/apps/cfgsharelinks/new'), data);
 
-              case 9:
+              case 10:
                 response = _context2.sent;
                 console.info(response);
                 (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showSuccess)(t('cfgsharelinks', 'New success'));
-                _context2.next = 18;
+                _context2.next = 19;
                 break;
 
-              case 14:
-                _context2.prev = 14;
-                _context2.t0 = _context2["catch"](6);
+              case 15:
+                _context2.prev = 15;
+                _context2.t0 = _context2["catch"](7);
                 console.error(_context2.t0);
                 (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showError)(t('cfgsharelinks', 'New error'));
 
-              case 18:
+              case 19:
                 _this2.updating = false;
 
-              case 19:
+              case 20:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[6, 14]]);
+        }, _callee2, null, [[7, 15]]);
       }))();
     }
   }
@@ -58529,7 +58533,10 @@ var render = function() {
                     }
                   ],
                   staticClass: "token-input",
-                  attrs: { placeholder: "Enter custom token" },
+                  attrs: {
+                    disabled: _vm.updating,
+                    placeholder: "Enter custom token"
+                  },
                   domProps: { value: _vm.tokenCandidate },
                   on: {
                     input: function($event) {
@@ -71658,4 +71665,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=7dd50d1b4556b2934b9c
+//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=0aaa02fc846f2fb9009c

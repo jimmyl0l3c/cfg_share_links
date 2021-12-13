@@ -44,7 +44,10 @@
 					icon-class="avatar-link-icon icon-public-white" />
 			</template>
 			<template #subtitle>
-				<input v-model="tokenCandidate" class="token-input" placeholder="Enter custom token">
+				<input v-model="tokenCandidate"
+					:disabled="updating"
+					class="token-input"
+					placeholder="Enter custom token">
 			</template>
 			<template #actions>
 				<ActionButton icon="icon-add" @click="createCustomLink">
@@ -160,6 +163,7 @@ export default {
 			const token = this.tokenCandidate
 			if (!this.isTokenValid(token)) {
 				showError(t('cfgsharelinks', 'Invalid token'))
+				this.updating = false
 				return
 			}
 

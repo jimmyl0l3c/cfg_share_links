@@ -31,17 +31,17 @@ class ShareMapper extends QBMapper {
     }
 
     /**
-     * @param int $id
+     * @param string $id
      * @return Entity|CustomShare
      * @throws DoesNotExistException
      * @throws Exception
      * @throws MultipleObjectsReturnedException
      */
-    public function getByShareFullId(int $id): CustomShare {
+    public function getByShareFullId(string $id): CustomShare {
         $qb = $this->db->getQueryBuilder();
         $qb->select('*')
             ->from('cfg_shares')
-            ->where($qb->expr()->eq('share_full_id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_INT)));
+            ->where($qb->expr()->eq('share_full_id', $qb->createNamedParameter($id, IQueryBuilder::PARAM_STR)));
         return $this->findEntity($qb);
     }
 }

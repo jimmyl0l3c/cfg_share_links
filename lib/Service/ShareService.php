@@ -62,7 +62,6 @@ class ShareService
      * @throws InvalidTokenException
      * @throws TokenNotUniqueException
      * @throws NotPermittedException
-     * @throws Exception
      */
     public function create(string $path, int $shareType, string $tokenCandidate, string $userId): array
     {
@@ -128,7 +127,11 @@ class ShareService
         $this->shareManager->updateShare($share);
 
         // Add record to cfg_shares
-        $this->dbService->create($share->getFullId(), $share->getToken());
+        try {
+            $this->dbService->create($share->getFullId(), $share->getToken());
+        } catch (Exception $e) { // TODO: solve, exception probably due to sqlite
+            // An exception occurred while executing a query: SQLSTATE[HY000]: General error: 1 near ")": syntax error
+        }
 
         return $this->serializeShare($share);
     }
@@ -138,13 +141,10 @@ class ShareService
      * @param string $tokenCandidate
      * @param string $userId
      * @return array
-     * @throws Exception
      * @throws InvalidTokenException
      * @throws OCSBadRequestException
      * @throws ShareNotFound
      * @throws TokenNotUniqueException
-     * @throws DoesNotExistException
-     * @throws MultipleObjectsReturnedException
      */
     public function update(string $id, string $tokenCandidate, string $userId): array
     {
@@ -167,7 +167,10 @@ class ShareService
         $this->shareManager->updateShare($share);
 
         // Update cfg_share record
-        $this->dbService->updateByShareFullId($share->getFullId(), $share->getToken());
+        try { // TODO: probably same problem like with create
+            $this->dbService->updateByShareFullId($share->getFullId(), $share->getToken());
+        } catch (DoesNotExistException | MultipleObjectsReturnedException | Exception $e) {
+        }
 
         return $this->serializeShare($share);
     }
