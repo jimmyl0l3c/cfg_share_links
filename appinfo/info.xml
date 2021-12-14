@@ -5,7 +5,7 @@
     <name>Configurable Share Links</name>
     <summary>App adding the ability to specify share tokens</summary>
     <description><![CDATA[App that allows users to specify share tokens]]></description>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <licence>agpl</licence>
     <author mail="filip@joska.dev" >Filip Joska</author>
     <namespace>CfgShareLinks</namespace>
@@ -16,7 +16,7 @@
     </dependencies>
     <navigations>
         <navigation>
-            <name>Configurable Share Links</name>
+            <name>CfgShareLinks - Remove this</name>
             <route>cfgsharelinks.page.index</route>
         </navigation>
     </navigations>
