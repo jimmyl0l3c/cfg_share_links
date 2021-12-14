@@ -47,7 +47,9 @@
 				<input v-model="tokenCandidate"
 					:disabled="updating"
 					class="token-input"
-					placeholder="Enter custom token">
+					placeholder="Enter custom token"
+					@focus="onFocus">
+				<span v-if="isInputValid && focused" class="form-error"> {{ isInputValid }} </span>
 			</template>
 			<template #actions>
 				<ActionButton icon="icon-add" @click="createCustomLink">
@@ -100,6 +102,7 @@ export default {
 			loading: true,
 			tokenCandidate: null,
 			modal: false,
+			focused: false,
 		}
 	},
 
@@ -118,6 +121,18 @@ export default {
 		getPath() {
 			return this.fileInfo ? '/'.concat(this.fileInfo.name) : 'None'
 		},
+		isInputValid() {
+			switch (this.isTokenValid(this.tokenCandidate)) {
+			case 1:
+				return 'Token not long enough'
+			case 2:
+				return 'Token contains invalid characters'
+			case 0:
+				return ''
+			default:
+				return ''
+			}
+		},
 	},
 
 	async mounted() {
@@ -126,6 +141,9 @@ export default {
 	},
 
 	methods: {
+		onFocus() {
+			this.focused = true
+		},
 		showModal() {
 			this.modal = true
 		},
@@ -143,25 +161,24 @@ export default {
 
 		isTokenValid(token) {
 			if (!token || token.length <= 1) {
-				return false
+				return 1
 			}
-			console.info(this)
-			console.info(typeof this)
+
 			const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+'
 
 			for (const c of token) {
 				if (!characters.includes(c)) {
-					return false
+					return 2
 				}
 			}
 
-			return true
+			return 0
 		},
 
 		async createCustomLink() {
 			this.updating = true
 			const token = this.tokenCandidate
-			if (!this.isTokenValid(token)) {
+			if (this.isTokenValid(token) !== 0) {
 				showError(t('cfgsharelinks', 'Invalid token'))
 				this.updating = false
 				return
@@ -189,6 +206,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form-error {
+	color: #c40c0c;
+	display: block;
+}
 .modal-content {
 	margin: 50px;
 	text-align: center;

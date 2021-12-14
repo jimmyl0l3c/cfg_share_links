@@ -21005,12 +21005,12 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -21106,7 +21106,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       updating: false,
       loading: true,
       tokenCandidate: null,
-      modal: false
+      modal: false,
+      focused: false
     };
   },
   computed: {
@@ -21123,6 +21124,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     getPath: function getPath() {
       return this.fileInfo ? '/'.concat(this.fileInfo.name) : 'None';
+    },
+    isInputValid: function isInputValid() {
+      switch (this.isTokenValid(this.tokenCandidate)) {
+        case 1:
+          return 'Token not long enough';
+
+        case 2:
+          return 'Token contains invalid characters';
+
+        case 0:
+          return '';
+
+        default:
+          return '';
+      }
     }
   },
   mounted: function mounted() {
@@ -21145,6 +21161,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }))();
   },
   methods: {
+    onFocus: function onFocus() {
+      this.focused = true;
+    },
     showModal: function showModal() {
       this.modal = true;
     },
@@ -21161,11 +21180,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     isTokenValid: function isTokenValid(token) {
       if (!token || token.length <= 1) {
-        return false;
+        return 1;
       }
 
-      console.info(this);
-      console.info(_typeof(this));
       var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+';
 
       var _iterator = _createForOfIteratorHelper(token),
@@ -21176,7 +21193,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           var c = _step.value;
 
           if (!characters.includes(c)) {
-            return false;
+            return 2;
           }
         }
       } catch (err) {
@@ -21185,7 +21202,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         _iterator.f();
       }
 
-      return true;
+      return 0;
     },
     createCustomLink: function createCustomLink() {
       var _this2 = this;
@@ -21199,7 +21216,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this2.updating = true;
                 token = _this2.tokenCandidate;
 
-                if (_this2.isTokenValid(token)) {
+                if (!(_this2.isTokenValid(token) !== 0)) {
                   _context2.next = 6;
                   break;
                 }
@@ -24466,7 +24483,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modal-content[data-v-474998d1] {\n  margin: 50px;\n  text-align: center;\n}\n.token-input[data-v-474998d1] {\n  width: 80%;\n}\n[data-v-474998d1] .avatar-link-icon {\n  background-color: #c40c0c;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form-error[data-v-474998d1] {\n  color: #c40c0c;\n  display: block;\n}\n.modal-content[data-v-474998d1] {\n  margin: 50px;\n  text-align: center;\n}\n.token-input[data-v-474998d1] {\n  width: 80%;\n}\n[data-v-474998d1] .avatar-link-icon {\n  background-color: #c40c0c;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -58539,6 +58556,7 @@ var render = function() {
                   },
                   domProps: { value: _vm.tokenCandidate },
                   on: {
+                    focus: _vm.onFocus,
                     input: function($event) {
                       if ($event.target.composing) {
                         return
@@ -58546,7 +58564,13 @@ var render = function() {
                       _vm.tokenCandidate = $event.target.value
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.isInputValid && _vm.focused
+                  ? _c("span", { staticClass: "form-error" }, [
+                      _vm._v(" " + _vm._s(_vm.isInputValid) + " ")
+                    ])
+                  : _vm._e()
               ]
             },
             proxy: true
@@ -71665,4 +71689,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=0aaa02fc846f2fb9009c
+//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=90d23d038bc51ece7e1d
