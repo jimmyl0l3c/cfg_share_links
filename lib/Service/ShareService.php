@@ -65,8 +65,13 @@ class ShareService
      */
     public function create(string $path, int $shareType, string $tokenCandidate, string $userId): array
     {
+        if ($userId != null && $this->currentUser != $userId) {
+            $this->currentUser = $userId;
+        }
+
         if ($shareType != IShare::TYPE_LINK) {
-            throw new OCSBadRequestException($this->l->t('Unknown share type'));
+            // TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
+            throw new OCSBadRequestException($this->l->t('Invalid share type'));
         }
 
         // Can we even share links?
@@ -148,6 +153,10 @@ class ShareService
      */
     public function update(string $id, string $tokenCandidate, string $userId): array
     {
+        if ($userId != null && $this->currentUser != $userId) {
+            $this->currentUser = $userId;
+        }
+
         // check token validity
         $this->tokenChecks($tokenCandidate);
 
@@ -155,7 +164,8 @@ class ShareService
         $share = $this->shareManager->getShareById($id);
 
         if ($share->getShareType() !== IShare::TYPE_LINK) {
-            throw new OCSBadRequestException('Invalid share type');
+            // TRANSLATORS function to update share token is expecting type link (but received some other type)
+            throw new OCSBadRequestException($this->l->t('Invalid share type'));
         }
 
         // TODO: check whether user can edit the share
@@ -186,7 +196,7 @@ class ShareService
         // Unique check
         try {
             $this->shareManager->getShareByToken($tokenCandidate);
-            throw new TokenNotUniqueException('Token is not unique');
+            throw new TokenNotUniqueException($this->l->t('Token is not unique'));
         } catch (ShareNotFound $e) {}
     }
 
@@ -198,14 +208,14 @@ class ShareService
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+';
 
         if ($token == null || strlen($token) < 1) {
-            throw new InvalidTokenException('Short token');
+            throw new InvalidTokenException($this->l->t('Token is not long enough'));
         }
 
         foreach($token as $char) // TODO: get rid of warning
         {
             if(!in_array($char, (array)$characters))
             {
-                throw new InvalidTokenException('Invalid character');
+                throw new InvalidTokenException($this->l->t('Token contains invalid characters'));
             }
         }
     }

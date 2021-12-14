@@ -18015,36 +18015,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _this2 = this;
 
     return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-      var response;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_6__.default.get((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)('/apps/cfgsharelinks/notes'));
-
-            case 3:
-              response = _context.sent;
-              _this2.notes = response.data;
-              _context.next = 11;
-              break;
-
-            case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-              console.error(_context.t0);
-              (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)(t('cfgsharelinks', 'Could not fetch notes'));
-
-            case 11:
               _this2.loading = false;
 
-            case 12:
+            case 1:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee, null, [[0, 7]]);
+      }, _callee);
     }))();
   },
   methods: {
@@ -18069,59 +18051,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return this.response;
       }
     },
-
-    /**
-     * Create a new note and focus the note content field automatically
-     *
-     * @param {object} note Note object
-     */
-    openNote: function openNote(note) {
-      var _this3 = this;
-
-      if (this.updating) {
-        return;
-      }
-
-      this.currentNoteId = note.id;
-      this.$nextTick(function () {
-        _this3.$refs.content.focus();
-      });
-    },
-
-    /**
-     * Action tiggered when clicking the save button
-     * create a new note or save
-     */
-    saveNote: function saveNote() {
-      if (this.currentNoteId === -1) {
-        this.createNote(this.currentNote);
-      } else {
-        this.updateNote(this.currentNote);
-      }
-    },
-
-    /**
-     * Create a new note and focus the note content field automatically
-     * The note is not yet saved, therefore an id of -1 is used until it
-     * has been persisted in the backend
-     */
-    newNote: function newNote() {
-      var _this4 = this;
-
-      if (this.currentNoteId !== -1) {
-        this.currentNoteId = -1;
-        this.notes.push({
-          id: -1,
-          title: '',
-          content: ''
-        });
-        this.$nextTick(function () {
-          _this4.$refs.title.focus();
-        });
-      }
-    },
     testNew: function testNew() {
-      var _this5 = this;
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
         var response;
@@ -18129,7 +18060,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this5.updating = true;
+                _this3.updating = true;
                 _context2.prev = 1;
                 _context2.next = 4;
                 return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_6__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)('/apps/cfgsharelinks/new'), {
@@ -18141,8 +18072,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 4:
                 response = _context2.sent;
                 console.info(response);
-                _this5.response = response;
-                _this5.err = null;
+                _this3.response = response;
+                _this3.err = null;
                 _context2.next = 16;
                 break;
 
@@ -18150,12 +18081,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.prev = 10;
                 _context2.t0 = _context2["catch"](1);
                 console.error(_context2.t0);
-                _this5.response = _context2.t0.response;
-                _this5.err = _context2.t0;
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)(t('cfgsharelinks', 'Test new error'));
+                _this3.response = _context2.t0.response;
+                _this3.err = _context2.t0;
+                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)('Test new error');
 
               case 16:
-                _this5.updating = false;
+                _this3.updating = false;
 
               case 17:
               case "end":
@@ -18166,7 +18097,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     testUpdate: function testUpdate() {
-      var _this6 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
         var response;
@@ -18174,7 +18105,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _this6.updating = true;
+                _this4.updating = true;
                 _context3.prev = 1;
                 _context3.next = 4;
                 return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_6__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)('/apps/cfgsharelinks/update'), {
@@ -18185,8 +18116,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 4:
                 response = _context3.sent;
                 console.info(response);
-                _this6.response = response;
-                _this6.err = null;
+                _this4.response = response;
+                _this4.err = null;
                 _context3.next = 16;
                 break;
 
@@ -18194,12 +18125,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.prev = 10;
                 _context3.t0 = _context3["catch"](1);
                 console.error(_context3.t0);
-                _this6.response = _context3.t0.response;
-                _this6.err = _context3.t0;
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)(t('cfgsharelinks', 'Test update error'));
+                _this4.response = _context3.t0.response;
+                _this4.err = _context3.t0;
+                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)('Test update error');
 
               case 16:
-                _this6.updating = false;
+                _this4.updating = false;
 
               case 17:
               case "end":
@@ -18207,148 +18138,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee3, null, [[1, 10]]);
-      }))();
-    },
-
-    /**
-     * Abort creating a new note
-     */
-    cancelNewNote: function cancelNewNote() {
-      this.notes.splice(this.notes.findIndex(function (note) {
-        return note.id === -1;
-      }), 1);
-      this.currentNoteId = null;
-    },
-
-    /**
-     * Create a new note by sending the information to the server
-     *
-     * @param {object} note Note object
-     */
-    createNote: function createNote(note) {
-      var _this7 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-        var response, index;
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
-          while (1) {
-            switch (_context4.prev = _context4.next) {
-              case 0:
-                _this7.updating = true;
-                _context4.prev = 1;
-                _context4.next = 4;
-                return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_6__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)('/apps/cfgsharelinks/notes'), note);
-
-              case 4:
-                response = _context4.sent;
-                index = _this7.notes.findIndex(function (match) {
-                  return match.id === _this7.currentNoteId;
-                });
-
-                _this7.$set(_this7.notes, index, response.data);
-
-                _this7.currentNoteId = response.data.id;
-                _context4.next = 14;
-                break;
-
-              case 10:
-                _context4.prev = 10;
-                _context4.t0 = _context4["catch"](1);
-                console.error(_context4.t0);
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)(t('cfgsharelinks', 'Could not create the note'));
-
-              case 14:
-                _this7.updating = false;
-
-              case 15:
-              case "end":
-                return _context4.stop();
-            }
-          }
-        }, _callee4, null, [[1, 10]]);
-      }))();
-    },
-
-    /**
-     * Update an existing note on the server
-     *
-     * @param {object} note Note object
-     */
-    updateNote: function updateNote(note) {
-      var _this8 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _this8.updating = true;
-                _context5.prev = 1;
-                _context5.next = 4;
-                return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_6__.default.put((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)("/apps/cfgsharelinks/notes/".concat(note.id)), note);
-
-              case 4:
-                _context5.next = 10;
-                break;
-
-              case 6:
-                _context5.prev = 6;
-                _context5.t0 = _context5["catch"](1);
-                console.error(_context5.t0);
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)(t('cfgsharelinks', 'Could not update the note'));
-
-              case 10:
-                _this8.updating = false;
-
-              case 11:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5, null, [[1, 6]]);
-      }))();
-    },
-
-    /**
-     * Delete a note, remove it from the frontend and show a hint
-     *
-     * @param {object} note Note object
-     */
-    deleteNote: function deleteNote(note) {
-      var _this9 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-        return regeneratorRuntime.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                _context6.prev = 0;
-                _context6.next = 3;
-                return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_6__.default.delete((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)("/apps/cfgsharelinks/notes/".concat(note.id)));
-
-              case 3:
-                _this9.notes.splice(_this9.notes.indexOf(note), 1);
-
-                if (_this9.currentNoteId === note.id) {
-                  _this9.currentNoteId = null;
-                }
-
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showSuccess)(t('cfgsharelinks', 'Note deleted'));
-                _context6.next = 12;
-                break;
-
-              case 8:
-                _context6.prev = 8;
-                _context6.t0 = _context6["catch"](0);
-                console.error(_context6.t0);
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_5__.showError)(t('cfgsharelinks', 'Could not delete the note'));
-
-              case 12:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6, null, [[0, 8]]);
       }))();
     }
   }
@@ -45327,7 +45116,7 @@ var render = function() {
           !_vm.loading
             ? _c("AppNavigationNew", {
                 attrs: {
-                  text: _vm.t("cfgsharelinks", "Test New"),
+                  text: "Test New",
                   disabled: false,
                   "button-id": "new-cfgsharelinks-button",
                   "button-class": "icon-add"
@@ -45339,7 +45128,7 @@ var render = function() {
           !_vm.loading
             ? _c("AppNavigationNew", {
                 attrs: {
-                  text: _vm.t("cfgsharelinks", "Test Update"),
+                  text: "Test Update",
                   disabled: false,
                   "button-id": "new-cfgsharelinks-button",
                   "button-class": "icon-add"
@@ -45374,9 +45163,7 @@ var render = function() {
           : _c("div", { attrs: { id: "emptycontent" } }, [
               _c("div", { staticClass: "icon-public" }),
               _vm._v(" "),
-              _c("h2", [
-                _vm._v(_vm._s(_vm.t("cfgsharelinks", "Press any test button")))
-              ])
+              _c("h2", [_vm._v(_vm._s("Press any test button"))])
             ])
       ])
     ],
@@ -54547,4 +54334,4 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.mixin({
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-main.js.map?v=eee729d7ac35eee182d4
+//# sourceMappingURL=cfgsharelinks-main.js.map?v=2cd44a976fbbddb7a7ec

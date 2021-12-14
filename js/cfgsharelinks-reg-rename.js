@@ -13423,7 +13423,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     currentToken: function currentToken() {
-      return this.share && this.share.token ? this.share.token : 'Enter token';
+      return this.share && this.share.token ? this.share.token : t('cfgsharelinks', 'Enter token');
     }
   },
   methods: {
@@ -59343,4 +59343,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-rename.js.map?v=6222b7381beafc449564
+//# sourceMappingURL=cfgsharelinks-reg-rename.js.map?v=8ec029c411cec510b37c

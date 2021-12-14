@@ -21128,10 +21128,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     isInputValid: function isInputValid() {
       switch (this.isTokenValid(this.tokenCandidate)) {
         case 1:
-          return 'Token not long enough';
+          return t('cfgsharelinks', 'Token is not long enough');
 
         case 2:
-          return 'Token contains invalid characters';
+          return t('cfgsharelinks', 'Token contains invalid characters');
 
         case 0:
           return '';
@@ -21238,20 +21238,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 10:
                 response = _context2.sent;
                 console.info(response);
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showSuccess)(t('cfgsharelinks', 'New success'));
-                _context2.next = 19;
+                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showSuccess)(t('cfgsharelinks', 'Custom public link created'));
+                _context2.next = 18;
                 break;
 
               case 15:
                 _context2.prev = 15;
                 _context2.t0 = _context2["catch"](7);
-                console.error(_context2.t0);
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showError)(t('cfgsharelinks', 'New error'));
 
-              case 19:
+                if (_context2.t0.response.data && _context2.t0.response.data.message) {
+                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showError)(t('cfgsharelinks', _context2.t0.response.data.message));
+                } else {
+                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_9__.showError)(t('cfgsharelinks', 'Error occurred while creating public link'));
+                  console.error(_context2.t0.response);
+                }
+
+              case 18:
                 _this2.updating = false;
 
-              case 20:
+              case 19:
               case "end":
                 return _context2.stop();
             }
@@ -58432,8 +58437,11 @@ var render = function() {
             "is-no-user": false,
             "display-name": "Share",
             "icon-class": "avatar-link-icon icon-public-white",
-            title: "Custom link token",
-            subtitle: "Create link with custom share token"
+            title: _vm.t("cfgsharelinks", "Custom public link"),
+            subtitle: _vm.t(
+              "cfgsharelinks",
+              "Create link with custom share token"
+            )
           }
         },
         [
@@ -58519,7 +58527,10 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _c("ListItem", {
-        attrs: { title: "Custom link", bold: false },
+        attrs: {
+          title: _vm.t("cfgsharelinks", "Custom public link"),
+          bold: false
+        },
         scopedSlots: _vm._u([
           {
             key: "icon",
@@ -58552,7 +58563,7 @@ var render = function() {
                   staticClass: "token-input",
                   attrs: {
                     disabled: _vm.updating,
-                    placeholder: "Enter custom token"
+                    placeholder: _vm.t("cfgsharelinks", "Enter custom token")
                   },
                   domProps: { value: _vm.tokenCandidate },
                   on: {
@@ -58585,7 +58596,13 @@ var render = function() {
                     attrs: { icon: "icon-add" },
                     on: { click: _vm.createCustomLink }
                   },
-                  [_vm._v("\n\t\t\t\tAdd\n\t\t\t")]
+                  [
+                    _vm._v(
+                      "\n\t\t\t\t" +
+                        _vm._s(_vm.t("cfgsharelinks", "Add")) +
+                        "\n\t\t\t"
+                    )
+                  ]
                 )
               ]
             },
@@ -71689,4 +71706,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=90d23d038bc51ece7e1d
+//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=0276758e2a66cb1c86d2

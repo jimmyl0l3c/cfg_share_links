@@ -4,8 +4,8 @@
 			:is-no-user="false"
 			display-name="Share"
 			icon-class="avatar-link-icon icon-public-white"
-			title="Custom link token"
-			subtitle="Create link with custom share token">
+			:title="t('cfgsharelinks', 'Custom public link')"
+			:subtitle="t('cfgsharelinks', 'Create link with custom share token')">
 			<Actions :force-menu="true">
 				<ActionInput icon="icon-edit">
 					Enter token
@@ -36,7 +36,7 @@
 			</div>
 		</Modal>
 		<ListItem
-			:title="'Custom link'"
+			:title="t('cfgsharelinks', 'Custom public link')"
 			:bold="false">
 			<template #icon>
 				<Avatar :is-no-user="true"
@@ -47,13 +47,13 @@
 				<input v-model="tokenCandidate"
 					:disabled="updating"
 					class="token-input"
-					placeholder="Enter custom token"
+					:placeholder="t('cfgsharelinks', 'Enter custom token')"
 					@focus="onFocus">
 				<span v-if="isInputValid && focused" class="form-error"> {{ isInputValid }} </span>
 			</template>
 			<template #actions>
 				<ActionButton icon="icon-add" @click="createCustomLink">
-					Add
+					{{ t('cfgsharelinks', 'Add') }}
 				</ActionButton>
 			</template>
 		</ListItem>
@@ -124,9 +124,9 @@ export default {
 		isInputValid() {
 			switch (this.isTokenValid(this.tokenCandidate)) {
 			case 1:
-				return 'Token not long enough'
+				return t('cfgsharelinks', 'Token is not long enough')
 			case 2:
-				return 'Token contains invalid characters'
+				return t('cfgsharelinks', 'Token contains invalid characters')
 			case 0:
 				return ''
 			default:
@@ -193,10 +193,14 @@ export default {
 			try {
 				const response = await axios.post(generateUrl('/apps/cfgsharelinks/new'), data)
 				console.info(response)
-				showSuccess(t('cfgsharelinks', 'New success'))
+				showSuccess(t('cfgsharelinks', 'Custom public link created'))
 			} catch (e) {
-				console.error(e)
-				showError(t('cfgsharelinks', 'New error'))
+				if (e.response.data && e.response.data.message) {
+					showError(t('cfgsharelinks', e.response.data.message))
+				} else {
+					showError(t('cfgsharelinks', 'Error occurred while creating public link'))
+					console.error(e.response)
+				}
 			}
 
 			this.updating = false

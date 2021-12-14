@@ -2,13 +2,13 @@
 	<div id="content" class="app-cfgsharelinks">
 		<AppNavigation>
 			<AppNavigationNew v-if="!loading"
-				:text="t('cfgsharelinks', 'Test New')"
+				:text="'Test New'"
 				:disabled="false"
 				button-id="new-cfgsharelinks-button"
 				button-class="icon-add"
 				@click="testNew" />
 			<AppNavigationNew v-if="!loading"
-				:text="t('cfgsharelinks', 'Test Update')"
+				:text="'Test Update'"
 				:disabled="false"
 				button-id="new-cfgsharelinks-button"
 				button-class="icon-add"
@@ -20,7 +20,7 @@
 			</div>
 			<div v-else id="emptycontent">
 				<div class="icon-public" />
-				<h2>{{ t('cfgsharelinks', 'Press any test button') }}</h2>
+				<h2>{{ 'Press any test button' }}</h2>
 			</div>
 		</AppContent>
 	</div>
@@ -33,7 +33,7 @@ import AppNavigationNew from '@nextcloud/vue/dist/Components/AppNavigationNew'
 
 import '@nextcloud/dialogs/styles/toast.scss'
 import { generateUrl } from '@nextcloud/router'
-import { showError, showSuccess } from '@nextcloud/dialogs'
+import { showError } from '@nextcloud/dialogs'
 import axios from '@nextcloud/axios'
 
 export default {
@@ -79,13 +79,6 @@ export default {
 	 * Fetch list of notes when the component is loaded
 	 */
 	async mounted() {
-		try {
-			const response = await axios.get(generateUrl('/apps/cfgsharelinks/notes'))
-			this.notes = response.data
-		} catch (e) {
-			console.error(e)
-			showError(t('cfgsharelinks', 'Could not fetch notes'))
-		}
 		this.loading = false
 	},
 
@@ -108,49 +101,6 @@ export default {
 			}
 
 		},
-		/**
-		 * Create a new note and focus the note content field automatically
-		 *
-		 * @param {object} note Note object
-		 */
-		openNote(note) {
-			if (this.updating) {
-				return
-			}
-			this.currentNoteId = note.id
-			this.$nextTick(() => {
-				this.$refs.content.focus()
-			})
-		},
-		/**
-		 * Action tiggered when clicking the save button
-		 * create a new note or save
-		 */
-		saveNote() {
-			if (this.currentNoteId === -1) {
-				this.createNote(this.currentNote)
-			} else {
-				this.updateNote(this.currentNote)
-			}
-		},
-		/**
-		 * Create a new note and focus the note content field automatically
-		 * The note is not yet saved, therefore an id of -1 is used until it
-		 * has been persisted in the backend
-		 */
-		newNote() {
-			if (this.currentNoteId !== -1) {
-				this.currentNoteId = -1
-				this.notes.push({
-					id: -1,
-					title: '',
-					content: '',
-				})
-				this.$nextTick(() => {
-					this.$refs.title.focus()
-				})
-			}
-		},
 		async testNew() {
 			this.updating = true
 			try {
@@ -166,7 +116,7 @@ export default {
 				console.error(e)
 				this.response = e.response
 				this.err = e
-				showError(t('cfgsharelinks', 'Test new error'))
+				showError('Test new error')
 			}
 			this.updating = false
 		},
@@ -184,67 +134,9 @@ export default {
 				console.error(e)
 				this.response = e.response
 				this.err = e
-				showError(t('cfgsharelinks', 'Test update error'))
+				showError('Test update error')
 			}
 			this.updating = false
-		},
-		/**
-		 * Abort creating a new note
-		 */
-		cancelNewNote() {
-			this.notes.splice(this.notes.findIndex((note) => note.id === -1), 1)
-			this.currentNoteId = null
-		},
-		/**
-		 * Create a new note by sending the information to the server
-		 *
-		 * @param {object} note Note object
-		 */
-		async createNote(note) {
-			this.updating = true
-			try {
-				const response = await axios.post(generateUrl('/apps/cfgsharelinks/notes'), note)
-				const index = this.notes.findIndex((match) => match.id === this.currentNoteId)
-				this.$set(this.notes, index, response.data)
-				this.currentNoteId = response.data.id
-			} catch (e) {
-				console.error(e)
-				showError(t('cfgsharelinks', 'Could not create the note'))
-			}
-			this.updating = false
-		},
-		/**
-		 * Update an existing note on the server
-		 *
-		 * @param {object} note Note object
-		 */
-		async updateNote(note) {
-			this.updating = true
-			try {
-				await axios.put(generateUrl(`/apps/cfgsharelinks/notes/${note.id}`), note)
-			} catch (e) {
-				console.error(e)
-				showError(t('cfgsharelinks', 'Could not update the note'))
-			}
-			this.updating = false
-		},
-		/**
-		 * Delete a note, remove it from the frontend and show a hint
-		 *
-		 * @param {object} note Note object
-		 */
-		async deleteNote(note) {
-			try {
-				await axios.delete(generateUrl(`/apps/cfgsharelinks/notes/${note.id}`))
-				this.notes.splice(this.notes.indexOf(note), 1)
-				if (this.currentNoteId === note.id) {
-					this.currentNoteId = null
-				}
-				showSuccess(t('cfgsharelinks', 'Note deleted'))
-			} catch (e) {
-				console.error(e)
-				showError(t('cfgsharelinks', 'Could not delete the note'))
-			}
 		},
 	},
 }

@@ -27,7 +27,7 @@ export default {
 	},
 	computed: {
 		currentToken() {
-			return this.share && this.share.token ? this.share.token : 'Enter token'
+			return this.share && this.share.token ? this.share.token : t('cfgsharelinks', 'Enter custom token')
 		},
 	},
 	methods: {
