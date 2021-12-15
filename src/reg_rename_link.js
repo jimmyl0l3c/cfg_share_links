@@ -1,11 +1,6 @@
-// import { generateFilePath } from '@nextcloud/router'
-
 import Vue from 'vue'
 import RenameLink from './components/RenameLink'
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-
-// eslint-disable-next-line
-// __webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
 Vue.prototype.OC = window.OC
 Vue.prototype.OCA = window.OCA
@@ -37,7 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				OC.Share.SHARE_TYPE_EMAIL,
 			],
 			handlers: {
-				update: (e) => {},
+				update: (_) => {},
 			},
 		})
 	}

@@ -19,15 +19,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
-import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
 import App from './components/App'
-// import RenameLink from './RenameLink'
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-
-// eslint-disable-next-line
-__webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
 // Vue.prototype.OC = window.OC
 // Vue.prototype.OCA = window.OCA

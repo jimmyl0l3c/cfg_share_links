@@ -21,10 +21,6 @@ class Version000000Date20211213143000 extends SimpleMigrationStep {
 		/** @var ISchemaWrapper $schema */
 		$schema = $schemaClosure();
 
-        if ($schema->hasTable('CfgShareLinks')) {
-            $schema->dropTable('CfgShareLinks');
-        }
-
 		if (!$schema->hasTable('cfg_shares')) {
 			$table = $schema->createTable('cfg_shares');
 			$table->addColumn('id', 'integer', [

@@ -203,17 +203,18 @@ class ShareService
     /**
      * @throws InvalidTokenException
      */
-    private function checkTokenValidity(string $token)
+    private function checkTokenValidity(string $token) // TODO: use regular expression
     {
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+';
+        $char_array = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+');
 
         if ($token == null || strlen($token) < 1) {
             throw new InvalidTokenException($this->l->t('Token is not long enough'));
         }
 
-        foreach($token as $char) // TODO: get rid of warning
+        $token_arr = str_split($token);
+        foreach($token_arr as $char)
         {
-            if(!in_array($char, (array)$characters))
+            if(!in_array($char, $char_array))
             {
                 throw new InvalidTokenException($this->l->t('Token contains invalid characters'));
             }
