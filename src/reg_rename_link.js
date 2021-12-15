@@ -1,7 +1,7 @@
 // import { generateFilePath } from '@nextcloud/router'
 
 import Vue from 'vue'
-import RenameLink from './RenameLink'
+import RenameLink from './components/RenameLink'
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 
 // eslint-disable-next-line

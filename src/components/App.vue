@@ -15,10 +15,7 @@
 				@click="testUpdate" />
 		</AppNavigation>
 		<AppContent>
-			<div v-if="response" style="height: 80%;display: flex;align-items: center;justify-content: center;">
-				<div v-html="filteredResponse(err != null)" />
-			</div>
-			<div v-else id="emptycontent">
+			<div id="emptycontent">
 				<div class="icon-public" />
 				<h2>{{ 'Press any test button' }}</h2>
 			</div>

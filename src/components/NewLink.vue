@@ -74,6 +74,7 @@ import '@nextcloud/dialogs/styles/toast.scss'
 import { generateUrl } from '@nextcloud/router'
 import { showError, showSuccess } from '@nextcloud/dialogs'
 import axios from '@nextcloud/axios'
+import TokenValidation from '../mixins/TokenValidation'
 
 export default {
 	name: 'NewLink',
@@ -87,6 +88,10 @@ export default {
 		ListItemIcon,
 		Modal,
 	},
+
+	mixins: [
+		TokenValidation,
+	],
 
 	props: {
 		fileInfo: {
@@ -122,16 +127,7 @@ export default {
 			return this.fileInfo ? '/'.concat(this.fileInfo.name) : 'None'
 		},
 		isInputValid() {
-			switch (this.isTokenValid(this.tokenCandidate)) {
-			case 1:
-				return t('cfgsharelinks', 'Token is not long enough')
-			case 2:
-				return t('cfgsharelinks', 'Token contains invalid characters')
-			case 0:
-				return ''
-			default:
-				return ''
-			}
+			return this.isTokenValidString(this.tokenCandidate)
 		},
 	},
 
@@ -150,36 +146,13 @@ export default {
 		closeModal() {
 			this.modal = false
 		},
-		debugFileInfo() {
-			const data = {
-				path: this.getFullPath,
-				shareType: 3,
-				tokenCandidate: 'new_token',
-			}
-			console.info(data)
-		},
-
-		isTokenValid(token) {
-			if (!token || token.length <= 1) {
-				return 1
-			}
-
-			const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+'
-
-			for (const c of token) {
-				if (!characters.includes(c)) {
-					return 2
-				}
-			}
-
-			return 0
-		},
 
 		async createCustomLink() {
 			this.updating = true
 			const token = this.tokenCandidate
-			if (this.isTokenValid(token) !== 0) {
-				showError(t('cfgsharelinks', 'Invalid token'))
+			if (!this.isTokenValid(token)) {
+				const message = this.isTokenValidString(token)
+				showError(t('cfgsharelinks', message != null && message.length > 1 ? message : 'Invalid token'))
 				this.updating = false
 				return
 			}
