@@ -71674,11 +71674,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// import { generateFilePath } from '@nextcloud/router'
 
 
- // eslint-disable-next-line
-// __webpack_public_path__ = generateFilePath(appName, '', 'js/')
 
 vue__WEBPACK_IMPORTED_MODULE_2__.default.prototype.OC = window.OC;
 vue__WEBPACK_IMPORTED_MODULE_2__.default.prototype.OCA = window.OCA;
@@ -71726,4 +71723,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=d92b4932a9ad8d194e2e
+//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=1c06db2c1e5dfee09fde

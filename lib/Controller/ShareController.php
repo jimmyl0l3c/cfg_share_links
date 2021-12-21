@@ -7,6 +7,7 @@ use OCA\CfgShareLinks\Service\ShareService;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\IRequest;
+use OCP\Lock\LockedException;
 
 class ShareController extends Controller
 {
@@ -43,10 +44,16 @@ class ShareController extends Controller
     /**
      * @NoAdminRequired
      */
-    public function update(string $id,
-                           string $tokenCandidate): DataResponse {
-        return $this->handleException(function () use ($id, $tokenCandidate) {
-            return $this->service->update($id, $tokenCandidate, $this->userId);
+    public function update(string $id, string $path, string $currentToken, string $tokenCandidate): DataResponse {
+        return $this->handleException(function () use ($id, $path, $currentToken, $tokenCandidate) {
+            return $this->service->update($id, $path, $currentToken, $tokenCandidate, $this->userId);
         });
+    }
+
+    /**
+     * @throws LockedException
+     */
+    public function cleanup() {
+        $this->service->cleanup();
     }
 }

@@ -54217,11 +54217,6 @@ module.exports = function whichTypedArray(value) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		__webpack_require__.p = "/apps/cfgsharelinks/js/";
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		__webpack_require__.b = document.baseURI || self.location.href;
@@ -54260,10 +54255,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _nextcloud_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @nextcloud/router */ "./node_modules/@nextcloud/router/dist/index.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
-/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/App */ "./src/components/App.vue");
-/* harmony import */ var _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @nextcloud/l10n */ "./node_modules/@nextcloud/l10n/dist/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/App */ "./src/components/App.vue");
+/* harmony import */ var _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nextcloud/l10n */ "./node_modules/@nextcloud/l10n/dist/index.js");
 /**
  * @copyright Copyright (c) 2018 John Molakvoæ <skjnldsv@protonmail.com>
  *
@@ -54287,29 +54281,25 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 
- // import RenameLink from './RenameLink'
-
- // eslint-disable-next-line
-
-__webpack_require__.p = (0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_0__.generateFilePath)("cfgsharelinks", '', 'js/'); // Vue.prototype.OC = window.OC
+ // Vue.prototype.OC = window.OC
 // Vue.prototype.OCA = window.OCA
 
-vue__WEBPACK_IMPORTED_MODULE_3__.default.mixin({
+vue__WEBPACK_IMPORTED_MODULE_2__.default.mixin({
   methods: {
-    t: _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_2__.translate,
-    n: _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_2__.translatePlural
+    t: _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__.translate,
+    n: _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_1__.translatePlural
   }
 }); // const View = Vue.extend(RenameLink)
 // let TabInstance = null
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue__WEBPACK_IMPORTED_MODULE_3__.default({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   el: '#content',
   render: function render(h) {
-    return h(_components_App__WEBPACK_IMPORTED_MODULE_1__.default);
+    return h(_components_App__WEBPACK_IMPORTED_MODULE_0__.default);
   }
 }));
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-main.js.map?v=add1e466223ee0fd47c8
+//# sourceMappingURL=cfgsharelinks-main.js.map?v=b2e20dcaebf73b16ecd7

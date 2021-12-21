@@ -2,21 +2,34 @@
 
 namespace OCA\CfgShareLinks\AppInfo;
 
+use OCA\CfgShareLinks\Middleware\ShareMiddleware;
 use OCP\AppFramework\App;
+use OCP\AppFramework\QueryException;
 use OCP\EventDispatcher\IEventDispatcher;
 
 class Application extends App { // TODO: handle share deletion
 	public const APP_ID = 'cfgsharelinks';
 
-	public function __construct() {
+    /**
+     * @throws QueryException
+     */
+    public function __construct() {
 		parent::__construct(self::APP_ID);
 
         $container = $this->getContainer();
 
+        /**
+         * Middleware
+         */
+        $container->registerService('ShareMiddleware', function(){
+            return new ShareMiddleware();
+        });
+        $container->registerMiddleware('ShareMiddleware');
+
         /* @var IEventDispatcher $dispatcher */
         $dispatcher = $container->query(IEventDispatcher::class);
-//        $dispatcher->addServiceListener('OCA\Files_Sharing::loadAdditionalScripts', $loadScripts);
-//        $dispatcher->addServiceListener('OCA\Files::loadAdditionalScripts', $loadScripts);
+//        $dispatcher->addServiceListener('OCA\Files_Sharing::loadAdditionalScripts', );
+//        $dispatcher->addServiceListener('OCA\Files::loadAdditionalScripts', );
         $dispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
             script('cfgsharelinks', 'cfgsharelinks-reg-rename');
             script('cfgsharelinks', 'cfgsharelinks-reg-new');

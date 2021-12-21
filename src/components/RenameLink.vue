@@ -1,14 +1,17 @@
 <template>
 	<ActionInput
 		:value="tokenCandidate"
+		type="text"
 		icon="icon-public"
-		@submit="onSubmit">
+		@submit="onSubmit"
+		@update:value="onTokenChange">
 		{{ t('cfgsharelinks', 'Enter custom token') }}
 	</ActionInput>
 </template>
 
 <script>
 import ActionInput from '@nextcloud/vue/dist/Components/ActionInput'
+import '@nextcloud/dialogs/styles/toast.scss'
 import { showError, showSuccess } from '@nextcloud/dialogs'
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
@@ -46,8 +49,22 @@ export default {
 	},
 
 	computed: {
+		getFullPath() {
+			if (this.fileInfo) {
+				if (this.fileInfo.path.endsWith('/')) {
+					return this.fileInfo.path.concat(this.fileInfo.name)
+				} else {
+					return this.fileInfo.path.concat('/', this.fileInfo.name)
+				}
+			} else {
+				return 'None'
+			}
+		},
 		currentToken() {
-			return this.share && this.share.token ? this.share.token : t('cfgsharelinks', 'Enter custom token')
+			return this.share && this.share.token ? this.share.token : 'None'
+		},
+		shareId() {
+			return this.share && this.share.id ? this.share.id : 'None'
 		},
 	},
 
@@ -60,9 +77,13 @@ export default {
 	},
 
 	methods: {
+		onTokenChange(token) {
+			this.tokenCandidate = token
+		},
 		async onSubmit(_) {
 			this.updating = true
 			const token = this.tokenCandidate
+
 			if (!this.isTokenValid(token)) {
 				const message = this.isTokenValidString(token)
 				showError(t('cfgsharelinks', message != null && message.length > 1 ? message : 'Invalid token'))
@@ -70,9 +91,10 @@ export default {
 				return
 			}
 
-			const data = { // TODO: change (send id, current token, new token, maybe also type and path)
+			const data = {
+				id: this.shareId,
 				path: this.getFullPath,
-				shareType: 3,
+				currentToken: this.currentToken,
 				tokenCandidate: token,
 			}
 
