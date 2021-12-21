@@ -1,7 +1,7 @@
 {
 	"name": "cfgsharelinks",
 	"description": "App adding the ability to specify share tokens",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"author": "Filip Joska <filip@joska.dev>",
 	"contributors": [],
 	"bugs": {

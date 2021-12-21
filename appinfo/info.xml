@@ -12,12 +12,6 @@
     <category>tools</category>
     <bugs>https://github.com/jimmyl0l3c/cfg-share-links</bugs>
     <dependencies>
-        <nextcloud min-version="19" max-version="22"/>
+        <nextcloud min-version="20" max-version="22"/>
     </dependencies>
-    <navigations>
-        <navigation>
-            <name>CfgShareLinks - Remove this</name>
-            <route>cfgsharelinks.page.index</route>
-        </navigation>
-    </navigations>
 </info>
