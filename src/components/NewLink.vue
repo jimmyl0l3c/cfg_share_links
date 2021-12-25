@@ -80,7 +80,6 @@ export default {
 			updating: false,
 			loading: true,
 			tokenCandidate: null,
-			modal: false,
 			focused: false,
 		}
 	},
@@ -107,6 +106,7 @@ export default {
 
 	async mounted() {
 		// could load something here if needed
+		await this.fetchTokenConfig()
 		this.loading = false
 	},
 
@@ -140,10 +140,6 @@ export default {
 .form-error {
 	color: #c40c0c;
 	display: block;
-}
-.modal-content {
-	margin: 50px;
-	text-align: center;
 }
 .token-input {
 	width: 80%;

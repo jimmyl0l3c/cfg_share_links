@@ -20848,7 +20848,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       updating: false,
       loading: true,
       tokenCandidate: null,
-      modal: false,
       focused: false
     };
   },
@@ -20879,10 +20878,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              // could load something here if needed
+              _context.next = 2;
+              return _this.fetchTokenConfig();
+
+            case 2:
               _this.loading = false;
 
-            case 1:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -21069,6 +21071,202 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./src/mixins/SettingsMixin.js":
+/*!*************************************!*\
+  !*** ./src/mixins/SettingsMixin.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _nextcloud_axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @nextcloud/axios */ "./node_modules/@nextcloud/axios/dist/index.js");
+/* harmony import */ var _nextcloud_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nextcloud/router */ "./node_modules/@nextcloud/router/dist/index.js");
+/* provided dependency */ var console = __webpack_require__(/*! console-browserify */ "./node_modules/console-browserify/index.js");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      settings: null
+    };
+  },
+  methods: {
+    fetchSettings: function fetchSettings() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var response;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_0__.default.get((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_1__.generateUrl)('/apps/cfgsharelinks/settings'));
+
+              case 3:
+                response = _context.sent;
+
+                if (response.data) {
+                  _this.settings = response.data;
+                }
+
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+                console.error(_context.t0.response);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    getSettings: function getSettings() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!_this2.settings) {
+                  _context2.next = 4;
+                  break;
+                }
+
+                return _context2.abrupt("return", _this2.settings);
+
+              case 4:
+                _context2.next = 6;
+                return _this2.fetchSettings();
+
+              case 6:
+                return _context2.abrupt("return", _this2.settings);
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    getLabelMode: function getLabelMode() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+        var settings;
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return _this3.getSettings();
+
+              case 2:
+                settings = _context3.sent;
+                return _context3.abrupt("return", settings && settings.defaultLabelMode && settings.defaultLabelMode >= 0 && settings.defaultLabelMode <= 2 ? settings.defaultLabelMode : 0);
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    getCustomLabel: function getCustomLabel() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+        var settings;
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return _this4.getSettings();
+
+              case 2:
+                settings = _context4.sent;
+                return _context4.abrupt("return", settings && settings.defaultLabel ? settings.defaultLabel : 'Custom link');
+
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    getMinTokenLength: function getMinTokenLength() {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+        var settings;
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return _this5.getSettings();
+
+              case 2:
+                settings = _context5.sent;
+                return _context5.abrupt("return", settings && settings.minTokenLength ? settings.minTokenLength.toString() : '3');
+
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    getMinTokenLengthInt: function getMinTokenLengthInt() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+        var length;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.t0 = parseInt;
+                _context6.next = 3;
+                return _this6.getMinTokenLength();
+
+              case 3:
+                _context6.t1 = _context6.sent;
+                length = (0, _context6.t0)(_context6.t1);
+                return _context6.abrupt("return", isNaN(length) ? 3 : length);
+
+              case 6:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./src/mixins/TokenValidation.js":
 /*!***************************************!*\
   !*** ./src/mixins/TokenValidation.js ***!
@@ -21080,14 +21278,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _SettingsMixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SettingsMixin */ "./src/mixins/SettingsMixin.js");
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  mixins: [_SettingsMixin__WEBPACK_IMPORTED_MODULE_0__.default],
+  data: function data() {
+    return {
+      minLength: 3
+    };
+  },
   methods: {
+    fetchTokenConfig: function fetchTokenConfig() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _this.getMinTokenLengthInt();
+
+              case 2:
+                _this.minLength = _context.sent;
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
     isTokenValidString: function isTokenValidString(token) {
       switch (this.tokenValidityCheck(token)) {
         case 1:
@@ -21107,7 +21339,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return this.tokenValidityCheck(token) === 0;
     },
     tokenValidityCheck: function tokenValidityCheck(token) {
-      if (!token || token.length <= 1) {
+      if (!token || token.length < this.minLength) {
         return 1;
       }
 
@@ -24356,7 +24588,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".form-error[data-v-27f3c2ba] {\n  color: #c40c0c;\n  display: block;\n}\n.modal-content[data-v-27f3c2ba] {\n  margin: 50px;\n  text-align: center;\n}\n.token-input[data-v-27f3c2ba] {\n  width: 80%;\n}\n[data-v-27f3c2ba] .avatar-link-icon {\n  background-color: #c40c0c;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".form-error[data-v-27f3c2ba] {\n  color: #c40c0c;\n  display: block;\n}\n.token-input[data-v-27f3c2ba] {\n  width: 80%;\n}\n[data-v-27f3c2ba] .avatar-link-icon {\n  background-color: #c40c0c;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -67868,4 +68100,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=4dccd9ffc1604259ff74
+//# sourceMappingURL=cfgsharelinks-reg-new.js.map?v=cb8a6a27e2a71692b552

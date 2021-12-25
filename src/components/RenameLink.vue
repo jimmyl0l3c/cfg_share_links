@@ -70,6 +70,7 @@ export default {
 
 	async mounted() {
 		// TODO: load db to filter here
+		await this.fetchTokenConfig()
 		if (this.share && this.share.token) {
 			this.tokenCandidate = this.share.token
 		}

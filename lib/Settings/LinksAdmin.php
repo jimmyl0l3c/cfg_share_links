@@ -28,8 +28,9 @@ class LinksAdmin implements ISettings
     public function getForm(): TemplateResponse
     { // TODO: add regular expression settings (validity check)
         $parameters = [
-            'defaultLabelEnabled' => $this->config->getAppValue(Application::APP_ID, 'default_label_enabled', true),
-            'defaultLabel' => $this->config->getAppValue(Application::APP_ID, 'default_label', '')
+            'defaultLabelMode' => $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0),
+            'defaultLabel' => $this->config->getAppValue(Application::APP_ID, 'default_label', 'Custom link'),
+            'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3)
         ];
 
         Util::addScript(Application::APP_ID, 'cfgsharelinks-settings-admin');

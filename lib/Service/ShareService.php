@@ -3,6 +3,7 @@
 namespace OCA\CfgShareLinks\Service;
 
 use OC\User\NoUserException;
+use OCA\CfgShareLinks\AppInfo\Application;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\OCS\OCSBadRequestException;
@@ -15,6 +16,7 @@ use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
+use OCP\IConfig;
 use OCP\IL10N;
 use OCP\Lock\ILockingProvider;
 use OCP\Lock\LockedException;
@@ -25,6 +27,8 @@ use OCP\Share\IShare;
 
 class ShareService
 {
+    /** @var IConfig */
+    private $config;
     /** @var CfgShareService */
     private $dbService;
     /** @var IManager */
@@ -43,13 +47,15 @@ class ShareService
         IManager $shareManager,
         IRootFolder $rootFolder,
         string $userId = null,
-        IL10N $l10n
+        IL10N $l10n,
+        IConfig $config
     ) {
         $this->dbService = $dbService;
         $this->shareManager = $shareManager;
         $this->rootFolder = $rootFolder;
         $this->currentUser = $userId;
         $this->l = $l10n;
+        $this->config = $config;
     }
 
     /**
@@ -126,6 +132,18 @@ class ShareService
             throw new OCSForbiddenException($e->getMessage(), $e);
         }
 
+        // Set label
+        $labelMode = $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0);
+        switch ($labelMode) {
+            case 1:
+                $share->setLabel($tokenCandidate);
+                break;
+            case 2:
+                $share->setLabel($this->config->getAppValue(Application::APP_ID, 'default_label', 'Custom link'));
+                break;
+        }
+
+        // Set custom token
         $share->setToken($tokenCandidate);
 
         // Update share in db
@@ -212,8 +230,9 @@ class ShareService
     private function checkTokenValidity(string $token) // TODO: use regular expression
     {
         $char_array = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+');
+        $min_length = $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3);
 
-        if ($token == null || strlen($token) < 1) {
+        if ($token == null || strlen($token) < $min_length) {
             throw new InvalidTokenException($this->l->t('Token is not long enough'));
         }
 

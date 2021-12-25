@@ -1,5 +1,20 @@
+import SettingsMixin from './SettingsMixin'
+
 export default {
+	mixins: [
+		SettingsMixin,
+	],
+
+	data() {
+		return {
+			minLength: 3,
+		}
+	},
+
 	methods: {
+		async fetchTokenConfig() {
+			this.minLength = await this.getMinTokenLengthInt()
+		},
 		isTokenValidString(token) {
 			switch (this.tokenValidityCheck(token)) {
 			case 1:
@@ -16,7 +31,7 @@ export default {
 			return this.tokenValidityCheck(token) === 0
 		},
 		tokenValidityCheck(token) {
-			if (!token || token.length <= 1) {
+			if (!token || token.length < this.minLength) {
 				return 1
 			}
 
