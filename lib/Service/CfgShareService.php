@@ -10,7 +10,7 @@ use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\DB\Exception;
 
 class CfgShareService
-{
+{// TODO: handle share deletion
     /** @var ShareMapper */
     private $mapper;
 

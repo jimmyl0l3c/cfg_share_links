@@ -142,7 +142,9 @@ class ShareService
     }
 
     /**
-     * @param string $id share FullId
+     * @param string $id
+     * @param string $path
+     * @param string $currentToken
      * @param string $tokenCandidate
      * @param string $userId
      * @return array
@@ -151,7 +153,7 @@ class ShareService
      * @throws ShareNotFound
      * @throws TokenNotUniqueException
      */
-    public function update(string $id, string $tokenCandidate, string $userId): array
+    public function update(string $id, string $path, string $currentToken, string $tokenCandidate, string $userId): array
     {
         if ($userId != null && $this->currentUser != $userId) {
             $this->currentUser = $userId;
@@ -161,7 +163,11 @@ class ShareService
         $this->tokenChecks($tokenCandidate);
 
         // Get share
-        $share = $this->shareManager->getShareById($id);
+        $share = $this->shareManager->getShareByToken($currentToken);
+        if ($share->getId() != $id) {
+            throw new ShareNotFound($this->l->t('Share not found'));
+        }
+//        $share = $this->shareManager->getShareById($id);
 
         if ($share->getShareType() !== IShare::TYPE_LINK) {
             // TRANSLATORS function to update share token is expecting type link (but received some other type)

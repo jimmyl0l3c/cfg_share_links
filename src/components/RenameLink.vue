@@ -12,10 +12,9 @@
 <script>
 import ActionInput from '@nextcloud/vue/dist/Components/ActionInput'
 import '@nextcloud/dialogs/styles/toast.scss'
-import { showError, showSuccess } from '@nextcloud/dialogs'
-import axios from '@nextcloud/axios'
-import { generateUrl } from '@nextcloud/router'
+import { showError } from '@nextcloud/dialogs'
 import TokenValidation from '../mixins/TokenValidation'
+import RequestMixin from '../mixins/RequestMixin'
 
 export default {
 	id: 'rename-link',
@@ -26,6 +25,7 @@ export default {
 
 	mixins: [
 		TokenValidation,
+		RequestMixin,
 	],
 
 	props: {
@@ -91,25 +91,9 @@ export default {
 				return
 			}
 
-			const data = {
-				id: this.shareId,
-				path: this.getFullPath,
-				currentToken: this.currentToken,
-				tokenCandidate: token,
-			}
+			await this.renameLink(this.shareId, this.getFullPath, this.currentToken, token)
 
-			try {
-				const response = await axios.post(generateUrl('/apps/cfgsharelinks/update'), data)
-				console.info(response)
-				showSuccess(t('cfgsharelinks', 'Custom public link created'))
-			} catch (e) {
-				if (e.response.data && e.response.data.message) {
-					showError(t('cfgsharelinks', e.response.data.message))
-				} else {
-					showError(t('cfgsharelinks', 'Error occurred while creating public link'))
-					console.error(e.response)
-				}
-			}
+			this.refreshSidebar(this.fileInfo)
 
 			this.updating = false
 		},

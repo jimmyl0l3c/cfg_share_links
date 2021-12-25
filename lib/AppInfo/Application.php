@@ -7,7 +7,7 @@ use OCP\AppFramework\App;
 use OCP\AppFramework\QueryException;
 use OCP\EventDispatcher\IEventDispatcher;
 
-class Application extends App { // TODO: handle share deletion
+class Application extends App {
 	public const APP_ID = 'cfgsharelinks';
 
     /**
