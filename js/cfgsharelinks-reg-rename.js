@@ -20023,10 +20023,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _nextcloud_vue_dist_Components_ActionInput__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_nextcloud_vue_dist_Components_ActionInput__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _nextcloud_dialogs_styles_toast_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nextcloud/dialogs/styles/toast.scss */ "./node_modules/@nextcloud/dialogs/styles/toast.scss");
 /* harmony import */ var _nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @nextcloud/dialogs */ "./node_modules/@nextcloud/dialogs/dist/index.es.js");
-/* harmony import */ var _nextcloud_axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @nextcloud/axios */ "./node_modules/@nextcloud/axios/dist/index.js");
-/* harmony import */ var _nextcloud_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @nextcloud/router */ "./node_modules/@nextcloud/router/dist/index.js");
-/* harmony import */ var _mixins_TokenValidation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../mixins/TokenValidation */ "./src/mixins/TokenValidation.js");
-/* provided dependency */ var console = __webpack_require__(/*! console-browserify */ "./node_modules/console-browserify/index.js");
+/* harmony import */ var _mixins_TokenValidation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mixins/TokenValidation */ "./src/mixins/TokenValidation.js");
+/* harmony import */ var _mixins_RequestMixin__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../mixins/RequestMixin */ "./src/mixins/RequestMixin.js");
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -20047,14 +20045,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   id: 'rename-link',
   name: 'RenameLink',
   components: {
     ActionInput: (_nextcloud_vue_dist_Components_ActionInput__WEBPACK_IMPORTED_MODULE_0___default())
   },
-  mixins: [_mixins_TokenValidation__WEBPACK_IMPORTED_MODULE_5__.default],
+  mixins: [_mixins_TokenValidation__WEBPACK_IMPORTED_MODULE_3__.default, _mixins_RequestMixin__WEBPACK_IMPORTED_MODULE_4__.default],
   props: {
     share: {
       type: Object,
@@ -20123,7 +20120,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-        var token, message, data, response;
+        var token, message;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -20142,43 +20139,148 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return");
 
               case 7:
-                data = {
-                  id: _this2.shareId,
-                  path: _this2.getFullPath,
-                  currentToken: _this2.currentToken,
-                  tokenCandidate: token
-                };
-                _context2.prev = 8;
-                _context2.next = 11;
-                return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_3__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_4__.generateUrl)('/apps/cfgsharelinks/update'), data);
+                _context2.next = 9;
+                return _this2.renameLink(_this2.shareId, _this2.getFullPath, _this2.currentToken, token);
 
-              case 11:
-                response = _context2.sent;
-                console.info(response);
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_2__.showSuccess)(t('cfgsharelinks', 'Custom public link created'));
-                _context2.next = 19;
-                break;
+              case 9:
+                _this2.refreshSidebar(_this2.fileInfo);
 
-              case 16:
-                _context2.prev = 16;
-                _context2.t0 = _context2["catch"](8);
-
-                if (_context2.t0.response.data && _context2.t0.response.data.message) {
-                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_2__.showError)(t('cfgsharelinks', _context2.t0.response.data.message));
-                } else {
-                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_2__.showError)(t('cfgsharelinks', 'Error occurred while creating public link'));
-                  console.error(_context2.t0.response);
-                }
-
-              case 19:
                 _this2.updating = false;
 
-              case 20:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[8, 16]]);
+        }, _callee2);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./src/mixins/RequestMixin.js":
+/*!************************************!*\
+  !*** ./src/mixins/RequestMixin.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _nextcloud_dialogs_styles_toast_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @nextcloud/dialogs/styles/toast.scss */ "./node_modules/@nextcloud/dialogs/styles/toast.scss");
+/* harmony import */ var _nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @nextcloud/dialogs */ "./node_modules/@nextcloud/dialogs/dist/index.es.js");
+/* harmony import */ var _nextcloud_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @nextcloud/axios */ "./node_modules/@nextcloud/axios/dist/index.js");
+/* harmony import */ var _nextcloud_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @nextcloud/router */ "./node_modules/@nextcloud/router/dist/index.js");
+/* provided dependency */ var console = __webpack_require__(/*! console-browserify */ "./node_modules/console-browserify/index.js");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    refreshSidebar: function refreshSidebar(fileInfo) {
+      var shareTab = OCA.Files.Sidebar.state.tabs.find(function (e) {
+        return e.id === 'sharing';
+      });
+
+      if (shareTab) {
+        shareTab.update(fileInfo);
+        console.info('Updated share tab');
+      } else {
+        console.info('No share tab to update');
+      }
+    },
+    createLink: function createLink(path, token) {
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+        var data, response;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                data = {
+                  path: path,
+                  shareType: 3,
+                  tokenCandidate: token
+                };
+                _context.prev = 1;
+                _context.next = 4;
+                return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_2__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_3__.generateUrl)('/apps/cfgsharelinks/new'), data);
+
+              case 4:
+                response = _context.sent;
+                console.info(response);
+                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showSuccess)(t('cfgsharelinks', 'Custom public link created'));
+                _context.next = 12;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](1);
+
+                if (_context.t0.response.data && _context.t0.response.data.message) {
+                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', _context.t0.response.data.message));
+                } else {
+                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', 'Error occurred while creating public link'));
+                  console.error(_context.t0.response);
+                }
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[1, 9]]);
+      }))();
+    },
+    renameLink: function renameLink(id, path, currentToken, tokenCandidate) {
+      return _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+        var data, response;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                data = {
+                  id: id,
+                  path: path,
+                  currentToken: currentToken,
+                  tokenCandidate: tokenCandidate
+                };
+                _context2.prev = 1;
+                _context2.next = 4;
+                return _nextcloud_axios__WEBPACK_IMPORTED_MODULE_2__.default.post((0,_nextcloud_router__WEBPACK_IMPORTED_MODULE_3__.generateUrl)('/apps/cfgsharelinks/update'), data);
+
+              case 4:
+                response = _context2.sent;
+                console.info(response);
+                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showSuccess)(t('cfgsharelinks', 'Custom public link created'));
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](1);
+
+                if (_context2.t0.response.data && _context2.t0.response.data.message) {
+                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', _context2.t0.response.data.message));
+                } else {
+                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', 'Error occurred while creating public link'));
+                  console.error(_context2.t0.response);
+                }
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 9]]);
       }))();
     }
   }
@@ -66762,4 +66864,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-rename.js.map?v=1eab4d25ea34ef499597
+//# sourceMappingURL=cfgsharelinks-reg-rename.js.map?v=a15f25b61eceae5716e2

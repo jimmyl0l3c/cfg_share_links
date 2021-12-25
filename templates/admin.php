@@ -1,0 +1,1 @@
+<div id="cfgshare-admin-settings"></div>
