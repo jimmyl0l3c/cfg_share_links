@@ -4,20 +4,35 @@
 			:title="t('cfgsharelinks', 'Default share label')"
 			:description="t('cfgsharelinks', 'Define default label for custom links')">
 			<div>
-				<h3>Default label:</h3>
+				<h3>
+					Default label:
+					<span
+						v-if="updating.key === 'default_label_mode'"
+						:class="'status-icon '.concat(updatingIcon)" />
+				</h3>
 				<Multiselect
 					v-model="labelMode"
 					:options="labelOptions"
 					track-by="id"
 					label="label"
+					:multiple="false"
+					:allow-empty="false"
+					:disabled="updating.status === 1 || loading"
+					:placeholder="t('cfgsharelinks', 'Select label mode')"
 					@update:value="onLabelModeChange" />
 			</div>
 			<div>
-				<h3>Custom label:</h3>
+				<h3>
+					Custom label:
+					<span
+						v-if="updating.key === 'default_label'"
+						:class="'status-icon '.concat(updatingIcon)" />
+				</h3>
 				<SettingsInputText
 					id="default-label"
 					label=""
 					:value="customLabel"
+					:disabled="updating.status === 1 || loading || labelMode.id !== 2"
 					@update:value="onCustomLabelChange"
 					@submit="onLabelSubmit" />
 			</div>
@@ -26,13 +41,20 @@
 			:title="t('cfgsharelinks', 'Token settings')"
 			:description="t('cfgsharelinks', 'Token settings/requirements')">
 			<div>
-				<h3>Minimal token length:</h3>
+				<h3>
+					Minimal token length:
+					<span
+						v-if="updating.key === 'min_token_length'"
+						:class="'status-icon '.concat(updatingIcon)" />
+				</h3>
 				<SettingsInputText
 					id="min-len"
 					label=""
 					:value="minLength"
+					:disabled="updating.status === 1 || loading"
 					@update:value="onMinLengthChange"
 					@submit="onMinLengthSubmit" />
+				<span v-if="isMinLenValid" class="form-error"> {{ isMinLenValid }} </span>
 			</div>
 			<!-- TODO: add more options (available characters) -->
 		</SettingsSection>
@@ -44,14 +66,16 @@ import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
 import SettingsInputText from '@nextcloud/vue/dist/Components/SettingsInputText'
 import SettingsMixin from '../mixins/SettingsMixin'
+
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+import '@nextcloud/dialogs/styles/toast.scss'
 import { showError } from '@nextcloud/dialogs'
 
 const labelOptions = [
-	{ id: 1, label: t('cfgsharelinks', 'None') },
-	{ id: 2, label: t('cfgsharelinks', 'Same as token') },
-	{ id: 3, label: t('cfgsharelinks', 'Custom') },
+	{ id: 0, label: t('cfgsharelinks', 'None') },
+	{ id: 1, label: t('cfgsharelinks', 'Same as token') },
+	{ id: 2, label: t('cfgsharelinks', 'Custom') },
 ]
 
 export default {
@@ -69,7 +93,10 @@ export default {
 
 	data() {
 		return {
-			updating: false,
+			updating: {
+				status: 0,
+				key: null,
+			},
 			loading: true,
 			labelMode: labelOptions[0],
 			labelOptions,
@@ -78,54 +105,80 @@ export default {
 		}
 	},
 
-	async mounted() {
-		this.loading = true
-		this.customLabel = await this.getCustomLabel()
-		this.minLength = await this.getMinTokenLength()
-		this.labelMode = labelOptions[await this.getLabelMode()]
-		this.loading = false
-	},
-
-	methods: { // TODO: add general visual feedback (saved confirmation, errors, ...)
-		async onLabelSubmit() {
-			this.loading = true
-			// TODO: validity check
-			await this.saveSettings('default_label', this.customLabel)
-			this.loading = false
-		},
-		async onMinLengthSubmit() {
-			this.loading = true
+	computed: {
+		isMinLenValid() {
 			const minLength = this.minLength
 
 			if (isNaN(minLength)) {
-				showError(t('cfgsharelinks', 'Entered length is not a number'))
-				return
+				return t('cfgsharelinks', 'Entered length is not a number')
 			}
 
 			if (parseInt(minLength) < 1) {
-				showError(t('cfgsharelinks', 'Minimum length must be at least 1'))
+				return t('cfgsharelinks', 'Minimum length must be at least 1')
+			}
+
+			return null
+		},
+		updatingIcon() {
+			switch (this.updating.status) {
+			case 1:
+				return 'icon-loading-small'
+			case 2:
+				return 'icon-checkmark'
+			case 3:
+				return 'icon-error'
+			default:
+				return ''
+			}
+		},
+	},
+
+	async mounted() {
+		this.loading = true
+
+		this.customLabel = await this.getCustomLabel()
+		this.minLength = await this.getMinTokenLength()
+		this.labelMode = labelOptions[await this.getLabelMode()]
+
+		this.loading = false
+	},
+
+	methods: {
+		setUpdate(key, status) {
+			this.updating.status = status
+			this.updating.key = key
+		},
+		async onLabelSubmit() {
+			if (this.customLabel == null || this.customLabel.length === 0) {
+				showError(t('cfgsharelinks', 'Label can\'t be empty'))
+				return
+			}
+			// TODO: validity check
+			await this.saveSettings('default_label', this.customLabel)
+		},
+		async onMinLengthSubmit() {
+			const minLength = this.minLength
+			const minLenError = this.isMinLenValid
+
+			if (minLenError) {
+				showError(minLenError)
 				return
 			}
 
 			await this.saveSettings('min_token_length', minLength)
-			this.loading = false
 		},
 		async onLabelModeChange(value) {
-			this.loading = true
-			await this.saveSettings('default_label_mode', (value.id - 1).toString())
-			this.loading = false
+			if (!value) {
+				return
+			}
+			await this.saveSettings('default_label_mode', value.id.toString())
 		},
 		onCustomLabelChange(value) {
 			this.customLabel = value
-			// validity check?
 		},
 		onMinLengthChange(value) {
 			this.minLength = value
-			if (isNaN(value)) {
-				// TODO: show error
-			} else if (parseInt(value) < 1) {
-				// TODO: show error
-			}
+			// could do validity check here instead of computed
 		},
 		async saveSettings(key, value) {
 			const data = {
@@ -133,13 +186,32 @@ export default {
 				value,
 			}
 
+			this.setUpdate(key, 1)
 			try {
 				const response = await axios.post(generateUrl('/apps/cfgsharelinks/settings/save'), data)
 				console.info(response)
+				this.setUpdate(key, 2)
 			} catch (e) {
-				console.error(e.response)
+				if (e.response.data && e.response.data.message) {
+					showError(t('cfgsharelinks', e.response.data.message))
+				} else {
+					showError(t('cfgsharelinks', 'Error occurred while saving settings'))
+					console.error(e.response)
+				}
+				this.setUpdate(key, 3)
 			}
 		},
 	},
 }
 </script>
+
+<style lang="scss" scoped>
+.form-error {
+	color: #c40c0c;
+	display: block;
+}
+.status-icon {
+	display: inline-block;
+	margin-left: 6px;
+}
+</style>

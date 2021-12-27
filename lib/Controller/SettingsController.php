@@ -23,14 +23,40 @@ class SettingsController extends Controller
         $this->config = $config;
     }
 
-    public function admin(bool $defaultLabelEnabled, string $defaultLabel): DataResponse
+    public function save(string $key, string $value): DataResponse
     {
-        $this->config->setAppValue(Application::APP_ID, 'default_label_enabled', $defaultLabelEnabled);
-
-        if ($defaultLabelEnabled) {
-            $this->config->setAppValue(Application::APP_ID, 'default_label', $defaultLabel);
+        switch ($key) {
+            case 'default_label_mode':
+                if (is_numeric($value) && (int)$value >= 0 && (int)$value <= 2) {
+                    $this->config->setAppValue(Application::APP_ID, 'default_label_mode', (int)$value);
+                    return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+                }
+                break;
+            case 'default_label':
+                if (strlen($value) >= 1) {
+                    $this->config->setAppValue(Application::APP_ID, 'default_label', $value);
+                    return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+                }
+                break;
+            case 'min_token_length':
+                if (is_numeric($value) && (int)$value >= 1) {
+                    $this->config->setAppValue(Application::APP_ID, 'min_token_length', (int)$value);
+                    return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+                }
+                break;
         }
 
-        return new DataResponse('Saved', Http::STATUS_OK);
+        return new DataResponse(['message' => 'Invalid key or value'], Http::STATUS_BAD_REQUEST);
+    }
+
+    public function fetch(): DataResponse
+    {
+        $settings = [
+            'defaultLabelMode' => $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0),
+            'defaultLabel' => $this->config->getAppValue(Application::APP_ID, 'default_label', 'Custom link'),
+            'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3)
+        ];
+
+        return new DataResponse($settings, Http::STATUS_OK);
     }
 }
