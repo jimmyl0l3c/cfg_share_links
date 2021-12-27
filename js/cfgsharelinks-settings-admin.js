@@ -42017,7 +42017,7 @@ var render = function() {
             title: _vm.t("cfgsharelinks", "Default share label"),
             description: _vm.t(
               "cfgsharelinks",
-              "Define default label for custom links"
+              "Configure whether a default label should be set to custom links and what that label should be"
             )
           }
         },
@@ -42095,7 +42095,10 @@ var render = function() {
         {
           attrs: {
             title: _vm.t("cfgsharelinks", "Token settings"),
-            description: _vm.t("cfgsharelinks", "Token settings/requirements")
+            description: _vm.t(
+              "cfgsharelinks",
+              "Configure requirements for tokens"
+            )
           }
         },
         [
@@ -51273,4 +51276,4 @@ new View().$mount('#cfgshare-admin-settings');
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-settings-admin.js.map?v=f1d4b6986b74525b043d
+//# sourceMappingURL=cfgsharelinks-settings-admin.js.map?v=e28c49a008a1362475c5

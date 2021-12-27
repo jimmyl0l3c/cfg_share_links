@@ -2,7 +2,7 @@
 	<div id="cfgshare-admin-settings">
 		<SettingsSection
 			:title="t('cfgsharelinks', 'Default share label')"
-			:description="t('cfgsharelinks', 'Define default label for custom links')">
+			:description="t('cfgsharelinks', 'Configure whether a default label should be set to custom links and what that label should be')">
 			<div>
 				<h3>
 					Default label:
@@ -39,7 +39,7 @@
 		</SettingsSection>
 		<SettingsSection
 			:title="t('cfgsharelinks', 'Token settings')"
-			:description="t('cfgsharelinks', 'Token settings/requirements')">
+			:description="t('cfgsharelinks', 'Configure requirements for tokens')">
 			<div>
 				<h3>
 					Minimal token length:
