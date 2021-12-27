@@ -51259,10 +51259,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
 /* harmony import */ var _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @nextcloud/l10n */ "./node_modules/@nextcloud/l10n/dist/index.js");
 /* harmony import */ var _components_AdminSettings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/AdminSettings */ "./src/components/AdminSettings.vue");
+/* provided dependency */ var console = __webpack_require__(/*! console-browserify */ "./node_modules/console-browserify/index.js");
 
 
+ // Vue.prototype.OC = window.OC
 
-vue__WEBPACK_IMPORTED_MODULE_2__.default.prototype.OC = window.OC;
 vue__WEBPACK_IMPORTED_MODULE_2__.default.prototype.OCA = window.OCA;
 vue__WEBPACK_IMPORTED_MODULE_2__.default.mixin({
   methods: {
@@ -51270,10 +51271,11 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.mixin({
     n: _nextcloud_l10n__WEBPACK_IMPORTED_MODULE_0__.translatePlural
   }
 });
+console.debug('CfgShareLinks: SettingsAdmin init');
 var View = vue__WEBPACK_IMPORTED_MODULE_2__.default.extend(_components_AdminSettings__WEBPACK_IMPORTED_MODULE_1__.default);
 new View().$mount('#cfgshare-admin-settings');
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-settings-admin.js.map?v=e28c49a008a1362475c5
+//# sourceMappingURL=cfgsharelinks-settings-admin.js.map?v=a3bcc87651f8b411a515

@@ -20196,9 +20196,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (shareTab) {
         shareTab.update(fileInfo);
-        console.info('Updated share tab');
+        console.debug('CfgShareLinks: Updated share tab');
       } else {
-        console.info('No share tab to update');
+        console.debug('CfgShareLinks: No share tab to update');
       }
     },
     createLink: function createLink(path, token) {
@@ -20219,28 +20219,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 response = _context.sent;
-                console.info(response);
+                console.debug('CfgShareLinks: Custom public link created');
+                console.debug(response);
                 (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showSuccess)(t('cfgsharelinks', 'Custom public link created'));
-                _context.next = 12;
+                _context.next = 15;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](1);
 
                 if (_context.t0.response.data && _context.t0.response.data.message) {
                   (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', _context.t0.response.data.message));
                 } else {
                   (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', 'Error occurred while creating public link'));
-                  console.error(_context.t0.response);
                 }
 
-              case 12:
+                console.error('CfgShareLinks: Error occurred while creating public link');
+                console.error(_context.t0.response);
+
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[1, 9]]);
+        }, _callee, null, [[1, 10]]);
       }))();
     },
     renameLink: function renameLink(id, path, currentToken, tokenCandidate) {
@@ -20262,28 +20265,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
                 response = _context2.sent;
-                console.info(response);
-                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showSuccess)(t('cfgsharelinks', 'Custom public link created'));
-                _context2.next = 12;
+                console.debug('CfgShareLinks: Public link renamed');
+                console.debug(response);
+                (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showSuccess)(t('cfgsharelinks', 'Custom public link renamed'));
+                _context2.next = 13;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 10:
+                _context2.prev = 10;
                 _context2.t0 = _context2["catch"](1);
 
                 if (_context2.t0.response.data && _context2.t0.response.data.message) {
                   (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', _context2.t0.response.data.message));
                 } else {
-                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', 'Error occurred while creating public link'));
+                  (0,_nextcloud_dialogs__WEBPACK_IMPORTED_MODULE_1__.showError)(t('cfgsharelinks', 'Error occurred while renaming public link'));
+                  console.error('CfgShareLinks: Error while renaming public link');
                   console.error(_context2.t0.response);
                 }
 
-              case 12:
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[1, 9]]);
+        }, _callee2, null, [[1, 10]]);
       }))();
     }
   }
@@ -67063,8 +67068,8 @@ __webpack_require__.r(__webpack_exports__);
 /* provided dependency */ var console = __webpack_require__(/*! console-browserify */ "./node_modules/console-browserify/index.js");
 
 
+ // Vue.prototype.OC = window.OC
 
-vue__WEBPACK_IMPORTED_MODULE_2__.default.prototype.OC = window.OC;
 vue__WEBPACK_IMPORTED_MODULE_2__.default.prototype.OCA = window.OCA;
 vue__WEBPACK_IMPORTED_MODULE_2__.default.mixin({
   methods: {
@@ -67097,4 +67102,4 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=cfgsharelinks-reg-rename.js.map?v=c08d15509bc15d632135
+//# sourceMappingURL=cfgsharelinks-reg-rename.js.map?v=ef5f19e9b6d99833d064

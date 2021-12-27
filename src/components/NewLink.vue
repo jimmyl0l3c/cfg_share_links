@@ -1,20 +1,10 @@
 <template>
 	<ul>
-		<ListItemIcon
-			:is-no-user="false"
-			display-name="Share"
-			icon-class="avatar-link-icon icon-public-white"
-			:title="t('cfgsharelinks', 'Custom public link')"
-			:subtitle="t('cfgsharelinks', 'Create link with custom share token')">
-			<Actions :force-menu="true">
-				<ActionInput icon="icon-edit">
-					Enter token
-				</ActionInput>
-			</Actions>
-		</ListItemIcon>
 		<ListItem
 			:title="t('cfgsharelinks', 'Custom public link')"
-			:bold="false">
+			:bold="false"
+			:display-actions="true"
+			class="l-hover show-actions">
 			<template #icon>
 				<Avatar :is-no-user="true"
 					display-name="Share"
@@ -38,12 +28,9 @@
 </template>
 
 <script>
-import Actions from '@nextcloud/vue/dist/Components/Actions'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
-import ActionInput from '@nextcloud/vue/dist/Components/ActionInput'
 import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
-import ListItemIcon from '@nextcloud/vue/dist/Components/ListItemIcon'
 
 import '@nextcloud/dialogs/styles/toast.scss'
 import { showError } from '@nextcloud/dialogs'
@@ -54,12 +41,9 @@ export default {
 	name: 'NewLink',
 
 	components: {
-		Actions,
 		ActionButton,
-		ActionInput,
 		Avatar,
 		ListItem,
-		ListItemIcon,
 	},
 
 	mixins: [
@@ -95,9 +79,6 @@ export default {
 			} else {
 				return 'None'
 			}
-		},
-		getPath() {
-			return this.fileInfo ? '/'.concat(this.fileInfo.name) : 'None'
 		},
 		isInputValid() {
 			return this.isTokenValidString(this.tokenCandidate)
@@ -146,5 +127,11 @@ export default {
 }
 ::v-deep .avatar-link-icon {
 	background-color: #c40c0c;
+}
+.l-hover ::v-deep a:hover {
+	background-color: transparent;
+}
+.show-actions ::v-deep .list-item-content__actions {
+	display: block !important;
 }
 </style>

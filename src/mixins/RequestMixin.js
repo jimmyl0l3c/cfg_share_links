@@ -9,9 +9,9 @@ export default {
 			const shareTab = OCA.Files.Sidebar.state.tabs.find(e => e.id === 'sharing')
 			if (shareTab) {
 				shareTab.update(fileInfo)
-				console.info('Updated share tab')
+				console.debug('CfgShareLinks: Updated share tab')
 			} else {
-				console.info('No share tab to update')
+				console.debug('CfgShareLinks: No share tab to update')
 			}
 		},
 		async createLink(path, token) {
@@ -23,15 +23,17 @@ export default {
 
 			try {
 				const response = await axios.post(generateUrl('/apps/cfgsharelinks/new'), data)
-				console.info(response)
+				console.debug('CfgShareLinks: Custom public link created')
+				console.debug(response)
 				showSuccess(t('cfgsharelinks', 'Custom public link created'))
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
 					showError(t('cfgsharelinks', e.response.data.message))
 				} else {
 					showError(t('cfgsharelinks', 'Error occurred while creating public link'))
-					console.error(e.response)
 				}
+				console.error('CfgShareLinks: Error occurred while creating public link')
+				console.error(e.response)
 			}
 		},
 		async renameLink(id, path, currentToken, tokenCandidate) {
@@ -44,13 +46,15 @@ export default {
 
 			try {
 				const response = await axios.post(generateUrl('/apps/cfgsharelinks/update'), data)
-				console.info(response)
-				showSuccess(t('cfgsharelinks', 'Custom public link created'))
+				console.debug('CfgShareLinks: Public link renamed')
+				console.debug(response)
+				showSuccess(t('cfgsharelinks', 'Custom public link renamed'))
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
 					showError(t('cfgsharelinks', e.response.data.message))
 				} else {
-					showError(t('cfgsharelinks', 'Error occurred while creating public link'))
+					showError(t('cfgsharelinks', 'Error occurred while renaming public link'))
+					console.error('CfgShareLinks: Error while renaming public link')
 					console.error(e.response)
 				}
 			}
