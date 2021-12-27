@@ -13,4 +13,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Known issues
 
-- Sidebar does not refresh after creating/updating shares
+- Adding shares to db does not work (at least not with SQLite)
