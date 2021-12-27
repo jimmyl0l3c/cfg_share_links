@@ -8,14 +8,13 @@ use OCP\AppFramework\Middleware;
 use OCP\Lock\LockedException;
 
 class ShareMiddleware extends Middleware {
-    /**
-     * @throws LockedException
-     */
-    public function afterController($controller, $methodName, Response $response): Response
-    {
-        if ($controller instanceof ShareController) {
-            $controller->cleanup();
-        }
-        return parent::afterController($controller, $methodName, $response);
-    }
+	/**
+	 * @throws LockedException
+	 */
+	public function afterController($controller, $methodName, Response $response): Response {
+		if ($controller instanceof ShareController) {
+			$controller->cleanup();
+		}
+		return parent::afterController($controller, $methodName, $response);
+	}
 }

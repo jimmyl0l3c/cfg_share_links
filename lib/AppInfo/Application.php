@@ -10,28 +10,28 @@ use OCP\EventDispatcher\IEventDispatcher;
 class Application extends App {
 	public const APP_ID = 'cfgsharelinks';
 
-    /**
-     * @throws QueryException
-     */
-    public function __construct() {
+	/**
+	 * @throws QueryException
+	 */
+	public function __construct() {
 		parent::__construct(self::APP_ID);
 
-        $container = $this->getContainer();
+		$container = $this->getContainer();
 
-        /**
-         * Middleware
-         */
-        $container->registerService('ShareMiddleware', function(){
-            return new ShareMiddleware();
-        });
-        $container->registerMiddleware('ShareMiddleware');
+		/**
+		 * Middleware
+		 */
+		$container->registerService('ShareMiddleware', function () {
+			return new ShareMiddleware();
+		});
+		$container->registerMiddleware('ShareMiddleware');
 
-        /* @var IEventDispatcher $dispatcher */
-        $dispatcher = $container->query(IEventDispatcher::class);
-//        'OCA\Files_Sharing::loadAdditionalScripts'
-        $dispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
-            script('cfgsharelinks', 'cfgsharelinks-reg-rename');
-            script('cfgsharelinks', 'cfgsharelinks-reg-new');
-        });
-    }
+		/* @var IEventDispatcher $dispatcher */
+		$dispatcher = $container->query(IEventDispatcher::class);
+		//        'OCA\Files_Sharing::loadAdditionalScripts'
+		$dispatcher->addListener('OCA\Files::loadAdditionalScripts', function () {
+			script('cfgsharelinks', 'cfgsharelinks-reg-rename');
+			script('cfgsharelinks', 'cfgsharelinks-reg-new');
+		});
+	}
 }

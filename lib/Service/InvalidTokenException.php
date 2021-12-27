@@ -4,6 +4,5 @@ namespace OCA\CfgShareLinks\Service;
 
 use Exception;
 
-class InvalidTokenException extends Exception
-{
+class InvalidTokenException extends Exception {
 }

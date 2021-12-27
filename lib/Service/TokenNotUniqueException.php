@@ -4,6 +4,5 @@ namespace OCA\CfgShareLinks\Service;
 
 use Exception;
 
-class TokenNotUniqueException extends Exception
-{
+class TokenNotUniqueException extends Exception {
 }
