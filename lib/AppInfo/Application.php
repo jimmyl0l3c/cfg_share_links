@@ -28,8 +28,7 @@ class Application extends App {
 
         /* @var IEventDispatcher $dispatcher */
         $dispatcher = $container->query(IEventDispatcher::class);
-//        $dispatcher->addServiceListener('OCA\Files_Sharing::loadAdditionalScripts', );
-//        $dispatcher->addServiceListener('OCA\Files::loadAdditionalScripts', );
+//        'OCA\Files_Sharing::loadAdditionalScripts'
         $dispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
             script('cfgsharelinks', 'cfgsharelinks-reg-rename');
             script('cfgsharelinks', 'cfgsharelinks-reg-new');
