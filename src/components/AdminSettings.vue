@@ -5,7 +5,7 @@
 			:description="t('cfgsharelinks', 'Configure whether a default label should be set to custom links and what that label should be')">
 			<div>
 				<h3>
-					Default label:
+					{{ t('cfgsharelinks', 'Default label') }}:
 					<span
 						v-if="updating.key === 'default_label_mode'"
 						:class="'status-icon '.concat(updatingIcon)" />
@@ -23,7 +23,7 @@
 			</div>
 			<div>
 				<h3>
-					Custom label:
+					{{ t('cfgsharelinks', 'Custom label') }}:
 					<span
 						v-if="updating.key === 'default_label'"
 						:class="'status-icon '.concat(updatingIcon)" />
@@ -42,7 +42,7 @@
 			:description="t('cfgsharelinks', 'Configure requirements for tokens')">
 			<div>
 				<h3>
-					Minimal token length:
+					{{ t('cfgsharelinks', 'Minimal token length') }}:
 					<span
 						v-if="updating.key === 'min_token_length'"
 						:class="'status-icon '.concat(updatingIcon)" />

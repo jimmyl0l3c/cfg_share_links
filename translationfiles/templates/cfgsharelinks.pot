@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-12-14 14:19+0000\n"
+"POT-Creation-Date: 2021-12-28 00:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,45 +17,50 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Sections/LinksAdmin.php:29
+#: /var/www/html/custom_apps/cfgsharelinks/specialAppInfoFakeDummyForL10nScript.php:2
+msgid "Configurable Share Links"
+msgstr ""
+
 #. TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
 #. TRANSLATORS function to update share token is expecting type link (but received some other type)
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:74
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:168
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:78
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:189
 msgid "Invalid share type"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:79
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:83
 msgid "Public link sharing is disabled by the administrator"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:84
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:88
 msgid "Please specify a file or folder path"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:91
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:95
 msgid "Wrong path, file/folder doesn't exist"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:104
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:108
 msgid "Could not create share"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:199
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:183
+msgid "Share not found"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:220
 msgid "Token is not unique"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:211
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:6
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:234
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/TokenValidation.js:21
 msgid "Token is not long enough"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:218
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:7
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:240
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/TokenValidation.js:23
 msgid "Token contains invalid characters"
-msgstr ""
-
-#: /var/www/html/custom_apps/cfgsharelinks/specialAppInfoFakeDummyForL10nScript.php:2
-msgid "Configurable Share Links"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialAppInfoFakeDummyForL10nScript.php:3
@@ -67,31 +72,92 @@ msgid "App that allows users to specify share tokens"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:1
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:3
-msgid "Custom public link"
+msgid "Default share label"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:2
-msgid "Create link with custom share token"
+msgid ""
+"Configure whether a default label should be set to custom links and what "
+"that label should be"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:3
+msgid "Default label"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:4
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:11
-msgid "Enter custom token"
+msgid "Select label mode"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:5
-msgid "Add"
+msgid "Custom label"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:6
+msgid "Token settings"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:7
+msgid "Configure requirements for tokens"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:8
-msgid "Invalid token"
+msgid "Minimal token length"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:9
-msgid "Custom public link created"
+msgid "None"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:10
+msgid "Same as token"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:11
+msgid "Custom"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:12
+msgid "Entered length is not a number"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:13
+msgid "Minimum length must be at least 1"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:14
+msgid "Label can't be empty"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:15
+msgid "Error occurred while saving settings"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:16
+msgid "Custom public link"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:17
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:19
+msgid "Enter custom token"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:18
+msgid "Add"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:28
+msgid "Custom public link created"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:33
 msgid "Error occurred while creating public link"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:51
+msgid "Custom public link renamed"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:56
+msgid "Error occurred while renaming public link"
 msgstr ""

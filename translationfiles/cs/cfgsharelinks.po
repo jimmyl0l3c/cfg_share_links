@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-12-14 14:19+0000\n"
-"PO-Revision-Date: 2021-12-14 14:36+0000\n"
+"POT-Creation-Date: 2021-12-28 00:02+0000\n"
+"PO-Revision-Date: 2021-12-28 00:05+0000\n"
 "Last-Translator: Filip Joska <filip@joska.dev>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: cs\n"
@@ -17,46 +17,51 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#. TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
-#. TRANSLATORS function to update share token is expecting type link (but received some other type)
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:74
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:168
-msgid "Invalid share type"
-msgstr "Neplatný typ sdílení"
-
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:79
-msgid "Public link sharing is disabled by the administrator"
-msgstr "Tvorba veřejných odkazů je zakázána administrátorem"
-
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:84
-msgid "Please specify a file or folder path"
-msgstr "Specifikujte cestu ke složce nebo souboru, prosím"
-
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:91
-msgid "Wrong path, file/folder doesn't exist"
-msgstr "Neplatná cesta, soubor/složka neexistuje"
-
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:104
-msgid "Could not create share"
-msgstr "Nepodařilo se vytvořit sdílení"
-
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:199
-msgid "Token is not unique"
-msgstr "Token již existuje"
-
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:211
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:6
-msgid "Token is not long enough"
-msgstr "Token je příliš krátký"
-
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:218
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:7
-msgid "Token contains invalid characters"
-msgstr "Token obsahuje neplatné znaky"
-
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Sections/LinksAdmin.php:29
 #: /var/www/html/custom_apps/cfgsharelinks/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "Configurable Share Links"
 msgstr "Konfigurovatelné Sdílené Odkazy"
+
+#. TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
+#. TRANSLATORS function to update share token is expecting type link (but received some other type)
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:78
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:189
+msgid "Invalid share type"
+msgstr "Neplatný typ sdílení"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:83
+msgid "Public link sharing is disabled by the administrator"
+msgstr "Tvorba veřejných odkazů je zakázána administrátorem"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:88
+msgid "Please specify a file or folder path"
+msgstr "Specifikujte cestu ke složce nebo souboru, prosím"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:95
+msgid "Wrong path, file/folder doesn't exist"
+msgstr "Neplatná cesta, soubor/složka neexistuje"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:108
+msgid "Could not create share"
+msgstr "Nepodařilo se vytvořit sdílení"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:183
+msgid "Share not found"
+msgstr "Sdílení nenalezeno"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:220
+msgid "Token is not unique"
+msgstr "Token již existuje"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:234
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/TokenValidation.js:21
+msgid "Token is not long enough"
+msgstr "Token je příliš krátký"
+
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:240
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/TokenValidation.js:23
+msgid "Token contains invalid characters"
+msgstr "Token obsahuje neplatné znaky"
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "App adding the ability to specify share tokens"
@@ -67,31 +72,92 @@ msgid "App that allows users to specify share tokens"
 msgstr "Aplikace umožňující uživatelům specifikovat vlastní token veřejného odkazu"
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:1
+msgid "Default share label"
+msgstr "Výchozí štítek odkazu"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:2
+msgid ""
+"Configure whether a default label should be set to custom links and what "
+"that label should be"
+msgstr "Nastavte, zda by měly mít vlastní odkazy výchozí štítek a jaký by měl být"
+
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:3
+msgid "Default label"
+msgstr "Výchozí štítek"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:4
+msgid "Select label mode"
+msgstr "Zvolte mód štítků"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:5
+msgid "Custom label"
+msgstr "Vlastní štítek"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:4
+msgid "Token settings"
+msgstr "Nastavení tokenů"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:5
+msgid "Configure requirements for tokens"
+msgstr "Nastavte požadavky na tokeny"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:8
+msgid "Minimal token length"
+msgstr "Minimální délka tokenu"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:6
+msgid "None"
+msgstr "Žádný"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:7
+msgid "Same as token"
+msgstr "Stejný jako token"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:8
+msgid "Custom"
+msgstr "Vlastní"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:9
+msgid "Entered length is not a number"
+msgstr "Zadaná délka není číslo"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:10
+msgid "Minimum length must be at least 1"
+msgstr "Minimální délka musí být alespoň 1"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:11
+msgid "Label can't be empty"
+msgstr "Štítek nemůže být prázdný"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:12
+msgid "Error occurred while saving settings"
+msgstr "Při ukládání nastavení nastala chyba"
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:13
 msgid "Custom public link"
 msgstr "Vlastní veřejný odkaz"
 
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:2
-msgid "Create link with custom share token"
-msgstr "Vytvořte odkaz s vlastním sdílecím tokenem"
-
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:4
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:11
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:14
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:16
 msgid "Enter custom token"
 msgstr "Zadejte vlastní token"
 
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:5
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:15
 msgid "Add"
 msgstr "Přidat"
 
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:8
-msgid "Invalid token"
-msgstr "Zadaný token je neplatný"
-
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:9
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:28
 msgid "Custom public link created"
 msgstr "Vlastní veřejný odkaz úspěšně vytvořen"
 
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:10
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:33
 msgid "Error occurred while creating public link"
 msgstr "Při vytváření vlastního odkazu nastala chyba"
+
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:51
+msgid "Custom public link renamed"
+msgstr "Vlastní veřejný odkaz úspěšně přejmenován"
+
+#: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:56
+msgid "Error occurred while renaming public link"
+msgstr "Při přejmenování vlastního odkazu nastala chyba"
