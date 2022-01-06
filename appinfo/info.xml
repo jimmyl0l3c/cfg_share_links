@@ -4,13 +4,14 @@
     <id>cfgsharelinks</id>
     <name>Configurable Share Links</name>
     <summary>App adding the ability to specify share tokens</summary>
-    <description><![CDATA[App that allows users to specify share tokens]]></description>
-    <version>0.0.2</version>
+    <description><![CDATA[App that allows users to specify share tokens and change existing tokens]]></description>
+    <version>1.0.0</version>
     <licence>agpl</licence>
     <author mail="filip@joska.dev" >Filip Joska</author>
     <namespace>CfgShareLinks</namespace>
     <category>tools</category>
-    <bugs>https://github.com/jimmyl0l3c/cfg-share-links</bugs>
+    <website>https://github.com/jimmyl0l3c/cfg-share-links</website>
+    <bugs>https://github.com/jimmyl0l3c/cfg-share-links/issues</bugs>
     <dependencies>
         <nextcloud min-version="20" max-version="22"/>
     </dependencies>

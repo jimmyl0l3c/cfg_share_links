@@ -1,17 +1,38 @@
 <?php
 
+/**
+ * Configurable Share Links for Nextcloud
+ *
+ * @copyright Copyright (C) 2022  Filip Joska <filip@joska.dev>
+ *
+ * @author Filip Joska <filip@joska.dev>
+ *
+ * @license AGPL-3.0-or-later
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
 namespace OCA\CfgShareLinks\Service;
 
 use OC\User\NoUserException;
 use OCA\CfgShareLinks\AppInfo\Application;
-use OCP\AppFramework\Db\DoesNotExistException;
-use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\OCS\OCSBadRequestException;
 use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\Constants;
-use OCP\DB\Exception;
 use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
@@ -25,11 +46,12 @@ use OCP\Share\Exceptions\ShareNotFound;
 use OCP\Share\IManager;
 use OCP\Share\IShare;
 
+/***
+ * Based on ShareAPIController (From Nextcloud's core app files_sharing)
+ */
 class ShareService {
 	/** @var IConfig */
 	private $config;
-	/** @var CfgShareService */
-	private $dbService;
 	/** @var IManager */
 	private $shareManager;
 	/** @var IRootFolder */
@@ -42,14 +64,12 @@ class ShareService {
 	private $currentUser;
 
 	public function __construct(
-		CfgShareService $dbService,
 		IManager $shareManager,
 		IRootFolder $rootFolder,
 		string $userId = null,
 		IL10N $l10n,
 		IConfig $config
 	) {
-		$this->dbService = $dbService;
 		$this->shareManager = $shareManager;
 		$this->rootFolder = $rootFolder;
 		$this->currentUser = $userId;
@@ -147,13 +167,6 @@ class ShareService {
 		// Update share in db
 		$this->shareManager->updateShare($share);
 
-		// Add record to cfg_shares
-		try {
-			$this->dbService->create($share->getFullId(), $share->getToken());
-		} catch (Exception $e) { // TODO: solve, exception probably due to sqlite
-			// An exception occurred while executing a query: SQLSTATE[HY000]: General error: 1 near ")": syntax error
-		}
-
 		return $this->serializeShare($share);
 	}
 
@@ -191,17 +204,17 @@ class ShareService {
 
 		// TODO: check whether user can edit the share
 
+        // Update label
+        $labelMode = $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0);
+        if ($labelMode == 1 && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
+            $share->setLabel($tokenCandidate);
+        }
+
 		// Update token
 		$share->setToken($tokenCandidate);
 
 		// Update share in db
 		$this->shareManager->updateShare($share);
-
-		// Update cfg_share record
-		try { // TODO: probably same problem like with create
-			$this->dbService->updateByShareFullId($share->getFullId(), $share->getToken());
-		} catch (DoesNotExistException | MultipleObjectsReturnedException | Exception $e) {
-		}
 
 		return $this->serializeShare($share);
 	}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2021-12-28 00:22+0000\n"
+"POT-Creation-Date: 2022-01-06 12:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,41 +24,41 @@ msgstr ""
 
 #. TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
 #. TRANSLATORS function to update share token is expecting type link (but received some other type)
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:78
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:189
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:71
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:175
 msgid "Invalid share type"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:83
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:76
 msgid "Public link sharing is disabled by the administrator"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:88
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:81
 msgid "Please specify a file or folder path"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:95
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:88
 msgid "Wrong path, file/folder doesn't exist"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:108
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:101
 msgid "Could not create share"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:183
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:169
 msgid "Share not found"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:220
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:206
 msgid "Token is not unique"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:234
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:220
 #: /var/www/html/custom_apps/cfgsharelinks/src/mixins/TokenValidation.js:21
 msgid "Token is not long enough"
 msgstr ""
 
-#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:240
+#: /var/www/html/custom_apps/cfgsharelinks/lib/Service/ShareService.php:226
 #: /var/www/html/custom_apps/cfgsharelinks/src/mixins/TokenValidation.js:23
 msgid "Token contains invalid characters"
 msgstr ""
@@ -138,12 +138,16 @@ msgid "Custom public link"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:17
-#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:19
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:20
 msgid "Enter custom token"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:18
 msgid "Add"
+msgstr ""
+
+#: /var/www/html/custom_apps/cfgsharelinks/specialVueFakeDummyForL10nScript.js:19
+msgid "Invalid token"
 msgstr ""
 
 #: /var/www/html/custom_apps/cfgsharelinks/src/mixins/RequestMixin.js:28

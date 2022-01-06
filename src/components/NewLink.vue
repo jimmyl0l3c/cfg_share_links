@@ -100,7 +100,7 @@ export default {
 			const token = this.tokenCandidate
 			if (!this.isTokenValid(token)) {
 				const message = this.isTokenValidString(token)
-				showError(t('cfgsharelinks', message != null && message.length > 1 ? message : 'Invalid token'))
+				showError(t('cfgsharelinks', message != null && message.length > 1 ? message : t('cfgsharelinks', 'Invalid token')))
 				this.updating = false
 				return
 			}

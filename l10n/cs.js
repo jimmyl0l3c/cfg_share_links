@@ -1,7 +1,7 @@
 OC.L10N.register(
 	'cfgsharelinks',
 	{
-		'Configurable Share Links': 'Konfigurovatelné Sdílené Odkazy',
+		'Configurable Share Links': 'Konfigurovatelné sdílené odkazy',
 		'Invalid share type': 'Neplatný typ sdílení',
 		'Public link sharing is disabled by the administrator': 'Tvorba veřejných odkazů je zakázána administrátorem',
 		'Please specify a file or folder path': 'Specifikujte cestu ke složce nebo souboru, prosím',
@@ -28,10 +28,10 @@ OC.L10N.register(
 		'Minimum length must be at least 1': 'Minimální délka musí být alespoň 1',
 		"Label can't be empty": 'Štítek nemůže být prázdný',
 		'Error occurred while saving settings': 'Při ukládání nastavení nastala chyba',
-		'Custom public link': 'Vlastní veřejný odkaz',
+		'Custom public link': 'Vlastní veřejný odkaz (token)',
 		'Enter custom token': 'Zadejte vlastní token',
 		Add: 'Přidat',
-		Submit: 'Uložit',
+		'Invalid token': 'Neplatný token',
 		'Custom public link created': 'Vlastní veřejný odkaz úspěšně vytvořen',
 		'Error occurred while creating public link': 'Při vytváření vlastního odkazu nastala chyba',
 		'Custom public link renamed': 'Vlastní veřejný odkaz úspěšně přejmenován',

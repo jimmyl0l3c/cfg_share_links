@@ -21,6 +21,8 @@ export default {
 				return t('cfgsharelinks', 'Token is not long enough')
 			case 2:
 				return t('cfgsharelinks', 'Token contains invalid characters')
+			case 3:
+				return ''
 			case 0:
 				return ''
 			default:
@@ -31,7 +33,11 @@ export default {
 			return this.tokenValidityCheck(token) === 0
 		},
 		tokenValidityCheck(token) {
-			if (!token || token.length < this.minLength) {
+			if (!token || token.length === 0) {
+				return 3
+			}
+
+			if (token.length > 0 && token.length < this.minLength) {
 				return 1
 			}
 
