@@ -56,7 +56,6 @@
 					@submit="onMinLengthSubmit" />
 				<span v-if="isMinLenValid" class="form-error"> {{ isMinLenValid }} </span>
 			</div>
-			<!-- TODO: add more options (available characters) -->
 		</SettingsSection>
 	</div>
 </template>
@@ -153,7 +152,7 @@ export default {
 				showError(t('cfgsharelinks', 'Label can\'t be empty'))
 				return
 			}
-			// TODO: validity check
+			// validity check?
 			await this.saveSettings('default_label', this.customLabel)
 		},
 		async onMinLengthSubmit() {
