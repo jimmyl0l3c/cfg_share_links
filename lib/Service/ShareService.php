@@ -204,11 +204,11 @@ class ShareService {
 
 		// TODO: check whether user can edit the share
 
-        // Update label
-        $labelMode = $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0);
-        if ($labelMode == 1 && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
-            $share->setLabel($tokenCandidate);
-        }
+		// Update label
+		$labelMode = $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0);
+		if ($labelMode == 1 && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
+			$share->setLabel($tokenCandidate);
+		}
 
 		// Update token
 		$share->setToken($tokenCandidate);
