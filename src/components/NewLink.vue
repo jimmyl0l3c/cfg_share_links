@@ -6,12 +6,14 @@
 			:display-actions="true"
 			class="l-hover show-actions">
 			<template #icon>
-				<Avatar :is-no-user="true"
+				<Avatar
+					:is-no-user="true"
 					display-name="Share"
 					icon-class="avatar-link-icon icon-public-white" />
 			</template>
 			<template #subtitle>
-				<input v-model="tokenCandidate"
+				<input
+					v-model="tokenCandidate"
 					:disabled="updating"
 					class="token-input"
 					:placeholder="t('cfgsharelinks', 'Enter custom token')"
