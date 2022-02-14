@@ -1,5 +1,5 @@
 <template>
-	<ul>
+	<ul v-if="canShare">
 		<ListItem
 			:title="t('cfgsharelinks', 'Custom public link')"
 			:bold="false"
@@ -84,6 +84,9 @@ export default {
 		},
 		isInputValid() {
 			return this.isTokenValidString(this.tokenCandidate)
+		},
+		canShare() {
+			return !!(this.fileInfo.permissions & OC.PERMISSION_SHARE)
 		},
 	},
 

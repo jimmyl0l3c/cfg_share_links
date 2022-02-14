@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## [1.0.1] - 2022-02-14
+
+### Fixed
+
+- Don't show NewLink component if user can't share the file
+
+### Changed
+
+- Use new forceDisplayActions property (for ListItem in NewLink component)
+- Updated [@nextcloud-vue](https://github.com/nextcloud/nextcloud-vue) to v5.0.0
+- Updated several dev dependencies
+
 ## [1.0.0] - 2022-01-06
 
 ### Added
