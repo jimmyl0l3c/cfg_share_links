@@ -3,8 +3,8 @@
 		<ListItem
 			:title="t('cfgsharelinks', 'Custom public link')"
 			:bold="false"
-			:display-actions="true"
-			class="l-hover show-actions">
+			:force-display-actions="true"
+			class="l-hover">
 			<template #icon>
 				<Avatar
 					:is-no-user="true"
@@ -132,8 +132,5 @@ export default {
 }
 .l-hover ::v-deep a:hover {
 	background-color: transparent;
-}
-.show-actions ::v-deep .list-item-content__actions {
-	display: block !important;
 }
 </style>
