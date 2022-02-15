@@ -19,9 +19,10 @@ This app was built using [tutorial notes app](https://github.com/nextcloud/app-t
 
 Sharing sidebar is expanded by new section (Custom public link) that allows you to create public links with custom share tokens as can be seen in the first screenshot.
 
+![Sidebar preview](screens/nc02.png "Sidebar preview")
+
 You can also customize share tokens of existing public links as can be seen in the second screenshot.
 
-![Sidebar preview](screens/nc02.png "Sidebar preview")
 ![Sidebar preview](screens/nc03.png "Sidebar preview")
 
 Admins can set default labels for custom links and minimal token length as can be seen in the next screenshot.
