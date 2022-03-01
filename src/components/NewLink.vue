@@ -1,19 +1,16 @@
 <template>
 	<ul v-if="canShare">
-		<ListItem
-			:title="t('cfgsharelinks', 'Custom public link')"
+		<ListItem :title="t('cfgsharelinks', 'Custom public link')"
 			:bold="false"
 			:force-display-actions="true"
 			class="l-hover">
 			<template #icon>
-				<Avatar
-					:is-no-user="true"
+				<Avatar :is-no-user="true"
 					display-name="Share"
 					icon-class="avatar-link-icon icon-public-white" />
 			</template>
 			<template #subtitle>
-				<input
-					v-model="tokenCandidate"
+				<input v-model="tokenCandidate"
 					:disabled="updating"
 					class="token-input"
 					:placeholder="t('cfgsharelinks', 'Enter custom token')"
@@ -118,6 +115,13 @@ export default {
 
 			this.updating = false
 		},
+		/*
+		 async testRename() {
+		 	this.updating = true
+		 	await this.renameLink('62', '/Reasons to use Nextcloud.pdf', 'reason-test', 'test-token1')
+		 	this.updating = false
+		 },
+		*/
 	},
 }
 </script>

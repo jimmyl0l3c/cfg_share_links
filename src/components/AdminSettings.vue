@@ -1,17 +1,14 @@
 <template>
 	<div id="cfgshare-admin-settings">
-		<SettingsSection
-			:title="t('cfgsharelinks', 'Default share label')"
+		<SettingsSection :title="t('cfgsharelinks', 'Default share label')"
 			:description="t('cfgsharelinks', 'Configure whether a default label should be set to custom links and what that label should be')">
 			<div>
 				<h3>
 					{{ t('cfgsharelinks', 'Default label') }}:
-					<span
-						v-if="updating.key === 'default_label_mode'"
+					<span v-if="updating.key === 'default_label_mode'"
 						:class="'status-icon '.concat(updatingIcon)" />
 				</h3>
-				<Multiselect
-					v-model="labelMode"
+				<Multiselect v-model="labelMode"
 					:options="labelOptions"
 					track-by="id"
 					label="label"
@@ -24,12 +21,10 @@
 			<div>
 				<h3>
 					{{ t('cfgsharelinks', 'Custom label') }}:
-					<span
-						v-if="updating.key === 'default_label'"
+					<span v-if="updating.key === 'default_label'"
 						:class="'status-icon '.concat(updatingIcon)" />
 				</h3>
-				<SettingsInputText
-					id="default-label"
+				<SettingsInputText id="default-label"
 					label=""
 					:value="customLabel"
 					:disabled="updating.status === 1 || loading || labelMode.id !== 2"
@@ -37,18 +32,15 @@
 					@submit="onLabelSubmit" />
 			</div>
 		</SettingsSection>
-		<SettingsSection
-			:title="t('cfgsharelinks', 'Token settings')"
+		<SettingsSection :title="t('cfgsharelinks', 'Token settings')"
 			:description="t('cfgsharelinks', 'Configure requirements for tokens')">
 			<div>
 				<h3>
 					{{ t('cfgsharelinks', 'Minimal token length') }}:
-					<span
-						v-if="updating.key === 'min_token_length'"
+					<span v-if="updating.key === 'min_token_length'"
 						:class="'status-icon '.concat(updatingIcon)" />
 				</h3>
-				<SettingsInputText
-					id="min-len"
+				<SettingsInputText id="min-len"
 					label=""
 					:value="minLength"
 					:disabled="updating.status === 1 || loading"

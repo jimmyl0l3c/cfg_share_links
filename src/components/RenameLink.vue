@@ -1,6 +1,5 @@
 <template>
-	<ActionInput
-		:value="tokenCandidate"
+	<ActionInput :value="tokenCandidate"
 		type="text"
 		icon="icon-public"
 		@submit="onSubmit"
