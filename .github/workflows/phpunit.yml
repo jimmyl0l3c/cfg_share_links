@@ -8,7 +8,7 @@ on:
       - stable*
 
 env:
-  APP_NAME: cfgsharelinks
+  APP_NAME: cfg_share_links
 
 jobs:
   php:
