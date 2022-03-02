@@ -5,7 +5,7 @@ rm -rf js/*
 make build-js-production
 
 # Define folder (and archive) name
-FOLDER_NAME=cfgsharelinks
+FOLDER_NAME=cfg_share_links
 
 # Create empty folder in temp
 if [ ! -d "/tmp/$FOLDER_NAME" ]

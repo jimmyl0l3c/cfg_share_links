@@ -1,6 +1,6 @@
 <template>
 	<ul v-if="canShare">
-		<ListItem :title="t('cfgsharelinks', 'Custom public link')"
+		<ListItem :title="t('cfg_share_links', 'Custom public link')"
 			:bold="false"
 			:force-display-actions="true"
 			class="l-hover">
@@ -13,13 +13,13 @@
 				<input v-model="tokenCandidate"
 					:disabled="updating"
 					class="token-input"
-					:placeholder="t('cfgsharelinks', 'Enter custom token')"
+					:placeholder="t('cfg_share_links', 'Enter custom token')"
 					@focus="onFocus">
 				<span v-if="isInputValid && focused" class="form-error"> {{ isInputValid }} </span>
 			</template>
 			<template #actions>
 				<ActionButton icon="icon-add" @click="createCustomLink">
-					{{ t('cfgsharelinks', 'Add') }}
+					{{ t('cfg_share_links', 'Add') }}
 				</ActionButton>
 			</template>
 		</ListItem>
@@ -102,7 +102,7 @@ export default {
 			const token = this.tokenCandidate
 			if (!this.isTokenValid(token)) {
 				const message = this.isTokenValidString(token)
-				showError(t('cfgsharelinks', message != null && message.length > 1 ? message : t('cfgsharelinks', 'Invalid token')))
+				showError(t('cfg_share_links', message != null && message.length > 1 ? message : t('cfg_share_links', 'Invalid token')))
 				this.updating = false
 				return
 			}

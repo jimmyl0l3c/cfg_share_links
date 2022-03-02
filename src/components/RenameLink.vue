@@ -4,7 +4,7 @@
 		icon="icon-public"
 		@submit="onSubmit"
 		@update:value="onTokenChange">
-		{{ t('cfgsharelinks', 'Enter custom token') }}
+		{{ t('cfg_share_links', 'Enter custom token') }}
 	</ActionInput>
 </template>
 
@@ -85,7 +85,7 @@ export default {
 
 			if (!this.isTokenValid(token)) {
 				const message = this.isTokenValidString(token)
-				showError(t('cfgsharelinks', message != null && message.length > 1 ? message : 'Invalid token'))
+				showError(t('cfg_share_links', message != null && message.length > 1 ? message : 'Invalid token'))
 				this.updating = false
 				return
 			}

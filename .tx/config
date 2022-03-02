@@ -2,8 +2,8 @@
 host = https://www.transifex.com
 lang_map = bg_BG: bg, cs_CZ: cs, fi_FI: fi, hu_HU: hu, nb_NO: nb, sk_SK: sk, th_TH: th, ja_JP: ja
 
-[nextcloud.cfgsharelinks]
-file_filter = translationfiles/<lang>/cfgsharelinks.po
-source_file = translationfiles/templates/cfgsharelinks.pot
+[nextcloud.cfg_share_links]
+file_filter = translationfiles/<lang>/cfg_share_links.po
+source_file = translationfiles/templates/cfg_share_links.pot
 source_lang = en
 type = PO

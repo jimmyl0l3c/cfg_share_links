@@ -1,10 +1,10 @@
 <template>
 	<div id="cfgshare-admin-settings">
-		<SettingsSection :title="t('cfgsharelinks', 'Default share label')"
-			:description="t('cfgsharelinks', 'Configure whether a default label should be set to custom links and what that label should be')">
+		<SettingsSection :title="t('cfg_share_links', 'Default share label')"
+			:description="t('cfg_share_links', 'Configure whether a default label should be set to custom links and what that label should be')">
 			<div>
 				<h3>
-					{{ t('cfgsharelinks', 'Default label') }}:
+					{{ t('cfg_share_links', 'Default label') }}:
 					<span v-if="updating.key === 'default_label_mode'"
 						:class="'status-icon '.concat(updatingIcon)" />
 				</h3>
@@ -15,12 +15,12 @@
 					:multiple="false"
 					:allow-empty="false"
 					:disabled="updating.status === 1 || loading"
-					:placeholder="t('cfgsharelinks', 'Select label mode')"
+					:placeholder="t('cfg_share_links', 'Select label mode')"
 					@update:value="onLabelModeChange" />
 			</div>
 			<div>
 				<h3>
-					{{ t('cfgsharelinks', 'Custom label') }}:
+					{{ t('cfg_share_links', 'Custom label') }}:
 					<span v-if="updating.key === 'default_label'"
 						:class="'status-icon '.concat(updatingIcon)" />
 				</h3>
@@ -32,11 +32,11 @@
 					@submit="onLabelSubmit" />
 			</div>
 		</SettingsSection>
-		<SettingsSection :title="t('cfgsharelinks', 'Token settings')"
-			:description="t('cfgsharelinks', 'Configure requirements for tokens')">
+		<SettingsSection :title="t('cfg_share_links', 'Token settings')"
+			:description="t('cfg_share_links', 'Configure requirements for tokens')">
 			<div>
 				<h3>
-					{{ t('cfgsharelinks', 'Minimal token length') }}:
+					{{ t('cfg_share_links', 'Minimal token length') }}:
 					<span v-if="updating.key === 'min_token_length'"
 						:class="'status-icon '.concat(updatingIcon)" />
 				</h3>
@@ -64,9 +64,9 @@ import '@nextcloud/dialogs/styles/toast.scss'
 import { showError } from '@nextcloud/dialogs'
 
 const labelOptions = [
-	{ id: 0, label: t('cfgsharelinks', 'None') },
-	{ id: 1, label: t('cfgsharelinks', 'Same as token') },
-	{ id: 2, label: t('cfgsharelinks', 'Custom') },
+	{ id: 0, label: t('cfg_share_links', 'None') },
+	{ id: 1, label: t('cfg_share_links', 'Same as token') },
+	{ id: 2, label: t('cfg_share_links', 'Custom') },
 ]
 
 export default {
@@ -101,11 +101,11 @@ export default {
 			const minLength = this.minLength
 
 			if (isNaN(minLength)) {
-				return t('cfgsharelinks', 'Entered length is not a number')
+				return t('cfg_share_links', 'Entered length is not a number')
 			}
 
 			if (parseInt(minLength) < 1) {
-				return t('cfgsharelinks', 'Minimum length must be at least 1')
+				return t('cfg_share_links', 'Minimum length must be at least 1')
 			}
 
 			return null
@@ -141,7 +141,7 @@ export default {
 		},
 		async onLabelSubmit() {
 			if (this.customLabel == null || this.customLabel.length === 0) {
-				showError(t('cfgsharelinks', 'Label can\'t be empty'))
+				showError(t('cfg_share_links', 'Label can\'t be empty'))
 				return
 			}
 			// validity check?
@@ -179,14 +179,14 @@ export default {
 
 			this.setUpdate(key, 1)
 			try {
-				const response = await axios.post(generateUrl('/apps/cfgsharelinks/settings/save'), data)
+				const response = await axios.post(generateUrl('/apps/cfg_share_links/settings/save'), data)
 				console.info(response)
 				this.setUpdate(key, 2)
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
-					showError(t('cfgsharelinks', e.response.data.message))
+					showError(t('cfg_share_links', e.response.data.message))
 				} else {
-					showError(t('cfgsharelinks', 'Error occurred while saving settings'))
+					showError(t('cfg_share_links', 'Error occurred while saving settings'))
 					console.error(e.response)
 				}
 				this.setUpdate(key, 3)

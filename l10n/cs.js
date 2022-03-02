@@ -1,5 +1,5 @@
 OC.L10N.register(
-	'cfgsharelinks',
+	'cfg_share_links',
 	{
 		'Configurable Share Links': 'Konfigurovatelné sdílené odkazy',
 		'Invalid share type': 'Neplatný typ sdílení',

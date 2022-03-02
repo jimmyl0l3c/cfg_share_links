@@ -32,7 +32,7 @@ use OCP\AppFramework\QueryException;
 use OCP\EventDispatcher\IEventDispatcher;
 
 class Application extends App {
-	public const APP_ID = 'cfgsharelinks';
+	public const APP_ID = 'cfg_share_links';
 
 	/**
 	 * @throws QueryException
@@ -54,8 +54,8 @@ class Application extends App {
 		$dispatcher = $container->query(IEventDispatcher::class);
 		//        'OCA\Files_Sharing::loadAdditionalScripts'
 		$dispatcher->addListener('OCA\Files::loadAdditionalScripts', function () {
-			script('cfgsharelinks', 'cfgsharelinks-reg-rename');
-			script('cfgsharelinks', 'cfgsharelinks-reg-new');
+			script('cfg_share_links', 'cfg_share_links-reg-rename');
+			script('cfg_share_links', 'cfg_share_links-reg-new');
 		});
 	}
 }

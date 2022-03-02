@@ -11,7 +11,7 @@ export default {
 	methods: {
 		async fetchSettings() {
 			try {
-				const response = await axios.get(generateUrl('/apps/cfgsharelinks/settings'))
+				const response = await axios.get(generateUrl('/apps/cfg_share_links/settings'))
 				if (response.data) {
 					this.settings = response.data
 				}

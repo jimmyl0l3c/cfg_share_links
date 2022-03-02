@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>cfgsharelinks</id>
+    <id>cfg_share_links</id>
     <name>Configurable Share Links</name>
     <summary>App adding the ability to specify share tokens</summary>
     <description><![CDATA[App that allows users to specify share tokens and change existing tokens]]></description>

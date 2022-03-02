@@ -52,12 +52,12 @@ class LinksAdmin implements ISettings {
 			'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3)
 		];
 
-		Util::addScript(Application::APP_ID, 'cfgsharelinks-settings-admin');
+		Util::addScript(Application::APP_ID, 'cfg_share_links-settings-admin');
 		return new TemplateResponse(Application::APP_ID, 'admin', $parameters, '');
 	}
 
 	public function getSection(): string {
-		return 'cfgsharelinks';
+		return 'cfg_share_links';
 	}
 
 	public function getPriority(): int {

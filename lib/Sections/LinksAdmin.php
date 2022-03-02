@@ -46,7 +46,7 @@ class LinksAdmin implements IIconSection {
 	}
 
 	public function getID(): string {
-		return 'cfgsharelinks';
+		return 'cfg_share_links';
 	}
 
 	public function getName(): string {

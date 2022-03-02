@@ -22,15 +22,15 @@ export default {
 			}
 
 			try {
-				const response = await axios.post(generateUrl('/apps/cfgsharelinks/new'), data)
+				const response = await axios.post(generateUrl('/apps/cfg_share_links/new'), data)
 				console.debug('CfgShareLinks: Custom public link created')
 				console.debug(response)
-				showSuccess(t('cfgsharelinks', 'Custom public link created'))
+				showSuccess(t('cfg_share_links', 'Custom public link created'))
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
-					showError(t('cfgsharelinks', e.response.data.message))
+					showError(t('cfg_share_links', e.response.data.message))
 				} else {
-					showError(t('cfgsharelinks', 'Error occurred while creating public link'))
+					showError(t('cfg_share_links', 'Error occurred while creating public link'))
 				}
 				console.error('CfgShareLinks: Error occurred while creating public link')
 				console.error(e.response)
@@ -45,15 +45,15 @@ export default {
 			}
 
 			try {
-				const response = await axios.post(generateUrl('/apps/cfgsharelinks/update'), data)
+				const response = await axios.post(generateUrl('/apps/cfg_share_links/update'), data)
 				console.debug('CfgShareLinks: Public link renamed')
 				console.debug(response)
-				showSuccess(t('cfgsharelinks', 'Custom public link renamed'))
+				showSuccess(t('cfg_share_links', 'Custom public link renamed'))
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
-					showError(t('cfgsharelinks', e.response.data.message))
+					showError(t('cfg_share_links', e.response.data.message))
 				} else {
-					showError(t('cfgsharelinks', 'Error occurred while renaming public link'))
+					showError(t('cfg_share_links', 'Error occurred while renaming public link'))
 					console.error('CfgShareLinks: Error while renaming public link')
 					console.error(e.response)
 				}

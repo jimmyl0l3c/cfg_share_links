@@ -18,9 +18,9 @@ export default {
 		isTokenValidString(token) {
 			switch (this.tokenValidityCheck(token)) {
 			case 1:
-				return t('cfgsharelinks', 'Token is not long enough')
+				return t('cfg_share_links', 'Token is not long enough')
 			case 2:
-				return t('cfgsharelinks', 'Token contains invalid characters')
+				return t('cfg_share_links', 'Token contains invalid characters')
 			case 3:
 				return ''
 			case 0:
