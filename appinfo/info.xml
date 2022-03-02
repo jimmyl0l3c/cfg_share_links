@@ -10,8 +10,8 @@
     <author mail="filip@joska.dev" >Filip Joska</author>
     <namespace>CfgShareLinks</namespace>
     <category>tools</category>
-    <website>https://github.com/jimmyl0l3c/cfg-share-links</website>
-    <bugs>https://github.com/jimmyl0l3c/cfg-share-links/issues</bugs>
+    <website>https://github.com/jimmyl0l3c/cfg_share_links</website>
+    <bugs>https://github.com/jimmyl0l3c/cfg_share_links/issues</bugs>
     <dependencies>
         <nextcloud min-version="20" max-version="22"/>
     </dependencies>

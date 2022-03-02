@@ -6,7 +6,7 @@ This app was built using [tutorial notes app](https://github.com/nextcloud/app-t
 
 # Usage
 
-- Download the [gzip archive from the latest release](https://github.com/jimmyl0l3c/cfg-share-links/releases/latest/download/cfg_share_links.tar.gz)
+- Download the [gzip archive from the latest release](https://github.com/jimmyl0l3c/cfg_share_links/releases/latest/download/cfg_share_links.tar.gz)
 - Extract the folder **cfg_share_links** into your NC **apps** folder
 - Enable **Configurable Share Links** in apps (in Nextcloud)
 

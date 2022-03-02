@@ -5,13 +5,13 @@
 	"author": "Filip Joska <filip@joska.dev>",
 	"contributors": [],
 	"bugs": {
-		"url": "https://github.com/jimmyl0l3c/cfg-share-links/issues"
+		"url": "https://github.com/jimmyl0l3c/cfg_share_links/issues"
 	},
 	"repository": {
-		"url": "https://github.com/jimmyl0l3c/cfg-share-links",
+		"url": "https://github.com/jimmyl0l3c/cfg_share_links",
 		"type": "git"
 	},
-	"homepage": "https://github.com/jimmyl0l3c/cfg-share-links",
+	"homepage": "https://github.com/jimmyl0l3c/cfg_share_links",
 	"license": "agpl",
 	"private": true,
 	"scripts": {
