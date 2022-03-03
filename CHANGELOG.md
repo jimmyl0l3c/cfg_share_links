@@ -10,6 +10,7 @@ Nothing yet
 
 ### Changed
 
+- Submit NewLink input by pressing enter
 - Added support for nextcloud 23
 
 ## [1.0.2] - 2022-03-03

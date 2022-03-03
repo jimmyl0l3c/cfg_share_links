@@ -14,7 +14,8 @@
 					:disabled="updating"
 					class="token-input"
 					:placeholder="t('cfg_share_links', 'Enter custom token')"
-					@focus="onFocus">
+					@focus="onFocus"
+					@keyup.enter="createCustomLink">
 				<span v-if="isInputValid && focused" class="form-error"> {{ isInputValid }} </span>
 			</template>
 			<template #actions>
