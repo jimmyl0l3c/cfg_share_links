@@ -13,7 +13,7 @@ Nothing yet
 ### Changed
 
 - Published to Nextcloud app store
-- App_id and repository name changed to cfg_share_links (previously cfg-share-links)
+- App_id and repository name changed to cfg_share_links (previously cfgsharelinks and cfg-share-links respectively)
 - Updated several dev dependencies
 
 ## [1.0.1] - 2022-02-14
