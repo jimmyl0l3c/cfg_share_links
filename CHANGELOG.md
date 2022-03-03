@@ -6,10 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+Nothing yet
+
+## [1.0.2] - 2022-03-03
+
 ### Changed
 
-- Updated several dev dependencies
+- Published to Nextcloud app store
 - App_id and repository name changed to cfg_share_links (previously cfg-share-links)
+- Updated several dev dependencies
 
 ## [1.0.1] - 2022-02-14
 

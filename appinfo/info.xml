@@ -5,7 +5,7 @@
     <name>Configurable Share Links</name>
     <summary>App adding the ability to specify share tokens</summary>
     <description><![CDATA[App that allows users to specify share tokens and change existing tokens]]></description>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <licence>agpl</licence>
     <author mail="filip@joska.dev" >Filip Joska</author>
     <namespace>CfgShareLinks</namespace>

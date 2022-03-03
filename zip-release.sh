@@ -34,3 +34,8 @@ cp $FOLDER_NAME.tar.gz "$WORKING_DIR"
 
 # Clean
 rm -rf /tmp/$FOLDER_NAME*
+
+cd "$WORKING_DIR" || exit 1
+
+# Sign
+openssl dgst -sha512 -sign ~/.nextcloud/certificates/cfg_share_links.key $FOLDER_NAME.tar.gz | openssl base64 > release_signature
