@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Updated app description (in info.xml)
 - Submit NewLink input by pressing enter
 - Added support for nextcloud 23
 

@@ -4,7 +4,19 @@
     <id>cfg_share_links</id>
     <name>Configurable Share Links</name>
     <summary>App adding the ability to specify share tokens</summary>
-    <description><![CDATA[App that allows users to specify share tokens and change existing tokens]]></description>
+    <description><![CDATA[
+Nextcloud app that adds the ability to specify share tokens when creating new public links and change tokens of existing links.
+
+## Features
+
+Sharing sidebar is expanded by new section (Custom public link) that allows you to create public links with custom share tokens.
+You can also customize share tokens of existing public links.
+
+## Settings
+
+By going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.
+Default label can be: none, same as token or custom (the same custom label for all custom links).
+    ]]></description>
     <version>1.0.2</version>
     <licence>agpl</licence>
     <author mail="filip@joska.dev" >Filip Joska</author>
@@ -12,6 +24,7 @@
     <category>tools</category>
     <website>https://github.com/jimmyl0l3c/cfg_share_links</website>
     <bugs>https://github.com/jimmyl0l3c/cfg_share_links/issues</bugs>
+    <screenshot>https://raw.githubusercontent.com/jimmyl0l3c/cfg_share_links/master/screens/nc02.png</screenshot>
     <dependencies>
         <nextcloud min-version="20" max-version="23"/>
     </dependencies>
