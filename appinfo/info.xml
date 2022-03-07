@@ -17,7 +17,7 @@ You can also customize share tokens of existing public links.
 By going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.
 Default label can be: none, same as token or custom (the same custom label for all custom links).
     ]]></description>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <licence>agpl</licence>
     <author mail="filip@joska.dev" >Filip Joska</author>
     <namespace>CfgShareLinks</namespace>
