@@ -53,14 +53,14 @@ use Psr\Log\LoggerInterface;
  * Based on ShareAPIController (From Nextcloud's core app files_sharing)
  */
 class ShareService {
-    /** @var LoggerInterface */
-    private $logger;
+	/** @var LoggerInterface */
+	private $logger;
 	/** @var IConfig */
 	private $config;
 	/** @var IManager */
 	private $shareManager;
-    /** @var IGroupManager */
-    private IGroupManager $groupManager;
+	/** @var IGroupManager */
+	private IGroupManager $groupManager;
 	/** @var IRootFolder */
 	private $rootFolder;
 	/** @var IL10N */
@@ -71,17 +71,17 @@ class ShareService {
 	private $currentUser;
 
 	public function __construct(
-        LoggerInterface $logger,
+		LoggerInterface $logger,
 		IManager $shareManager,
-        IGroupManager $groupManager,
+		IGroupManager $groupManager,
 		IRootFolder $rootFolder,
 		string $userId = null,
 		IL10N $l10n,
 		IConfig $config
 	) {
-        $this->logger = $logger;
+		$this->logger = $logger;
 		$this->shareManager = $shareManager;
-        $this->groupManager = $groupManager;
+		$this->groupManager = $groupManager;
 		$this->rootFolder = $rootFolder;
 		$this->currentUser = $userId;
 		$this->l = $l10n;
@@ -196,7 +196,7 @@ class ShareService {
 	public function update(string $id, string $path, string $currentToken, string $tokenCandidate, string $userId): array {
 		if ($userId != null && $this->currentUser != $userId) {
 			$this->currentUser = $userId;
-            $this->logger->debug('currentUser updated');
+			$this->logger->debug('currentUser updated');
 		}
 
 		// check token validity
@@ -215,17 +215,17 @@ class ShareService {
 		}
 
 		// Check whether user can reshare
-        try {
-            if (!$this->hasResharingRight($share)) {
-                $this->logger->warning('Insufficient permission');
-                throw new OCSBadRequestException($this->l->t('Insufficient permission')); // TODO: change exception
-            }
-        } catch (NotFoundException $e) {
-            $this->logger->warning('Unable to check permissions');
-            throw new OCSBadRequestException($this->l->t('Unable to check permissions')); // TODO: change exception
-        }
+		try {
+			if (!$this->hasResharingRight($share)) {
+				$this->logger->warning('Insufficient permission');
+				throw new OCSBadRequestException($this->l->t('Insufficient permission')); // TODO: change exception
+			}
+		} catch (NotFoundException $e) {
+			$this->logger->warning('Unable to check permissions');
+			throw new OCSBadRequestException($this->l->t('Unable to check permissions')); // TODO: change exception
+		}
 
-        // Update label
+		// Update label
 		$labelMode = $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0);
 		if ($labelMode == 1 && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
 			$share->setLabel($tokenCandidate);
@@ -240,67 +240,65 @@ class ShareService {
 		return $this->serializeShare($share);
 	}
 
-    /**
-     * @throws NotFoundException
-     */
-    private function hasResharingRight(IShare $qShare): bool
-    {
-//        if (is_iterable($shares)) {
-//            $this->logger->debug('hasResharingRight: notIterable');
-//            return false;
-//        }
-        try {
-            $shares = $this->shareManager->getAllShares();
-            foreach ($shares as $share) {
-                if ($share->getNodeId() !== $qShare->getNodeId()) {
-                    $this->logger->debug('hasResharingRight: badShare');
-                    continue;
-                }
+	/**
+	 * @throws NotFoundException
+	 */
+	private function hasResharingRight(IShare $qShare): bool {
+		//        if (is_iterable($shares)) {
+		//            $this->logger->debug('hasResharingRight: notIterable');
+		//            return false;
+		//        }
+		try {
+			$shares = $this->shareManager->getAllShares();
+			foreach ($shares as $share) {
+				if ($share->getNodeId() !== $qShare->getNodeId()) {
+					$this->logger->debug('hasResharingRight: badShare');
+					continue;
+				}
 
-                if ($this->canReshare($share)) {
-                    return true;
-                }
-                $this->logger->debug(sprintf('hasResharingRight: resharePermCheck = false (%s)', $share->getId()));
-            }
-        } catch (\Exception|\TypeError $exception) {
-            $this->logger->debug(sprintf('hasResharingRight: sharesIterable exception (%s)', $exception->getMessage()));
-        }
-        return false;
-    }
+				if ($this->canReshare($share)) {
+					return true;
+				}
+				$this->logger->debug(sprintf('hasResharingRight: resharePermCheck = false (%s)', $share->getId()));
+			}
+		} catch (\Exception|\TypeError $exception) {
+			$this->logger->debug(sprintf('hasResharingRight: sharesIterable exception (%s)', $exception->getMessage()));
+		}
+		return false;
+	}
 
-    private function canReshare(IShare $share): bool
-    {
-        if ($share->getShareOwner() === $this->currentUser) {
-            $this->logger->debug(sprintf('canReshare: shareOwnerCheck true (%s)', $share->getId()));
-            return true;
-        }
+	private function canReshare(IShare $share): bool {
+		if ($share->getShareOwner() === $this->currentUser) {
+			$this->logger->debug(sprintf('canReshare: shareOwnerCheck true (%s)', $share->getId()));
+			return true;
+		}
 
-        if ((Constants::PERMISSION_SHARE & $share->getPermissions()) === 0) {
-            $this->logger->debug(sprintf('canReshare: sharePermission false (%s)', $share->getId()));
-            return false;
-        }
+		if ((Constants::PERMISSION_SHARE & $share->getPermissions()) === 0) {
+			$this->logger->debug(sprintf('canReshare: sharePermission false (%s)', $share->getId()));
+			return false;
+		}
 
-//        try {
-//            $node = $share->getNode();
-//            if ($node !== null && ($node->getPermissions() & Constants::PERMISSION_SHARE) !== 0) {
-//                $this->logger->debug(sprintf('canReshare: nodePermission true (%s)', $share->getId()));
-//                return true;
-//            }
-//        } catch (NotFoundException|InvalidPathException $e) {}
+		//        try {
+		//            $node = $share->getNode();
+		//            if ($node !== null && ($node->getPermissions() & Constants::PERMISSION_SHARE) !== 0) {
+		//                $this->logger->debug(sprintf('canReshare: nodePermission true (%s)', $share->getId()));
+		//                return true;
+		//            }
+		//        } catch (NotFoundException|InvalidPathException $e) {}
 
-        if ($share->getShareType() === IShare::TYPE_USER && $share->getSharedWith() === $this->currentUser) {
-            $this->logger->debug(sprintf('canReshare: userCheck true (%s)', $share->getId()));
-            return true;
-        }
+		if ($share->getShareType() === IShare::TYPE_USER && $share->getSharedWith() === $this->currentUser) {
+			$this->logger->debug(sprintf('canReshare: userCheck true (%s)', $share->getId()));
+			return true;
+		}
 
-        if ($share->getShareType() === IShare::TYPE_GROUP && $this->groupManager->isInGroup($this->currentUser, $share->getSharedWith())) {
-            $this->logger->debug(sprintf('canReshare: groupCheck true (%s)', $share->getId()));
-            return true;
-        }
+		if ($share->getShareType() === IShare::TYPE_GROUP && $this->groupManager->isInGroup($this->currentUser, $share->getSharedWith())) {
+			$this->logger->debug(sprintf('canReshare: groupCheck true (%s)', $share->getId()));
+			return true;
+		}
 
-        $this->logger->debug(sprintf('canReshare: false (%s)', $share->getId()));
-        return false;
-    }
+		$this->logger->debug(sprintf('canReshare: false (%s)', $share->getId()));
+		return false;
+	}
 
 	/**
 	 * @throws InvalidTokenException
