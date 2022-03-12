@@ -28,12 +28,12 @@ namespace OCA\CfgShareLinks\Service;
 
 use OC\User\NoUserException;
 use OCA\CfgShareLinks\AppInfo\Application;
+use OCA\Files_Sharing\Exceptions\SharingRightsException;
 use OCP\AppFramework\OCS\OCSBadRequestException;
 use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\Constants;
-use OCP\Files\InvalidPathException;
 use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
@@ -192,6 +192,7 @@ class ShareService {
 	 * @throws OCSBadRequestException
 	 * @throws ShareNotFound
 	 * @throws TokenNotUniqueException
+	 * @throws SharingRightsException
 	 */
 	public function update(string $id, string $path, string $currentToken, string $tokenCandidate, string $userId): array {
 		if ($userId != null && $this->currentUser != $userId) {
@@ -218,11 +219,11 @@ class ShareService {
 		try {
 			if (!$this->hasResharingRight($share)) {
 				$this->logger->warning('Insufficient permission');
-				throw new OCSBadRequestException($this->l->t('Insufficient permission')); // TODO: change exception
+				throw new SharingRightsException($this->l->t('Insufficient permission'));
 			}
 		} catch (NotFoundException $e) {
 			$this->logger->warning('Unable to check permissions');
-			throw new OCSBadRequestException($this->l->t('Unable to check permissions')); // TODO: change exception
+			throw new SharingRightsException($this->l->t('Unable to check permissions'));
 		}
 
 		// Update label

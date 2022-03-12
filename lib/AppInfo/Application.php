@@ -30,12 +30,14 @@ use OCA\CfgShareLinks\Middleware\ShareMiddleware;
 use OCP\AppFramework\App;
 use OCP\AppFramework\QueryException;
 use OCP\EventDispatcher\IEventDispatcher;
+use Psr\Container\ContainerExceptionInterface;
 
 class Application extends App {
 	public const APP_ID = 'cfg_share_links';
 
 	/**
 	 * @throws QueryException
+	 * @throws ContainerExceptionInterface
 	 */
 	public function __construct() {
 		parent::__construct(self::APP_ID);

@@ -6,6 +6,7 @@ use Closure;
 
 use OC\User\NoUserException;
 use OCA\CfgShareLinks\Service\TokenNotUniqueException;
+use OCA\Files_Sharing\Exceptions\SharingRightsException;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
 
@@ -32,6 +33,7 @@ trait Errors {
 	 * - InvalidTokenException
 	 * - TokenNotUniqueException
 	 * - ShareNotFound
+	 * - SharingRightsException
 	 */
 	protected function handleException(Closure $callback): DataResponse {
 		try {
@@ -40,7 +42,7 @@ trait Errors {
 			return $this->getDataResponse($e, Http::STATUS_NOT_FOUND);
 		} catch (InvalidTokenException | TokenNotUniqueException | OCSBadRequestException $e) {
 			return $this->getDataResponse($e, Http::STATUS_BAD_REQUEST);
-		} catch (NoUserException $e) {
+		} catch (NoUserException | SharingRightsException $e) {
 			return $this->getDataResponse($e, Http::STATUS_UNAUTHORIZED);
 		} catch (OCSForbiddenException $e) {
 			return $this->getDataResponse($e, Http::STATUS_FORBIDDEN);

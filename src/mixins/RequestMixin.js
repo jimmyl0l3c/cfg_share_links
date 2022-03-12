@@ -25,7 +25,6 @@ export default {
 				const response = await axios.post(generateUrl('/apps/cfg_share_links/new'), data)
 				const returnValue = { ret: 0, data: response.data }
 				console.debug('CfgShareLinks: Custom public link created')
-				console.debug(returnValue)
 				showSuccess(t('cfg_share_links', 'Custom public link created'))
 				return returnValue
 			} catch (e) {
@@ -37,7 +36,6 @@ export default {
 				}
 				console.error('CfgShareLinks: Error occurred while creating public link')
 				console.error(e.response)
-				console.debug(returnValue)
 				return returnValue
 			}
 		},
@@ -50,9 +48,8 @@ export default {
 			}
 
 			try {
-				const response = await axios.post(generateUrl('/apps/cfg_share_links/update'), data)
+				await axios.post(generateUrl('/apps/cfg_share_links/update'), data)
 				console.debug('CfgShareLinks: Public link renamed')
-				console.debug(response)
 				showSuccess(t('cfg_share_links', 'Custom public link renamed'))
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {

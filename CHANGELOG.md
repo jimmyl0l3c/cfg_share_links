@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Added
 
-- Auto-copy link when new share link is created
+- Auto-copy link when new link is created
 
 ### Fixed
 
