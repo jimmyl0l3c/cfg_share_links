@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Auto-copy link when new link is created
 
+### Changed
+
+- Updated translation
+
 ### Fixed
 
 - Added permission check when updating tokens
