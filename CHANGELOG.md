@@ -6,7 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
-Nothing yet
+### Added
+
+- Auto-copy link when new share link is created
+
+### Fixed
+
+- Added permission check when updating tokens
 
 ## [1.0.3] - 2022-03-07
 

@@ -1,6 +1,7 @@
 <template>
 	<ul v-if="canShare">
-		<ListItem :title="t('cfg_share_links', 'Custom public link')"
+		<ListItem ref="newItem"
+			:title="t('cfg_share_links', 'Custom public link')"
 			:bold="false"
 			:force-display-actions="true"
 			class="l-hover">
@@ -19,8 +20,8 @@
 				<span v-if="isInputValid && focused" class="form-error"> {{ isInputValid }} </span>
 			</template>
 			<template #actions>
-				<ActionButton icon="icon-add" @click="createCustomLink">
-					{{ t('cfg_share_links', 'Add') }}
+				<ActionButton :icon="buttonIcon" @click="createCustomLink">
+					{{ copiedTooltip }}
 				</ActionButton>
 			</template>
 		</ListItem>
@@ -32,6 +33,7 @@ import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
 import Avatar from '@nextcloud/vue/dist/Components/Avatar'
 import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 
+import { generateUrl } from '@nextcloud/router'
 import '@nextcloud/dialogs/styles/toast.scss'
 import { showError } from '@nextcloud/dialogs'
 import TokenValidation from '../mixins/TokenValidation'
@@ -65,6 +67,7 @@ export default {
 			loading: true,
 			tokenCandidate: null,
 			focused: false,
+			copied: false,
 		}
 	},
 
@@ -85,6 +88,13 @@ export default {
 		},
 		canShare() {
 			return !!(this.fileInfo.permissions & OC.PERMISSION_SHARE)
+		},
+		buttonIcon() {
+			return this.copied ? 'icon-checkmark' : 'icon-add'
+		},
+		copiedTooltip() {
+			return this.copied ? t('cfg_share_links', 'Link copied') : t('cfg_share_links', 'Create link')
+			// return { content: message, show: this.copied, placement: 'bottom' }
 		},
 	},
 
@@ -108,7 +118,29 @@ export default {
 				return
 			}
 
-			await this.createLink(this.getFullPath, token)
+			const response = await this.createLink(this.getFullPath, token)
+
+			if (response && response.ret === 0) {
+				let resultToken = token
+				if (response.data && response.data.token) {
+					resultToken = response.data.token
+				}
+				const shareLink = window.location.protocol + '//' + window.location.host + generateUrl('/s/') + resultToken
+
+				await navigator.clipboard.writeText(shareLink).then(() => {
+					console.debug('CfgShareLinks: Link copied')
+					// Notify that link was copied
+					this.copied = true
+					this.$refs.newItem.$refs.actions.$el.focus()
+					// Reset tooltip after 4s
+					setTimeout(() => {
+						this.copied = false
+					}, 4000)
+				}).catch(reason => {
+					console.debug('CfgShareLinks: Couldnt copy')
+					console.debug(reason)
+				})
+			}
 
 			this.focused = false
 			this.tokenCandidate = ''
@@ -117,9 +149,14 @@ export default {
 			this.updating = false
 		},
 		/*
-		 async testRename() {
+		  async testRename() {
 		 	this.updating = true
-		 	await this.renameLink('62', '/Reasons to use Nextcloud.pdf', 'reason-test', 'test-token1')
+		 	 await this.renameLink('21', '/Reshare.md', 'reshare-test1', 'reshare-bad')
+		 	 this.updating = false
+		  },
+		 async revertRename() {
+		 	this.updating = true
+		 	await this.renameLink('21', '/Reshare.md', 'reshare-bad', 'reshare-test1')
 		 	this.updating = false
 		 },
 		*/

@@ -60,7 +60,7 @@ class ShareService {
 	/** @var IManager */
 	private $shareManager;
 	/** @var IGroupManager */
-	private IGroupManager $groupManager;
+	private $groupManager;
 	/** @var IRootFolder */
 	private $rootFolder;
 	/** @var IL10N */
