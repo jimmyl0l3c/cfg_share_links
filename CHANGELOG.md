@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+Nothing yet.
+
+## [1.1.0] - 2022-03-12
+
 ### Added
 
 - Auto-copy link when new link is created
@@ -13,6 +17,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 
 - Updated translation
+- Updated info.xml
+  - Translated description, name and summary to Czech
+  - Added new thumbnail
+  - Added files category
 
 ### Fixed
 

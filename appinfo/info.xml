@@ -2,8 +2,23 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>cfg_share_links</id>
+    <name lang="cs">Konfigurovatelné Sdílené Odkazy</name>
     <name>Configurable Share Links</name>
+    <summary lang="cs">Aplikace umožňující uživatelům specifikovat vlastní sdílejicí tokeny</summary>
     <summary>App adding the ability to specify share tokens</summary>
+    <description lang="cs"><![CDATA[
+Nextcloud aplikace umožňující uživatelům specifikovat vlastní token při tvorbě nového veřejného odkazu a změnit token u existujících odkazů.
+
+## Vlastnosti
+
+Postranní panel Sdílení je rozšířen o novou sekci (Vlastní veřejný odkaz), která umožňuje vytvářet veřejné odkazy s vlastními sdílejicími tokeny.
+Také máte možnost upravovat sdílejicí tokeny existujících veřejných odkazů.
+
+## Nastavení
+
+V sekci **Nastavení > Správa > Konfigurovatelné sdílené odkazy** mohou administrátoři definovat výchozí štítky vlastních odkazů a minimální délku tokenu.
+Výchozí štítek může být: žádný, stejný jako token nebo vlastní (stejný štítek pro všechny vlastní odkazy).
+    ]]></description>
     <description><![CDATA[
 Nextcloud app that adds the ability to specify share tokens when creating new public links and change tokens of existing links.
 
@@ -17,13 +32,15 @@ You can also customize share tokens of existing public links.
 By going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.
 Default label can be: none, same as token or custom (the same custom label for all custom links).
     ]]></description>
-    <version>1.0.3</version>
+    <version>1.1.0</version>
     <licence>agpl</licence>
     <author mail="filip@joska.dev" >Filip Joska</author>
     <namespace>CfgShareLinks</namespace>
     <category>tools</category>
+    <category>files</category>
     <website>https://github.com/jimmyl0l3c/cfg_share_links</website>
     <bugs>https://github.com/jimmyl0l3c/cfg_share_links/issues</bugs>
+    <screenshot small-thumbnail="https://raw.githubusercontent.com/jimmyl0l3c/cfg_share_links/master/screens/thumbnail-small.png">https://raw.githubusercontent.com/jimmyl0l3c/cfg_share_links/master/screens/thumbnail.png</screenshot>
     <screenshot>https://raw.githubusercontent.com/jimmyl0l3c/cfg_share_links/master/screens/nc02.png</screenshot>
     <dependencies>
         <nextcloud min-version="20" max-version="23"/>
