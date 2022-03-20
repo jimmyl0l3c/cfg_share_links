@@ -116,7 +116,7 @@ class ShareService {
 
 		// Verify path
 		if ($path === null) {
-            // TRANSLATORS function to create link received empty (null) path
+			// TRANSLATORS function to create link received empty (null) path
 			throw new OCSNotFoundException($this->l->t('Please specify a file or folder path'));
 		}
 
@@ -207,7 +207,7 @@ class ShareService {
 		// Get share
 		$share = $this->shareManager->getShareByToken($currentToken);
 		if ($share->getId() != $id) {
-            // TRANSLATORS Trying to update (change token of) Share that does not exist
+			// TRANSLATORS Trying to update (change token of) Share that does not exist
 			throw new ShareNotFound($this->l->t('Share not found'));
 		}
 		//        $share = $this->shareManager->getShareById($id);
@@ -221,12 +221,12 @@ class ShareService {
 		try {
 			if (!$this->hasResharingRight($share)) {
 				$this->logger->warning('Insufficient permission');
-                // TRANSLATORS user tried to change token, but he does not have reshare permission
+				// TRANSLATORS user tried to change token, but he does not have reshare permission
 				throw new SharingRightsException($this->l->t('Insufficient permission'));
 			}
 		} catch (NotFoundException $e) {
 			$this->logger->warning('Unable to check permissions');
-            // TRANSLATORS error occurred while checking reshare permission (when updating token)
+			// TRANSLATORS error occurred while checking reshare permission (when updating token)
 			throw new SharingRightsException($this->l->t('Unable to check permissions'));
 		}
 
