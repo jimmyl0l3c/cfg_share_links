@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 Nothing yet.
 
+## [1.1.1] - 2022-03-20
+
+### Fixed
+
+- Translation fixes
+
 ## [1.1.0] - 2022-03-12
 
 ### Added
