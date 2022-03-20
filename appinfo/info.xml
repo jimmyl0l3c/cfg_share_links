@@ -2,10 +2,23 @@
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>cfg_share_links</id>
+    <name lang="en">Configurable Share Links</name>
     <name lang="cs">Konfigurovatelné Sdílené Odkazy</name>
-    <name>Configurable Share Links</name>
+    <summary lang="en">App adding the ability to specify share tokens</summary>
     <summary lang="cs">Aplikace umožňující uživatelům specifikovat vlastní sdílejicí tokeny</summary>
-    <summary>App adding the ability to specify share tokens</summary>
+    <description lang="en"><![CDATA[
+Nextcloud app that adds the ability to specify share tokens when creating new public links and change tokens of existing links.
+
+## Features
+
+Sharing sidebar is expanded by new section (Custom public link) that allows you to create public links with custom share tokens.
+You can also customize share tokens of existing public links.
+
+## Settings
+
+By going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.
+Default label can be: none, same as token or custom (the same custom label for all custom links).
+    ]]></description>
     <description lang="cs"><![CDATA[
 Nextcloud aplikace umožňující uživatelům specifikovat vlastní token při tvorbě nového veřejného odkazu a změnit token u existujících odkazů.
 
@@ -18,19 +31,6 @@ Také máte možnost upravovat sdílejicí tokeny existujících veřejných odk
 
 V sekci **Nastavení > Správa > Konfigurovatelné sdílené odkazy** mohou administrátoři definovat výchozí štítky vlastních odkazů a minimální délku tokenu.
 Výchozí štítek může být: žádný, stejný jako token nebo vlastní (stejný štítek pro všechny vlastní odkazy).
-    ]]></description>
-    <description><![CDATA[
-Nextcloud app that adds the ability to specify share tokens when creating new public links and change tokens of existing links.
-
-## Features
-
-Sharing sidebar is expanded by new section (Custom public link) that allows you to create public links with custom share tokens.
-You can also customize share tokens of existing public links.
-
-## Settings
-
-By going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.
-Default label can be: none, same as token or custom (the same custom label for all custom links).
     ]]></description>
     <version>1.1.0</version>
     <licence>agpl</licence>

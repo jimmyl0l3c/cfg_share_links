@@ -15,7 +15,7 @@
 					:multiple="false"
 					:allow-empty="false"
 					:disabled="updating.status === 1 || loading"
-					:placeholder="t('cfg_share_links', 'Select label mode')"
+					:placeholder="t('cfg_share_links', 'Select label type')"
 					@update:value="onLabelModeChange" />
 			</div>
 			<div>
@@ -141,7 +141,7 @@ export default {
 		},
 		async onLabelSubmit() {
 			if (this.customLabel == null || this.customLabel.length === 0) {
-				showError(t('cfg_share_links', 'Label can\'t be empty'))
+				showError(t('cfg_share_links', 'Label cannot be empty'))
 				return
 			}
 			// validity check?

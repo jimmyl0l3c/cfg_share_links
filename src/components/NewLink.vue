@@ -137,7 +137,7 @@ export default {
 						this.copied = false
 					}, 4000)
 				}).catch(reason => {
-					console.debug('CfgShareLinks: Couldnt copy')
+					console.debug('CfgShareLinks: Could not copy')
 					console.debug(reason)
 				})
 			}
