@@ -7,7 +7,7 @@
     <summary lang="en">App adding the ability to specify share tokens</summary>
     <summary lang="cs">Aplikace umožňující uživatelům specifikovat vlastní sdílejicí tokeny</summary>
     <description lang="en"><![CDATA[
-Nextcloud app that adds the ability to specify share tokens when creating new public links and change tokens of existing links.
+App for Nextcloud that adds the ability to specify share tokens when creating new public links and change tokens of existing links.
 
 ## Features
 
@@ -20,7 +20,7 @@ By going to **Settings > Administration > Configurable Share Links** admins can 
 Default label can be: none, same as token or custom (the same custom label for all custom links).
     ]]></description>
     <description lang="cs"><![CDATA[
-Nextcloud aplikace umožňující uživatelům specifikovat vlastní token při tvorbě nového veřejného odkazu a změnit token u existujících odkazů.
+Aplikace pro Nextcloud umožňující uživatelům specifikovat vlastní token při tvorbě nového veřejného odkazu a změnit token u existujících odkazů.
 
 ## Vlastnosti
 
