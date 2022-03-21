@@ -26,10 +26,15 @@
 
 namespace OCA\CfgShareLinks\AppInfo;
 
+use OCA\CfgShareLinks\Listener\NodeDeletedListener;
 use OCA\CfgShareLinks\Middleware\ShareMiddleware;
+use OCA\Files\Event\LoadAdditionalScriptsEvent;
+use OCA\Files_Trashbin\Events\MoveToTrashEvent;
 use OCP\AppFramework\App;
 use OCP\AppFramework\QueryException;
 use OCP\EventDispatcher\IEventDispatcher;
+use OCP\Files\Events\Node\BeforeNodeDeletedEvent;
+use OCP\Files\Events\Node\NodeDeletedEvent;
 use Psr\Container\ContainerExceptionInterface;
 
 class Application extends App {
@@ -55,9 +60,12 @@ class Application extends App {
 		/* @var IEventDispatcher $dispatcher */
 		$dispatcher = $container->query(IEventDispatcher::class);
 		//        'OCA\Files_Sharing::loadAdditionalScripts'
-		$dispatcher->addListener('OCA\Files::loadAdditionalScripts', function () {
+		$dispatcher->addListener(LoadAdditionalScriptsEvent::class, function () {
 			script('cfg_share_links', 'cfg_share_links-reg-rename');
 			script('cfg_share_links', 'cfg_share_links-reg-new');
 		});
+		$dispatcher->addServiceListener(NodeDeletedEvent::class, NodeDeletedListener::class);
+		$dispatcher->addServiceListener(BeforeNodeDeletedEvent::class, NodeDeletedListener::class);
+		$dispatcher->addServiceListener(MoveToTrashEvent::class, NodeDeletedListener::class);
 	}
 }
