@@ -1,209 +1,232 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Nextcloud package.
-# Filip Joska <filip@joska.dev>, 2021.
-#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Pavel Borecki <pavel.borecki@gmail.com>, 2022
+# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-03-12 16:03+0000\n"
-"PO-Revision-Date: 2022-03-12 16:23+0000\n"
-"Last-Translator: Filip Joska <filip@joska.dev>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: cs\n"
+"POT-Creation-Date: 2022-03-22 08:47+0000\n"
+"PO-Revision-Date: 2022-03-18 03:38+0000\n"
+"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2022\n"
+"Language-Team: Czech (Czech Republic) (https://www.transifex.com/nextcloud/teams/64236/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs_CZ\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Sections/LinksAdmin.php:53
-#: /var/www/html/custom_apps/cfg_share_links/specialAppInfoFakeDummyForL10nScript.php:2
+#: /app/lib/Sections/LinksAdmin.php:53
+#: /app/specialAppInfoFakeDummyForL10nScript.php:2
 msgid "Configurable Share Links"
-msgstr "Konfigurovatelné sdílené odkazy"
+msgstr "Nastavovatelné odkazy pro sdílení"
 
-#. TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
-#. TRANSLATORS function to update share token is expecting type link (but received some other type)
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:109
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:215
+#. TRANSLATORS function to create link with custom share token is expecting
+#. type link (but received some other type)
+#. TRANSLATORS function to update share token is expecting type link, but
+#. received some other type
+#: /app/lib/Service/ShareService.php:109 /app/lib/Service/ShareService.php:217
 msgid "Invalid share type"
 msgstr "Neplatný typ sdílení"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:114
+#: /app/lib/Service/ShareService.php:114
 msgid "Public link sharing is disabled by the administrator"
-msgstr "Tvorba veřejných odkazů je zakázána administrátorem"
+msgstr "Používání sdílení typu veřejný odkaz je znepřístupněno správcem"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:119
+#. TRANSLATORS function to create link received empty (null) path
+#: /app/lib/Service/ShareService.php:120
 msgid "Please specify a file or folder path"
-msgstr "Specifikujte cestu ke složce nebo souboru, prosím"
+msgstr "Zadejte popis umístění souboru či složky"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:126
-msgid "Wrong path, file/folder doesn't exist"
-msgstr "Neplatná cesta, soubor/složka neexistuje"
+#: /app/lib/Service/ShareService.php:127
+msgid "Wrong path, file/folder does not exist"
+msgstr "Nesprávný popis umístění – soubor/složka neexistuje"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:139
+#: /app/lib/Service/ShareService.php:140
 msgid "Could not create share"
 msgstr "Nepodařilo se vytvořit sdílení"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:209
+#. TRANSLATORS Trying to update (change token of) Share that does not exist
+#: /app/lib/Service/ShareService.php:211
 msgid "Share not found"
 msgstr "Sdílení nenalezeno"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:222
+#. TRANSLATORS user tried to change token, but he does not have reshare
+#. permission
+#: /app/lib/Service/ShareService.php:225
 msgid "Insufficient permission"
-msgstr "Nemáte dostatečná práva"
+msgstr "Nedostatečná oprávnění"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:226
+#. TRANSLATORS error occurred while checking reshare permission (when updating
+#. token)
+#: /app/lib/Service/ShareService.php:230
 msgid "Unable to check permissions"
-msgstr "Nepodařilo se ověřit práva na sdílení"
+msgstr "Nepodařilo se zkontrolovat oprávnění"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:315
+#: /app/lib/Service/ShareService.php:319
 msgid "Token is not unique"
-msgstr "Token již existuje"
+msgstr "Token už existuje"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:329
-#: /var/www/html/custom_apps/cfg_share_links/src/mixins/TokenValidation.js:21
+#: /app/lib/Service/ShareService.php:333 /app/src/mixins/TokenValidation.js:21
 msgid "Token is not long enough"
-msgstr "Token je příliš krátký"
+msgstr "Token není dostatečně dlouhý"
 
-#: /var/www/html/custom_apps/cfg_share_links/lib/Service/ShareService.php:335
-#: /var/www/html/custom_apps/cfg_share_links/src/mixins/TokenValidation.js:23
+#: /app/lib/Service/ShareService.php:339 /app/src/mixins/TokenValidation.js:23
 msgid "Token contains invalid characters"
 msgstr "Token obsahuje neplatné znaky"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialAppInfoFakeDummyForL10nScript.php:3
+#: /app/specialAppInfoFakeDummyForL10nScript.php:3
 msgid "App adding the ability to specify share tokens"
-msgstr "Aplikace umožňující uživatelům specifikovat vlastní sdílejicí tokeny"
+msgstr "Aplikace přidávající možnost zadat podobu tokenů pro sdílení"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialAppInfoFakeDummyForL10nScript.php:4
+#: /app/specialAppInfoFakeDummyForL10nScript.php:4
 msgid ""
-"Nextcloud app that adds the ability to specify share tokens when creating "
-"new public links and change tokens of existing links.\n"
+"App for Nextcloud that adds the ability to specify share tokens when creating new public links and change tokens of existing links.\n"
 "\n"
 "## Features\n"
 "\n"
-"Sharing sidebar is expanded by new section (Custom public link) that allows "
-"you to create public links with custom share tokens.\n"
+"Sharing sidebar is expanded by new section (Custom public link) that allows you to create public links with custom share tokens.\n"
 "You can also customize share tokens of existing public links.\n"
 "\n"
 "## Settings\n"
 "\n"
-"By going to **Settings > Administration > Configurable Share Links** admins "
-"can set default labels for custom links and minimal token length.\n"
-"Default label can be: none, same as token or custom (the same custom label "
-"for all custom links)."
+"By going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.\n"
+"Default label can be: none, same as token or custom (the same custom label for all custom links)."
 msgstr ""
-       "Nextcloud aplikace umožňující uživatelům specifikovat vlastní token při tvorbě"
-       "nového veřejného odkazu a změnit token u existujících odkazů.\n"
-       "\n"
-       "## Vlastnosti\n"
-       "\n"
-       "Postranní panel Sdílení je rozšířen o novou sekci (Vlastní veřejný odkaz), která umožňuje"
-       "vytvářet veřejné odkazy s vlastními sdílejicími tokeny.\n"
-       "Také máte možnost upravovat sdílejicí tokeny existujících veřejných odkazů.\n"
-       "\n"
-       "## Nastavení\n"
-       "\n"
-       "V sekci **Nastavení > Správa > Konfigurovatelné sdílené odkazy** mohou administrátoři"
-       "definovat výchozí štítky vlastních odkazů a minimální délku tokenu.\n"
-       "Výchozí štítek může být: žádný, stejný jako token nebo vlastní (stejný štítek "
-       "pro všechny vlastní odkazy)."
+"Aplikace pro Nextcloud, která při vytváření nových veřejných odkazů přidává možnost zadávat texty jednotlivých tokenů a měnit tokeny už existujících odkazů.\n"
+"\n"
+"## Funkce\n"
+"\n"
+"Postranní panel sdílení je rozšířen o novu sekci (Uživatelsky určený veřejný odkaz), která umožňuje vytvářet veřejné odkazy, u kterých určíte, co bude obsahem tokenů jednotlivých sdílení.\n"
+"Je také možné pomocí tohoto upravovat tokenu už existujících veřejných odkazů.\n"
+"\n"
+"## Nastavení\n"
+"\n"
+"V **Nastavení > Správa > Nastavovatelné odkazy na sdílení** mohou správci nastavit výchozí štítky pro uživatelsky určené odkazy a nejkratší umožněnou délku tokenu.\n"
+"Výchozí štítek může být: žádný, stejný jako token nebo uživatelsky určený (jeden a ten samý pro veškeré uživatelsky určené odkazy)."
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:1
+#. TRANSLATORS nts/AdminSettings.vue:3
+#: /app/specialVueFakeDummyForL10nScript.js:2
 msgid "Default share label"
-msgstr "Výchozí štítek odkazu"
+msgstr "Výchozí štítek pro sdílení"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:2
+#. TRANSLATORS nts/AdminSettings.vue:4
+#: /app/specialVueFakeDummyForL10nScript.js:4
 msgid ""
 "Configure whether a default label should be set to custom links and what "
 "that label should be"
-msgstr "Nastavte, zda by měly mít vlastní odkazy výchozí štítek a jaký by měl být"
+msgstr ""
+"Nastavit zda má být uživatelsky určeným odkazům nastavován výchozí štítek a "
+"který to v takovém případě má být"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:3
+#. TRANSLATORS nts/AdminSettings.vue:7
+#: /app/specialVueFakeDummyForL10nScript.js:6
 msgid "Default label"
 msgstr "Výchozí štítek"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:4
-msgid "Select label mode"
-msgstr "Zvolte mód štítků"
+#. TRANSLATORS nts/AdminSettings.vue:18
+#: /app/specialVueFakeDummyForL10nScript.js:8
+msgid "Select label type"
+msgstr "Vybrat typ štítku"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:5
+#. TRANSLATORS nts/AdminSettings.vue:23
+#: /app/specialVueFakeDummyForL10nScript.js:10
 msgid "Custom label"
-msgstr "Vlastní štítek"
+msgstr "Uživatelsky určený štítek"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:6
+#. TRANSLATORS nts/AdminSettings.vue:35
+#: /app/specialVueFakeDummyForL10nScript.js:12
 msgid "Token settings"
-msgstr "Nastavení tokenů"
+msgstr "Nastavení pro token"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:7
+#. TRANSLATORS nts/AdminSettings.vue:36
+#: /app/specialVueFakeDummyForL10nScript.js:14
 msgid "Configure requirements for tokens"
-msgstr "Nastavte požadavky na tokeny"
+msgstr "Nastavit, co mají tokeny splňovat"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:8
+#. TRANSLATORS nts/AdminSettings.vue:39
+#: /app/specialVueFakeDummyForL10nScript.js:16
 msgid "Minimal token length"
-msgstr "Minimální délka tokenu"
+msgstr "Nejkratší umožněná délka tokenu"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:9
+#. TRANSLATORS nts/AdminSettings.vue:67
+#: /app/specialVueFakeDummyForL10nScript.js:18
 msgid "None"
-msgstr "Žádný"
+msgstr "Žádná"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:10
+#. TRANSLATORS nts/AdminSettings.vue:68
+#: /app/specialVueFakeDummyForL10nScript.js:20
 msgid "Same as token"
-msgstr "Stejný jako token"
+msgstr "Stejná jako token"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:11
+#. TRANSLATORS nts/AdminSettings.vue:69
+#: /app/specialVueFakeDummyForL10nScript.js:22
 msgid "Custom"
-msgstr "Vlastní"
+msgstr "Uživatelsky určená"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:12
+#. TRANSLATORS nts/AdminSettings.vue:104
+#: /app/specialVueFakeDummyForL10nScript.js:24
 msgid "Entered length is not a number"
 msgstr "Zadaná délka není číslo"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:13
+#. TRANSLATORS nts/AdminSettings.vue:108
+#: /app/specialVueFakeDummyForL10nScript.js:26
 msgid "Minimum length must be at least 1"
-msgstr "Minimální délka musí být alespoň 1"
+msgstr "Je třeba, aby nejkratší umožněná délka tokenu měla hodnotu nejméně 1"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:14
-msgid "Label can't be empty"
-msgstr "Štítek nemůže být prázdný"
+#. TRANSLATORS nts/AdminSettings.vue:144
+#: /app/specialVueFakeDummyForL10nScript.js:28
+msgid "Label cannot be empty"
+msgstr "Štítek je třeba vyplnit"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:15
+#. TRANSLATORS nts/AdminSettings.vue:189
+#: /app/specialVueFakeDummyForL10nScript.js:30
 msgid "Error occurred while saving settings"
-msgstr "Při ukládání nastavení nastala chyba"
+msgstr "Došlo k chybě při ukládání nastavení"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:16
+#. TRANSLATORS nts/NewLink.vue:4
+#: /app/specialVueFakeDummyForL10nScript.js:32
 msgid "Custom public link"
-msgstr "Vlastní veřejný odkaz (token)"
+msgstr "Uživatelsky určený veřejný odkaz"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:17
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:20
+#. TRANSLATORS nts/NewLink.vue:17
+#. TRANSLATORS nts/RenameLink.vue:7
+#: /app/specialVueFakeDummyForL10nScript.js:34
+#: /app/specialVueFakeDummyForL10nScript.js:40
 msgid "Enter custom token"
-msgstr "Zadejte vlastní token"
+msgstr "Zadejte uživatelsky určený token"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:18
+#. TRANSLATORS nts/NewLink.vue:96
+#: /app/specialVueFakeDummyForL10nScript.js:36
 msgid "Link copied"
 msgstr "Odkaz zkopírován"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:18
+#: /app/specialVueFakeDummyForL10nScript.js:36
 msgid "Create link"
 msgstr "Vytvořit odkaz"
 
-#: /var/www/html/custom_apps/cfg_share_links/specialVueFakeDummyForL10nScript.js:19
+#. TRANSLATORS nts/NewLink.vue:116
+#: /app/specialVueFakeDummyForL10nScript.js:38
 msgid "Invalid token"
 msgstr "Neplatný token"
 
-#: /var/www/html/custom_apps/cfg_share_links/src/mixins/RequestMixin.js:28
+#: /app/src/mixins/RequestMixin.js:28
 msgid "Custom public link created"
-msgstr "Vlastní veřejný odkaz úspěšně vytvořen"
+msgstr "Uživatelsky určený veřejný odkaz vytvořen"
 
-#: /var/www/html/custom_apps/cfg_share_links/src/mixins/RequestMixin.js:35
+#: /app/src/mixins/RequestMixin.js:35
 msgid "Error occurred while creating public link"
-msgstr "Při vytváření vlastního odkazu nastala chyba"
+msgstr "Došlo k chybě při vytváření veřejného odkazu"
 
-#: /var/www/html/custom_apps/cfg_share_links/src/mixins/RequestMixin.js:53
+#: /app/src/mixins/RequestMixin.js:53
 msgid "Custom public link renamed"
-msgstr "Vlastní veřejný odkaz úspěšně přejmenován"
+msgstr "Uživatelsky určený veřejný odkaz přejmenován"
 
-#: /var/www/html/custom_apps/cfg_share_links/src/mixins/RequestMixin.js:58
+#: /app/src/mixins/RequestMixin.js:58
 msgid "Error occurred while renaming public link"
-msgstr "Při přejmenování vlastního odkazu nastala chyba"
+msgstr "Došlo k chybě při přejmenovávání veřejného odkazu"
