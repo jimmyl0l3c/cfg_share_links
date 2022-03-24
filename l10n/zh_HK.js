@@ -25,6 +25,19 @@ OC.L10N.register(
     "Minimal token length" : "最小權杖長度",
     "None" : "無",
     "Same as token" : "與權杖相同",
-    "Custom" : "自訂"
+    "Custom" : "自訂",
+    "Entered length is not a number" : "輸入的長度不是數字",
+    "Minimum length must be at least 1" : "最小長度必須為 1",
+    "Label cannot be empty" : "標籤不能為空",
+    "Error occurred while saving settings" : "保存設置時發生錯誤",
+    "Custom public link" : "自訂公共連結",
+    "Enter custom token" : "輸入自訂權杖",
+    "Link copied" : "已複製連結",
+    "Create link" : "創建連結",
+    "Invalid token" : "無效的權杖",
+    "Custom public link created" : "創建了自訂公開連結",
+    "Error occurred while creating public link" : "建立公共連結時發生錯誤",
+    "Custom public link renamed" : "已重新命名自訂公共連結",
+    "Error occurred while renaming public link" : "重新命名公共連結時發生錯誤"
 },
 "nplurals=1; plural=0;");
