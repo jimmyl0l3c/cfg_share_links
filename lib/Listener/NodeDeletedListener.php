@@ -15,15 +15,16 @@ class NodeDeletedListener implements IEventListener {
 		LoggerInterface $logger
 	) {
 		$this->logger = $logger;
-        $this->logger->debug('ListenerConstructor');
 	}
 
 	public function handle(Event $event): void {
 		if (!($event instanceof NodeDeletedEvent)) {
-			$node = $event->getNode();
-            $this->logger->debug($node->getPath());
+			$this->logger->debug('NodeDeletedListener called');
+			return;
 		}
+		$this->logger->debug('NodeDeletedEvent');
 
-		$this->logger->debug('NodeDeleted event');
+		$node = $event->getNode();
+		$this->logger->debug($node->getPath());
 	}
 }
