@@ -4,6 +4,10 @@ App for Nextcloud that adds the ability to specify share tokens when creating ne
 
 This app was built using [tutorial notes app](https://github.com/nextcloud/app-tutorial) as a skeleton.
 
+[<img src="https://img.shields.io/github/downloads/jimmyl0l3c/cfg_share_links/total?color=blue&style=flat-square">](https://github.com/jimmyl0l3c/cfg_share_links/releases)
+[<img src="https://img.shields.io/github/v/release/jimmyl0l3c/cfg_share_links?color=c7ee00&style=flat-square">](https://github.com/jimmyl0l3c/cfg_share_links/releases/latest)
+[<img src="https://img.shields.io/github/release-date/jimmyl0l3c/cfg_share_links?color=c7ee00&style=flat-square">](https://github.com/jimmyl0l3c/cfg_share_links/releases/latest)
+
 # Usage
 
 You can get this app directly from [nextcloud app store](https://apps.nextcloud.com/apps/cfg_share_links).
