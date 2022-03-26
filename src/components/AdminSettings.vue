@@ -52,7 +52,9 @@
 		<SettingsSection :title="t('cfg_share_links', 'Miscellaneous')"
 			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
 			<div>
-				<CheckboxRadioSwitch :disabled="updating.status === 1 || loading"
+				<CheckboxRadioSwitch v-tooltip="{content: t('cfg_share_links', 'Keep this option off if you did not use versions lower than 1.2.0'), placement: 'top-start'}"
+					:disabled="updating.status === 1 || loading"
+					:loading="updating.status === 1 || loading"
 					:checked.sync="deleteConflicts"
 					type="switch"
 					@update:checked="onDeleteConflictsChange">
@@ -70,6 +72,7 @@ import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
 import SettingsInputText from '@nextcloud/vue/dist/Components/SettingsInputText'
 import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch'
+import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip'
 import SettingsMixin from '../mixins/SettingsMixin'
 
 import axios from '@nextcloud/axios'
@@ -91,6 +94,10 @@ export default {
 		SettingsSection,
 		SettingsInputText,
 		CheckboxRadioSwitch,
+	},
+
+	directives: {
+		Tooltip,
 	},
 
 	mixins: [
