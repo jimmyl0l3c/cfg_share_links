@@ -63,8 +63,8 @@ class SettingsControllerTest extends TestCase {
 		}
 
 		$result = $this->controller->save('default_label', 'Test label');
-		$this->assertEquals(Http::STATUS_OK, $result);
+		$this->assertEquals(Http::STATUS_OK, $result->getStatus());
 		$result = $this->controller->save('default_label', '');
-		$this->assertEquals(Http::STATUS_BAD_REQUEST, $result);
+		$this->assertEquals(Http::STATUS_BAD_REQUEST, $result->getStatus());
 	}
 }
