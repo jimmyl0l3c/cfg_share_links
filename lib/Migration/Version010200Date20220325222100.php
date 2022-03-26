@@ -9,7 +9,7 @@ use OCP\DB\ISchemaWrapper;
 use OCP\Migration\SimpleMigrationStep;
 use OCP\Migration\IOutput;
 
-class Version000000Date20211213143000 extends SimpleMigrationStep {
+class Version010200Date20220325222100 extends SimpleMigrationStep {
 
 	/**
 	 * @param IOutput $output
@@ -25,6 +25,26 @@ class Version000000Date20211213143000 extends SimpleMigrationStep {
 			$schema->dropTable('cfg_shares');
 		}
 
+		if (!$schema->hasTable('cfg_shares')) {
+			$table = $schema->createTable('cfg_shares');
+			$table->addColumn('id', 'integer', [
+				'autoincrement' => true,
+				'notnull' => true,
+			]);
+			$table->addColumn('full_id', 'string', [
+				'notnull' => true,
+			]);
+			$table->addColumn('token', 'string', [
+				'notnull' => true,
+			]);
+			$table->addColumn('node_id', 'integer', [
+				'notnull' => true,
+			]);
+
+			$table->setPrimaryKey(['id']);
+			$table->addIndex(['node_id'], 'cfg_shares_node_id');
+			$table->addIndex(['full_id'], 'cfg_shares_full_id');
+		}
 		return $schema;
 	}
 }
