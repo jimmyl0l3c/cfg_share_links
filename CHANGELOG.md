@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Delete custom shares when node (file/folder) is deleted
+- Add cfg_shares table to store data about custom shares
 - Implemented IBootstrap
 - Updated translations from transifex
 
