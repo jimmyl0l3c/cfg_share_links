@@ -92,6 +92,25 @@ class CfgShareMapper extends QBMapper {
 	}
 
 	/**
+	 * @param string $token
+	 * @return mixed|Entity
+	 * @throws DoesNotExistException
+	 * @throws Exception
+	 * @throws MultipleObjectsReturnedException
+	 */
+	public function findByToken(string $token) {
+		$qb = $this->db->getQueryBuilder();
+
+		$qb->select('*')
+			->from($this->getTableName())
+			->where(
+				$qb->expr()->eq('token', $qb->createNamedParameter($token))
+			);
+
+		return $this->findEntity($qb);
+	}
+
+	/**
 	 * @throws Exception
 	 */
 	public function findAll(): array {

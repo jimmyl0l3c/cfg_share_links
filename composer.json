@@ -9,7 +9,9 @@
             "email": "filip@joska.dev"
         }
     ],
-    "require": {},
+    "require": {
+      "ext-json": "*"
+    },
     "require-dev": {
         "phpunit/phpunit": "^8.5",
         "nextcloud/coding-standard": "^1.0.0"
