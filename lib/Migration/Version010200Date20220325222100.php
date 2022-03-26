@@ -44,7 +44,7 @@ class Version010200Date20220325222100 extends SimpleMigrationStep {
 			$table->setPrimaryKey(['id']);
 			$table->addIndex(['node_id'], 'cfg_shares_node_id');
 			$table->addIndex(['full_id'], 'cfg_shares_full_id');
-            $table->addIndex(['token'], 'cfg_shares_token');
+			$table->addIndex(['token'], 'cfg_shares_token');
 		}
 		return $schema;
 	}

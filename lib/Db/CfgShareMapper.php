@@ -55,12 +55,10 @@ class CfgShareMapper extends QBMapper {
 
 	/**
 	 * @param string $node
-	 * @return mixed|Entity
-	 * @throws DoesNotExistException
+	 * @return array|Entity[]
 	 * @throws Exception
-	 * @throws MultipleObjectsReturnedException
 	 */
-	public function findByNode(string $node) {
+	public function findByNode(string $node): array {
 		$qb = $this->db->getQueryBuilder();
 
 		$qb->select('*')
@@ -69,7 +67,7 @@ class CfgShareMapper extends QBMapper {
 				$qb->expr()->eq('node_id', $qb->createNamedParameter($node))
 			);
 
-		return $this->findEntity($qb);
+		return $this->findEntities($qb);
 	}
 
 	/**
