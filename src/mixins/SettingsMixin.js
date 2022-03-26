@@ -43,5 +43,9 @@ export default {
 			const length = parseInt(await this.getMinTokenLength())
 			return isNaN(length) ? 3 : length
 		},
+		async getDeleteRemovedShareConflicts() {
+			const settings = await this.getSettings()
+			return !!(settings && settings.deleteRemovedShareConflicts)
+		},
 	},
 }

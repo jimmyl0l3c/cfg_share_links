@@ -65,6 +65,12 @@ class SettingsController extends Controller {
 					return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
 				}
 				break;
+			case 'deleteRemovedShareConflicts':
+				if (is_numeric($value) && (int)$value >= 0) {
+					$this->config->setAppValue(Application::APP_ID, 'deleteRemovedShareConflicts', (int)$value > 0);
+					return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+				}
+				break;
 		}
 
 		return new DataResponse(['message' => 'Invalid key or value'], Http::STATUS_BAD_REQUEST);
@@ -74,7 +80,8 @@ class SettingsController extends Controller {
 		$settings = [
 			'defaultLabelMode' => $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0),
 			'defaultLabel' => $this->config->getAppValue(Application::APP_ID, 'default_label', 'Custom link'),
-			'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3)
+			'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3),
+			'deleteRemovedShareConflicts' => $this->config->getAppValue(Application::APP_ID, 'deleteRemovedShareConflicts', false)
 		];
 
 		return new DataResponse($settings, Http::STATUS_OK);

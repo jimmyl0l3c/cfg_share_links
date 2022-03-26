@@ -4,9 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [Unreleased]
 
-Nothing yet.
+### Added
+
+- cfg_shares table to store data about custom shares
+- Settings option: to delete shares of deleted files during token checks (when creating/updating share)
+
+### Changed
+
+- Implemented IBootstrap
+- Updated translations from transifex
+
+### Fixed
+
+- Delete custom shares when node (file/folder) is deleted
 
 ## [1.1.1] - 2022-03-22
 

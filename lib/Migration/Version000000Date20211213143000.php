@@ -17,7 +17,7 @@ class Version000000Date20211213143000 extends SimpleMigrationStep {
 	 * @param array $options
 	 * @return null|ISchemaWrapper
 	 */
-	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options) {
+	public function changeSchema(IOutput $output, Closure $schemaClosure, array $options): ?ISchemaWrapper {
 		/** @var ISchemaWrapper $schema */
 		$schema = $schemaClosure();
 
@@ -25,22 +25,6 @@ class Version000000Date20211213143000 extends SimpleMigrationStep {
 			$schema->dropTable('cfg_shares');
 		}
 
-//		if (!$schema->hasTable('cfg_shares')) {
-//			$table = $schema->createTable('cfg_shares');
-//			$table->addColumn('id', 'integer', [
-//				'autoincrement' => true,
-//				'notnull' => true,
-//			]);
-//			$table->addColumn('share_full_id', 'string', [
-//				'notnull' => true,
-//			]);
-//			$table->addColumn('token', 'string', [
-//				'notnull' => true,
-//			]);
-//
-//			$table->setPrimaryKey(['id']);
-//			$table->addIndex(['share_full_id'], 'cfg_shares_share_full_id_index');
-//		}
 		return $schema;
 	}
 }

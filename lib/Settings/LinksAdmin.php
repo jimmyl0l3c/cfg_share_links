@@ -49,7 +49,8 @@ class LinksAdmin implements ISettings {
 		$parameters = [
 			'defaultLabelMode' => $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0),
 			'defaultLabel' => $this->config->getAppValue(Application::APP_ID, 'default_label', 'Custom link'),
-			'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3)
+			'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3),
+			'deleteRemovedShareConflicts' => $this->config->getAppValue(Application::APP_ID, 'deleteRemovedShareConflicts', false)
 		];
 
 		Util::addScript(Application::APP_ID, 'cfg_share_links-settings-admin');
