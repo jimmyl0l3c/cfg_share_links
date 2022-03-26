@@ -27,6 +27,7 @@
 namespace OCA\CfgShareLinks\AppInfo;
 
 use OCA\CfgShareLinks\Listener\NodeDeletedListener;
+use OCA\CfgShareLinks\Listener\ShareDeletedListener;
 use OCA\CfgShareLinks\Middleware\ShareMiddleware;
 use OCA\Files\Event\LoadAdditionalScriptsEvent;
 use OCP\AppFramework\App;
@@ -35,6 +36,7 @@ use OCP\AppFramework\Bootstrap\IBootstrap;
 use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\Events\Node\NodeDeletedEvent;
+use OCP\Share\Events\ShareDeletedEvent;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -54,8 +56,16 @@ class Application extends App implements IBootstrap {
 		});
 		$context->registerMiddleware('ShareMiddleware');
 
+		/**
+		 * Listen for NodeDeletedEvent (used to remove custom shares of deleted nodes)
+		 */
 		// possible events: BeforeNodeDeletedEvent, MoveToTrashEvent, NodeDeletedEvent
 		$context->registerEventListener(NodeDeletedEvent::class, NodeDeletedListener::class);
+
+		/**
+		 * Listen for ShareDeletedEvent (used to remove custom shares from cfg_shares table)
+		 */
+		$context->registerEventListener(ShareDeletedEvent::class, ShareDeletedListener::class);
 	}
 
 	/**
@@ -67,7 +77,7 @@ class Application extends App implements IBootstrap {
 		$appEventDispatcher = $context->getAppContainer()->get(IEventDispatcher::class);
 
 		/**
-		 * Load scripts to mount Vue components
+		 * Load scripts that mount Vue components
 		 */
 		$appEventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function () {
 			script('cfg_share_links', 'cfg_share_links-reg-rename');
