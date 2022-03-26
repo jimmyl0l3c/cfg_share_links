@@ -43,6 +43,28 @@ class SettingsControllerTest extends TestCase {
 	}
 
 	public function testSave() {
-		// TODO: write test
+		for ($i = 0; $i < 5; $i++) {
+			$result = $this->controller->save('default_label_mode', (string)$i);
+			if ($i <= 2) {
+				$this->assertEquals(Http::STATUS_OK, $result->getStatus());
+			} else {
+				$this->assertEquals(Http::STATUS_BAD_REQUEST, $result->getStatus());
+			}
+
+			$result = $this->controller->save('min_token_length', (string)$i);
+			if ($i == 0) {
+				$this->assertEquals(Http::STATUS_BAD_REQUEST, $result->getStatus());
+			} else {
+				$this->assertEquals(Http::STATUS_OK, $result->getStatus());
+			}
+
+			$result = $this->controller->save('deleteRemovedShareConflicts', (string)$i);
+			$this->assertEquals(Http::STATUS_OK, $result->getStatus());
+		}
+
+		$result = $this->controller->save('default_label', 'Test label');
+		$this->assertEquals(Http::STATUS_OK, $result);
+		$result = $this->controller->save('default_label', '');
+		$this->assertEquals(Http::STATUS_BAD_REQUEST, $result);
 	}
 }
