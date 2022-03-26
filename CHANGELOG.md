@@ -6,12 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+- cfg_shares table to store data about custom shares
+
 ### Changed
 
-- Delete custom shares when node (file/folder) is deleted
-- Add cfg_shares table to store data about custom shares
 - Implemented IBootstrap
 - Updated translations from transifex
+
+### Fixed
+
+- Delete custom shares when node (file/folder) is deleted
 
 ## [1.1.1] - 2022-03-22
 
