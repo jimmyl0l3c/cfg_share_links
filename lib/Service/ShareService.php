@@ -28,12 +28,18 @@ namespace OCA\CfgShareLinks\Service;
 
 use OC\User\NoUserException;
 use OCA\CfgShareLinks\AppInfo\Application;
+use OCA\CfgShareLinks\Db\CfgShare;
+use OCA\CfgShareLinks\Db\CfgShareMapper;
 use OCA\Files_Sharing\Exceptions\SharingRightsException;
+use OCP\AppFramework\Db\DoesNotExistException;
+use OCP\AppFramework\Db\MultipleObjectsReturnedException;
 use OCP\AppFramework\OCS\OCSBadRequestException;
 use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\AppFramework\OCS\OCSNotFoundException;
 use OCP\Constants;
+use OCP\DB\Exception;
+use OCP\Files\InvalidPathException;
 use OCP\Files\IRootFolder;
 use OCP\Files\Node;
 use OCP\Files\NotFoundException;
@@ -69,6 +75,8 @@ class ShareService {
 	private $lockedNode;
 	/** @var string */
 	private $currentUser;
+	/* @var CfgShareMapper */
+	private $mapper;
 
 	public function __construct(
 		LoggerInterface $logger,
@@ -77,7 +85,8 @@ class ShareService {
 		IRootFolder $rootFolder,
 		string $userId = null,
 		IL10N $l10n,
-		IConfig $config
+		IConfig $config,
+		CfgShareMapper $mapper
 	) {
 		$this->logger = $logger;
 		$this->shareManager = $shareManager;
@@ -86,6 +95,7 @@ class ShareService {
 		$this->currentUser = $userId;
 		$this->l = $l10n;
 		$this->config = $config;
+		$this->mapper = $mapper;
 	}
 
 	/**
@@ -98,6 +108,7 @@ class ShareService {
 	 * @throws InvalidTokenException
 	 * @throws TokenNotUniqueException
 	 * @throws NotPermittedException
+	 * @throws InvalidPathException
 	 */
 	public function create(string $path, int $shareType, string $tokenCandidate, string $userId): array {
 		if ($userId != null && $this->currentUser != $userId) {
@@ -179,6 +190,18 @@ class ShareService {
 		// Update share in db
 		$this->shareManager->updateShare($share);
 
+		// Add item to cfg_shares table
+		$c_share = new CfgShare();
+		$c_share->setFullId($share->getFullId());
+		$c_share->setToken($share->getToken());
+		$c_share->setNodeId($share->getNode()->getId());
+		try {
+			$this->mapper->insert($c_share);
+		} catch (Exception $e) {
+			$this->logger->error('Unable to add cfg_share to db. Share will not be deleted when file is deleted. 
+			(' . $e->getMessage() . ' - ' . $e->getTraceAsString() . ')');
+		}
+
 		return $this->serializeShare($share);
 	}
 
@@ -241,6 +264,27 @@ class ShareService {
 
 		// Update share in db
 		$this->shareManager->updateShare($share);
+
+		// Update/add item to cfg_shares table
+		try {
+			$c_share = $this->mapper->findByToken($currentToken);
+			$c_share->setToken($share->getToken());
+			$this->mapper->update($c_share);
+		} catch (Exception|DoesNotExistException $e) {
+			$this->logger->debug('Cfg_share missing in db, attempting to add.');
+			$c_share = new CfgShare();
+			$c_share->setFullId($share->getFullId());
+			$c_share->setToken($share->getToken());
+			try {
+				$c_share->setNodeId($share->getNode()->getId());
+				$this->mapper->insert($c_share);
+			} catch (Exception|NotFoundException|InvalidPathException $e) {
+				$this->logger->error('Unable to add cfg_share to db. Share will not be deleted when file is deleted.');
+			}
+		} catch (MultipleObjectsReturnedException $e) {
+			$this->logger->error('Db error - multiple objects returned.');
+			// TODO: resolve conflict
+		}
 
 		return $this->serializeShare($share);
 	}
