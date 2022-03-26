@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 
 ### Added
+
 - cfg_shares table to store data about custom shares
+- Settings option: to delete shares of deleted files during token checks (when creating/updating share)
 
 ### Changed
 

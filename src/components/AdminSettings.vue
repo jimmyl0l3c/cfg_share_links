@@ -49,6 +49,19 @@
 				<span v-if="isMinLenValid" class="form-error"> {{ isMinLenValid }} </span>
 			</div>
 		</SettingsSection>
+		<SettingsSection :title="t('cfg_share_links', 'Miscellaneous')"
+			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
+			<div>
+				<CheckboxRadioSwitch :disabled="updating.status === 1 || loading"
+					:checked.sync="deleteConflicts"
+					type="switch"
+					@update:checked="onDeleteConflictsChange">
+					{{ t('cfg_share_links', 'Delete shares of deleted files during token checks (when creating/updating share)') }}
+					<span v-if="updating.key === 'deleteRemovedShareConflicts'"
+						:class="'status-icon '.concat(updatingIcon)" />
+				</CheckboxRadioSwitch>
+			</div>
+		</SettingsSection>
 	</div>
 </template>
 
@@ -56,6 +69,7 @@
 import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
 import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
 import SettingsInputText from '@nextcloud/vue/dist/Components/SettingsInputText'
+import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch'
 import SettingsMixin from '../mixins/SettingsMixin'
 
 import axios from '@nextcloud/axios'
@@ -76,6 +90,7 @@ export default {
 		Multiselect,
 		SettingsSection,
 		SettingsInputText,
+		CheckboxRadioSwitch,
 	},
 
 	mixins: [
@@ -93,6 +108,7 @@ export default {
 			labelOptions,
 			customLabel: 'Custom link',
 			minLength: '3',
+			deleteConflicts: false,
 		}
 	},
 
@@ -130,6 +146,7 @@ export default {
 		this.customLabel = await this.getCustomLabel()
 		this.minLength = await this.getMinTokenLength()
 		this.labelMode = labelOptions[await this.getLabelMode()]
+		this.deleteConflicts = await this.getDeleteRemovedShareConflicts()
 
 		this.loading = false
 	},
@@ -171,6 +188,9 @@ export default {
 			this.minLength = value
 			// could do validity check here instead of computed
 		},
+		async onDeleteConflictsChange(value) {
+			await this.saveSettings('deleteRemovedShareConflicts', value ? '1' : '0')
+		},
 		async saveSettings(key, value) {
 			const data = {
 				key,
@@ -180,7 +200,7 @@ export default {
 			this.setUpdate(key, 1)
 			try {
 				const response = await axios.post(generateUrl('/apps/cfg_share_links/settings/save'), data)
-				console.info(response)
+				console.debug(response)
 				this.setUpdate(key, 2)
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
