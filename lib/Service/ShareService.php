@@ -359,7 +359,17 @@ class ShareService {
 
 		// Unique check
 		try {
-			$this->shareManager->getShareByToken($tokenCandidate);
+			$share = $this->shareManager->getShareByToken($tokenCandidate);
+			if ($this->config->getAppValue(Application::APP_ID, 'deleteRemovedShareConflicts', false)) {
+				try {
+					$share->getNode();
+				} catch (NotFoundException $e) {
+					// Remove share if the file/folder does not exist
+					$this->logger->debug('Conflicting token, but node does not exist. Removing conflicting share.');
+					$this->shareManager->deleteShare($share);
+					return;
+				}
+			}
 			throw new TokenNotUniqueException($this->l->t('Token is not unique'));
 		} catch (ShareNotFound $e) {
 		}
