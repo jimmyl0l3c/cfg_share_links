@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-03-26 03:41+0000\n"
+"POT-Creation-Date: 2022-03-27 03:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,51 +24,51 @@ msgstr ""
 
 #. TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
 #. TRANSLATORS function to update share token is expecting type link, but received some other type
-#: /app/lib/Service/ShareService.php:109 /app/lib/Service/ShareService.php:217
+#: /app/lib/Service/ShareService.php:120 /app/lib/Service/ShareService.php:240
 msgid "Invalid share type"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:114
+#: /app/lib/Service/ShareService.php:125
 msgid "Public link sharing is disabled by the administrator"
 msgstr ""
 
 #. TRANSLATORS function to create link received empty (null) path
-#: /app/lib/Service/ShareService.php:120
+#: /app/lib/Service/ShareService.php:131
 msgid "Please specify a file or folder path"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:127
+#: /app/lib/Service/ShareService.php:138
 msgid "Wrong path, file/folder does not exist"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:140
+#: /app/lib/Service/ShareService.php:151
 msgid "Could not create share"
 msgstr ""
 
 #. TRANSLATORS Trying to update (change token of) Share that does not exist
-#: /app/lib/Service/ShareService.php:211
+#: /app/lib/Service/ShareService.php:234
 msgid "Share not found"
 msgstr ""
 
 #. TRANSLATORS user tried to change token, but he does not have reshare permission
-#: /app/lib/Service/ShareService.php:225
+#: /app/lib/Service/ShareService.php:248
 msgid "Insufficient permission"
 msgstr ""
 
 #. TRANSLATORS error occurred while checking reshare permission (when updating token)
-#: /app/lib/Service/ShareService.php:230
+#: /app/lib/Service/ShareService.php:253
 msgid "Unable to check permissions"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:319
+#: /app/lib/Service/ShareService.php:373
 msgid "Token is not unique"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:333 /app/src/mixins/TokenValidation.js:21
+#: /app/lib/Service/ShareService.php:387 /app/src/mixins/TokenValidation.js:21
 msgid "Token is not long enough"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:339 /app/src/mixins/TokenValidation.js:23
+#: /app/lib/Service/ShareService.php:393 /app/src/mixins/TokenValidation.js:23
 msgid "Token contains invalid characters"
 msgstr ""
 
@@ -137,64 +137,86 @@ msgstr ""
 msgid "Minimal token length"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:67
+#. TRANSLATORS nts/AdminSettings.vue:52
 #: /app/specialVueFakeDummyForL10nScript.js:18
+msgid "Miscellaneous"
+msgstr ""
+
+#. TRANSLATORS nts/AdminSettings.vue:53
+#: /app/specialVueFakeDummyForL10nScript.js:20
+msgid "Miscellaneous tweaks"
+msgstr ""
+
+#. TRANSLATORS nts/AdminSettings.vue:55
+#: /app/specialVueFakeDummyForL10nScript.js:22
+msgid "Keep this option off if you did not use versions lower than 1.2.0"
+msgstr ""
+
+#. TRANSLATORS nts/AdminSettings.vue:61
+#: /app/specialVueFakeDummyForL10nScript.js:24
+msgid ""
+"Delete shares of deleted files during token checks (when creating/updating "
+"share)"
+msgstr ""
+
+#. TRANSLATORS nts/AdminSettings.vue:84
+#: /app/specialVueFakeDummyForL10nScript.js:26
 msgid "None"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:68
-#: /app/specialVueFakeDummyForL10nScript.js:20
+#. TRANSLATORS nts/AdminSettings.vue:85
+#: /app/specialVueFakeDummyForL10nScript.js:28
 msgid "Same as token"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:69
-#: /app/specialVueFakeDummyForL10nScript.js:22
+#. TRANSLATORS nts/AdminSettings.vue:86
+#: /app/specialVueFakeDummyForL10nScript.js:30
 msgid "Custom"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:104
-#: /app/specialVueFakeDummyForL10nScript.js:24
+#. TRANSLATORS nts/AdminSettings.vue:127
+#: /app/specialVueFakeDummyForL10nScript.js:32
 msgid "Entered length is not a number"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:108
-#: /app/specialVueFakeDummyForL10nScript.js:26
+#. TRANSLATORS nts/AdminSettings.vue:131
+#: /app/specialVueFakeDummyForL10nScript.js:34
 msgid "Minimum length must be at least 1"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:144
-#: /app/specialVueFakeDummyForL10nScript.js:28
+#. TRANSLATORS nts/AdminSettings.vue:168
+#: /app/specialVueFakeDummyForL10nScript.js:36
 msgid "Label cannot be empty"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:189
-#: /app/specialVueFakeDummyForL10nScript.js:30
+#. TRANSLATORS nts/AdminSettings.vue:216
+#: /app/specialVueFakeDummyForL10nScript.js:38
 msgid "Error occurred while saving settings"
 msgstr ""
 
 #. TRANSLATORS nts/NewLink.vue:4
-#: /app/specialVueFakeDummyForL10nScript.js:32
+#: /app/specialVueFakeDummyForL10nScript.js:40
 msgid "Custom public link"
 msgstr ""
 
 #. TRANSLATORS nts/NewLink.vue:17
 #. TRANSLATORS nts/RenameLink.vue:7
-#: /app/specialVueFakeDummyForL10nScript.js:34
-#: /app/specialVueFakeDummyForL10nScript.js:40
+#: /app/specialVueFakeDummyForL10nScript.js:42
+#: /app/specialVueFakeDummyForL10nScript.js:48
 msgid "Enter custom token"
 msgstr ""
 
 #. TRANSLATORS nts/NewLink.vue:96
-#: /app/specialVueFakeDummyForL10nScript.js:36
+#: /app/specialVueFakeDummyForL10nScript.js:44
 msgid "Link copied"
 msgstr ""
 
-#: /app/specialVueFakeDummyForL10nScript.js:36
+#: /app/specialVueFakeDummyForL10nScript.js:44
 msgid "Create link"
 msgstr ""
 
 #. TRANSLATORS nts/NewLink.vue:116
-#: /app/specialVueFakeDummyForL10nScript.js:38
+#: /app/specialVueFakeDummyForL10nScript.js:46
 msgid "Invalid token"
 msgstr ""
 
