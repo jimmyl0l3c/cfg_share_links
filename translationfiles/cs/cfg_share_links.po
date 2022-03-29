@@ -5,15 +5,16 @@
 # 
 # Translators:
 # Pavel Borecki <pavel.borecki@gmail.com>, 2022
+# Filip Joska, 2022
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-03-28 03:39+0000\n"
+"POT-Creation-Date: 2022-03-29 03:41+0000\n"
 "PO-Revision-Date: 2022-03-18 03:38+0000\n"
-"Last-Translator: Pavel Borecki <pavel.borecki@gmail.com>, 2022\n"
+"Last-Translator: Filip Joska, 2022\n"
 "Language-Team: Czech (Czech Republic) (https://www.transifex.com/nextcloud/teams/64236/cs_CZ/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -157,17 +158,18 @@ msgstr "Nejkratší umožněná délka tokenu"
 #. TRANSLATORS nts/AdminSettings.vue:52
 #: /app/specialVueFakeDummyForL10nScript.js:18
 msgid "Miscellaneous"
-msgstr ""
+msgstr "Různé"
 
 #. TRANSLATORS nts/AdminSettings.vue:53
 #: /app/specialVueFakeDummyForL10nScript.js:20
 msgid "Miscellaneous tweaks"
-msgstr ""
+msgstr "Různá vyladění"
 
 #. TRANSLATORS nts/AdminSettings.vue:55
 #: /app/specialVueFakeDummyForL10nScript.js:22
 msgid "Keep this option off if you did not use versions lower than 1.2.0"
 msgstr ""
+"Pokud nepoužíváte verzi starší než 1.2.0, ponechte tuto volbu vypnutou"
 
 #. TRANSLATORS nts/AdminSettings.vue:61
 #: /app/specialVueFakeDummyForL10nScript.js:24
@@ -175,21 +177,23 @@ msgid ""
 "Delete shares of deleted files during token checks (when creating/updating "
 "share)"
 msgstr ""
+"Při kontrole tokenů mazat sdílení už smazaných souborů (při "
+"vytváření/aktualizaci sdílení)"
 
 #. TRANSLATORS nts/AdminSettings.vue:84
 #: /app/specialVueFakeDummyForL10nScript.js:26
 msgid "None"
-msgstr "Žádná"
+msgstr "Žádný"
 
 #. TRANSLATORS nts/AdminSettings.vue:85
 #: /app/specialVueFakeDummyForL10nScript.js:28
 msgid "Same as token"
-msgstr "Stejná jako token"
+msgstr "Stejný jako token"
 
 #. TRANSLATORS nts/AdminSettings.vue:86
 #: /app/specialVueFakeDummyForL10nScript.js:30
 msgid "Custom"
-msgstr "Uživatelsky určená"
+msgstr "Uživatelsky určený"
 
 #. TRANSLATORS nts/AdminSettings.vue:127
 #: /app/specialVueFakeDummyForL10nScript.js:32
