@@ -11,6 +11,7 @@ OC.L10N.register(
     "Custom" : "Pertsonalizatua",
     "Label cannot be empty" : "Etiketa ezin da hutsik egon",
     "Link copied" : "Esteka kopiatu da",
+    "Create link" : "Sortu esteka",
     "Invalid token" : "Token baliogabea"
 },
 "nplurals=2; plural=(n != 1);");
