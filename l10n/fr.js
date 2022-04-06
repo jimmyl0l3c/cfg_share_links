@@ -39,4 +39,4 @@ OC.L10N.register(
     "Custom public link renamed" : "Lien public personnalisé renommé",
     "Error occurred while renaming public link" : "Une erreur est survenue lors du renommage du lien public"
 },
-"nplurals=3; plural=(n==0 || n==1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
+"nplurals=2; plural=(n > 1);");
