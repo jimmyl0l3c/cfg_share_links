@@ -5,6 +5,6 @@ OC.L10N.register(
     "Invalid share type" : "無効な共有タイプ",
     "Public link sharing is disabled by the administrator" : "公開リンクの共有は管理者により無効にされています",
     "Please specify a file or folder path" : "ファイルかフォルダーパスを指定して下さい",
-    "Wrong path, file/folder does not exist" : "ファイル/フォルダーが存在しない、誤ったパス"
+    "Wrong path, file/folder does not exist" : "パスが間違っています。ファイル/フォルダーがありません"
 },
 "nplurals=1; plural=0;");
