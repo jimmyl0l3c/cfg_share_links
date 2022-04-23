@@ -20,7 +20,7 @@ OC.L10N.register(
     "Default label" : "Standardmarkierung",
     "Select label type" : "Markierungstyp wählen",
     "Custom label" : "Benutzerdefinierte Markierung",
-    "Token settings" : "Token Einstellungen",
+    "Token settings" : "Token-Einstellungen",
     "Configure requirements for tokens" : "Konfiguriere die Anforderungen für Token",
     "Minimal token length" : "Minimale Tokenlänge",
     "Miscellaneous" : "Verschiedenes",
