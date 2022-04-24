@@ -1,0 +1,6 @@
+{ "translations": {
+    "None" : "ບໍ່ມີ",
+    "Label cannot be empty" : "Label ບໍ່ສາມາດເປົ່າວ່າງໄດ້",
+    "Link copied" : "ສຳເນົາລິງ"
+},"pluralForm" :"nplurals=1; plural=0;"
+}

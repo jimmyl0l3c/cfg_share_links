@@ -22,6 +22,7 @@ OC.L10N.register(
     "Token settings" : "Paramètres du nom",
     "Configure requirements for tokens" : "Configurer les exigences pour les noms",
     "Minimal token length" : "Longueur minimale des noms",
+    "Miscellaneous" : "Divers",
     "None" : "Aucune",
     "Same as token" : "Identique à celle de l'étiquette",
     "Custom" : "Personnalisé",

@@ -21,6 +21,7 @@ OC.L10N.register(
     "Token settings" : "Настройки токена",
     "Configure requirements for tokens" : "Настройте требования для токенов",
     "Minimal token length" : "Минимальная длина токена",
+    "Miscellaneous" : "Разное",
     "None" : "Отсутствует",
     "Same as token" : "Так же как у токена",
     "Custom" : "Свои параметры",
