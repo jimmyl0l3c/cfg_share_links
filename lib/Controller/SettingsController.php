@@ -35,7 +35,7 @@ use OCP\IRequest;
 
 class SettingsController extends Controller {
 	/** @var IConfig */
-	private $config;
+	private IConfig $config;
 
 	public function __construct(
 		IConfig $config,

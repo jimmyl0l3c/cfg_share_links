@@ -15,11 +15,11 @@ use Psr\Log\LoggerInterface;
 
 class NodeDeletedListener implements IEventListener {
 	/** @var LoggerInterface */
-	private $logger;
+	private LoggerInterface $logger;
 	/** @var CfgShareMapper */
-	private $mapper;
+	private CfgShareMapper $mapper;
 	/** @var IManager */
-	private $shareManager;
+	private IManager $shareManager;
 
 	public function __construct(
 		LoggerInterface $logger,

@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
 
 class CfgShareMapper extends QBMapper {
 	/** @var LoggerInterface */
-	private $logger;
+	private LoggerInterface $logger;
 
 	public function __construct(IDBConnection $db, LoggerInterface $logger) {
 		parent::__construct($db, 'cfg_shares', CfgShare::class);

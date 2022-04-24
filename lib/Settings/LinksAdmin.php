@@ -35,7 +35,7 @@ use OCP\Util;
 
 class LinksAdmin implements ISettings {
 	/** @var IConfig */
-	private $config;
+	private IConfig $config;
 
 	public function __construct(
 		IConfig $config,

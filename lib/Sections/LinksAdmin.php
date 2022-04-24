@@ -32,10 +32,10 @@ use OCP\Settings\IIconSection;
 
 class LinksAdmin implements IIconSection {
 	/** @var IL10N */
-	private $l;
+	private IL10N $l;
 
 	/** @var IURLGenerator */
-	private $urlGenerator;
+	private IURLGenerator $urlGenerator;
 
 	public function __construct(
 		IL10N $l,

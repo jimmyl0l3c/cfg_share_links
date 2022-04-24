@@ -60,23 +60,23 @@ use Psr\Log\LoggerInterface;
  */
 class ShareService {
 	/** @var LoggerInterface */
-	private $logger;
+	private LoggerInterface $logger;
 	/** @var IConfig */
-	private $config;
+	private IConfig $config;
 	/** @var IManager */
-	private $shareManager;
+	private IManager $shareManager;
 	/** @var IGroupManager */
-	private $groupManager;
+	private IGroupManager $groupManager;
 	/** @var IRootFolder */
-	private $rootFolder;
+	private IRootFolder $rootFolder;
 	/** @var IL10N */
-	private $l;
+	private IL10N $l;
 	/** @var Node */
-	private $lockedNode;
-	/** @var string */
-	private $currentUser;
+	private Node $lockedNode;
+	/** @var string|null */
+	private ?string $currentUser;
 	/* @var CfgShareMapper */
-	private $mapper;
+	private CfgShareMapper $mapper;
 
 	public function __construct(
 		LoggerInterface $logger,
