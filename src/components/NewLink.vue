@@ -36,8 +36,8 @@ import ListItem from '@nextcloud/vue/dist/Components/ListItem'
 import { generateUrl } from '@nextcloud/router'
 import '@nextcloud/dialogs/styles/toast.scss'
 import { showError } from '@nextcloud/dialogs'
-import TokenValidation from '../mixins/TokenValidation'
-import RequestMixin from '../mixins/RequestMixin'
+import TokenValidation from '../mixins/TokenValidation.js'
+import RequestMixin from '../mixins/RequestMixin.js'
 
 export default {
 	name: 'NewLink',

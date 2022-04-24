@@ -1,4 +1,4 @@
-import SettingsMixin from './SettingsMixin'
+import SettingsMixin from './SettingsMixin.js'
 
 export default {
 	mixins: [

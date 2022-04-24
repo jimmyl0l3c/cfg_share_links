@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import AdminSettings from './components/AdminSettings'
+import AdminSettings from './components/AdminSettings.vue'
 
 // Vue.prototype.OC = window.OC
 Vue.prototype.OCA = window.OCA

@@ -73,7 +73,7 @@ import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
 import SettingsInputText from '@nextcloud/vue/dist/Components/SettingsInputText'
 import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch'
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip'
-import SettingsMixin from '../mixins/SettingsMixin'
+import SettingsMixin from '../mixins/SettingsMixin.js'
 
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
