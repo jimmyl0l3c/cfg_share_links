@@ -1,6 +1,8 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Configurable Share Links" : "Links de partilha configuráveis",
+    "Invalid share type" : "Tipo de partilha inválida",
     "Public link sharing is disabled by the administrator" : "A partilha da hiperligação pública está desativada pelo administrador",
     "Please specify a file or folder path" : "Por favor, especifique um ficheiro ou caminho de pasta",
     "Could not create share" : "Não foi possível criar partilha",
