@@ -5,6 +5,7 @@ OC.L10N.register(
     "Invalid share type" : "Tipo de partilha inválida",
     "Public link sharing is disabled by the administrator" : "A partilha da hiperligação pública está desativada pelo administrador",
     "Please specify a file or folder path" : "Por favor, especifique um ficheiro ou caminho de pasta",
+    "Wrong path, file/folder does not exist" : "Caminho errado, ficheiro/pasta não existe",
     "Could not create share" : "Não foi possível criar partilha",
     "Share not found" : "Partilha não encontrada",
     "None" : "Nenhum",
