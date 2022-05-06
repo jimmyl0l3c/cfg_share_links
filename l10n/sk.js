@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Public link sharing is disabled by the administrator" : "Sprístupnenie pomocou verejných odkazov je zakázané administrátorom",
     "Please specify a file or folder path" : "Zvoľte prosím súbor alebo cestu k priečinku",
+    "Wrong path, file/folder does not exist" : "Neplatná cesta, súbor alebo priečinok neexistuje",
     "Could not create share" : "Nie je možné sprístupniť",
     "Share not found" : "Sprístupnenie sa nenašlo",
     "Miscellaneous" : "Rôzne",
