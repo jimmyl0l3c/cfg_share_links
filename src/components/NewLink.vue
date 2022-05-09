@@ -173,7 +173,7 @@ export default {
 	width: 80%;
 }
 ::v-deep .avatar-link-icon {
-	background-color: #c40c0c;
+	background-color: #c40c0c !important;
 }
 .l-hover ::v-deep a:hover {
 	background-color: transparent;
