@@ -418,10 +418,10 @@ class ShareService {
 	 * @throws LockedException
 	 */
 	public function cleanup() {
-        if (!empty($this->lockedNode)) {
-            $this->lockedNode->unlock(ILockingProvider::LOCK_SHARED);
-        }
-    }
+		if (!empty($this->lockedNode)) {
+			$this->lockedNode->unlock(ILockingProvider::LOCK_SHARED);
+		}
+	}
 
 	private function serializeShare(IShare $share): array {
 		return [
