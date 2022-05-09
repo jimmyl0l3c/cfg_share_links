@@ -206,8 +206,7 @@ export default {
 
 			this.setUpdate(key, 1)
 			try {
-				const response = await axios.post(generateUrl('/apps/cfg_share_links/settings/save'), data)
-				console.debug(response)
+				await axios.post(generateUrl('/apps/cfg_share_links/settings/save'), data)
 				this.setUpdate(key, 2)
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {

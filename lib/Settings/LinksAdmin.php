@@ -29,7 +29,6 @@ namespace OCA\CfgShareLinks\Settings;
 use OCA\CfgShareLinks\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\IConfig;
-use OCP\IL10N;
 use OCP\Settings\ISettings;
 use OCP\Util;
 
@@ -38,11 +37,9 @@ class LinksAdmin implements ISettings {
 	private IConfig $config;
 
 	public function __construct(
-		IConfig $config,
-		IL10N $l
+		IConfig $config
 	) {
 		$this->config = $config;
-		$this->l = $l;
 	}
 
 	public function getForm(): TemplateResponse {
