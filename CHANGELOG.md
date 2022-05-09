@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Removed
 
+- Support for NC 20, 21
 - Support for PHP 7.3
 
 ## [1.2.2] - 2022-04-13

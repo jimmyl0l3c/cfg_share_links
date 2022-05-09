@@ -98,18 +98,18 @@ class ShareService {
 		$this->mapper = $mapper;
 	}
 
-	/**
-	 * @throws NotFoundException
-	 * @throws OCSNotFoundException
-	 * @throws OCSException
-	 * @throws OCSBadRequestException
-	 * @throws OCSForbiddenException
-	 * @throws NoUserException
-	 * @throws InvalidTokenException
-	 * @throws TokenNotUniqueException
-	 * @throws NotPermittedException
-	 * @throws InvalidPathException
-	 */
+    /**
+     * @throws OCSNotFoundException
+     * @throws OCSException
+     * @throws OCSBadRequestException
+     * @throws OCSForbiddenException
+     * @throws NoUserException
+     * @throws InvalidTokenException
+     * @throws TokenNotUniqueException
+     * @throws NotPermittedException
+     * @throws InvalidPathException
+     * @throws NotFoundException
+     */
 	public function create(string $path, int $shareType, string $tokenCandidate, string $userId): array {
 		if ($userId != null && $this->currentUser != $userId) {
 			$this->currentUser = $userId;
@@ -133,7 +133,7 @@ class ShareService {
 
 		$userFolder = $this->rootFolder->getUserFolder($this->currentUser);
 		try {
-			$path = $userFolder->get($path);
+			$node = $userFolder->get($path);
 		} catch (NotFoundException $e) {
 			throw new OCSNotFoundException($this->l->t('Wrong path, file/folder does not exist'));
 		}
@@ -143,15 +143,15 @@ class ShareService {
 
 		$share = $this->shareManager->newShare();
 
-		$share->setNode($path);
+		$share->setNode($node);
 
 		try {
 			$this->lock($share->getNode());
-		} catch (LockedException $e) {
+		} catch (NotFoundException|LockedException $e) {
 			throw new OCSNotFoundException($this->l->t('Could not create share'));
 		}
 
-		$permissions = Constants::PERMISSION_READ;
+        $permissions = Constants::PERMISSION_READ;
 		// TODO: It might make sense to have a dedicated setting to allow/deny converting link shares into federated ones
 		if (($permissions & Constants::PERMISSION_READ) && $this->shareManager->outgoingServer2ServerSharesAllowed()) {
 			$permissions |= Constants::PERMISSION_SHARE;
@@ -205,19 +205,20 @@ class ShareService {
 		return $this->serializeShare($share);
 	}
 
-	/**
-	 * @param string $id
-	 * @param string $path
-	 * @param string $currentToken
-	 * @param string $tokenCandidate
-	 * @param string $userId
-	 * @return array
-	 * @throws InvalidTokenException
-	 * @throws OCSBadRequestException
-	 * @throws ShareNotFound
-	 * @throws TokenNotUniqueException
-	 * @throws SharingRightsException
-	 */
+    /**
+     * @param string $id
+     * @param string $path
+     * @param string $currentToken
+     * @param string $tokenCandidate
+     * @param string $userId
+     * @return array
+     * @throws InvalidTokenException
+     * @throws OCSBadRequestException
+     * @throws ShareNotFound
+     * @throws TokenNotUniqueException
+     * @throws SharingRightsException
+     * @throws OCSNotFoundException
+     */
 	public function update(string $id, string $path, string $currentToken, string $tokenCandidate, string $userId): array {
 		if ($userId != null && $this->currentUser != $userId) {
 			$this->currentUser = $userId;
@@ -235,7 +236,13 @@ class ShareService {
 		}
 		//        $share = $this->shareManager->getShareById($id);
 
-		if ($share->getShareType() !== IShare::TYPE_LINK) {
+        try {
+            $this->lock($share->getNode());
+        } catch (NotFoundException|LockedException $e) {
+            throw new OCSNotFoundException($this->l->t('Could not create share'));
+        }
+
+        if ($share->getShareType() !== IShare::TYPE_LINK) {
 			// TRANSLATORS function to update share token is expecting type link, but received some other type
 			throw new OCSBadRequestException($this->l->t('Invalid share type'));
 		}
