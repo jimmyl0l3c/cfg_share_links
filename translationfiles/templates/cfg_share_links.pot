@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Nextcloud 3.14159\n"
 "Report-Msgid-Bugs-To: translations\\@example.com\n"
-"POT-Creation-Date: 2022-05-09 03:45+0000\n"
+"POT-Creation-Date: 2022-05-10 03:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #. TRANSLATORS function to create link with custom share token is expecting type link (but received some other type)
 #. TRANSLATORS function to update share token is expecting type link, but received some other type
-#: /app/lib/Service/ShareService.php:120 /app/lib/Service/ShareService.php:240
+#: /app/lib/Service/ShareService.php:120 /app/lib/Service/ShareService.php:247
 msgid "Invalid share type"
 msgstr ""
 
@@ -41,34 +41,34 @@ msgstr ""
 msgid "Wrong path, file/folder does not exist"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:151
+#: /app/lib/Service/ShareService.php:151 /app/lib/Service/ShareService.php:242
 msgid "Could not create share"
 msgstr ""
 
 #. TRANSLATORS Trying to update (change token of) Share that does not exist
-#: /app/lib/Service/ShareService.php:234
+#: /app/lib/Service/ShareService.php:235
 msgid "Share not found"
 msgstr ""
 
 #. TRANSLATORS user tried to change token, but he does not have reshare permission
-#: /app/lib/Service/ShareService.php:248
+#: /app/lib/Service/ShareService.php:255
 msgid "Insufficient permission"
 msgstr ""
 
 #. TRANSLATORS error occurred while checking reshare permission (when updating token)
-#: /app/lib/Service/ShareService.php:253
+#: /app/lib/Service/ShareService.php:260
 msgid "Unable to check permissions"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:373
+#: /app/lib/Service/ShareService.php:380
 msgid "Token is not unique"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:387 /app/src/mixins/TokenValidation.js:21
+#: /app/lib/Service/ShareService.php:394 /app/src/mixins/TokenValidation.js:21
 msgid "Token is not long enough"
 msgstr ""
 
-#: /app/lib/Service/ShareService.php:393 /app/src/mixins/TokenValidation.js:23
+#: /app/lib/Service/ShareService.php:400 /app/src/mixins/TokenValidation.js:23
 msgid "Token contains invalid characters"
 msgstr ""
 
@@ -189,7 +189,7 @@ msgstr ""
 msgid "Label cannot be empty"
 msgstr ""
 
-#. TRANSLATORS nts/AdminSettings.vue:216
+#. TRANSLATORS nts/AdminSettings.vue:215
 #: /app/specialVueFakeDummyForL10nScript.js:38
 msgid "Error occurred while saving settings"
 msgstr ""
