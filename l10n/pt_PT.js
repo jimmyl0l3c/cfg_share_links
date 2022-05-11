@@ -1,7 +1,7 @@
 OC.L10N.register(
     "cfg_share_links",
     {
-    "Configurable Share Links" : "Links de partilha configuráveis",
+    "Configurable Share Links" : "Hiperligações de partilha configuráveis",
     "Invalid share type" : "Tipo de partilha inválida",
     "Public link sharing is disabled by the administrator" : "A partilha da hiperligação pública está desativada pelo administrador",
     "Please specify a file or folder path" : "Por favor, especifique um ficheiro ou caminho de pasta",
@@ -31,7 +31,17 @@ OC.L10N.register(
     "Same as token" : "O mesmo que o token",
     "Custom" : "Personalizado",
     "Entered length is not a number" : "O comprimento inserido não é um número",
-    "Label cannot be empty" : "Nome não pode ficar em branco",
-    "Link copied" : "Hiperligação copiada"
+    "Minimum length must be at least 1" : "O comprimento mínimo deve ser de pelo menos 1",
+    "Label cannot be empty" : "A etiqueta não pode ficar em branco",
+    "Error occurred while saving settings" : "Ocorreu um erro ao salvar as configurações",
+    "Custom public link" : "Hiperligação pública personalizada",
+    "Enter custom token" : "Insira o token personalizado",
+    "Link copied" : "Hiperligação copiada",
+    "Create link" : "Criar hiperligação",
+    "Invalid token" : "token inválido",
+    "Custom public link created" : "Criada hiperligação pública personalizada",
+    "Error occurred while creating public link" : "Ocorreu um erro ao criar a hiperligação pública",
+    "Custom public link renamed" : "Renomeada hiperligação pública personalizada ",
+    "Error occurred while renaming public link" : "Ocorreu um erro ao renomear a hiperligação pública"
 },
 "nplurals=2; plural=(n != 1);");
