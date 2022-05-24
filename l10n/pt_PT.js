@@ -44,4 +44,4 @@ OC.L10N.register(
     "Custom public link renamed" : "Renomeada hiperligação pública personalizada ",
     "Error occurred while renaming public link" : "Ocorreu um erro ao renomear a hiperligação pública"
 },
-"nplurals=2; plural=(n != 1);");
+"nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
