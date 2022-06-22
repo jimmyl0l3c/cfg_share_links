@@ -1,6 +1,7 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Miscellaneous" : "Amrywiol",
     "None" : "Dim",
     "Custom" : "Cyfaddas",
     "Link copied" : "Dolen wedi'i gopïo"
