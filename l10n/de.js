@@ -29,7 +29,7 @@ OC.L10N.register(
     "Custom" : "Benutzerdefiniert",
     "Entered length is not a number" : "Eingegebene Länge ist keine Zahl",
     "Minimum length must be at least 1" : "Minimale Länge muß mindestens 1 betragen",
-    "Label cannot be empty" : "Benötigt keine Übersetzung. Für Android wird nur die formelle Übersetzung verwendet (de_DE).",
+    "Label cannot be empty" : "Bezeichnung darf nicht leer sein",
     "Error occurred while saving settings" : "Es ist ein Fehler beim Speichern der Einstellungen aufgetreten",
     "Custom public link" : "Benutzerdefinierter öffentlicher Link",
     "Enter custom token" : "Benutzerdefinierter Token eingeben",
