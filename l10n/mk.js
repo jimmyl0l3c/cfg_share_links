@@ -6,6 +6,7 @@ OC.L10N.register(
     "Could not create share" : "Неможе да се креира споделување",
     "Miscellaneous" : "Разно",
     "None" : "Ништо",
+    "Custom" : "Прилагодено",
     "Link copied" : "Линкот е копиран"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");
