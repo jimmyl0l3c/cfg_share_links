@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Public link sharing is disabled by the administrator" : "مشاركة عن طريق الروابط العامة معطل من قبل الادارة",
     "Please specify a file or folder path" : "يرجى تحديد مسار ملف او مجلد",
+    "Wrong path, file/folder does not exist" : "مسار الملف/المجد غير موجود",
     "Could not create share" : "لا يمكن انشاء مشاركة",
     "Miscellaneous" : "متنوع",
     "None" : "غير محدد",
