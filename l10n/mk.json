@@ -1,6 +1,7 @@
 { "translations": {
     "Public link sharing is disabled by the administrator" : "Споделување со јавен линк е оневозможено од страна на администраторот",
     "Please specify a file or folder path" : "Изберете датотека или патека до папка",
+    "Wrong path, file/folder does not exist" : "Погрешна патека, датотеката/папката не постои",
     "Could not create share" : "Неможе да се креира споделување",
     "Miscellaneous" : "Разно",
     "None" : "Ништо",
