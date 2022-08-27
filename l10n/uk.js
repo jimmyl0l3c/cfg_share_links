@@ -1,6 +1,8 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Public link sharing is disabled by the administrator" : "Адміністратор вимкнув публічний доступ за посиланням",
+    "Please specify a file or folder path" : "Будь ласка, вкажіть шлях до файлу або папки",
     "Miscellaneous" : "Різне",
     "None" : "Відсутній",
     "Label cannot be empty" : "Ярлик не може бути порожнім",

@@ -3,6 +3,8 @@ OC.L10N.register(
     {
     "Public link sharing is disabled by the administrator" : "Deling med offentligt link er deaktiveret af administratoren",
     "Please specify a file or folder path" : "Præciser venligst en fil eller mappesti",
+    "Wrong path, file/folder does not exist" : "Forkert sti, fil/mappe findes ikke",
+    "Could not create share" : "Kunne ikke oprette deling",
     "Share not found" : "Delt fil ikke fundet",
     "None" : "Ingen",
     "Custom" : "Valgfrit",
