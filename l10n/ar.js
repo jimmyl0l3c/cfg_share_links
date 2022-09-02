@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "يرجى تحديد مسار ملف او مجلد",
     "Wrong path, file/folder does not exist" : "مسار الملف/المجد غير موجود",
     "Could not create share" : "لا يمكن انشاء مشاركة",
+    "Share not found" : "مشاركة غير موجودة",
     "Miscellaneous" : "متنوع",
     "None" : "غير محدد",
     "Custom" : "مخصّص",
