@@ -12,6 +12,7 @@ OC.L10N.register(
     "Custom" : "Maatwerk",
     "Label cannot be empty" : "Label mag niet leeg zijn",
     "Link copied" : "Link gekopieerd",
+    "Create link" : "Link aanmaken",
     "Invalid token" : "Ongeldig token"
 },
 "nplurals=2; plural=(n != 1);");
