@@ -26,6 +26,7 @@ OC.L10N.register(
     "Miscellaneous" : "Verschiedenes",
     "Miscellaneous tweaks" : "Verschiedene Optimierungen",
     "Keep this option off if you did not use versions lower than 1.2.0" : "Lasse diese Option deaktiviert, wenn du keine niedrigere Version als 1.2.0 verwendest",
+    "Delete shares of deleted files during token checks (when creating/updating share)" : "Löschen von Freigaben gelöschter Dateien während Token-Prüfungen (beim Erstellen/Aktualisieren von Freigaben)",
     "None" : "Nichts",
     "Same as token" : "Gleich wie Token",
     "Custom" : "Benutzerdefiniert",
