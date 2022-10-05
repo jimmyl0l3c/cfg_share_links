@@ -16,6 +16,7 @@ OC.L10N.register(
     "App adding the ability to specify share tokens" : "Aplikácia pridáva možnosť špecifikovať tokeny zdieľania",
     "App for Nextcloud that adds the ability to specify share tokens when creating new public links and change tokens of existing links.\n\n## Features\n\nSharing sidebar is expanded by new section (Custom public link) that allows you to create public links with custom share tokens.\nYou can also customize share tokens of existing public links.\n\n## Settings\n\nBy going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.\nDefault label can be: none, same as token or custom (the same custom label for all custom links)." : "Aplikácia pre Nextcloud, ktorá pridáva možnosť špecifikovať tokeny zdieľania pri vytváraní nových verejných odkazov a meniť tokeny existujúcich odkazov.\n\n## Vlastnosti\n\nBočný panel zdieľania je rozšírený o novú sekciu (Vlastný verejný odkaz), ktorá vám umožňuje vytvárať verejné odkazy s vlastnými tokenmi zdieľania.\nMôžete tiež prispôsobiť tokeny zdieľania existujúcich verejných odkazov.\n\n## Nastavenie\n\nPrechodom na **Nastavenia > Správa > Konfigurovateľné zdieľané odkazy** môžu správcovia nastaviť predvolené štítky pre vlastné odkazy a minimálnu dĺžku tokenu.\nPredvolený štítok môže byť: žiadny, rovnaký ako token, alebo vlastný (rovnaký vlastný štítok pre všetky vlastné odkazy).",
     "Default share label" : "Predvolený štítok zdieľania",
+    "Configure whether a default label should be set to custom links and what that label should be" : "Nakonfigurujte, či má byť predvolený štítok nastavený na uživateľom definované odkazy a ako má tento štítok vyzerať",
     "Default label" : "Predvolený štítok",
     "Select label type" : "Vyberte typ štítku",
     "Custom label" : "Vlastný štítok",
@@ -24,6 +25,8 @@ OC.L10N.register(
     "Minimal token length" : "Minimálna dĺžka tokenu",
     "Miscellaneous" : "Rôzne",
     "Miscellaneous tweaks" : "Rôzne vychytávky",
+    "Keep this option off if you did not use versions lower than 1.2.0" : "Ponechajte vypnuté, ak nepoužívate verzie nižšie ako 1.2.0",
+    "Delete shares of deleted files during token checks (when creating/updating share)" : "Odstrániť zdieľanie odstránených súborov počas kontroly tokenov (pri vytváraní/aktualizácii zdieľania)",
     "None" : "Žiadne",
     "Same as token" : "Rovnaké ako token",
     "Custom" : "Vlastný",
@@ -31,8 +34,14 @@ OC.L10N.register(
     "Minimum length must be at least 1" : "Minimálna dĺžka musí byť aspoň 1",
     "Label cannot be empty" : "Štítok nemôže byť prázdny",
     "Error occurred while saving settings" : "Nastala chyba počas ukladania nastavení",
+    "Custom public link" : "Vlastný verejný odkaz",
+    "Enter custom token" : "Vložte vlastný token",
     "Link copied" : "Odkaz skopírovaný",
     "Create link" : "Vytvoriť odkaz",
-    "Invalid token" : "Neplatný token"
+    "Invalid token" : "Neplatný token",
+    "Custom public link created" : "Vlastný verejný odkaz bol vytvorený",
+    "Error occurred while creating public link" : "Pri vytváraní vlastného verejného odkazu nastala chyba",
+    "Custom public link renamed" : "Vlastný verejný odkaz bol premenovaný",
+    "Error occurred while renaming public link" : "Pri premenovávaní vlastného verejného odkazu nastala chyba"
 },
 "nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);");
