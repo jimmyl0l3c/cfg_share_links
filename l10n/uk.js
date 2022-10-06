@@ -4,7 +4,7 @@ OC.L10N.register(
     "Configurable Share Links" : "Настроювані посилання для спільного доступу",
     "Invalid share type" : "Недійсний тип спільного доступу",
     "Public link sharing is disabled by the administrator" : "Адміністратор вимкнув публічний доступ за посиланням",
-    "Please specify a file or folder path" : "Будь ласка, вкажіть шлях до файлу або папки",
+    "Please specify a file or folder path" : "Будь ласка, вкажіть шлях до файлу або каталогу",
     "Wrong path, file/folder does not exist" : "Неправильний шлях, такий файл або каталог відсутні",
     "Could not create share" : "Не вдалося створити спільний доступ",
     "Share not found" : "Частку не знайдено",
