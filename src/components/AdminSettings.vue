@@ -75,10 +75,10 @@ import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwi
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip'
 import SettingsMixin from '../mixins/SettingsMixin.js'
 
-import axios from '@nextcloud/axios'
-import { generateUrl } from '@nextcloud/router'
 import '@nextcloud/dialogs/styles/toast.scss'
+import { generateUrl } from '@nextcloud/router'
 import { showError } from '@nextcloud/dialogs'
+import axios from '@nextcloud/axios'
 
 const labelOptions = [
 	{ id: 0, label: t('cfg_share_links', 'None') },
@@ -227,6 +227,7 @@ export default {
 	color: #c40c0c;
 	display: block;
 }
+
 .status-icon {
 	display: inline-block;
 	margin-left: 6px;

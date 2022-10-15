@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated translations from transifex
 - Updated dependencies
 
+### Fixed
+
+- Copying new link to clipboard when not using HTTPS
+
 ## [2.0.0] - 2022-05-09
 
 ### Added
