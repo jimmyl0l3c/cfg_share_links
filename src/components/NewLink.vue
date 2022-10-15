@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import ActionButton from '@nextcloud/vue/dist/Components/ActionButton'
-import Avatar from '@nextcloud/vue/dist/Components/Avatar'
-import ListItem from '@nextcloud/vue/dist/Components/ListItem'
+import ActionButton from '@nextcloud/vue/dist/Components/ActionButton.js'
+import Avatar from '@nextcloud/vue/dist/Components/Avatar.js'
+import ListItem from '@nextcloud/vue/dist/Components/ListItem.js'
 
 import { generateUrl } from '@nextcloud/router'
 import '@nextcloud/dialogs/styles/toast.scss'

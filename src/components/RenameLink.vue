@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ActionInput from '@nextcloud/vue/dist/Components/ActionInput'
+import ActionInput from '@nextcloud/vue/dist/Components/ActionInput.js'
 import '@nextcloud/dialogs/styles/toast.scss'
 import { showError } from '@nextcloud/dialogs'
 import TokenValidation from '../mixins/TokenValidation.js'

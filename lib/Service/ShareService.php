@@ -385,8 +385,7 @@ class ShareService {
 	/**
 	 * @throws InvalidTokenException
 	 */
-	private function checkTokenValidity(string $token) // TODO: use regular expression
-	{
+	private function checkTokenValidity(string $token) { // TODO: use regular expression
 		$char_array = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+');
 		$min_length = $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3);
 

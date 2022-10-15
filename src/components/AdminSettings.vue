@@ -68,11 +68,11 @@
 </template>
 
 <script>
-import Multiselect from '@nextcloud/vue/dist/Components/Multiselect'
-import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection'
-import SettingsInputText from '@nextcloud/vue/dist/Components/SettingsInputText'
-import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch'
-import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip'
+import Multiselect from '@nextcloud/vue/dist/Components/Multiselect.js'
+import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection.js'
+import SettingsInputText from '@nextcloud/vue/dist/Components/SettingsInputText.js'
+import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch.js'
+import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import SettingsMixin from '../mixins/SettingsMixin.js'
 
 import '@nextcloud/dialogs/styles/toast.scss'
