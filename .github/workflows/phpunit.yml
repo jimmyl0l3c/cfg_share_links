@@ -149,7 +149,7 @@ jobs:
       # do not stop on another job's failure
       fail-fast: false
       matrix:
-        php-versions: ['7.4']
+        php-versions: ['7.4', '8.0']
         databases: ['pgsql']
         server-versions: ['master']
   
@@ -170,16 +170,10 @@ jobs:
       - name: Checkout server
         uses: actions/checkout@v3
         with:
+          submodules: true
           repository: nextcloud/server
           ref: ${{ matrix.server-versions }}
-
-      - name: Checkout submodules
-        shell: bash
-        run: |
-          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
-          git submodule sync --recursive
-          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
-
+  
       - name: Checkout app
         uses: actions/checkout@v3
         with:
