@@ -118,7 +118,7 @@ export default {
 				return
 			}
 
-			const response = await this.createLink(this.getFullPath, token)
+			const response = await this.createLink(this.getFullPath, token);
 
 			if (response && response.ret === 0) {
 				let resultToken = token
@@ -127,19 +127,23 @@ export default {
 				}
 				const shareLink = window.location.protocol + '//' + window.location.host + generateUrl('/s/') + resultToken
 
-				await navigator.clipboard.writeText(shareLink).then(() => {
-					console.debug('CfgShareLinks: Link copied')
-					// Notify that link was copied
-					this.copied = true
-					this.$refs.newItem.$refs.actions.$el.focus()
-					// Reset tooltip after 4s
-					setTimeout(() => {
-						this.copied = false
-					}, 4000)
-				}).catch(reason => {
-					console.debug('CfgShareLinks: Could not copy')
-					console.debug(reason)
-				})
+        if (!navigator.clipboard) {
+          this.fallbackCopyTextToClipboard(shareLink);
+        } else {
+          await navigator.clipboard.writeText(shareLink).then(() => {
+            console.debug('CfgShareLinks: Link copied')
+            // Notify that link was copied
+            this.copied = true
+            this.$refs.newItem.$refs.actions.$el.focus()
+            // Reset tooltip after 4s
+            setTimeout(() => {
+              this.copied = false
+            }, 4000)
+          }).catch(reason => {
+            console.debug('CfgShareLinks: Could not copy')
+            console.debug(reason)
+          })
+        }
 			}
 
 			this.focused = false
@@ -148,6 +152,37 @@ export default {
 
 			this.updating = false
 		},
+    fallbackCopyTextToClipboard(text) {
+      let textArea = document.createElement("textarea");
+      textArea.value = text;
+
+      // Avoid scrolling to bottom
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        const successful = document.execCommand('copy');
+        const msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Fallback: Copying text command was ' + msg);
+
+        // Notify that link was copied
+        this.copied = true
+        this.$refs.newItem.$refs.actions.$el.focus()
+        // Reset tooltip after 4s
+        setTimeout(() => {
+          this.copied = false
+        }, 4000)
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+
+      document.body.removeChild(textArea);
+    },
 		/*
 		  async testRename() {
 		 	this.updating = true
