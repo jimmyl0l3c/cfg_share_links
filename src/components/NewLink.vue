@@ -20,6 +20,16 @@
 				<span v-if="isInputValid && focused" class="form-error"> {{ isInputValid }} </span>
 			</template>
 			<template #actions>
+				<ActionText v-if="passwordPending" icon="icon-password">
+					{{ t('cfg_share_links', 'Password protection enforced') }}
+				</ActionText>
+				<ActionInput v-if="passwordPending"
+					icon="icon-password"
+					:disabled="updating"
+					:value.sync="password"
+					@submit="createCustomLink">
+					{{ t('cfg_share_links', 'Enter a password') }}
+				</ActionInput>
 				<ActionButton :icon="buttonIcon" @click="createCustomLink">
 					{{ copiedTooltip }}
 				</ActionButton>
@@ -29,6 +39,8 @@
 </template>
 
 <script>
+import ActionText from '@nextcloud/vue/dist/Components/ActionText.js'
+import ActionInput from '@nextcloud/vue/dist/Components/ActionInput.js'
 import ActionButton from '@nextcloud/vue/dist/Components/ActionButton.js'
 import Avatar from '@nextcloud/vue/dist/Components/Avatar.js'
 import ListItem from '@nextcloud/vue/dist/Components/ListItem.js'
@@ -43,6 +55,8 @@ export default {
 	name: 'NewLink',
 
 	components: {
+		ActionText,
+		ActionInput,
 		ActionButton,
 		Avatar,
 		ListItem,
@@ -68,6 +82,8 @@ export default {
 			tokenCandidate: null,
 			focused: false,
 			copied: false,
+			passwordPending: false,
+			password: null,
 		}
 	},
 
@@ -96,6 +112,9 @@ export default {
 			return this.copied ? t('cfg_share_links', 'Link copied') : t('cfg_share_links', 'Create link')
 			// return { content: message, show: this.copied, placement: 'bottom' }
 		},
+		isMenuOpened() {
+			return this.$refs.newItem.$refs.actions.opened
+		},
 	},
 
 	async mounted() {
@@ -110,7 +129,10 @@ export default {
 		},
 		async createCustomLink() {
 			this.updating = true
+			const enforcePassword = OC.appConfig.core.enforcePasswordForPublicLink
 			const token = this.tokenCandidate
+			const password = this.password
+
 			if (!this.isTokenValid(token)) {
 				const message = this.isTokenValidString(token)
 				showError(t('cfg_share_links', message != null && message.length > 1 ? message : t('cfg_share_links', 'Invalid token')))
@@ -118,9 +140,24 @@ export default {
 				return
 			}
 
-			const response = await this.createLink(this.getFullPath, token)
+			if (enforcePassword) {
+				console.debug('CfgShareLinks: EnforcePassword enabled')
+
+				if (!this.passwordPending || !this.isMenuOpened) {
+					// Open menu with password prompt
+					this.passwordPending = true
+					this.$refs.newItem.$refs.actions.openMenu()
+
+					this.updating = false
+					return
+				}
+			}
+
+			const response = await this.createLink(this.getFullPath, token, password)
 
 			if (response && response.ret === 0) {
+				this.passwordPending = false
+
 				let resultToken = token
 				if (response.data && response.data.token) {
 					resultToken = response.data.token
@@ -144,11 +181,11 @@ export default {
 						console.debug(reason)
 					})
 				}
-			}
 
-			this.focused = false
-			this.tokenCandidate = ''
-			this.refreshSidebar(this.fileInfo)
+				this.tokenCandidate = ''
+				this.focused = false
+				this.refreshSidebar(this.fileInfo)
+			}
 
 			this.updating = false
 		},

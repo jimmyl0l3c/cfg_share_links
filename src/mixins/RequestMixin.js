@@ -14,11 +14,12 @@ export default {
 				console.debug('CfgShareLinks: No share tab to update')
 			}
 		},
-		async createLink(path, token) {
+		async createLink(path, token, password = '') {
 			const data = {
 				path,
 				shareType: 3,
 				tokenCandidate: token,
+				password,
 			}
 
 			try {

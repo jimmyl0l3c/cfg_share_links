@@ -32,7 +32,7 @@ Také máte možnost upravovat sdílejicí tokeny existujících veřejných odk
 V sekci **Nastavení > Správa > Konfigurovatelné sdílené odkazy** mohou administrátoři definovat výchozí štítky vlastních odkazů a minimální délku tokenu.
 Výchozí štítek může být: žádný, stejný jako token nebo vlastní (stejný štítek pro všechny vlastní odkazy).
     ]]></description>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <licence>agpl</licence>
     <author mail="filip@joska.dev" >Filip Joska</author>
     <namespace>CfgShareLinks</namespace>

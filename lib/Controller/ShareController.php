@@ -31,12 +31,11 @@ class ShareController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 */
-	public function create(string $path, int $shareType, string $tokenCandidate): DataResponse {
+	public function create(string $path, int $shareType, string $tokenCandidate, string $password = ""): DataResponse {
 		//        return new DataResponse($this->service->create($path, $shareType, $tokenCandidate,
 		//            $this->userId));
-		return $this->handleException(function () use ($path, $shareType, $tokenCandidate) {
-			return $this->service->create($path, $shareType, $tokenCandidate,
-				$this->userId);
+		return $this->handleException(function () use ($path, $shareType, $tokenCandidate, $password) {
+			return $this->service->create($path, $shareType, $tokenCandidate, $this->userId, $password);
 		});
 	}
 
