@@ -36,6 +36,7 @@ OC.L10N.register(
     "Error occurred while saving settings" : "S'ha produït un error en desar la configuració",
     "Custom public link" : "Enllaç públic personalitzat",
     "Enter custom token" : "Introduïu un testimoni personalitzat",
+    "Password protection enforced" : "Protecció amb contrasenya obligatòria",
     "Link copied" : "Enllaç copiat",
     "Create link" : "Crea un enllaç",
     "Invalid token" : "El testimoni no és vàlid",

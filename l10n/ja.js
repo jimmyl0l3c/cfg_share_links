@@ -12,6 +12,8 @@ OC.L10N.register(
     "None" : "なし",
     "Custom" : "カスタム",
     "Label cannot be empty" : "ラベルは空にできません",
+    "Password protection enforced" : "パスワード保護が強制される",
+    "Enter a password" : "パスワードを入力",
     "Link copied" : "リンクをコピーしました"
 },
 "nplurals=1; plural=0;");

@@ -10,6 +10,8 @@ OC.L10N.register(
     "None" : "Nessuno",
     "Custom" : "Personalizzato",
     "Label cannot be empty" : "L'etichetta non può essere vuota",
+    "Password protection enforced" : "Protezione con password applicata",
+    "Enter a password" : "Digita una password",
     "Link copied" : "Collegamento copiato",
     "Invalid token" : "Token non valido"
 },

@@ -12,6 +12,8 @@ OC.L10N.register(
     "None" : "Geen",
     "Custom" : "Maatwerk",
     "Label cannot be empty" : "Label mag niet leeg zijn",
+    "Password protection enforced" : "Wachtwoordbeveiliging afgedwongen",
+    "Enter a password" : "Voer een wachtwoord in",
     "Link copied" : "Link gekopieerd",
     "Create link" : "Link aanmaken",
     "Invalid token" : "Ongeldig token"

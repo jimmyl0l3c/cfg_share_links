@@ -36,6 +36,8 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Ayarlar kaydedilirken sorun çıktı",
     "Custom public link" : "Özel herkese açık bağlantı",
     "Enter custom token" : "Özel kodu yazın",
+    "Password protection enforced" : "Parola koruması dayatılıyor",
+    "Enter a password" : "Bir parola yazın",
     "Link copied" : "Bağlantı kopyalandı",
     "Create link" : "Bağlantı oluştur",
     "Invalid token" : "Kod geçersiz",

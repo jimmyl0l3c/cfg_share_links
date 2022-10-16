@@ -16,6 +16,8 @@ OC.L10N.register(
     "None" : "Brez",
     "Custom" : "Po meri",
     "Label cannot be empty" : "Oznaka ne sme biti prazno polje",
+    "Password protection enforced" : "Zaščita z geslom je vsiljeno omogočena",
+    "Enter a password" : "Vpis gesla",
     "Link copied" : "Povezava je kopirana",
     "Create link" : "Ustvari povezavo"
 },

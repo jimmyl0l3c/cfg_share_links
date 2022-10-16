@@ -7,6 +7,8 @@ OC.L10N.register(
     "Share not found" : "Kunhavigo ne troviĝis",
     "None" : "Nenio",
     "Custom" : "Propra",
+    "Password protection enforced" : "Pasvorta protekto efektiva",
+    "Enter a password" : "Entajpu pasvorton",
     "Link copied" : "Ligilo kopiita"
 },
 "nplurals=2; plural=(n != 1);");

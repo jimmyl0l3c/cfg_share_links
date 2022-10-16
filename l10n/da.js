@@ -10,6 +10,7 @@ OC.L10N.register(
     "None" : "Ingen",
     "Custom" : "Valgfrit",
     "Label cannot be empty" : "Etiketten kan ikke være tom",
+    "Password protection enforced" : "Tvungen beskyttelse med kodeord",
     "Link copied" : "Link kopieret"
 },
 "nplurals=2; plural=(n != 1);");

@@ -7,6 +7,7 @@ OC.L10N.register(
     "Share not found" : "No se encontró el elemento compartido",
     "None" : "Ninguno",
     "Custom" : "Personalizado",
+    "Enter a password" : "Ingresa una contraseña",
     "Link copied" : "Enlace copiado"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

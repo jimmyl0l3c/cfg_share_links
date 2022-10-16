@@ -34,6 +34,8 @@
     "Error occurred while saving settings" : "Произошла ошибка при сохранении настроек",
     "Custom public link" : "Пользовательская общедоступная ссылка",
     "Enter custom token" : "Введите пользовательский токен",
+    "Password protection enforced" : "Требуется защита паролем",
+    "Enter a password" : "Введите пароль",
     "Link copied" : "Ссылка скопирована",
     "Create link" : "Создать ссылку",
     "Invalid token" : "Недопустимый токен",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Could not create share" : "Ei saanud jagamist luua",
     "None" : "Pole",
     "Custom" : "Kohandatud",
+    "Enter a password" : "Enter a password",
     "Link copied" : "Link kopeeritud"
 },
 "nplurals=2; plural=(n != 1);");

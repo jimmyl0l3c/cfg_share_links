@@ -36,6 +36,8 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Hiba történt a beállítások mentése során",
     "Custom public link" : "Egyéni nyilvános hivatkozás",
     "Enter custom token" : "Adja meg az egyéni tokent",
+    "Password protection enforced" : "Jelszavas védelem megkövetelve",
+    "Enter a password" : "Adja meg a jelszót",
     "Link copied" : "Hivatkozás másolva",
     "Create link" : "Hivatkozás létrehozása",
     "Invalid token" : "Érvénytelen token",

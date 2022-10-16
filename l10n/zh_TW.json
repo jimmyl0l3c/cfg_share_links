@@ -34,6 +34,8 @@
     "Error occurred while saving settings" : "儲存設定時發生錯誤",
     "Custom public link" : "自訂公開連結",
     "Enter custom token" : "輸入自訂權杖",
+    "Password protection enforced" : "已啟用密碼防護",
+    "Enter a password" : "輸入密碼",
     "Link copied" : "已複製連結",
     "Create link" : "建立連結",
     "Invalid token" : "無效的權杖",

@@ -27,6 +27,8 @@
     "Error occurred while saving settings" : "Det skjedde en feil når innstillingene ble lagret",
     "Custom public link" : "Egendefinert offentlig lenke",
     "Enter custom token" : "Legg inn egendefinert polett",
+    "Password protection enforced" : "Passordbeskyttelse er påkrevd",
+    "Enter a password" : "Skriv inn et passord",
     "Link copied" : "Lenke kopiert",
     "Create link" : "Lag lenke",
     "Invalid token" : "Ugyldig polett",

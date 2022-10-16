@@ -3,6 +3,7 @@
     "None" : "Không có",
     "Custom" : "Tùy chỉnh",
     "Label cannot be empty" : "Nhãn không thể trống",
+    "Enter a password" : "Nhập mật khẩu",
     "Link copied" : "Đã sao chép liên kết"
 },"pluralForm" :"nplurals=1; plural=0;"
 }

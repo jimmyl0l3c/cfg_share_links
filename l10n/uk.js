@@ -36,6 +36,8 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Під час збереження налаштувань сталася помилка",
     "Custom public link" : "Спеціальне публічне посилання",
     "Enter custom token" : "Введіть спеціальний маркер",
+    "Password protection enforced" : "Вимагати захист паролем",
+    "Enter a password" : "Зазначте пароль",
     "Link copied" : "Посилання скопійовано",
     "Create link" : "Створити посилання",
     "Invalid token" : "Неприпустимий маркер",

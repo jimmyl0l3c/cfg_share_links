@@ -36,6 +36,7 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Došlo k chybě při ukládání nastavení",
     "Custom public link" : "Uživatelsky určený veřejný odkaz",
     "Enter custom token" : "Zadejte uživatelsky určený token",
+    "Password protection enforced" : "Ochrana heslem vynucena",
     "Link copied" : "Odkaz zkopírován",
     "Create link" : "Vytvořit odkaz",
     "Invalid token" : "Neplatný token",

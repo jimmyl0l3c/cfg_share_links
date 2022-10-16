@@ -33,6 +33,8 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Une erreur s'est produite lors de l'enregistrement des paramètres",
     "Custom public link" : "Lien public personnalisé",
     "Enter custom token" : "Entrez un nom personnalisé",
+    "Password protection enforced" : "Protection par mot de passe forcée",
+    "Enter a password" : "Entrez un mot de passe",
     "Link copied" : "Lien copié",
     "Create link" : "Créer un lien",
     "Invalid token" : "Nom invalide",

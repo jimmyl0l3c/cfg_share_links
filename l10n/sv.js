@@ -9,6 +9,8 @@ OC.L10N.register(
     "None" : "Ingen",
     "Custom" : "Anpassad",
     "Label cannot be empty" : "Etiketten kan inte vara tom",
+    "Password protection enforced" : "Lösenordsskydd obligatorisk",
+    "Enter a password" : "Ange ett lösenord",
     "Link copied" : "Länken har kopierats"
 },
 "nplurals=2; plural=(n != 1);");

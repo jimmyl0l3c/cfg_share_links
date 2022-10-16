@@ -9,6 +9,7 @@ OC.L10N.register(
     "None" : "Perunu",
     "Custom" : "Personaliza",
     "Label cannot be empty" : "S'eticheta non podet èssere bòida",
+    "Enter a password" : "Dìgita una crae noa",
     "Link copied" : "Ligòngiu copiadu"
 },
 "nplurals=2; plural=(n != 1);");

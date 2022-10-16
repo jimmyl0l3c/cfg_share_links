@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "โปรดระบุเส้นทางของไฟล์หรือโฟลเดอร์",
     "None" : "ไม่มี",
     "Custom" : "กำหนดเอง",
+    "Enter a password" : "Enter a password",
     "Link copied" : "คัดลอกลิงก์แล้ว"
 },
 "nplurals=1; plural=0;");

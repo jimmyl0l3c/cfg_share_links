@@ -6,6 +6,7 @@ OC.L10N.register(
     "Could not create share" : "No fue posible crear el elemento compartido",
     "Share not found" : "No se encontró el elemento compartido",
     "None" : "Ninguno",
-    "Custom" : "Personalizado"
+    "Custom" : "Personalizado",
+    "Enter a password" : "Ingresa una contraseña"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");

@@ -8,6 +8,7 @@ OC.L10N.register(
     "Miscellaneous" : "متفرقه",
     "None" : "هیچ‌کدام",
     "Label cannot be empty" : "برچسب نمی تواند خالی باشد",
+    "Enter a password" : "یک گذرواژه وارد کنید",
     "Link copied" : "پیوند کپی شد"
 },
 "nplurals=2; plural=(n > 1);");

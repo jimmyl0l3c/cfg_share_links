@@ -9,6 +9,8 @@ OC.L10N.register(
     "None" : "Ekkert",
     "Custom" : "Sérsniðið",
     "Label cannot be empty" : "Merki má ekki vera tómt",
+    "Password protection enforced" : "Gerði verndun með lykilorði nauðsynlega",
+    "Enter a password" : "Settu inn lykilorð",
     "Link copied" : "Tengill afritaður"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

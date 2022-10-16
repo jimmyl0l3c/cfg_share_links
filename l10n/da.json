@@ -8,6 +8,7 @@
     "None" : "Ingen",
     "Custom" : "Valgfrit",
     "Label cannot be empty" : "Etiketten kan ikke være tom",
+    "Password protection enforced" : "Tvungen beskyttelse med kodeord",
     "Link copied" : "Link kopieret"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

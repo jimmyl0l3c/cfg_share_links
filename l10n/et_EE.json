@@ -4,6 +4,7 @@
     "Could not create share" : "Ei saanud jagamist luua",
     "None" : "Pole",
     "Custom" : "Kohandatud",
+    "Enter a password" : "Enter a password",
     "Link copied" : "Link kopeeritud"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

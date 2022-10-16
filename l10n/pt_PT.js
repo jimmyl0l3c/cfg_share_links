@@ -36,6 +36,8 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Ocorreu um erro ao salvar as configurações",
     "Custom public link" : "Hiperligação pública personalizada",
     "Enter custom token" : "Insira o token personalizado",
+    "Password protection enforced" : "Imposta protecção por palavra-passe",
+    "Enter a password" : "Insira uma palavra-passe",
     "Link copied" : "Hiperligação copiada",
     "Create link" : "Criar hiperligação",
     "Invalid token" : "token inválido",

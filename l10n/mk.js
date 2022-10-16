@@ -8,6 +8,8 @@ OC.L10N.register(
     "Miscellaneous" : "Разно",
     "None" : "Ништо",
     "Custom" : "Прилагодено",
+    "Password protection enforced" : "Задолжителна заштита со лозинка",
+    "Enter a password" : "Внесете лозинка",
     "Link copied" : "Линкот е копиран"
 },
 "nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;");

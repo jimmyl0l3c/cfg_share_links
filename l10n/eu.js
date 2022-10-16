@@ -36,6 +36,8 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Errore bat gertatu da ezarpenak gordetzean",
     "Custom public link" : " Pertsonalizatu esteka publikoa",
     "Enter custom token" : "Sartu token pertsonalizatua",
+    "Password protection enforced" : "Pasahitz bidezko babesa betearazita",
+    "Enter a password" : "Sartu pasahitza",
     "Link copied" : "Esteka kopiatu da",
     "Create link" : "Sortu esteka",
     "Invalid token" : "Token baliogabea",

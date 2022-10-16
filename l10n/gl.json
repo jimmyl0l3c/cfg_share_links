@@ -7,6 +7,8 @@
     "None" : "Ningún",
     "Custom" : "Personalizado",
     "Label cannot be empty" : "A etiqueta non pode estar baleira",
+    "Password protection enforced" : "Protección con contrasinal obrigado",
+    "Enter a password" : "Introduza un contrasinal",
     "Link copied" : "Ligazón copiada"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

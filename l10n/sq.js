@@ -6,6 +6,7 @@ OC.L10N.register(
     "Could not create share" : "Ndarja nuk u krijua dot",
     "None" : "Asnjë",
     "Custom" : "E përshtatur",
+    "Enter a password" : "Fusni një fjalëkalim",
     "Link copied" : "Linku u kopjua"
 },
 "nplurals=2; plural=(n != 1);");

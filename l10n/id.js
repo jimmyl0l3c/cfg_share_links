@@ -6,6 +6,8 @@ OC.L10N.register(
     "Could not create share" : "Tidak dapat membuat pembagian",
     "Miscellaneous" : "Lain-lain",
     "None" : "Tidak ada",
+    "Password protection enforced" : "Wajib menggunakan kata sandi",
+    "Enter a password" : "Masukkan kata sandi",
     "Link copied" : "Link tersalin"
 },
 "nplurals=1; plural=0;");
