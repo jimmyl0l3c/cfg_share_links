@@ -24,7 +24,6 @@
 					{{ t('cfg_share_links', 'Password protection enforced') }}
 				</ActionText>
 				<ActionInput v-if="passwordPending"
-					icon="icon-password"
 					:disabled="updating"
 					:value.sync="password"
 					@submit="createCustomLink">
@@ -79,6 +78,7 @@ export default {
 		return {
 			updating: false,
 			loading: true,
+			requestPending: false,
 			tokenCandidate: null,
 			focused: false,
 			copied: false,
@@ -153,7 +153,11 @@ export default {
 				}
 			}
 
+			if (this.requestPending) return
+
+			this.requestPending = true
 			const response = await this.createLink(this.getFullPath, token, password)
+			this.requestPending = false
 
 			if (response && response.ret === 0) {
 				this.passwordPending = false

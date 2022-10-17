@@ -18,7 +18,7 @@
 					:placeholder="t('cfg_share_links', 'Select label type')"
 					@update:value="onLabelModeChange" />
 			</div>
-			<div>
+			<div v-if="labelMode.id === 2">
 				<h3>
 					{{ t('cfg_share_links', 'Custom label') }}:
 					<span v-if="updating.key === 'default_label'"
@@ -26,9 +26,8 @@
 				</h3>
 				<SettingsInputText id="default-label"
 					label=""
-					:value="customLabel"
+					:value.sync="customLabel"
 					:disabled="updating.status === 1 || loading || labelMode.id !== 2"
-					@update:value="onCustomLabelChange"
 					@submit="onLabelSubmit" />
 			</div>
 		</SettingsSection>
@@ -42,9 +41,8 @@
 				</h3>
 				<SettingsInputText id="min-len"
 					label=""
-					:value="minLength"
+					:value.sync="minLength"
 					:disabled="updating.status === 1 || loading"
-					@update:value="onMinLengthChange"
 					@submit="onMinLengthSubmit" />
 				<span v-if="isMinLenValid" class="form-error"> {{ isMinLenValid }} </span>
 			</div>
@@ -121,13 +119,13 @@ export default {
 
 	computed: {
 		isMinLenValid() {
-			const minLength = this.minLength
+			const parsedMinLength = parseInt(this.minLength)
 
-			if (isNaN(minLength)) {
+			if (isNaN(parsedMinLength)) {
 				return t('cfg_share_links', 'Entered length is not a number')
 			}
 
-			if (parseInt(minLength) < 1) {
+			if (parsedMinLength < 1) {
 				return t('cfg_share_links', 'Minimum length must be at least 1')
 			}
 
@@ -187,13 +185,6 @@ export default {
 				return
 			}
 			await this.saveSettings('default_label_mode', value.id.toString())
-		},
-		onCustomLabelChange(value) {
-			this.customLabel = value
-		},
-		onMinLengthChange(value) {
-			this.minLength = value
-			// could do validity check here instead of computed
 		},
 		async onDeleteConflictsChange(value) {
 			await this.saveSettings('deleteRemovedShareConflicts', value ? '1' : '0')

@@ -13,8 +13,8 @@ use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class ShareServiceTest extends TestCase {
-	protected $service;
-	protected $userId = 'user';
+	protected ShareService $service;
+	protected string $userId = 'user';
 	protected $logger;
 	protected $shareManager;
 	protected $groupManager;

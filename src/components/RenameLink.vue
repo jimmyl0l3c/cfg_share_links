@@ -1,5 +1,6 @@
 <template>
 	<ActionInput :value.sync="tokenCandidate"
+		:disabled="updating"
 		type="text"
 		icon="icon-public"
 		@submit="onSubmit">
