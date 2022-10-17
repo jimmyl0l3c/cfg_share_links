@@ -6,3 +6,5 @@ node_modules/
 /.php_cs.cache
 js/*hot-update.*
 .php-cs-fixer.cache
+release_signature
+cfg_share_links.tar.gz
