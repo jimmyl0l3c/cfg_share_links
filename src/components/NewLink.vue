@@ -220,18 +220,6 @@ export default {
 
 			document.body.removeChild(textArea)
 		},
-		/*
-		  async testRename() {
-		 	this.updating = true
-		 	 await this.renameLink('21', '/Reshare.md', 'reshare-test1', 'reshare-bad')
-		 	 this.updating = false
-		  },
-		 async revertRename() {
-		 	this.updating = true
-		 	await this.renameLink('21', '/Reshare.md', 'reshare-bad', 'reshare-test1')
-		 	this.updating = false
-		 },
-		*/
 	},
 }
 </script>

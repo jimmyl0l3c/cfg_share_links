@@ -1,9 +1,8 @@
 <template>
-	<ActionInput :value="tokenCandidate"
+	<ActionInput :value.sync="tokenCandidate"
 		type="text"
 		icon="icon-public"
-		@submit="onSubmit"
-		@update:value="onTokenChange">
+		@submit="onSubmit">
 		{{ t('cfg_share_links', 'Enter custom token') }}
 	</ActionInput>
 </template>
@@ -76,9 +75,6 @@ export default {
 	},
 
 	methods: {
-		onTokenChange(token) {
-			this.tokenCandidate = token
-		},
 		async onSubmit(_) {
 			this.updating = true
 			const token = this.tokenCandidate
