@@ -1,6 +1,7 @@
 { "translations": {
     "None" : "Geen",
     "Custom" : "Eie",
+    "Enter a password" : "Gee ’n wagwoord",
     "Link copied" : "Skakel gekopieer"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

@@ -11,6 +11,7 @@ OC.L10N.register(
     "Custom" : "Προσαρμοσμένο",
     "Label cannot be empty" : "Η ετικέτα δεν μπορεί να είναι κενή",
     "Password protection enforced" : "Επιβλήθηκε προστασία με κωδικό",
+    "Enter a password" : "Εισάγετε συνθηματικό",
     "Link copied" : "Ο σύνδεσμος αντιγράφηκε"
 },
 "nplurals=2; plural=(n != 1);");

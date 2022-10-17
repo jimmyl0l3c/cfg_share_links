@@ -37,6 +37,7 @@ OC.L10N.register(
     "Custom public link" : "Uživatelsky určený veřejný odkaz",
     "Enter custom token" : "Zadejte uživatelsky určený token",
     "Password protection enforced" : "Ochrana heslem vynucena",
+    "Enter a password" : "Zadejte heslo",
     "Link copied" : "Odkaz zkopírován",
     "Create link" : "Vytvořit odkaz",
     "Invalid token" : "Neplatný token",

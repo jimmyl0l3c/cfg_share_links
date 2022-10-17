@@ -37,6 +37,7 @@ OC.L10N.register(
     "Custom public link" : "Benutzerdefinierter öffentlicher Link",
     "Enter custom token" : "Benutzerdefiniertes Token eingeben",
     "Password protection enforced" : "Passwortschutz erzwungen",
+    "Enter a password" : "Passwort eingeben",
     "Link copied" : "Link kopiert",
     "Create link" : "Link erstellen",
     "Invalid token" : "Ungültiger Token",

@@ -1,0 +1,6 @@
+{ "translations": {
+    "None" : "Ingen",
+    "Enter a password" : "Skriv inn eit passord",
+    "Link copied" : "Lenkje kopiert"
+},"pluralForm" :"nplurals=2; plural=(n != 1);"
+}

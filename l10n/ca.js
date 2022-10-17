@@ -37,6 +37,7 @@ OC.L10N.register(
     "Custom public link" : "Enllaç públic personalitzat",
     "Enter custom token" : "Introduïu un testimoni personalitzat",
     "Password protection enforced" : "Protecció amb contrasenya obligatòria",
+    "Enter a password" : "Introduïu una contrasenya",
     "Link copied" : "Enllaç copiat",
     "Create link" : "Crea un enllaç",
     "Invalid token" : "El testimoni no és vàlid",

@@ -8,6 +8,7 @@ OC.L10N.register(
     "None" : "None",
     "Custom" : "Custom",
     "Label cannot be empty" : "Label cannot be empty",
+    "Enter a password" : "Enter a password",
     "Link copied" : "Link copied"
 },
 "nplurals=2; plural=(n != 1);");
