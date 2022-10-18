@@ -11,7 +11,6 @@ OC.L10N.register(
     "Custom" : "Tinkinti",
     "Label cannot be empty" : "Kortelė negali būti tuščia",
     "Password protection enforced" : "Apsauga slaptažodžiu yra priverstinė",
-    "Enter a password" : "Enter a password",
     "Link copied" : "Nuoroda nukopijuota"
 },
 "nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);");
