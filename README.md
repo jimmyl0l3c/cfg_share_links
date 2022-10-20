@@ -36,4 +36,8 @@ You can also customize share tokens of existing public links as can be seen in t
 Admins can set default labels for custom links and minimal token length as can be seen in the next screenshot.
 Default label can be: none, same as token or custom (the same custom label for all custom links).
 
-![Sidebar preview](screens/nc01.png "Sidebar preview")
+![Admin settings preview](screens/nc01.png "Admin settings preview")
+
+Since version [2.0.1](https://github.com/jimmyl0l3c/cfg_share_links/releases/tag/v2.0.1) you can create custom links when **Enforce password protection** is enabled as can be seen in the screenshot below.
+
+![Sidebar with enforce password preview](screens/nc04.png "Sidebar with enforce password preview")
