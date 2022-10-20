@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Changed
+
+- Add 'Saving...' tooltip to loading icon in admin settings
+
 ## [3.0.0]
 
 ### Added
