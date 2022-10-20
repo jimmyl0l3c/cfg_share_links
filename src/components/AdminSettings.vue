@@ -6,13 +6,12 @@
 				<h3>
 					{{ t('cfg_share_links', 'Default label') }}:
 					<span v-if="updating.key === 'default_label_mode'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
 				</h3>
 				<NcMultiselect v-model="labelMode"
-					div
 					:options="labelOptions"
 					track-by="id"
 					label="label"
@@ -26,7 +25,7 @@
 				<h3>
 					{{ t('cfg_share_links', 'Custom label') }}:
 					<span v-if="updating.key === 'default_label'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -44,7 +43,7 @@
 				<h3>
 					{{ t('cfg_share_links', 'Minimal token length') }}:
 					<span v-if="updating.key === 'min_token_length'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -68,7 +67,7 @@
 					@update:checked="onDeleteConflictsChange">
 					{{ t('cfg_share_links', 'Delete shares of deleted files during token checks (when creating/updating share)') }}
 					<span v-if="updating.key === 'deleteRemovedShareConflicts'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -181,7 +180,6 @@ export default {
 		async onMinLengthSubmit() {
 			const minLength = this.minLength
 			const minLenError = this.isMinLenValid
-			console.debug(parseInt(minLength))
 
 			if (minLenError) {
 				showError(minLenError)
