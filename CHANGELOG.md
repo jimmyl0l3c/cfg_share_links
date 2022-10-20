@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Migrated icons to [vue-material-design-icons](https://www.npmjs.com/package/vue-material-design-icons)
 - NewLink: Changed `input` to `NcTextField`
 - Custom label in Admin settings is visible only when label mode is set to use it
+- Prevent sending another request while waiting for response
 
 ## [2.0.2]
 
