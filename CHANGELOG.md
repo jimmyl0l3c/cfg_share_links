@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Add 'Saving...' tooltip to loading icon in admin settings
 
-## [3.0.0]
+## [3.0.0] - 2022-10-20
 
 ### Added
 
@@ -29,14 +29,28 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Custom label in Admin settings is visible only when label mode is set to use it
 - Prevent sending another request while waiting for response
 
-## [2.0.2]
+## [2.1.0] - 2022-10-20
+
+Backport from version 3.0.0
+
+### Removed
+
+- Support for Nextcloud 22
+
+### Changed
+
+- Updated translations from transifex
+- Custom label in Admin settings is visible only when label mode is set to use it
+- Prevent sending another request while waiting for response
+
+## [2.0.2] - 2022-10-17
 
 ### Changed
 
 - Updated translations from transifex
 - NewLink and RenameLink refactoring
 
-## [2.0.1]
+## [2.0.1] - 2022-10-15
 
 ### Changed
 
@@ -160,7 +174,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial release
 
 [Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.0...HEAD
-[3.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.2...v3.0.0
+[3.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.1.0...v3.0.0
+[2.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.2...v2.1.0
 [2.0.2]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v1.2.2...v2.0.0
