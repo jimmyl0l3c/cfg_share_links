@@ -1,49 +1,64 @@
 <template>
 	<ul v-if="canShare">
-		<ListItem ref="newItem"
+		<NcListItem ref="newItem"
 			:title="t('cfg_share_links', 'Custom public link')"
 			:bold="false"
 			:force-display-actions="true"
-			class="l-hover">
+			class="l-hover share-list-item">
 			<template #icon>
-				<Avatar :is-no-user="true"
-					display-name="Share"
-					icon-class="avatar-link-icon icon-public-white" />
+				<NcAvatar :is-no-user="true"
+					icon-class="avatardiv">
+					<template #icon>
+						<LinkVariantIcon fill-color="white" size="18" />
+					</template>
+				</NcAvatar>
 			</template>
 			<template #subtitle>
-				<input v-model="tokenCandidate"
+				<NcTextField :value.sync="tokenCandidate"
 					:disabled="updating"
-					class="token-input"
 					:placeholder="t('cfg_share_links', 'Enter custom token')"
-					@focus="onFocus"
-					@keyup.enter="createCustomLink">
-				<span v-if="isInputValid && focused" class="form-error"> {{ isInputValid }} </span>
+					:helper-text="inputInvalidMessage"
+					:error="isInputInvalid"
+					:success="copied"
+					@keyup.enter="createCustomLink" />
 			</template>
 			<template #actions>
-				<ActionText v-if="passwordPending" icon="icon-password">
+				<NcActionText v-if="passwordPending" icon="icon-password">
+					<template #icon>
+						<LockIcon />
+					</template>
 					{{ t('cfg_share_links', 'Password protection enforced') }}
-				</ActionText>
-				<ActionInput v-if="passwordPending"
-					icon="icon-password"
+				</NcActionText>
+				<NcActionInput v-if="passwordPending"
 					:disabled="updating"
 					:value.sync="password"
 					@submit="createCustomLink">
 					{{ t('cfg_share_links', 'Enter a password') }}
-				</ActionInput>
-				<ActionButton :icon="buttonIcon" @click="createCustomLink">
+				</NcActionInput>
+				<NcActionButton @click="createCustomLink">
+					<template #icon>
+						<CheckIcon v-if="copied" />
+						<PlusIcon v-else />
+					</template>
 					{{ copiedTooltip }}
-				</ActionButton>
+				</NcActionButton>
 			</template>
-		</ListItem>
+		</NcListItem>
 	</ul>
 </template>
 
 <script>
-import ActionText from '@nextcloud/vue/dist/Components/ActionText.js'
-import ActionInput from '@nextcloud/vue/dist/Components/ActionInput.js'
-import ActionButton from '@nextcloud/vue/dist/Components/ActionButton.js'
-import Avatar from '@nextcloud/vue/dist/Components/Avatar.js'
-import ListItem from '@nextcloud/vue/dist/Components/ListItem.js'
+import NcActionText from '@nextcloud/vue/dist/Components/NcActionText.js'
+import NcActionInput from '@nextcloud/vue/dist/Components/NcActionInput.js'
+import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
+import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
+import NcListItem from '@nextcloud/vue/dist/Components/NcListItem.js'
+import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+
+import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
+import LockIcon from 'vue-material-design-icons/Lock.vue'
+import PlusIcon from 'vue-material-design-icons/Plus.vue'
+import CheckIcon from 'vue-material-design-icons/Check.vue'
 
 import { generateUrl } from '@nextcloud/router'
 import '@nextcloud/dialogs/styles/toast.scss'
@@ -55,11 +70,16 @@ export default {
 	name: 'NewLink',
 
 	components: {
-		ActionText,
-		ActionInput,
-		ActionButton,
-		Avatar,
-		ListItem,
+		NcActionText,
+		NcActionInput,
+		NcActionButton,
+		NcAvatar,
+		NcListItem,
+		NcTextField,
+		LinkVariantIcon,
+		LockIcon,
+		PlusIcon,
+		CheckIcon,
 	},
 
 	mixins: [
@@ -80,7 +100,6 @@ export default {
 			updating: false,
 			loading: true,
 			tokenCandidate: null,
-			focused: false,
 			copied: false,
 			passwordPending: false,
 			password: null,
@@ -99,14 +118,14 @@ export default {
 				return 'None'
 			}
 		},
-		isInputValid() {
+		isInputInvalid() {
+			return this.tokenCandidate != null && this.tokenCandidate.length > 0 && !this.isTokenValid(this.tokenCandidate)
+		},
+		inputInvalidMessage() {
 			return this.isTokenValidString(this.tokenCandidate)
 		},
 		canShare() {
 			return !!(this.fileInfo.permissions & OC.PERMISSION_SHARE)
-		},
-		buttonIcon() {
-			return this.copied ? 'icon-checkmark' : 'icon-add'
 		},
 		copiedTooltip() {
 			return this.copied ? t('cfg_share_links', 'Link copied') : t('cfg_share_links', 'Create link')
@@ -124,9 +143,6 @@ export default {
 	},
 
 	methods: {
-		onFocus() {
-			this.focused = true
-		},
 		async createCustomLink() {
 			this.updating = true
 			const enforcePassword = OC.appConfig.core.enforcePasswordForPublicLink
@@ -183,7 +199,6 @@ export default {
 				}
 
 				this.tokenCandidate = ''
-				this.focused = false
 				this.refreshSidebar(this.fileInfo)
 			}
 
@@ -225,20 +240,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.form-error {
-	color: #c40c0c;
-	display: block;
-}
-
-.token-input {
-	width: 80%;
-}
-
-::v-deep .avatar-link-icon {
+.avatardiv {
 	background-color: #c40c0c !important;
 }
 
 .l-hover ::v-deep a:hover {
 	background-color: transparent;
+}
+
+.share-list-item ::v-deep .line-one__title {
+	font-weight: normal !important;
 }
 </style>

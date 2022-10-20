@@ -1,14 +1,18 @@
 <template>
 	<div id="cfgshare-admin-settings">
-		<SettingsSection :title="t('cfg_share_links', 'Default share label')"
+		<NcSettingsSection :title="t('cfg_share_links', 'Default share label')"
 			:description="t('cfg_share_links', 'Configure whether a default label should be set to custom links and what that label should be')">
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Default label') }}:
-					<span v-if="updating.key === 'default_label_mode'"
-						:class="'status-icon '.concat(updatingIcon)" />
+					<span v-if="updating.key === 'default_label_mode'" class="status-icon">
+						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<CheckIcon v-else-if="updating.status === 2" :size="20" />
+						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+					</span>
 				</h3>
-				<Multiselect v-model="labelMode"
+				<NcMultiselect v-model="labelMode"
+					div
 					:options="labelOptions"
 					track-by="id"
 					label="label"
@@ -18,60 +22,72 @@
 					:placeholder="t('cfg_share_links', 'Select label type')"
 					@update:value="onLabelModeChange" />
 			</div>
-			<div>
+			<div v-if="labelMode.id === 2">
 				<h3>
 					{{ t('cfg_share_links', 'Custom label') }}:
-					<span v-if="updating.key === 'default_label'"
-						:class="'status-icon '.concat(updatingIcon)" />
+					<span v-if="updating.key === 'default_label'" class="status-icon">
+						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<CheckIcon v-else-if="updating.status === 2" :size="20" />
+						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+					</span>
 				</h3>
-				<SettingsInputText id="default-label"
+				<NcSettingsInputText id="default-label"
 					label=""
-					:value="customLabel"
+					:value.sync="customLabel"
 					:disabled="updating.status === 1 || loading || labelMode.id !== 2"
-					@update:value="onCustomLabelChange"
 					@submit="onLabelSubmit" />
 			</div>
-		</SettingsSection>
-		<SettingsSection :title="t('cfg_share_links', 'Token settings')"
+		</NcSettingsSection>
+		<NcSettingsSection :title="t('cfg_share_links', 'Token settings')"
 			:description="t('cfg_share_links', 'Configure requirements for tokens')">
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Minimal token length') }}:
-					<span v-if="updating.key === 'min_token_length'"
-						:class="'status-icon '.concat(updatingIcon)" />
+					<span v-if="updating.key === 'min_token_length'" class="status-icon">
+						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<CheckIcon v-else-if="updating.status === 2" :size="20" />
+						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+					</span>
 				</h3>
-				<SettingsInputText id="min-len"
+				<NcSettingsInputText id="min-len"
 					label=""
-					:value="minLength"
+					:value.sync="minLength"
 					:disabled="updating.status === 1 || loading"
-					@update:value="onMinLengthChange"
 					@submit="onMinLengthSubmit" />
 				<span v-if="isMinLenValid" class="form-error"> {{ isMinLenValid }} </span>
 			</div>
-		</SettingsSection>
-		<SettingsSection :title="t('cfg_share_links', 'Miscellaneous')"
+		</NcSettingsSection>
+		<NcSettingsSection :title="t('cfg_share_links', 'Miscellaneous')"
 			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
 			<div>
-				<CheckboxRadioSwitch v-tooltip="{content: t('cfg_share_links', 'Keep this option off if you did not use versions lower than 1.2.0'), placement: 'top-start'}"
+				<NcCheckboxRadioSwitch v-tooltip="{content: t('cfg_share_links', 'Keep this option off if you did not use versions lower than 1.2.0'), placement: 'top-start'}"
 					:disabled="updating.status === 1 || loading"
 					:loading="updating.status === 1 || loading"
 					:checked.sync="deleteConflicts"
 					type="switch"
 					@update:checked="onDeleteConflictsChange">
 					{{ t('cfg_share_links', 'Delete shares of deleted files during token checks (when creating/updating share)') }}
-					<span v-if="updating.key === 'deleteRemovedShareConflicts'"
-						:class="'status-icon '.concat(updatingIcon)" />
-				</CheckboxRadioSwitch>
+					<span v-if="updating.key === 'deleteRemovedShareConflicts'" class="status-icon">
+						<NcLoadingIcon v-if="updating.status === 1" title="Test" :size="20" />
+						<CheckIcon v-else-if="updating.status === 2" :size="20" />
+						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+					</span>
+				</NcCheckboxRadioSwitch>
 			</div>
-		</SettingsSection>
+		</NcSettingsSection>
 	</div>
 </template>
 
 <script>
-import Multiselect from '@nextcloud/vue/dist/Components/Multiselect.js'
-import SettingsSection from '@nextcloud/vue/dist/Components/SettingsSection.js'
-import SettingsInputText from '@nextcloud/vue/dist/Components/SettingsInputText.js'
-import CheckboxRadioSwitch from '@nextcloud/vue/dist/Components/CheckboxRadioSwitch.js'
+import NcMultiselect from '@nextcloud/vue/dist/Components/NcMultiselect.js'
+import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
+import NcSettingsInputText from '@nextcloud/vue/dist/Components/NcSettingsInputText.js'
+import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
+import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+
+import CheckIcon from 'vue-material-design-icons/Check.vue'
+import AlertIcon from 'vue-material-design-icons/AlertCircle.vue'
+
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import SettingsMixin from '../mixins/SettingsMixin.js'
 
@@ -90,10 +106,13 @@ export default {
 	name: 'AdminSettings',
 
 	components: {
-		Multiselect,
-		SettingsSection,
-		SettingsInputText,
-		CheckboxRadioSwitch,
+		NcMultiselect,
+		NcSettingsSection,
+		NcSettingsInputText,
+		NcCheckboxRadioSwitch,
+		NcLoadingIcon,
+		CheckIcon,
+		AlertIcon,
 	},
 
 	directives: {
@@ -121,29 +140,17 @@ export default {
 
 	computed: {
 		isMinLenValid() {
-			const minLength = this.minLength
+			const parsedMinLength = parseInt(this.minLength)
 
-			if (isNaN(minLength)) {
+			if (isNaN(parsedMinLength)) {
 				return t('cfg_share_links', 'Entered length is not a number')
 			}
 
-			if (parseInt(minLength) < 1) {
+			if (parsedMinLength < 1) {
 				return t('cfg_share_links', 'Minimum length must be at least 1')
 			}
 
 			return null
-		},
-		updatingIcon() {
-			switch (this.updating.status) {
-			case 1:
-				return 'icon-loading-small'
-			case 2:
-				return 'icon-checkmark'
-			case 3:
-				return 'icon-error'
-			default:
-				return ''
-			}
 		},
 	},
 
@@ -174,6 +181,7 @@ export default {
 		async onMinLengthSubmit() {
 			const minLength = this.minLength
 			const minLenError = this.isMinLenValid
+			console.debug(parseInt(minLength))
 
 			if (minLenError) {
 				showError(minLenError)
@@ -187,13 +195,6 @@ export default {
 				return
 			}
 			await this.saveSettings('default_label_mode', value.id.toString())
-		},
-		onCustomLabelChange(value) {
-			this.customLabel = value
-		},
-		onMinLengthChange(value) {
-			this.minLength = value
-			// could do validity check here instead of computed
 		},
 		async onDeleteConflictsChange(value) {
 			await this.saveSettings('deleteRemovedShareConflicts', value ? '1' : '0')

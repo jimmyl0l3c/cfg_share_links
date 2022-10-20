@@ -7,9 +7,9 @@ use JsonSerializable;
 use OCP\AppFramework\Db\Entity;
 
 class CfgShare extends Entity implements JsonSerializable {
-	protected $full_id;
-	protected $token;
-	protected $node_id;
+	protected string $full_id;
+	protected string $token;
+	protected int $node_id;
 
 	public function __construct() {
 		$this->addType('id', 'integer');
@@ -30,15 +30,15 @@ class CfgShare extends Entity implements JsonSerializable {
 		$this->token = $token;
 	}
 
-	public function getFullId() {
+	public function getFullId(): string {
 		return $this->full_id;
 	}
 
-	public function getNodeId() {
+	public function getNodeId(): int {
 		return $this->node_id;
 	}
 
-	public function getToken() {
+	public function getToken(): string {
 		return $this->token;
 	}
 

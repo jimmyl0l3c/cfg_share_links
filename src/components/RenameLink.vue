@@ -1,14 +1,19 @@
 <template>
-	<ActionInput :value.sync="tokenCandidate"
+	<NcActionInput :value.sync="tokenCandidate"
+		:disabled="updating"
 		type="text"
-		icon="icon-public"
 		@submit="onSubmit">
+		<template #icon>
+			<LinkVariantIcon size="20" />
+		</template>
 		{{ t('cfg_share_links', 'Enter custom token') }}
-	</ActionInput>
+	</NcActionInput>
 </template>
 
 <script>
-import ActionInput from '@nextcloud/vue/dist/Components/ActionInput.js'
+import NcActionInput from '@nextcloud/vue/dist/Components/NcActionInput.js'
+import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
+
 import '@nextcloud/dialogs/styles/toast.scss'
 import { showError } from '@nextcloud/dialogs'
 import TokenValidation from '../mixins/TokenValidation.js'
@@ -18,7 +23,8 @@ export default {
 	id: 'rename-link',
 	name: 'RenameLink',
 	components: {
-		ActionInput,
+		NcActionInput,
+		LinkVariantIcon,
 	},
 
 	mixins: [
