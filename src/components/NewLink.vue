@@ -9,7 +9,7 @@
 				<NcAvatar :is-no-user="true"
 					icon-class="avatardiv">
 					<template #icon>
-						<LinkVariantIcon fill-color="white" size="18" />
+						<LinkVariantIcon fill-color="white" :size="18" />
 					</template>
 				</NcAvatar>
 			</template>
@@ -99,7 +99,8 @@ export default {
 		return {
 			updating: false,
 			loading: true,
-			tokenCandidate: null,
+			requestPending: false,
+			tokenCandidate: '',
 			copied: false,
 			passwordPending: false,
 			password: null,
@@ -169,7 +170,11 @@ export default {
 				}
 			}
 
+			if (this.requestPending) return
+
+			this.requestPending = true
 			const response = await this.createLink(this.getFullPath, token, password)
+			this.requestPending = false
 
 			if (response && response.ret === 0) {
 				this.passwordPending = false
