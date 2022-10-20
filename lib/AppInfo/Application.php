@@ -37,6 +37,7 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 use OCP\EventDispatcher\IEventDispatcher;
 use OCP\Files\Events\Node\NodeDeletedEvent;
 use OCP\Share\Events\ShareDeletedEvent;
+use OCP\Util;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
@@ -80,8 +81,8 @@ class Application extends App implements IBootstrap {
 		 * Load scripts that mount Vue components
 		 */
 		$appEventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function () {
-			script('cfg_share_links', 'cfg_share_links-reg-rename');
-			script('cfg_share_links', 'cfg_share_links-reg-new');
+			Util::addScript(self::APP_ID, 'cfg_share_links-reg-rename');
+			Util::addScript(self::APP_ID, 'cfg_share_links-reg-new');
 		});
 	}
 }

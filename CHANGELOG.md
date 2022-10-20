@@ -6,6 +6,24 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [3.0.0]
+
+### Added
+
+- Support for Nextcloud 25
+
+### Removed
+
+- Support for Nextcloud 22-24 (App for NC 23-24 will still be maintained for now)
+
+### Changed
+
+- Updated translations from transifex
+- Updated to [@nextcloud/vue](https://github.com/nextcloud/nextcloud-vue) 7
+- Migrated icons to [vue-material-design-icons](https://www.npmjs.com/package/vue-material-design-icons)
+- NewLink: Changed `input` to `NcTextField`
+- Custom label in Admin settings is visible only when label mode is set to use it
+
 ## [2.0.2]
 
 ### Changed
@@ -136,7 +154,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.2...HEAD
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.2...v3.0.0
 [2.0.2]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v1.2.2...v2.0.0
