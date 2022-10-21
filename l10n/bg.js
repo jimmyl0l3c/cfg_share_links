@@ -36,6 +36,7 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Възникна грешка при запазване на настройките",
     "Custom public link" : "Персонализиране на публична връзка",
     "Enter custom token" : "Въвеждане на персонализиран токен",
+    "Password protection enforced" : "Наложена защита с парола",
     "Enter a password" : "Въвеждане на парола",
     "Link copied" : "Връзката е копирана",
     "Create link" : "Създаване на връзка",
