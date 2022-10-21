@@ -6,6 +6,7 @@ OC.L10N.register(
     "Wrong path, file/folder does not exist" : "Percorso errato, file/cartella inesistente",
     "Could not create share" : "Impossibile creare la condivisione",
     "Share not found" : "Condivisione non trovata",
+    "Saving..." : "Salvataggio…",
     "Miscellaneous" : "Varie",
     "None" : "Nessuno",
     "Custom" : "Personalizzato",

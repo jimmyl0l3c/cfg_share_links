@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Метка общего ресурса по умолчанию",
     "Configure whether a default label should be set to custom links and what that label should be" : "Настройте, следует ли устанавливать метку по умолчанию для настраиваемых ссылок и какой должна быть эта метка.",
     "Default label" : "Метка по умолчанию",
+    "Saving..." : "Сохранение…",
     "Select label type" : "Выберите тип метки ",
     "Custom label" : "Пользовательская метка",
     "Token settings" : "Настройки токена",

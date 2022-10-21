@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Etiqueta de partilha predefinida",
     "Configure whether a default label should be set to custom links and what that label should be" : "Configure se uma etiqueta padrão deve ser definida para links personalizados e qual deve ser essa etiqueta.",
     "Default label" : "etiqueta padrão",
+    "Saving..." : "A guardar...",
     "Select label type" : "Selecione o tipo de etiqueta",
     "Custom label" : "Etiqueta personalizada",
     "Token settings" : "Configurações do token",

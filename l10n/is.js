@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Tiltaktu skrá eða slóð á möppu",
     "Could not create share" : "Ekki tókst að búa til sameign",
     "Share not found" : "Sameign fannst ekki",
+    "Saving..." : "Vista...",
     "Miscellaneous" : "Ýmislegt",
     "None" : "Ekkert",
     "Custom" : "Sérsniðið",

@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Partekatzeko etiketa lehenetsia",
     "Configure whether a default label should be set to custom links and what that label should be" : "Konfiguratu ea etiketa lehenetsi bat esteka pertsonalizatuetarako ezarri behar den eta etiketa hori zein izan behar den",
     "Default label" : "Etiketa lehenetsia",
+    "Saving..." : "Gordetzen...",
     "Select label type" : "Hautatu etiketa mota",
     "Custom label" : "Etiketa pertsonalizatua",
     "Token settings" : "Token ezarpenak",

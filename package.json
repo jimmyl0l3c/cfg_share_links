@@ -1,7 +1,7 @@
 {
 	"name": "cfg_share_links",
 	"description": "App adding the ability to specify share tokens",
-	"version": "2.1.0",
+	"version": "2.1.1",
 	"author": "Filip Joska <filip@joska.dev>",
 	"contributors": [],
 	"bugs": {
@@ -25,12 +25,12 @@
 		"stylelint:fix": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue --fix"
 	},
 	"dependencies": {
-		"@nextcloud/axios": "^2.1.0",
+		"@nextcloud/axios": "^2.2.0",
 		"@nextcloud/dialogs": "^3.2.0",
 		"@nextcloud/l10n": "^1.6.0",
 		"@nextcloud/router": "^2.0.0",
 		"@nextcloud/vue": "^5.3.1",
-		"vue": "^2.7.13"
+		"vue": "^2.7.14"
 	},
 	"browserslist": [
 		"extends @nextcloud/browserslist-config"
@@ -42,9 +42,9 @@
 	"devDependencies": {
 		"@nextcloud/babel-config": "^1.0.0",
 		"@nextcloud/browserslist-config": "^2.3.0",
-		"@nextcloud/eslint-config": "^8.1.2",
+		"@nextcloud/eslint-config": "^8.1.4",
 		"@nextcloud/stylelint-config": "^2.3.0",
-		"@nextcloud/webpack-vue-config": "^5.3.0",
-		"prettier": "^2.7.1"
+		"@nextcloud/webpack-vue-config": "^5.4.0",
+		"prettier": "^2.8.1"
 	}
 }

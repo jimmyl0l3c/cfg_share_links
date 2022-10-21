@@ -1,6 +1,7 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Saving..." : "Đang lưu...",
     "Miscellaneous" : "Khác",
     "None" : "Không có",
     "Custom" : "Tùy chỉnh",

@@ -6,6 +6,7 @@ OC.L10N.register(
     "Wrong path, file/folder does not exist" : "Λάθος διαδρομή, το αρχείο/φάκελος δεν υπάρχει",
     "Could not create share" : "Αδυναμία δημιουργίας κοινόχρηστου",
     "Share not found" : "Δεν βρέθηκε το κονόχρηστο",
+    "Saving..." : "Γίνεται αποθήκευση...",
     "Miscellaneous" : "Διάφορα",
     "None" : "Καμμία",
     "Custom" : "Προσαρμοσμένο",

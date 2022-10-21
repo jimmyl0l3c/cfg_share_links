@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Etiqueta de acción por defecto",
     "Configure whether a default label should be set to custom links and what that label should be" : "Configure si debe establecerse una etiqueta por defecto para los enlaces personalizados y cuál debe ser esa etiqueta",
     "Default label" : "Etiqueta predeterminada",
+    "Saving..." : "Guardando...",
     "Select label type" : "Seleccione el tipo de etiqueta",
     "Custom label" : "Etiqueta personalizada",
     "Token settings" : "Configuración de token",

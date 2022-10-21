@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Standard Freigabebezeichnung",
     "Configure whether a default label should be set to custom links and what that label should be" : "Konfigurieren Sie, ob eine Standardbezeichnung für benutzerdefinierte Links festgelegt werden soll und wie diese Bezeichnung lauten soll",
     "Default label" : "Standardmarkierung",
+    "Saving..." : "Speichere…",
     "Select label type" : "Markierungstyp wählen",
     "Custom label" : "Benutzerdefinierte Bezeichnung",
     "Token settings" : "Token-Einstellungen",

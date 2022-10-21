@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Especifique a ruta dun ficheiro ou cartafol",
     "Could not create share" : "Non foi posíbel crear o recurso compartido",
     "Share not found" : "Non se atopou o recurso compartido",
+    "Saving..." : "Gardando…",
     "Miscellaneous" : "Miscelánea",
     "None" : "Ningún",
     "Custom" : "Personalizado",

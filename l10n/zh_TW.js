@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "預設分享標籤",
     "Configure whether a default label should be set to custom links and what that label should be" : "設定是否應將預設標籤設定為自訂連結，以及該標籤應該是什麼",
     "Default label" : "預設標籤",
+    "Saving..." : "儲存中……",
     "Select label type" : "選取標籤類型",
     "Custom label" : "自訂標籤",
     "Token settings" : "權杖設定",

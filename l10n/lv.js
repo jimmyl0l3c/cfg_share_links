@@ -3,7 +3,9 @@ OC.L10N.register(
     {
     "Public link sharing is disabled by the administrator" : "Administrators publisku saites koplietošanu ir atslēdzis",
     "Please specify a file or folder path" : "Lūdzu norādiet datnes vai mapes ceļu",
+    "Wrong path, file/folder does not exist" : "Nepareizs ceļš, fails/mape neeksistē",
     "Could not create share" : "Nevar izveidot koplietošanu",
+    "Saving..." : "Saglabā...",
     "None" : "Nav",
     "Custom" : "Pielāgots",
     "Enter a password" : "Enter a password",

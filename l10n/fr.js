@@ -17,6 +17,7 @@ OC.L10N.register(
     "Default share label" : "Étiquette par défaut du partage",
     "Configure whether a default label should be set to custom links and what that label should be" : "Configurer si une étiquette par défaut doit être définie pour les liens personnalisés et quelle doit être cette étiquette.",
     "Default label" : "Étiquette par défaut",
+    "Saving..." : "Enregistrement en cours…",
     "Select label type" : "Sélectionnez le type d'étiquette",
     "Custom label" : "Étiquette personnalisée",
     "Token settings" : "Paramètres du nom",
