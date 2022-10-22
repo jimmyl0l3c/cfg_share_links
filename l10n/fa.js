@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "لطفاً مسیر فایل یا پوشه را مشخص کنید",
     "Could not create share" : "امکان ایجاد اشتراک گذاری وجود ندارد",
     "Share not found" : "اشتراک گذاری یافت نشد",
+    "Saving..." : "در حال ذخیره سازی...",
     "Miscellaneous" : "متفرقه",
     "None" : "هیچ‌کدام",
     "Label cannot be empty" : "برچسب نمی تواند خالی باشد",

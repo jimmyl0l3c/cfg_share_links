@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Мітка спільного доступу за умовчанням",
     "Configure whether a default label should be set to custom links and what that label should be" : "Налаштуйте, чи потрібно встановлювати мітку за замовчуванням для спеціальних посилань і якою вона має бути",
     "Default label" : "Мітка за замовчуванням",
+    "Saving..." : "Збереження...",
     "Select label type" : "Виберіть тип мітки",
     "Custom label" : "Спеціальна мітка",
     "Token settings" : "Налаштування маркера",

@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Alapértelmezett megosztáscímke",
     "Configure whether a default label should be set to custom links and what that label should be" : "Adja meg, hogy legyen-e alapértelmezett címke beállítva az egyéni hivatkozásokhoz, és hogy az milyen címke legyen",
     "Default label" : "Alapértelmezett címke",
+    "Saving..." : "Mentés…",
     "Select label type" : "Válasszon címketípust",
     "Custom label" : "Egyedi címke",
     "Token settings" : "Tokenbeállítások",

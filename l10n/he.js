@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "יש לספק נתיב לקובץ או תיקייה",
     "Could not create share" : "לא ניתן ליצור שיתוף",
     "Share not found" : "השיתוף לא נמצא",
+    "Saving..." : "מתבצעת שמירה…",
     "Miscellaneous" : "שונות",
     "None" : "ללא",
     "Custom" : "מותאם אישית",

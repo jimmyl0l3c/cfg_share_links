@@ -8,6 +8,7 @@ OC.L10N.register(
     "Wrong path, file/folder does not exist" : "パスが間違っています。ファイル/フォルダーがありません",
     "Could not create share" : "共有を作成できませんでした",
     "Share not found" : "共有が見つかりません",
+    "Saving..." : "保存中...",
     "Miscellaneous" : "その他",
     "None" : "なし",
     "Custom" : "カスタム",

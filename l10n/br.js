@@ -1,6 +1,7 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Saving..." : "Oc'h enroliñ ...",
     "None" : "Hini ebet",
     "Label cannot be empty" : "Ne c'hell ket an dikettenn bezha goulo",
     "Password protection enforced" : "Gwareziñ gant ur ger-tremen kreñvaet",

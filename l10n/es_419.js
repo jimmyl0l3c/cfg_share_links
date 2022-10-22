@@ -4,6 +4,7 @@ OC.L10N.register(
     "Public link sharing is disabled by the administrator" : "Compartir ligas públicas está deshabilitado por el administrador",
     "Please specify a file or folder path" : "Por favor especifica un archivo o ruta de carpeta",
     "Could not create share" : "No fue posible crear el elemento compartido",
+    "Saving..." : "Guardando ...",
     "None" : "Ninguno",
     "Custom" : "Personalizado",
     "Enter a password" : "Ingresa una contraseña"

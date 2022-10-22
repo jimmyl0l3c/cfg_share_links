@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Predvolený štítok zdieľania",
     "Configure whether a default label should be set to custom links and what that label should be" : "Nakonfigurujte, či má byť predvolený štítok nastavený na uživateľom definované odkazy a ako má tento štítok vyzerať",
     "Default label" : "Predvolený štítok",
+    "Saving..." : "Ukladá sa...",
     "Select label type" : "Vyberte typ štítku",
     "Custom label" : "Vlastný štítok",
     "Token settings" : "Nastavenia tokenu",

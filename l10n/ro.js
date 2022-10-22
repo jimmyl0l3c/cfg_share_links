@@ -2,6 +2,7 @@ OC.L10N.register(
     "cfg_share_links",
     {
     "Please specify a file or folder path" : "Specifică un fișier sau o cale către un director",
+    "Saving..." : "Se salvează...",
     "None" : "Niciuna",
     "Custom" : "Particularizat",
     "Label cannot be empty" : "Eticheta nu poate fi goală",

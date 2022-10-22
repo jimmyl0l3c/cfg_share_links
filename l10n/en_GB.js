@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Please specify a file or folder path",
     "Could not create share" : "Could not create share",
     "Share not found" : "Share not found",
+    "Saving..." : "Saving...",
     "None" : "None",
     "Custom" : "Custom",
     "Label cannot be empty" : "Label cannot be empty",

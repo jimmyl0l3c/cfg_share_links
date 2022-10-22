@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Ispetzìfica unu percursu de una cartella o un'archìviu",
     "Could not create share" : "No at fatu a creare sa cumpartzidura",
     "Share not found" : "Cumpartzidura no agatada",
+    "Saving..." : "Sarvende...",
     "Miscellaneous" : "Vàriu",
     "None" : "Perunu",
     "Custom" : "Personaliza",

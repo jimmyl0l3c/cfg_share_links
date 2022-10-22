@@ -1,6 +1,7 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Saving..." : "Yn cadw...",
     "Miscellaneous" : "Amrywiol",
     "None" : "Dim",
     "Custom" : "Cyfaddas",

@@ -10,6 +10,7 @@ OC.L10N.register(
     "Insufficient permission" : "Neustrezna dovoljenja",
     "Unable to check permissions" : "Ni mogoče preveriti dodeljenih dovoljenj.",
     "Default label" : "Privzeta oznaka",
+    "Saving..." : "Poteka shranjevanje ...",
     "Custom label" : "Oznaka po meri",
     "Token settings" : "Nastavitve žetona",
     "Miscellaneous" : "Razno",

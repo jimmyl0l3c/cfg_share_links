@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Por favor especifica un archivo o ruta de carpeta",
     "Could not create share" : "No fue posible crear el elemento compartido",
     "Share not found" : "No se encontró el elemento compartido",
+    "Saving..." : "Guardando...",
     "None" : "Ninguno",
     "Custom" : "Personalizado",
     "Enter a password" : "Ingresa una contraseña"

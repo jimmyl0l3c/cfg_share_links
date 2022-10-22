@@ -1,6 +1,7 @@
 { "translations": {
     "Public link sharing is disabled by the administrator" : "แชร์ลิงก์สาธารณะถูกปิดใช้งานโดยผู้ดูแลระบบ",
     "Please specify a file or folder path" : "โปรดระบุเส้นทางของไฟล์หรือโฟลเดอร์",
+    "Saving..." : "กำลังบันทึกข้อมูล...",
     "None" : "ไม่มี",
     "Custom" : "กำหนดเอง",
     "Enter a password" : "Enter a password",

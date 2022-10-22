@@ -1,6 +1,7 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Saving..." : "Upisujem...",
     "None" : "Ništa",
     "Enter a password" : "Unesite lozinku",
     "Link copied" : "Veza iskopirana"

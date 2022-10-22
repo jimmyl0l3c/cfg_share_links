@@ -4,6 +4,7 @@ OC.L10N.register(
     "Public link sharing is disabled by the administrator" : "Compartir links públicos está deshabilitado por el administrador",
     "Please specify a file or folder path" : "Favor de especificar un archivo o ruta de carpeta",
     "Could not create share" : "no fue posible crear el elemento compartido",
+    "Saving..." : "Guardando ...",
     "None" : "Ninguno",
     "Custom" : "Personalizado",
     "Label cannot be empty" : "La etiqueta no puede estar vacía",

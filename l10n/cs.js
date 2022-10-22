@@ -18,6 +18,7 @@ OC.L10N.register(
     "Default share label" : "Výchozí štítek pro sdílení",
     "Configure whether a default label should be set to custom links and what that label should be" : "Nastavit zda má být uživatelsky určeným odkazům nastavován výchozí štítek a který to v takovém případě má být",
     "Default label" : "Výchozí štítek",
+    "Saving..." : "Ukládá se…",
     "Select label type" : "Vybrat typ štítku",
     "Custom label" : "Uživatelsky určený štítek",
     "Token settings" : "Nastavení pro token",
