@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Public link sharing is disabled by the administrator" : "公共链接共享已被管理员禁用",
     "Please specify a file or folder path" : "请指定一个文件或文件夹路径",
+    "Wrong path, file/folder does not exist" : "错误的路径，文件/文件夹不存在",
     "Could not create share" : "无法创建共享",
     "Share not found" : "未找到共享",
     "Saving..." : "正在保存…",
