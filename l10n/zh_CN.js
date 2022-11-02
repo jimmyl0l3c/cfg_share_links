@@ -13,6 +13,7 @@ OC.L10N.register(
     "Label cannot be empty" : "标签不能是空白",
     "Password protection enforced" : "强制密码保护",
     "Enter a password" : "输入密码",
-    "Link copied" : "已复制链接"
+    "Link copied" : "已复制链接",
+    "Invalid token" : "令牌无效"
 },
 "nplurals=1; plural=0;");
