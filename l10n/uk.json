@@ -25,7 +25,7 @@
     "Miscellaneous" : "Різне",
     "Miscellaneous tweaks" : "Різні налаштування",
     "Keep this option off if you did not use versions lower than 1.2.0" : "Вимкніть цю опцію, якщо ви не використовували версії, нижчі за 1.2.0",
-    "Delete shares of deleted files during token checks (when creating/updating share)" : "Видалення спільних ресурсів видалених файлів під час перевірки маркерів (під час створення/оновлення спільного ресурсу)",
+    "Delete shares of deleted files during token checks (when creating/updating share)" : "Вилучення спільних ресурсів або файлів, які було вилучено під час перевірки токенів (під час створення/оновлення спільного ресурсу)",
     "None" : "Відсутній",
     "Same as token" : "Те саме, що токен",
     "Custom" : "Користувацьке",
