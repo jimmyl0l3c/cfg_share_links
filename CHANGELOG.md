@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Updated translations from transifex
+- Updated dependencies
 - Add 'Saving...' tooltip to loading icon in admin settings
 
 ## [3.0.0] - 2022-10-20
