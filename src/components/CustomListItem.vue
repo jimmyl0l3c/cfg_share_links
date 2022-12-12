@@ -96,6 +96,7 @@
 <script>
 import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
 import NcCounterBubble from '@nextcloud/vue/dist/Components/NcCounterBubble.js'
+
 export default {
 	name: 'CustomListItem',
 	components: {
@@ -182,7 +183,7 @@ export default {
 			default: '',
 		},
 		/**
-		 * If different from from 0 this component will display the
+		 * If different from 0 this component will display the
 		 * NcCounterBubble component
 		 */
 		counterNumber: {
@@ -337,115 +338,103 @@ export default {
 
 <style lang="scss" scoped>
 .list-item__wrapper {
-  position: relative;
-  width: 100%;
-  &--active,
-  &:active,
-  &.active {
-    .list-item {
-      background-color: var(--color-primary-light);
-    }
-  }
+	position: relative;
+	width: 100%;
 }
 // NcListItem
 .list-item {
-  display: block;
-  position: relative;
-  flex: 0 0 auto;
-  justify-content: flex-start;
-  padding: 8px;
-  // Fix for border-radius being too large for 3-line entries like in Mail
-  // 44px avatar size / 2 + 8px padding, and 2px for better visual quality
-  border-radius: 32px;
-  margin: 2px 0;
-  width: 100%;
-  cursor: pointer;
-  transition: background-color var(--animation-quick) ease-in-out;
-  list-style: none;
-  &:hover,
-  &:focus {
-    background-color: var(--color-background-hover);
-  }
-  &-content__wrapper {
-    display: flex;
-    align-items: center;
-    height: 48px;
-    &--compact {
-      height: 36px;
-      .line-one, .line-two {
-        margin-top: -4px;
-        margin-bottom: -4px;
-      }
-    }
-  }
-  &-content {
-    display: flex;
-    flex: 1 1 auto;
-    justify-content: space-between;
-    padding-left: 8px;
-    &__main {
-      flex: 1 1 auto;
-      width: 0;
-      margin: auto 0;
-      &--oneline {
-        display: flex;
-      }
-    }
-    &__actions {
-      flex: 0 0 auto;
-      align-self: center;
-      justify-content: center;
-      margin-left: 4px;
-    }
-  }
-  &__extra {
-    margin-top: 4px;
-  }
+	display: block;
+	position: relative;
+	flex: 0 0 auto;
+	justify-content: flex-start;
+	padding: 8px;
+	// Fix for border-radius being too large for 3-line entries like in Mail
+	// 44px avatar size / 2 + 8px padding, and 2px for better visual quality
+	border-radius: 32px;
+	margin: 2px 0;
+	width: 100%;
+	transition: background-color var(--animation-quick) ease-in-out;
+	list-style: none;
+	&-content__wrapper {
+		display: flex;
+		align-items: center;
+		height: 48px;
+		&--compact {
+			height: 36px;
+			.line-one, .line-two {
+				margin-top: -4px;
+				margin-bottom: -4px;
+			}
+		}
+	}
+	&-content {
+		display: flex;
+		flex: 1 1 auto;
+		justify-content: space-between;
+		padding-left: 8px;
+		&__main {
+			flex: 1 1 auto;
+			width: 0;
+			margin: auto 0;
+			&--oneline {
+				display: flex;
+			}
+		}
+		&__actions {
+			flex: 0 0 auto;
+			align-self: center;
+			justify-content: center;
+			margin-left: 4px;
+		}
+	}
+	&__extra {
+		margin-top: 4px;
+	}
 }
+
 .line-one {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  white-space: nowrap;
-  margin: 0 auto 0 0;
-  overflow: hidden;
-  &__title {
-    overflow: hidden;
-    flex-grow: 1;
-    cursor: pointer;
-    text-overflow: ellipsis;
-    color: var(--color-main-text);
-    font-weight: bold;
-  }
-  &__details {
-    color: var(--color-text-maxcontrast);
-    margin: 0 8px;
-    font-weight: normal;
-  }
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	white-space: nowrap;
+	margin: 0 auto 0 0;
+	overflow: hidden;
+	&__title {
+		overflow: hidden;
+		flex-grow: 1;
+		text-overflow: ellipsis;
+		color: var(--color-main-text);
+		font-weight: normal;
+	}
+	&__details {
+		color: var(--color-text-maxcontrast);
+		margin: 0 8px;
+		font-weight: normal;
+	}
 }
+
 .line-two {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  white-space: nowrap;
-  &--bold {
-    font-weight: bold;
-  }
-  &__subtitle {
-    overflow: hidden;
-    flex-grow: 1;
-    cursor: pointer;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    color: var(--color-text-maxcontrast);
-  }
-  &__additional_elements {
-    margin: 2px 4px 0 4px;
-    display: flex;
-    align-items: center;
-  }
-  &__indicator {
-    margin: 0 5px;
-  }
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	white-space: nowrap;
+	&--bold {
+		font-weight: bold;
+	}
+	&__subtitle {
+		overflow: hidden;
+		flex-grow: 1;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		color: var(--color-text-maxcontrast);
+	}
+	&__additional_elements {
+		margin: 2px 4px 0 4px;
+		display: flex;
+		align-items: center;
+	}
+	&__indicator {
+		margin: 0 5px;
+	}
 }
 </style>

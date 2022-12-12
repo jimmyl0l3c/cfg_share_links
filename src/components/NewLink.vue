@@ -3,8 +3,7 @@
 		<CustomListItem ref="newItem"
 			:title="t('cfg_share_links', 'Custom public link')"
 			:bold="false"
-			:force-display-actions="true"
-			class="l-hover share-list-item">
+			:force-display-actions="true">
 			<template #icon>
 				<NcAvatar :is-no-user="true"
 					icon-class="avatardiv">
@@ -248,13 +247,5 @@ export default {
 <style lang="scss" scoped>
 .avatardiv {
 	background-color: #c40c0c !important;
-}
-
-.l-hover ::v-deep a:hover {
-	background-color: transparent;
-}
-
-.share-list-item ::v-deep .line-one__title {
-	font-weight: normal !important;
 }
 </style>
