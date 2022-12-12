@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [3.0.2]
+
+### Changed
+
+- Downgrade [@nextcloud/vue](https://github.com/nextcloud/nextcloud-vue) to 7.0.1 (until next update)
+- Use CustomListItem instead of NcListItem
+
+### Fixed
+
+- Creating of custom links on mobile devices
+
 ## [3.0.1] - 2022-12-11
 
 ### Changed
@@ -13,6 +24,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Updated translations from transifex
 - Updated dependencies
 - Add 'Saving...' tooltip to loading icon in admin settings
+
+## [2.1.1]
+
+Backport from version 3.0.1
+
+### Changed
+
+- Updated translations from transifex
+- Updated dependencies
 
 ## [3.0.0] - 2022-10-20
 
@@ -177,9 +197,11 @@ Backport from version 3.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.1...HEAD
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.2...HEAD
+[3.0.2]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.0...v3.0.1
-[3.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.1.0...v3.0.0
+[3.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.2...v3.0.0
+[2.1.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.1.0...v2.1.1
 [2.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.2...v2.1.0
 [2.0.2]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.0...v2.0.1

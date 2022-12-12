@@ -1,6 +1,6 @@
 <template>
 	<ul v-if="canShare">
-		<NcListItem ref="newItem"
+		<CustomListItem ref="newItem"
 			:title="t('cfg_share_links', 'Custom public link')"
 			:bold="false"
 			:force-display-actions="true"
@@ -43,7 +43,7 @@
 					{{ copiedTooltip }}
 				</NcActionButton>
 			</template>
-		</NcListItem>
+		</CustomListItem>
 	</ul>
 </template>
 
@@ -52,7 +52,6 @@ import NcActionText from '@nextcloud/vue/dist/Components/NcActionText.js'
 import NcActionInput from '@nextcloud/vue/dist/Components/NcActionInput.js'
 import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
 import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
-import NcListItem from '@nextcloud/vue/dist/Components/NcListItem.js'
 import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
 
 import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
@@ -66,6 +65,8 @@ import { showError } from '@nextcloud/dialogs'
 import TokenValidation from '../mixins/TokenValidation.js'
 import RequestMixin from '../mixins/RequestMixin.js'
 
+import CustomListItem from './CustomListItem.vue'
+
 export default {
 	name: 'NewLink',
 
@@ -74,7 +75,7 @@ export default {
 		NcActionInput,
 		NcActionButton,
 		NcAvatar,
-		NcListItem,
+		CustomListItem,
 		NcTextField,
 		LinkVariantIcon,
 		LockIcon,
