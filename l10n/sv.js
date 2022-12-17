@@ -1,11 +1,18 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Configurable Share Links" : "Konfigurerbara delningslänkar",
+    "Invalid share type" : "Ogiltig delningstyp",
     "Public link sharing is disabled by the administrator" : "Offentlig delningslänk är avstängt",
     "Please specify a file or folder path" : "Ange sökväg till filen eller mappen",
     "Wrong path, file/folder does not exist" : "Fel sökväg, fil/mapp finns inte",
     "Could not create share" : "Kunde inte skapa delning",
     "Share not found" : "Delningen hittades inte",
+    "Insufficient permission" : "Otillräcklig behörighet",
+    "Unable to check permissions" : "Kunde inte kontrollera behörighet",
+    "Token is not unique" : "Token är inte unikt",
+    "Token is not long enough" : "Token är för kort",
+    "Token contains invalid characters" : "Token innehåller ogiltiga tecken",
     "Saving..." : "Sparar...",
     "Miscellaneous" : "Diverse",
     "None" : "Ingen",
