@@ -23,6 +23,8 @@
     "Minimal token length" : "Longueur minimale des noms",
     "Miscellaneous" : "Divers",
     "Miscellaneous tweaks" : "Paramétrages divers",
+    "Keep this option off if you did not use versions lower than 1.2.0" : "Garder cette option désactivée si vous n'utilisez pas de versions en dessous de la 1.2.0",
+    "Delete shares of deleted files during token checks (when creating/updating share)" : "Supprimer les partages de fichiers supprimés durant la verification de token (quand un partage est créé/mis à jour)",
     "None" : "Aucune",
     "Same as token" : "Identique à celle de l'étiquette",
     "Custom" : "Personnalisé",
