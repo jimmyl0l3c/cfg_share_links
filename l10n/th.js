@@ -6,6 +6,7 @@ OC.L10N.register(
     "Saving..." : "กำลังบันทึก...",
     "None" : "ไม่มี",
     "Custom" : "กำหนดเอง",
+    "Label cannot be empty" : "ป้ายกำกับไม่สามารถเว้นว่างได้",
     "Enter a password" : "ใส่รหัสผ่าน",
     "Link copied" : "คัดลอกลิงก์แล้ว"
 },
