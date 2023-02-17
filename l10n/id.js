@@ -7,6 +7,7 @@ OC.L10N.register(
     "Saving..." : "Menyimpan...",
     "Miscellaneous" : "Lain-lain",
     "None" : "Tidak ada",
+    "Label cannot be empty" : "Label tidak boleh kosong",
     "Password protection enforced" : "Wajib menggunakan kata sandi",
     "Enter a password" : "Masukkan kata sandi",
     "Link copied" : "Link tersalin"
