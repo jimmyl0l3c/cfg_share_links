@@ -1,6 +1,7 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Could not create share" : "Không thể tạo chia sẻ",
     "Saving..." : "Đang lưu...",
     "Miscellaneous" : "Khác",
     "None" : "Không có",
