@@ -5,6 +5,7 @@ OC.L10N.register(
     "Invalid share type" : "Ugyldig delingstype",
     "Public link sharing is disabled by the administrator" : "Offentlig deling av lenke er deaktivert av administratoren",
     "Please specify a file or folder path" : "Oppgi en fil eller mappe-sti",
+    "Wrong path, file/folder does not exist" : "Feil bane, fil/mappe eksisterer ikke",
     "Could not create share" : "Kunne ikke opprette deling",
     "Share not found" : "Deling ikke funnet",
     "Insufficient permission" : "Utilstrekkelige rettigheter",
