@@ -36,7 +36,7 @@ OC.L10N.register(
     "Label cannot be empty" : "Ознака не може да буде празна",
     "Error occurred while saving settings" : "Дошло је до грешке приликом чувања подешавања",
     "Custom public link" : "Прилагођени јавни линк",
-    "Enter custom token" : "Унесите прилагођени жетон",
+    "Enter custom token" : "Унесите произвољни жетон",
     "Password protection enforced" : "Захтевана заштита лозинком",
     "Enter a password" : "Унесите лозинку",
     "Link copied" : "Веза ископирана",
