@@ -4,18 +4,18 @@ namespace OCA\CfgShareLinks\Controller;
 
 use Closure;
 
+use Exception;
 use OC\User\NoUserException;
+use OCA\CfgShareLinks\Service\InvalidTokenException;
 use OCA\CfgShareLinks\Service\TokenNotUniqueException;
 use OCA\Files_Sharing\Exceptions\SharingRightsException;
+
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
-
-use OCA\CfgShareLinks\Service\InvalidTokenException;
 use OCP\AppFramework\OCS\OCSBadRequestException;
 use OCP\AppFramework\OCS\OCSException;
 use OCP\AppFramework\OCS\OCSForbiddenException;
 use OCP\AppFramework\OCS\OCSNotFoundException;
-use Exception;
 use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use OCP\Share\Exceptions\ShareNotFound;

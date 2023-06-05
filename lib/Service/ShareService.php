@@ -83,10 +83,10 @@ class ShareService {
 		IManager $shareManager,
 		IGroupManager $groupManager,
 		IRootFolder $rootFolder,
-		string $userId = null,
 		IL10N $l10n,
 		IConfig $config,
-		CfgShareMapper $mapper
+		CfgShareMapper $mapper,
+		string $userId = null
 	) {
 		$this->logger = $logger;
 		$this->shareManager = $shareManager;
@@ -365,7 +365,7 @@ class ShareService {
 	 * @throws InvalidTokenException
 	 * @throws TokenNotUniqueException
 	 */
-	private function tokenChecks(string $tokenCandidate) {
+	private function tokenChecks(string $tokenCandidate): void {
 		// Validity check
 		$this->checkTokenValidity($tokenCandidate);
 
@@ -390,7 +390,7 @@ class ShareService {
 	/**
 	 * @throws InvalidTokenException
 	 */
-	private function checkTokenValidity(string $token) { // TODO: use regular expression
+	private function checkTokenValidity(string $token): void { // TODO: use regular expression
 		$char_array = str_split('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+');
 		$min_length = $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3);
 
@@ -412,7 +412,7 @@ class ShareService {
 	 * @param Node $node
 	 * @throws LockedException
 	 */
-	private function lock(Node $node) {
+	private function lock(Node $node): void {
 		$node->lock(ILockingProvider::LOCK_SHARED);
 		$this->lockedNode = $node;
 	}
@@ -421,7 +421,7 @@ class ShareService {
 	 * Cleanup the remaining locks
 	 * @throws LockedException
 	 */
-	public function cleanup() {
+	public function cleanup(): void {
 		if (!empty($this->lockedNode)) {
 			$this->lockedNode->unlock(ILockingProvider::LOCK_SHARED);
 		}
