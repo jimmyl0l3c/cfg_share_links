@@ -6,16 +6,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [3.1.0] - 2023-06-05
+## [4.0.0] - 2023-06-05
 
 ### Added
-
 - Support for PHP 8.2
 - Support for Nextcloud 26
 
 ### Removed
 
 - Support for PHP 7.4
+
+### Fixed
+
+- Error when moving/copying files in NC 26.0.2 ([#143](https://github.com/jimmyl0l3c/cfg_share_links/issues/143))
 
 ### Changed
 
@@ -213,8 +216,8 @@ Backport from version 3.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.1.0...HEAD
-[3.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.2...v3.1.0
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.2...v4.0.0
 [3.0.2]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.1...v3.0.2
 [3.0.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v3.0.0...v3.0.1
 [3.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v2.0.2...v3.0.0
