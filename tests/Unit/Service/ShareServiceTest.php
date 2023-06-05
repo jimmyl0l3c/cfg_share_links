@@ -38,10 +38,10 @@ class ShareServiceTest extends TestCase {
 			$this->shareManager,
 			$this->groupManager,
 			$this->rootFolder,
-			$this->userId,
 			$this->l10n,
 			$this->config,
-			$this->mapper
+			$this->mapper,
+			$this->userId,
 		);
 	}
 

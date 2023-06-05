@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 class SettingsControllerTest extends TestCase {
 	protected $config;
 	protected $request;
-	protected $controller;
+	protected SettingsController $controller;
 
 	protected function setUp(): void {
 		$this->config = $this->getMockBuilder(IConfig::class)->getMock();

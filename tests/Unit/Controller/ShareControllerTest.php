@@ -8,9 +8,9 @@ use OCP\IRequest;
 use PHPUnit\Framework\TestCase;
 
 class ShareControllerTest extends TestCase {
-	protected $controller;
+	protected ShareController $controller;
 	protected $service;
-	protected $userId = 'user';
+	protected string $userId = 'user';
 	protected $request;
 
 	protected function setUp(): void {
