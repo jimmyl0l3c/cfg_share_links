@@ -59,7 +59,7 @@ import PlusIcon from 'vue-material-design-icons/Plus.vue'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 
 import { generateUrl } from '@nextcloud/router'
-import '@nextcloud/dialogs/styles/toast.scss'
+import '@nextcloud/dialogs/dist/index.css'
 import { showError } from '@nextcloud/dialogs'
 import TokenValidation from '../mixins/TokenValidation.js'
 import RequestMixin from '../mixins/RequestMixin.js'
