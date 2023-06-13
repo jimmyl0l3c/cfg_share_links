@@ -37,7 +37,7 @@ OC.L10N.register(
     "Error occurred while saving settings" : "Produciuse un erro ao gardar a configuración",
     "Custom public link" : "Ligazón pública personalizada",
     "Enter custom token" : "Escriba un testemuño personalizado",
-    "Password protection enforced" : "Protección con contrasinal obrigado",
+    "Password protection enforced" : "Protección obrigada por contrasinal",
     "Enter a password" : "Introduza un contrasinal",
     "Link copied" : "Ligazón copiada",
     "Create link" : "Crear enlace",
