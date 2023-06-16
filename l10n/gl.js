@@ -9,7 +9,7 @@ OC.L10N.register(
     "Could not create share" : "Non foi posíbel crear o recurso compartido",
     "Share not found" : "Non se atopou o recurso compartido",
     "Insufficient permission" : "Non ten permisos abondo",
-    "Unable to check permissions" : "Non foi posíbel cambiar os permisos",
+    "Unable to check permissions" : "Non é posíbel cambiar os permisos",
     "Token is not unique" : "O testemuño non é único",
     "Token is not long enough" : "O testemuño non é o longo de abondo",
     "Token contains invalid characters" : "O testemuño contén caracteres non válidos",
