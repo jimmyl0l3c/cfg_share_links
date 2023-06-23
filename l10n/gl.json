@@ -38,11 +38,11 @@
     "Password protection enforced" : "Protección obrigada por contrasinal",
     "Enter a password" : "Introduza un contrasinal",
     "Link copied" : "Ligazón copiada",
-    "Create link" : "Crear enlace",
+    "Create link" : "Crear ligazón",
     "Invalid token" : "Testemuño non válido",
     "Custom public link created" : "Creouse unha ligazón pública personalizada",
     "Error occurred while creating public link" : "Produciuse un erro ao crear a ligazón pública",
     "Custom public link renamed" : "A ligazón pública personalizada cambiou o nome",
-    "Error occurred while renaming public link" : "Ocurriu un erro ó renomear o enlace público"
+    "Error occurred while renaming public link" : "Produciuse un erro ao renomear a ligazón pública"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
