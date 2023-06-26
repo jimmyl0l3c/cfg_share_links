@@ -1,6 +1,7 @@
 { "translations": {
     "Saving..." : "Saxlama...",
     "None" : "Heç bir",
-    "Enter a password" : "Enter a password"
+    "Enter a password" : "Enter a password",
+    "Link copied" : "Link kopyalandı"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

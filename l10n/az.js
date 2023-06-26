@@ -3,6 +3,7 @@ OC.L10N.register(
     {
     "Saving..." : "Saxlama...",
     "None" : "Heç bir",
-    "Enter a password" : "Enter a password"
+    "Enter a password" : "Enter a password",
+    "Link copied" : "Link kopyalandı"
 },
 "nplurals=2; plural=(n != 1);");
