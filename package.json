@@ -1,7 +1,7 @@
 {
 	"name": "cfg_share_links",
 	"description": "App adding the ability to specify share tokens",
-	"version": "4.0.0",
+	"version": "0.0.0",
 	"author": "Filip Joska <filip@joska.dev>",
 	"contributors": [],
 	"bugs": {
@@ -26,10 +26,10 @@
 	},
 	"dependencies": {
 		"@nextcloud/axios": "^2.3.0",
-		"@nextcloud/dialogs": "^4.0.1",
-		"@nextcloud/l10n": "^2.1.0",
-		"@nextcloud/router": "^2.1.1",
-		"@nextcloud/vue": "^7.11.6",
+		"@nextcloud/dialogs": "^4.1.0",
+		"@nextcloud/l10n": "^2.2.0",
+		"@nextcloud/router": "^2.1.2",
+		"@nextcloud/vue": "^7.12.0",
 		"vue": "^2.7.14",
 		"vue-material-design-icons": "^5.2.0"
 	},
