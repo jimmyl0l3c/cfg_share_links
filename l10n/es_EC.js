@@ -8,6 +8,8 @@ OC.L10N.register(
     "Saving..." : "Guardando...",
     "None" : "Ninguno",
     "Custom" : "Personalizado",
-    "Enter a password" : "Ingresa una contraseña"
+    "Label cannot be empty" : "La etiqueta no puede estar vacía",
+    "Enter a password" : "Ingresa una contraseña",
+    "Link copied" : "Enlace copiado"
 },
 "nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;");
