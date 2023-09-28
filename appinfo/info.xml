@@ -15,7 +15,7 @@ You can also customize share tokens of existing public links.
 
 ## Settings
 
-By going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.
+By going to **Administration settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.
 Default label can be: none, same as token or custom (the same custom label for all custom links).
     ]]></description>
     <description lang="cs"><![CDATA[
