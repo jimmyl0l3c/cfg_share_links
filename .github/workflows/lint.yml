@@ -18,7 +18,7 @@ jobs:
     name: php${{ matrix.php-versions }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up php ${{ matrix.php-versions }}
         uses: shivammathur/setup-php@v2
@@ -39,7 +39,7 @@ jobs:
     name: cs php${{ matrix.php-versions }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up php
         uses: shivammathur/setup-php@v2
@@ -59,15 +59,15 @@ jobs:
     name: eslint node
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: '16.x'
 
-      - name: Set up npm7
-        run: npm i -g npm@7
+      - name: Set up npm9
+        run: npm i -g npm@9
 
       - name: Install dependencies
         run: npm ci
@@ -81,15 +81,15 @@ jobs:
     name: stylelint node
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Set up node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: '16.x'
 
-      - name: Set up npm7
-        run: npm i -g npm@7
+      - name: Set up npm9
+        run: npm i -g npm@9
 
       - name: Install dependencies
         run: npm ci
