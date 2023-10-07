@@ -14,7 +14,6 @@ OC.L10N.register(
     "Token is not long enough" : "權杖不夠長",
     "Token contains invalid characters" : "權杖包含無效的字元",
     "App adding the ability to specify share tokens" : "新增了指定分享權杖的功能的應用程式",
-    "App for Nextcloud that adds the ability to specify share tokens when creating new public links and change tokens of existing links.\n\n## Features\n\nSharing sidebar is expanded by new section (Custom public link) that allows you to create public links with custom share tokens.\nYou can also customize share tokens of existing public links.\n\n## Settings\n\nBy going to **Settings > Administration > Configurable Share Links** admins can set default labels for custom links and minimal token length.\nDefault label can be: none, same as token or custom (the same custom label for all custom links)." : "在建立新的公開連結與變更既有連結的權杖方面新增了指定分享權杖功能的 Nextcloud 應用程式。\n\n## 功能\n\n分享側邊欄由新的部份擴展（自訂公開連結），讓您可以使用自訂分享權杖建立公開連結。\n您也可以自訂既有公開連結的分享權杖。\n\n## 設定\n\n進入**設定 > 管理 > 可自訂的分享連結**，管理員可以設定自訂連結與最小權杖長度的預設標籤。\n預設標籤可以是：無、與權杖相同或是自訂（所有自訂連結都會是相同的自訂標籤）。",
     "Default share label" : "預設分享標籤",
     "Configure whether a default label should be set to custom links and what that label should be" : "設定是否應將預設標籤設定為自訂連結，以及該標籤應該是什麼",
     "Default label" : "預設標籤",
