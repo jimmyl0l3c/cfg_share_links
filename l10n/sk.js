@@ -15,7 +15,7 @@ OC.L10N.register(
     "Token contains invalid characters" : "Token obsahuje neplatné znaky",
     "App adding the ability to specify share tokens" : "Aplikácia pridáva možnosť špecifikovať tokeny zdieľania",
     "Default share label" : "Predvolený štítok zdieľania",
-    "Configure whether a default label should be set to custom links and what that label should be" : "Nakonfigurujte, či má byť predvolený štítok nastavený na uživateľom definované odkazy a ako má tento štítok vyzerať",
+    "Configure whether a default label should be set to custom links and what that label should be" : "Nakonfigurujte, či má byť predvolený štítok nastavený na používateľom definované odkazy a ako má tento štítok vyzerať",
     "Default label" : "Predvolený štítok",
     "Saving..." : "Ukladá sa...",
     "Select label type" : "Vyberte typ štítku",
