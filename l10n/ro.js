@@ -1,7 +1,10 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Public link sharing is disabled by the administrator" : "Partajarea prin link public este dezactivată de administrator",
     "Please specify a file or folder path" : "Specifică un fișier sau o cale către un director",
+    "Wrong path, file/folder does not exist" : "Cale eronată, fișier/folder inexistent",
+    "Could not create share" : "Nu s-a putut crea partajarea",
     "Saving..." : "Se salvează...",
     "Miscellaneous" : "Diverse",
     "None" : "Niciuna",
