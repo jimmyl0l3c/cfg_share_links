@@ -46,6 +46,6 @@
 		"@nextcloud/eslint-config": "^8.3.0",
 		"@nextcloud/stylelint-config": "^2.3.1",
 		"@nextcloud/webpack-vue-config": "^6.0.0",
-		"prettier": "^3.0.3"
+		"prettier": "^3.1.1"
 	}
 }
