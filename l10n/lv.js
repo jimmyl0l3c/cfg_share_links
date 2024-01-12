@@ -6,6 +6,7 @@ OC.L10N.register(
     "Wrong path, file/folder does not exist" : "Nepareizs ceļš, fails/mape neeksistē",
     "Could not create share" : "Nevar izveidot koplietošanu",
     "Saving..." : "Saglabā...",
+    "Miscellaneous" : "Dažādi",
     "None" : "Nav",
     "Custom" : "Pielāgots",
     "Enter a password" : "Enter a password",
