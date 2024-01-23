@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Configurable Share Links" : "Ligazóns para compartir configurábeis",
     "Invalid share type" : "Tipo de compartición incorrecta",
-    "Public link sharing is disabled by the administrator" : "O administrador desactivou o uso compartido de ligazóns públicas",
+    "Public link sharing is disabled by the administrator" : "A administración do sitio desactivou o uso compartido de ligazóns públicas",
     "Please specify a file or folder path" : "Especifique a ruta dun ficheiro ou cartafol",
     "Wrong path, file/folder does not exist" : "Ruta errónea, o ficheiro/cartafol non existe",
     "Could not create share" : "Non foi posíbel crear a compartición",
