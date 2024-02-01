@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Support for PHP 8.3
+- Support for Nextcloud 28
+
+### Removed
+
+- Support for Nextcloud 27
+
+### Changed
+
+- Updated translations from transifex
+- Updated dependencies
+
+
 ## [4.2.0] - 2023-10-06
 
 ### Changed

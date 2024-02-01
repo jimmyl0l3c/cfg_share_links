@@ -15,7 +15,7 @@
 			<template #subtitle>
 				<NcTextField :value.sync="tokenCandidate"
 					:disabled="updating"
-					:placeholder="t('cfg_share_links', 'Enter custom token')"
+					:label="t('cfg_share_links', 'Enter custom token')"
 					:helper-text="inputInvalidMessage"
 					:error="isInputInvalid"
 					:success="copied"
