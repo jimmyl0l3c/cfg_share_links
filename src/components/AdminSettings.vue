@@ -1,17 +1,17 @@
 <template>
 	<div id="cfgshare-admin-settings">
-		<NcSettingsSection :title="t('cfg_share_links', 'Default share label')"
+		<NcSettingsSection :name="t('cfg_share_links', 'Default share label')"
 			:description="t('cfg_share_links', 'Configure whether a default label should be set to custom links and what that label should be')">
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Default label') }}:
 					<span v-if="updating.key === 'default_label_mode'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
 				</h3>
-				<NcMultiselect v-model="labelMode"
+				<NcSelect v-model="labelMode"
 					:options="labelOptions"
 					track-by="id"
 					label="label"
@@ -19,13 +19,13 @@
 					:allow-empty="false"
 					:disabled="updating.status === 1 || loading"
 					:placeholder="t('cfg_share_links', 'Select label type')"
-					@update:value="onLabelModeChange" />
+					@option:selected="onLabelModeChange" />
 			</div>
 			<div v-if="labelMode.id === 2">
 				<h3>
 					{{ t('cfg_share_links', 'Custom label') }}:
 					<span v-if="updating.key === 'default_label'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -37,13 +37,13 @@
 					@submit="onLabelSubmit" />
 			</div>
 		</NcSettingsSection>
-		<NcSettingsSection :title="t('cfg_share_links', 'Token settings')"
+		<NcSettingsSection :name="t('cfg_share_links', 'Token settings')"
 			:description="t('cfg_share_links', 'Configure requirements for tokens')">
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Minimal token length') }}:
 					<span v-if="updating.key === 'min_token_length'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -56,7 +56,7 @@
 				<span v-if="isMinLenValid" class="form-error"> {{ isMinLenValid }} </span>
 			</div>
 		</NcSettingsSection>
-		<NcSettingsSection :title="t('cfg_share_links', 'Miscellaneous')"
+		<NcSettingsSection :name="t('cfg_share_links', 'Miscellaneous')"
 			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
 			<div>
 				<NcCheckboxRadioSwitch v-tooltip="{content: t('cfg_share_links', 'Keep this option off if you did not use versions lower than 1.2.0'), placement: 'top-start'}"
@@ -67,7 +67,7 @@
 					@update:checked="onDeleteConflictsChange">
 					{{ t('cfg_share_links', 'Delete shares of deleted files during token checks (when creating/updating share)') }}
 					<span v-if="updating.key === 'deleteRemovedShareConflicts'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :title="t('cfg_share_links', 'Saving...')" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import NcMultiselect from '@nextcloud/vue/dist/Components/NcMultiselect.js'
+import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
 import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
 import NcSettingsInputText from '@nextcloud/vue/dist/Components/NcSettingsInputText.js'
 import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
@@ -105,7 +105,7 @@ export default {
 	name: 'AdminSettings',
 
 	components: {
-		NcMultiselect,
+		NcSelect,
 		NcSettingsSection,
 		NcSettingsInputText,
 		NcCheckboxRadioSwitch,
@@ -189,7 +189,7 @@ export default {
 			await this.saveSettings('min_token_length', minLength)
 		},
 		async onLabelModeChange(value) {
-			if (!value) {
+			if (value == null) {
 				return
 			}
 			await this.saveSettings('default_label_mode', value.id.toString())
