@@ -23,11 +23,11 @@ class CfgShareMapper extends QBMapper {
 		$qb = $this->db->getQueryBuilder();
 		$qb->insert($this->getTableName())
 			->values(
-				array(
+				[
 					'full_id' => "'" . $entity->getFullId() . "'",
 					'token' => "'" . $entity->getToken() . "'",
 					'node_id' => $entity->getNodeId()
-				)
+				]
 			);
 
 		$this->logger->debug($qb->getSQL());

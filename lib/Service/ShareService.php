@@ -86,7 +86,7 @@ class ShareService {
 		IL10N $l10n,
 		IConfig $config,
 		CfgShareMapper $mapper,
-		string $userId = null
+		string|null $userId = null
 	) {
 		$this->logger = $logger;
 		$this->shareManager = $shareManager;
@@ -110,7 +110,7 @@ class ShareService {
 	 * @throws InvalidPathException
 	 * @throws NotFoundException
 	 */
-	public function create(string $path, int $shareType, string $tokenCandidate, string $userId, string $password = ""): array {
+	public function create(string|null $path, int $shareType, string $tokenCandidate, string $userId, string $password = ""): array {
 		if ($userId != null && $this->currentUser != $userId) {
 			$this->currentUser = $userId;
 		}
