@@ -1,7 +1,26 @@
 { "translations": {
+    "Public link sharing is disabled by the administrator" : "L'alministración desactivó al compartición d'enllaces públicos",
+    "Please specify a file or folder path" : "Especifica'l camín d'un ficheru o una carpeta",
+    "Could not create share" : "Nun se pudo crear la compartición",
+    "Share not found" : "Nun s'atopó la compartición",
+    "Unable to check permissions" : "Nun ye posible comprobar los permisos",
+    "Token is not unique" : "El pase nun ye únicu",
+    "Token is not long enough" : "El pase nun ye llongu abondo",
+    "Token contains invalid characters" : "El pase contién caráuteres inválidos",
+    "Default label" : "Etiqueta predeterminada",
     "Saving..." : "Guardando…",
+    "Custom label" : "Etiqueta personalizada",
+    "Miscellaneous" : "Miscelánea",
     "None" : "Nada",
     "Custom" : "Personalizar",
-    "Link copied" : "Copióse l'enllaz"
+    "Label cannot be empty" : "La etiqueta nun pue tar baleru",
+    "Error occurred while saving settings" : "Prodúxose un error mentanto se guardaba la configuración",
+    "Enter a password" : "Introduz una contraseña",
+    "Link copied" : "Copióse l'enllaz",
+    "Invalid token" : "El pase ye inválidu",
+    "Custom public link created" : "Creóse l'enllaz públicu personalizáu",
+    "Error occurred while creating public link" : "Prodúxose un error mentanto se creaba l'enllaz públicu",
+    "Custom public link renamed" : "Renomóse l'enllaz públicu personalizáu",
+    "Error occurred while renaming public link" : "Prodúxose un error mentanto se renomaba l'enllaz públicu"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }
