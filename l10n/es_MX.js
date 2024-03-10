@@ -8,6 +8,7 @@ OC.L10N.register(
     "Saving..." : "Guardando...",
     "None" : "Ninguno",
     "Custom" : "Personalizado",
+    "Label cannot be empty" : "La etiqueta no puede estar vacía",
     "Enter a password" : "Ingresa una contraseña",
     "Link copied" : "Enlace copiado"
 },
