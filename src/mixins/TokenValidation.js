@@ -41,7 +41,7 @@ export default {
 				return 1
 			}
 
-			const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+'
+			const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+.'
 
 			for (const c of token) {
 				if (!characters.includes(c)) {
