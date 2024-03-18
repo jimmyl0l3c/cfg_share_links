@@ -41,12 +41,8 @@ export default {
 				return 1
 			}
 
-			const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_-+'
-
-			for (const c of token) {
-				if (!characters.includes(c)) {
-					return 2
-				}
+			if (token.match(/^[a-zA-Z0-9_\-+]+$/) == null) {
+				return 2
 			}
 
 			return 0
