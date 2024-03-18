@@ -4,19 +4,19 @@ namespace OCA\CfgShareLinks\Tests\Unit\Controller;
 
 use OCA\CfgShareLinks\Controller\SettingsController;
 use OCP\AppFramework\Http;
-use OCP\IConfig;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\IRequest;
 use PHPUnit\Framework\TestCase;
 
 class SettingsControllerTest extends TestCase {
-	protected $config;
+	protected $appConfig;
 	protected $request;
 	protected SettingsController $controller;
 
 	protected function setUp(): void {
-		$this->config = $this->getMockBuilder(IConfig::class)->getMock();
+		$this->appConfig = $this->getMockBuilder(IAppConfig::class)->getMock();
 		$this->request = $this->getMockBuilder(IRequest::class)->getMock();
-		$this->controller = new SettingsController($this->config, $this->request);
+		$this->controller = new SettingsController($this->appConfig, $this->request);
 	}
 
 	public function testFetch() {

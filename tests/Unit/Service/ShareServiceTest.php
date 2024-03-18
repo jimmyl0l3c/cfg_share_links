@@ -4,8 +4,8 @@ namespace OCA\CfgShareLinks\Tests\Unit\Service;
 
 use OCA\CfgShareLinks\Db\CfgShareMapper;
 use OCA\CfgShareLinks\Service\ShareService;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Files\IRootFolder;
-use OCP\IConfig;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\Share\IManager;
@@ -20,7 +20,7 @@ class ShareServiceTest extends TestCase {
 	protected $groupManager;
 	protected $rootFolder;
 	protected $l10n;
-	protected $config;
+	protected $appConfig;
 	protected $mapper;
 
 	protected function setUp(): void {
@@ -29,7 +29,7 @@ class ShareServiceTest extends TestCase {
 		$this->groupManager = $this->getMockBuilder(IGroupManager::class)->getMock();
 		$this->rootFolder = $this->getMockBuilder(IRootFolder::class)->getMock();
 		$this->l10n = $this->getMockBuilder(IL10N::class)->getMock();
-		$this->config = $this->getMockBuilder(IConfig::class)->getMock();
+		$this->appConfig = $this->getMockBuilder(IAppConfig::class)->getMock();
 		$this->mapper = $this->getMockBuilder(CfgShareMapper::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -39,7 +39,7 @@ class ShareServiceTest extends TestCase {
 			$this->groupManager,
 			$this->rootFolder,
 			$this->l10n,
-			$this->config,
+			$this->appConfig,
 			$this->mapper,
 			$this->userId,
 		);
