@@ -12,17 +12,10 @@ use OCP\Share\Events\ShareDeletedEvent;
 use Psr\Log\LoggerInterface;
 
 class ShareDeletedListener implements IEventListener {
-	/** @var LoggerInterface */
-	private LoggerInterface $logger;
-	/** @var CfgShareMapper */
-	private CfgShareMapper $mapper;
-
 	public function __construct(
-		LoggerInterface $logger,
-		CfgShareMapper $mapper
+		private LoggerInterface $logger,
+		private CfgShareMapper  $mapper
 	) {
-		$this->logger = $logger;
-		$this->mapper = $mapper;
 	}
 
 	public function handle(Event $event): void {

@@ -31,18 +31,11 @@ use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
 
 class LinksAdmin implements IIconSection {
-	/** @var IL10N */
-	private IL10N $l;
-
-	/** @var IURLGenerator */
-	private IURLGenerator $urlGenerator;
 
 	public function __construct(
-		IL10N $l,
-		IURLGenerator $urlGenerator
+		private IL10N         $l10n,
+		private IURLGenerator $urlGenerator
 	) {
-		$this->l = $l;
-		$this->urlGenerator = $urlGenerator;
 	}
 
 	public function getID(): string {
@@ -50,7 +43,7 @@ class LinksAdmin implements IIconSection {
 	}
 
 	public function getName(): string {
-		return $this->l->t('Configurable Share Links');
+		return $this->l10n->t('Configurable Share Links');
 	}
 
 	public function getPriority(): int {

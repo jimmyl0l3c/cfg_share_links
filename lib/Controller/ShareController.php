@@ -10,22 +10,14 @@ use OCP\IRequest;
 use OCP\Lock\LockedException;
 
 class ShareController extends Controller {
-	/** @var ShareService */
-	private ShareService $service;
-
-	/** @var string */
-	private string $userId;
-
 	use Errors;
 
 	public function __construct(
-		IRequest $request,
-		ShareService $service,
-		$userId
+		IRequest             $request,
+		private ShareService $service,
+		private string       $userId
 	) {
 		parent::__construct(Application::APP_ID, $request);
-		$this->service = $service;
-		$this->userId = $userId;
 	}
 
 	/**
@@ -51,7 +43,7 @@ class ShareController extends Controller {
 	/**
 	 * @throws LockedException
 	 */
-	public function cleanup() {
+	public function cleanup(): void {
 		$this->service->cleanup();
 	}
 }

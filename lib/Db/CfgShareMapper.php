@@ -11,12 +11,8 @@ use OCP\IDBConnection;
 use Psr\Log\LoggerInterface;
 
 class CfgShareMapper extends QBMapper {
-	/** @var LoggerInterface */
-	private LoggerInterface $logger;
-
-	public function __construct(IDBConnection $db, LoggerInterface $logger) {
+	public function __construct(IDBConnection $db, private LoggerInterface $logger) {
 		parent::__construct($db, 'cfg_shares', CfgShare::class);
-		$this->logger = $logger;
 	}
 
 	public function insert(Entity $entity): Entity {

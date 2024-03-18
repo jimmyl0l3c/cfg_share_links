@@ -28,26 +28,22 @@ namespace OCA\CfgShareLinks\Settings;
 
 use OCA\CfgShareLinks\AppInfo\Application;
 use OCP\AppFramework\Http\TemplateResponse;
-use OCP\IConfig;
+use OCP\AppFramework\Services\IAppConfig;
 use OCP\Settings\ISettings;
 use OCP\Util;
 
 class LinksAdmin implements ISettings {
-	/** @var IConfig */
-	private IConfig $config;
-
 	public function __construct(
-		IConfig $config
+		private IAppConfig $appConfig
 	) {
-		$this->config = $config;
 	}
 
 	public function getForm(): TemplateResponse {
 		$parameters = [
-			'defaultLabelMode' => $this->config->getAppValue(Application::APP_ID, 'default_label_mode', 0),
-			'defaultLabel' => $this->config->getAppValue(Application::APP_ID, 'default_label', 'Custom link'),
-			'minTokenLength' => $this->config->getAppValue(Application::APP_ID, 'min_token_length', 3),
-			'deleteRemovedShareConflicts' => $this->config->getAppValue(Application::APP_ID, 'deleteRemovedShareConflicts', false)
+			'defaultLabelMode' => $this->appConfig->getAppValue('default_label_mode', 0),
+			'defaultLabel' => $this->appConfig->getAppValue('default_label', 'Custom link'),
+			'minTokenLength' => $this->appConfig->getAppValue('min_token_length', 3),
+			'deleteRemovedShareConflicts' => $this->appConfig->getAppValue('deleteRemovedShareConflicts', false)
 		];
 
 		Util::addScript(Application::APP_ID, 'cfg_share_links-settings-admin');

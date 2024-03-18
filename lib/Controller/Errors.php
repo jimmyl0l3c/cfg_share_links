@@ -38,15 +38,15 @@ trait Errors {
 	protected function handleException(Closure $callback): DataResponse {
 		try {
 			return new DataResponse($callback());
-		} catch (NotFoundException | OCSNotFoundException | ShareNotFound $e) {
+		} catch (NotFoundException|OCSNotFoundException|ShareNotFound $e) {
 			return $this->getDataResponse($e, Http::STATUS_NOT_FOUND);
-		} catch (InvalidTokenException | TokenNotUniqueException | OCSBadRequestException $e) {
+		} catch (InvalidTokenException|TokenNotUniqueException|OCSBadRequestException $e) {
 			return $this->getDataResponse($e, Http::STATUS_BAD_REQUEST);
-		} catch (NoUserException | SharingRightsException $e) {
+		} catch (NoUserException|SharingRightsException $e) {
 			return $this->getDataResponse($e, Http::STATUS_UNAUTHORIZED);
 		} catch (OCSForbiddenException $e) {
 			return $this->getDataResponse($e, Http::STATUS_FORBIDDEN);
-		} catch (OCSException | NotPermittedException $e) {
+		} catch (OCSException|NotPermittedException $e) {
 			return $this->getDataResponse($e, Http::STATUS_INTERNAL_SERVER_ERROR);
 		}
 	}

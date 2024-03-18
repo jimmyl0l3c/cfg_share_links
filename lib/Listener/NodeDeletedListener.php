@@ -14,21 +14,11 @@ use OCP\Share\IManager;
 use Psr\Log\LoggerInterface;
 
 class NodeDeletedListener implements IEventListener {
-	/** @var LoggerInterface */
-	private LoggerInterface $logger;
-	/** @var CfgShareMapper */
-	private CfgShareMapper $mapper;
-	/** @var IManager */
-	private IManager $shareManager;
-
 	public function __construct(
-		LoggerInterface $logger,
-		CfgShareMapper $mapper,
-		IManager $shareManager
+		private LoggerInterface $logger,
+		private CfgShareMapper  $mapper,
+		private IManager        $shareManager
 	) {
-		$this->logger = $logger;
-		$this->mapper = $mapper;
-		$this->shareManager = $shareManager;
 	}
 
 	public function handle(Event $event): void {
