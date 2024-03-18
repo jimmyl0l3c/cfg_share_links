@@ -90,7 +90,7 @@ import AlertIcon from 'vue-material-design-icons/AlertCircle.vue'
 import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import SettingsMixin from '../mixins/SettingsMixin.js'
 
-import '@nextcloud/dialogs/dist/index.css'
+import '@nextcloud/dialogs/style.css'
 import { generateUrl } from '@nextcloud/router'
 import { showError } from '@nextcloud/dialogs'
 import axios from '@nextcloud/axios'

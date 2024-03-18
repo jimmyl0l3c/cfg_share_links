@@ -14,7 +14,7 @@
 import NcActionInput from '@nextcloud/vue/dist/Components/NcActionInput.js'
 import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
 
-import '@nextcloud/dialogs/dist/index.css'
+import '@nextcloud/dialogs/style.css'
 import { showError } from '@nextcloud/dialogs'
 import TokenValidation from '../mixins/TokenValidation.js'
 import RequestMixin from '../mixins/RequestMixin.js'
