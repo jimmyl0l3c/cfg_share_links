@@ -58,6 +58,9 @@ use Psr\Log\LoggerInterface;
  * Based on ShareAPIController (From Nextcloud's core app files_sharing)
  */
 class ShareService {
+	/** @var Node */
+	private Node $lockedNode;
+   
 	public function __construct(
 		private LoggerInterface $logger,
 		private IManager        $shareManager,
