@@ -3,6 +3,7 @@
 namespace OCA\CfgShareLinks\Tests\Unit\Service;
 
 use OCA\CfgShareLinks\Db\CfgShareMapper;
+use OCA\CfgShareLinks\Service\InvalidTokenException;
 use OCA\CfgShareLinks\Service\ShareService;
 use OCP\AppFramework\Services\IAppConfig;
 use OCP\Files\IRootFolder;
@@ -29,7 +30,10 @@ class ShareServiceTest extends TestCase {
 		$this->groupManager = $this->getMockBuilder(IGroupManager::class)->getMock();
 		$this->rootFolder = $this->getMockBuilder(IRootFolder::class)->getMock();
 		$this->l10n = $this->getMockBuilder(IL10N::class)->getMock();
-		$this->appConfig = $this->getMockBuilder(IAppConfig::class)->getMock();
+
+		$this->appConfig = $this->createStub(IAppConfig::class);
+		$this->appConfig->method("getAppValue")->willReturn('3');
+
 		$this->mapper = $this->getMockBuilder(CfgShareMapper::class)
 			->disableOriginalConstructor()
 			->getMock();
@@ -51,5 +55,15 @@ class ShareServiceTest extends TestCase {
 
 	public function testCreate() {
 		// TODO: write test
+	}
+
+	public function testTokenValidityCheckThrowsExceptionIfInvalid() {
+		$this->expectException(InvalidTokenException::class);
+		$this->service->raiseIfTokenIsInvalid("Invalid.token#!");
+	}
+
+	public function testTokenValidityCheckDoesNotThrowIfValid() {
+		$this->expectNotToPerformAssertions();
+		$this->service->raiseIfTokenIsInvalid("some-VALID_token1");
 	}
 }

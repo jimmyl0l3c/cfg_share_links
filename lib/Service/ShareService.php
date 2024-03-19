@@ -342,7 +342,7 @@ class ShareService {
 	 */
 	private function tokenChecks(string $tokenCandidate): void {
 		// Validity check
-		$this->checkTokenValidity($tokenCandidate);
+		$this->raiseIfTokenIsInvalid($tokenCandidate);
 
 		// Unique check
 		try {
@@ -365,7 +365,7 @@ class ShareService {
 	/**
 	 * @throws InvalidTokenException
 	 */
-	private function checkTokenValidity(string $token): void {
+	public function raiseIfTokenIsInvalid(string $token): void {
 		$min_length = $this->appConfig->getAppValue('min_token_length', 3);
 
 		if ($token == null || strlen($token) < $min_length) {
