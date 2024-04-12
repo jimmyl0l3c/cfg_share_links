@@ -4,6 +4,7 @@ OC.L10N.register(
     "Saving..." : "Speicheren...",
     "None" : "Keng",
     "Custom" : "Individualiséier",
-    "Enter a password" : "Enter a password"
+    "Enter a password" : "Enter a password",
+    "Link copied" : "Link kopéiert"
 },
 "nplurals=2; plural=(n != 1);");
