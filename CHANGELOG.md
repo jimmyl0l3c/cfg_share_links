@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Support for Nextcloud 29
+
+### Changed
+
+- Updated translations from transifex
+- Updated dependencies
+
 ## [5.0.0] - 2024-03-18
 
 ### Added
@@ -21,7 +30,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Updated translations from transifex
 - Updated dependencies
-
 
 ## [4.2.0] - 2023-10-06
 
