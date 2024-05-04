@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [5.1.0] - 2024-05-04
+
 ### Added
 
 - Support for Nextcloud 29
@@ -260,7 +262,8 @@ Backport from version 3.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.0.0...HEAD
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.0...HEAD
+[5.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.0.0...v5.1.0
 [5.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v4.2.0...v5.0.0
 [4.2.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v4.1.0...v4.2.0
 [4.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v4.0.0...v4.1.0
