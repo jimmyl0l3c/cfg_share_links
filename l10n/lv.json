@@ -1,7 +1,7 @@
 { "translations": {
     "Public link sharing is disabled by the administrator" : "Administrators publisku saites koplietošanu ir atslēdzis",
     "Please specify a file or folder path" : "Lūdzu norādiet datnes vai mapes ceļu",
-    "Wrong path, file/folder does not exist" : "Nepareizs ceļš, fails/mape neeksistē",
+    "Wrong path, file/folder does not exist" : "Nepareizs ceļš, datne/mape nepastāv",
     "Could not create share" : "Nevar izveidot koplietošanu",
     "Saving..." : "Saglabā...",
     "Miscellaneous" : "Dažādi",
