@@ -1,6 +1,10 @@
 OC.L10N.register(
     "cfg_share_links",
     {
+    "Public link sharing is disabled by the administrator" : "Tá comhroinnt naisc phoiblí díchumasaithe ag an riarthóir",
+    "Please specify a file or folder path" : "Sonraigh cosán comhaid nó fillteáin",
+    "Wrong path, file/folder does not exist" : "Cosán mícheart, níl an comhad/fillteán ann",
+    "Could not create share" : "Níorbh fhéidir sciar a chruthú",
     "Insufficient permission" : "Cead neamhleor",
     "None" : "aon cheann",
     "Custom" : "Saincheaptha",
