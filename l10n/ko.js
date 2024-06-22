@@ -7,6 +7,7 @@ OC.L10N.register(
     "Could not create share" : "공유를 만들 수 없음",
     "Share not found" : "공유를 찾을 수 없음",
     "Saving..." : "저장 중...",
+    "Miscellaneous" : "기타",
     "None" : "없음",
     "Custom" : "사용자 정의",
     "Label cannot be empty" : "레이블은 비워 둘 수 없습니다.",
