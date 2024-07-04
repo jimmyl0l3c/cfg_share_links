@@ -45,6 +45,6 @@ OC.L10N.register(
     "Custom public link created" : "Creouse unha ligazón pública personalizada",
     "Error occurred while creating public link" : "Produciuse un erro ao crear a ligazón pública",
     "Custom public link renamed" : "A ligazón pública personalizada cambiou o nome",
-    "Error occurred while renaming public link" : "Produciuse un erro ao renomear a ligazón pública"
+    "Error occurred while renaming public link" : "Produciuse un erro ao cambiarlle o nome á ligazón pública"
 },
 "nplurals=2; plural=(n != 1);");
