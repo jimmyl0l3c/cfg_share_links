@@ -1,6 +1,7 @@
 { "translations": {
     "Public link sharing is disabled by the administrator" : "Compartir links públicos está deshabilitado por el administrador",
     "Please specify a file or folder path" : "Favor de especificar un archivo o ruta de carpeta",
+    "Wrong path, file/folder does not exist" : "Ruta incorrecta, el archivo/carpeta no existe",
     "Could not create share" : "no fue posible crear el elemento compartido",
     "Saving..." : "Guardando ...",
     "None" : "Ninguno",
