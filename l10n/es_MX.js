@@ -7,6 +7,7 @@ OC.L10N.register(
     "Could not create share" : "No fue posible crear el elemento compartido",
     "Share not found" : "No se encontró el elemento compartido",
     "Saving..." : "Guardando...",
+    "Miscellaneous" : "Misceláneo",
     "None" : "Ninguno",
     "Custom" : "Personalizado",
     "Label cannot be empty" : "La etiqueta no puede estar vacía",
