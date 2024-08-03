@@ -1,9 +1,7 @@
 import SettingsMixin from './SettingsMixin.js'
 
 export default {
-	mixins: [
-		SettingsMixin,
-	],
+	mixins: [SettingsMixin],
 
 	data() {
 		return {

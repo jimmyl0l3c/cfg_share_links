@@ -1,7 +1,7 @@
 <template>
 	<!-- This wrapper can be either a router link or a `<li>` -->
 	<nav-element class="list-item__wrapper"
-		:class="{ 'list-item__wrapper--active' : active }"
+		:class="{ 'list-item__wrapper--active': active }"
 		v-bind="navElement">
 		<div :id="anchorId"
 			ref="list-item"
@@ -28,22 +28,21 @@
 							<span class="line-one__title">
 								{{ title }}
 							</span>
-							<span v-if="showDetails"
-								class="line-one__details">
+							<span v-if="showDetails" class="line-one__details">
 								{{ details }}
 							</span>
 						</div>
 
 						<!-- Second line, subtitle and counter -->
-						<div class="line-two"
-							:class="{'line-one--bold': bold}">
+						<div class="line-two" :class="{ 'line-one--bold': bold }">
 							<span v-if="hasSubtitle" class="line-two__subtitle">
 								<!-- @slot Slot for the second line of the component -->
 								<slot name="subtitle" />
 							</span>
 
 							<!-- Counter and indicator -->
-							<span v-if="showAdditionalElements" class="line-two__additional_elements">
+							<span v-if="showAdditionalElements"
+								class="line-two__additional_elements">
 								<NcCounterBubble v-if="counterNumber !== 0"
 									class="line-two__counter"
 									:type="counterType">
@@ -94,8 +93,7 @@
 </template>
 
 <script>
-import NcActions from '@nextcloud/vue/dist/Components/NcActions.js'
-import NcCounterBubble from '@nextcloud/vue/dist/Components/NcCounterBubble.js'
+import { NcActions, NcCounterBubble } from '@nextcloud/vue'
 
 export default {
 	name: 'CustomListItem',
@@ -246,7 +244,10 @@ export default {
 			return !this.displayActionsOnHoverFocus || this.forceDisplayActions
 		},
 		showDetails() {
-			return this.hasDetails && (!this.displayActionsOnHoverFocus || this.forceDisplayActions)
+			return (
+				this.hasDetails
+				&& (!this.displayActionsOnHoverFocus || this.forceDisplayActions)
+			)
 		},
 	},
 	watch: {
@@ -361,7 +362,8 @@ export default {
 		height: 48px;
 		&--compact {
 			height: 36px;
-			.line-one, .line-two {
+			.line-one,
+			.line-two {
 				margin-top: -4px;
 				margin-bottom: -4px;
 			}

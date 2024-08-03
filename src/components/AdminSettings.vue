@@ -1,12 +1,20 @@
 <template>
 	<div id="cfgshare-admin-settings">
 		<NcSettingsSection :name="t('cfg_share_links', 'Default share label')"
-			:description="t('cfg_share_links', 'Configure whether a default label should be set to custom links and what that label should be')">
+			:description="
+				t(
+					'cfg_share_links',
+					'Configure whether a default label should be set to custom links and what that label should be',
+				)
+			">
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Default label') }}:
-					<span v-if="updating.key === 'default_label_mode'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
+					<span v-if="updating.key === 'default_label_mode'"
+						class="status-icon">
+						<NcLoadingIcon v-if="updating.status === 1"
+							:name="t('cfg_share_links', 'Saving...')"
+							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -25,7 +33,9 @@
 				<h3>
 					{{ t('cfg_share_links', 'Custom label') }}:
 					<span v-if="updating.key === 'default_label'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1"
+							:name="t('cfg_share_links', 'Saving...')"
+							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -43,7 +53,9 @@
 				<h3>
 					{{ t('cfg_share_links', 'Minimal token length') }}:
 					<span v-if="updating.key === 'min_token_length'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
+						<NcLoadingIcon v-if="updating.status === 1"
+							:name="t('cfg_share_links', 'Saving...')"
+							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -53,21 +65,37 @@
 					:value.sync="minLength"
 					:disabled="updating.status === 1 || loading"
 					@submit="onMinLengthSubmit" />
-				<span v-if="isMinLenValid" class="form-error"> {{ isMinLenValid }} </span>
+				<span v-if="isMinLenValid" class="form-error">
+					{{ isMinLenValid }}
+				</span>
 			</div>
 		</NcSettingsSection>
 		<NcSettingsSection :name="t('cfg_share_links', 'Miscellaneous')"
 			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
 			<div>
-				<NcCheckboxRadioSwitch v-tooltip="{content: t('cfg_share_links', 'Keep this option off if you did not use versions lower than 1.2.0'), placement: 'top-start'}"
+				<NcCheckboxRadioSwitch v-tooltip="{
+						content: t(
+							'cfg_share_links',
+							'Keep this option off if you did not use versions lower than 1.2.0',
+						),
+						placement: 'top-start',
+					}"
 					:disabled="updating.status === 1 || loading"
 					:loading="updating.status === 1 || loading"
 					:checked.sync="deleteConflicts"
 					type="switch"
 					@update:checked="onDeleteConflictsChange">
-					{{ t('cfg_share_links', 'Delete shares of deleted files during token checks (when creating/updating share)') }}
-					<span v-if="updating.key === 'deleteRemovedShareConflicts'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1" :name="t('cfg_share_links', 'Saving...')" :size="20" />
+					{{
+						t(
+							'cfg_share_links',
+							'Delete shares of deleted files during token checks (when creating/updating share)',
+						)
+					}}
+					<span v-if="updating.key === 'deleteRemovedShareConflicts'"
+						class="status-icon">
+						<NcLoadingIcon v-if="updating.status === 1"
+							:name="t('cfg_share_links', 'Saving...')"
+							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
@@ -78,16 +106,18 @@
 </template>
 
 <script>
-import NcSelect from '@nextcloud/vue/dist/Components/NcSelect.js'
-import NcSettingsSection from '@nextcloud/vue/dist/Components/NcSettingsSection.js'
-import NcSettingsInputText from '@nextcloud/vue/dist/Components/NcSettingsInputText.js'
-import NcCheckboxRadioSwitch from '@nextcloud/vue/dist/Components/NcCheckboxRadioSwitch.js'
-import NcLoadingIcon from '@nextcloud/vue/dist/Components/NcLoadingIcon.js'
+import {
+	NcCheckboxRadioSwitch,
+	NcLoadingIcon,
+	NcSelect,
+	NcSettingsInputText,
+	NcSettingsSection,
+	Tooltip,
+} from '@nextcloud/vue'
 
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 import AlertIcon from 'vue-material-design-icons/AlertCircle.vue'
 
-import Tooltip from '@nextcloud/vue/dist/Directives/Tooltip.js'
 import SettingsMixin from '../mixins/SettingsMixin.js'
 
 import '@nextcloud/dialogs/style.css'
@@ -118,9 +148,7 @@ export default {
 		Tooltip,
 	},
 
-	mixins: [
-		SettingsMixin,
-	],
+	mixins: [SettingsMixin],
 
 	data() {
 		return {
@@ -205,13 +233,18 @@ export default {
 
 			this.setUpdate(key, 1)
 			try {
-				await axios.post(generateUrl('/apps/cfg_share_links/settings/save'), data)
+				await axios.post(
+					generateUrl('/apps/cfg_share_links/settings/save'),
+					data,
+				)
 				this.setUpdate(key, 2)
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
 					showError(t('cfg_share_links', e.response.data.message))
 				} else {
-					showError(t('cfg_share_links', 'Error occurred while saving settings'))
+					showError(
+						t('cfg_share_links', 'Error occurred while saving settings'),
+					)
 					console.error(e.response)
 				}
 				this.setUpdate(key, 3)

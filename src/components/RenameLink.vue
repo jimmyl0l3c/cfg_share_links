@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import NcActionInput from '@nextcloud/vue/dist/Components/NcActionInput.js'
+import { showError } from '@nextcloud/dialogs'
+import { NcActionInput } from '@nextcloud/vue'
 import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
 
 import '@nextcloud/dialogs/style.css'
-import { showError } from '@nextcloud/dialogs'
-import TokenValidation from '../mixins/TokenValidation.js'
 import RequestMixin from '../mixins/RequestMixin.js'
+import TokenValidation from '../mixins/TokenValidation.js'
 
 export default {
 	id: 'rename-link',
@@ -27,10 +27,7 @@ export default {
 		LinkVariantIcon,
 	},
 
-	mixins: [
-		TokenValidation,
-		RequestMixin,
-	],
+	mixins: [TokenValidation, RequestMixin],
 
 	props: {
 		share: {
@@ -87,12 +84,22 @@ export default {
 
 			if (!this.isTokenValid(token)) {
 				const message = this.isTokenValidString(token)
-				showError(t('cfg_share_links', message != null && message.length > 1 ? message : 'Invalid token'))
+				showError(
+					t(
+						'cfg_share_links',
+						message != null && message.length > 1 ? message : 'Invalid token',
+					),
+				)
 				this.updating = false
 				return
 			}
 
-			await this.renameLink(this.shareId, this.getFullPath, this.currentToken, token)
+			await this.renameLink(
+				this.shareId,
+				this.getFullPath,
+				this.currentToken,
+				token,
+			)
 
 			this.refreshSidebar(this.fileInfo)
 

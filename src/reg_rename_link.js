@@ -1,6 +1,6 @@
+import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import Vue from 'vue'
 import RenameLink from './components/RenameLink.vue'
-import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 
 // Vue.prototype.OC = window.OC
 Vue.prototype.OCA = window.OCA
@@ -27,10 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 					is: RenameLink,
 				}
 			},
-			shareType: [
-				OC.Share.SHARE_TYPE_LINK,
-				OC.Share.SHARE_TYPE_EMAIL,
-			],
+			shareType: [OC.Share.SHARE_TYPE_LINK, OC.Share.SHARE_TYPE_EMAIL],
 			handlers: {
 				update: (_) => {},
 			},

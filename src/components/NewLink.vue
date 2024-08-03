@@ -5,8 +5,7 @@
 			:bold="false"
 			:force-display-actions="true">
 			<template #icon>
-				<NcAvatar :is-no-user="true"
-					icon-class="avatardiv">
+				<NcAvatar :is-no-user="true" icon-class="avatardiv">
 					<template #icon>
 						<LinkVariantIcon fill-color="white" :size="18" />
 					</template>
@@ -47,22 +46,24 @@
 </template>
 
 <script>
-import NcActionText from '@nextcloud/vue/dist/Components/NcActionText.js'
-import NcActionInput from '@nextcloud/vue/dist/Components/NcActionInput.js'
-import NcActionButton from '@nextcloud/vue/dist/Components/NcActionButton.js'
-import NcAvatar from '@nextcloud/vue/dist/Components/NcAvatar.js'
-import NcTextField from '@nextcloud/vue/dist/Components/NcTextField.js'
+import { showError } from '@nextcloud/dialogs'
+
+import { generateUrl } from '@nextcloud/router'
+import '@nextcloud/dialogs/style.css'
+import {
+	NcActionButton,
+	NcActionInput,
+	NcActionText,
+	NcAvatar,
+	NcTextField,
+} from '@nextcloud/vue'
+import CheckIcon from 'vue-material-design-icons/Check.vue'
 
 import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
 import LockIcon from 'vue-material-design-icons/Lock.vue'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
-import CheckIcon from 'vue-material-design-icons/Check.vue'
-
-import { generateUrl } from '@nextcloud/router'
-import '@nextcloud/dialogs/style.css'
-import { showError } from '@nextcloud/dialogs'
-import TokenValidation from '../mixins/TokenValidation.js'
 import RequestMixin from '../mixins/RequestMixin.js'
+import TokenValidation from '../mixins/TokenValidation.js'
 
 import CustomListItem from './CustomListItem.vue'
 
@@ -82,10 +83,7 @@ export default {
 		CheckIcon,
 	},
 
-	mixins: [
-		TokenValidation,
-		RequestMixin,
-	],
+	mixins: [TokenValidation, RequestMixin],
 
 	props: {
 		fileInfo: {
@@ -120,7 +118,11 @@ export default {
 			}
 		},
 		isInputInvalid() {
-			return this.tokenCandidate != null && this.tokenCandidate.length > 0 && !this.isTokenValid(this.tokenCandidate)
+			return (
+				this.tokenCandidate != null
+				&& this.tokenCandidate.length > 0
+				&& !this.isTokenValid(this.tokenCandidate)
+			)
 		},
 		inputInvalidMessage() {
 			return this.isTokenValidString(this.tokenCandidate)
@@ -129,7 +131,9 @@ export default {
 			return !!(this.fileInfo.permissions & OC.PERMISSION_SHARE)
 		},
 		copiedTooltip() {
-			return this.copied ? t('cfg_share_links', 'Link copied') : t('cfg_share_links', 'Create link')
+			return this.copied
+				? t('cfg_share_links', 'Link copied')
+				: t('cfg_share_links', 'Create link')
 			// return { content: message, show: this.copied, placement: 'bottom' }
 		},
 		isMenuOpened() {
@@ -152,7 +156,14 @@ export default {
 
 			if (!this.isTokenValid(token)) {
 				const message = this.isTokenValidString(token)
-				showError(t('cfg_share_links', message != null && message.length > 1 ? message : t('cfg_share_links', 'Invalid token')))
+				showError(
+					t(
+						'cfg_share_links',
+						message != null && message.length > 1
+							? message
+							: t('cfg_share_links', 'Invalid token'),
+					),
+				)
 				this.updating = false
 				return
 			}
@@ -183,24 +194,32 @@ export default {
 				if (response.data && response.data.token) {
 					resultToken = response.data.token
 				}
-				const shareLink = window.location.protocol + '//' + window.location.host + generateUrl('/s/') + resultToken
+				const shareLink
+					= window.location.protocol
+					+ '//'
+					+ window.location.host
+					+ generateUrl('/s/')
+					+ resultToken
 
 				if (!navigator.clipboard) {
 					this.fallbackCopyTextToClipboard(shareLink)
 				} else {
-					await navigator.clipboard.writeText(shareLink).then(() => {
-						console.debug('CfgShareLinks: Link copied')
-						// Notify that link was copied
-						this.copied = true
-						this.$refs.newItem.$refs.actions.$el.focus()
-						// Reset tooltip after 4s
-						setTimeout(() => {
-							this.copied = false
-						}, 4000)
-					}).catch(reason => {
-						console.debug('CfgShareLinks: Could not copy')
-						console.debug(reason)
-					})
+					await navigator.clipboard
+						.writeText(shareLink)
+						.then(() => {
+							console.debug('CfgShareLinks: Link copied')
+							// Notify that link was copied
+							this.copied = true
+							this.$refs.newItem.$refs.actions.$el.focus()
+							// Reset tooltip after 4s
+							setTimeout(() => {
+								this.copied = false
+							}, 4000)
+						})
+						.catch((reason) => {
+							console.debug('CfgShareLinks: Could not copy')
+							console.debug(reason)
+						})
 				}
 
 				this.tokenCandidate = ''
