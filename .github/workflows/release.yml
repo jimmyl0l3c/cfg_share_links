@@ -1,5 +1,5 @@
 name: Release
-run-name: ${{ github.actor }} is building new release 🚀
+run-name: ${{ github.actor }} is building new release ${{ github.ref_name }} 🚀
 
 on:
   pull_request:
@@ -8,6 +8,10 @@ on:
       - "v*.*.*"
     branches:
       - master
+
+env:
+  ARCHIVE_NAME: cfg_share_links
+  SIGNATURE_NAME: release_signature.base64
 
 jobs:
   node:
@@ -75,7 +79,7 @@ jobs:
             vendor/
 
   uploade-release-asset:
-    if: startsWith(github.ref, 'refs/tags/')
+#    if: startsWith(github.ref, 'refs/tags/')  # TODO: uncomment
     needs: [node, php]
     runs-on: ubuntu-latest
     name: Sign and upload release asset
@@ -83,7 +87,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: cfg_share_links
+          path: ${{ env.ARCHIVE_NAME }}
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             CHANGELOG.md
@@ -93,23 +97,25 @@ jobs:
       - name: Download node and PHP artifacts
         uses: actions/download-artifact@v4
         with:
-          path: cfg_share_links
+          path: ${{ env.ARCHIVE_NAME }}
           merge-multiple: true
 
       - name: Create release tarball
-        run: tar -czvf cfg_share_links.tar.gz --exclude-vcs cfg_share_links
+        run: tar -czvf ${{ env.ARCHIVE_NAME }}.tar.gz --exclude-vcs ${{ env.ARCHIVE_NAME }}
 
       - name: Sign release tarball
+        if: startsWith(github.ref, 'refs/tags/')  # TODO: remove
         run: |
           echo "$SIGNING_KEY" > private.key
-          openssl dgst -sha512 -sign private.key cfg_share_links.tar.gz | openssl base64 > release_signature.base64
+          openssl dgst -sha512 -sign private.key ${{ env.ARCHIVE_NAME }}.tar.gz | openssl base64 > ${{ env.SIGNATURE_NAME }}
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
 
       - name: Release
+        if: startsWith(github.ref, 'refs/tags/')  # TODO: remove
         uses: softprops/action-gh-release@v2
         with:
           draft: true
           files: |
-            cfg_share_links.tar.gz
-            release_signature.base64
+            ${{ env.ARCHIVE_NAME }}.tar.gz
+            ${{ env.SIGNATURE_NAME }}
