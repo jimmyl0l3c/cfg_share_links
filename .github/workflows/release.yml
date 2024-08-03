@@ -73,24 +73,6 @@ jobs:
             templates/
             vendor/
 
-  sparse-checkout:
-    # TODO: add condition
-    runs-on: ubuntu-latest
-    steps:
-      - name: test ls
-        run: ls -la .
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          path: cfg_share_links
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            CHANGELOG.md
-            COPYING
-            README.md
-      - name: test ls2
-        run: ls -la cfg_share_links
-
   uploade-release-asset:
     # TODO: add condition
     needs: [node, php]
@@ -101,6 +83,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: cfg_share_links
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
             CHANGELOG.md
             COPYING
