@@ -1,0 +1,116 @@
+name: Release
+run-name: ${{ github.actor }} is building new release ${{ github.ref_name }} 🚀
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+env:
+  ARCHIVE_NAME: cfg_share_links
+  SIGNATURE_NAME: release_signature.base64
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    name: Build and upload node artifacts
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read node and npm versions from package.json
+        uses: skjnldsv/read-package-engines-version-actions@v2
+        id: node-engine-versions
+        with:
+          fallbackNode: '^20'
+          fallbackNpm: '^10'
+
+      - name: Set up node ${{ steps.node-engine-versions.outputs.nodeVersion }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.node-engine-versions.outputs.nodeVersion }}
+          cache: 'npm'
+
+      - name: Set up npm ${{ steps.node-engine-versions.outputs.npmVersion }}
+        run: npm i -g npm@"${{ steps.node-engine-versions.outputs.npmVersion }}"
+
+      - name: Install dependencies & build
+        run: |
+          npm ci
+          npm run build --if-present
+
+      - name: Upload node artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-artifacts
+          path: |
+            js/
+            img/
+
+  php:
+    runs-on: ubuntu-latest
+    name: Get and upload PHP artifacts
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+          extensions: curl
+
+      - name: Run composer install
+        run: composer install --prefer-dist
+
+      - name: Upload PHP artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-artifacts
+          path: |
+            appinfo/
+            l10n/
+            lib/
+            templates/
+            vendor/
+
+  uploade-release-asset:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [node, php]
+    runs-on: ubuntu-latest
+    name: Sign and upload release asset
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: ${{ env.ARCHIVE_NAME }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            CHANGELOG.md
+            COPYING
+            README.md
+
+      - name: Download node and PHP artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ${{ env.ARCHIVE_NAME }}
+          merge-multiple: true
+
+      - name: Create release tarball
+        run: tar -czvf ${{ env.ARCHIVE_NAME }}.tar.gz --exclude-vcs ${{ env.ARCHIVE_NAME }}
+
+      - name: Sign release tarball
+        run: |
+          echo "$SIGNING_KEY" > private.key
+          openssl dgst -sha512 -sign private.key ${{ env.ARCHIVE_NAME }}.tar.gz | openssl base64 > ${{ env.SIGNATURE_NAME }}
+        env:
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            ${{ env.ARCHIVE_NAME }}.tar.gz
+            ${{ env.SIGNATURE_NAME }}
