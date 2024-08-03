@@ -1,0 +1,99 @@
+name: Release
+run-name: ${{ github.actor }} is building new release 🚀
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - stable*
+
+jobs:
+  node:
+    runs-on: ubuntu-latest
+    name: node
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read node and npm versions from package.json
+        uses: skjnldsv/read-package-engines-version-actions@v2
+        id: node-engine-versions
+        with:
+          fallbackNode: '^20'
+          fallbackNpm: '^10'
+
+      - name: Set up node ${{ steps.node-engine-versions.outputs.nodeVersion }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.node-engine-versions.outputs.nodeVersion }}
+          cache: 'npm'
+
+      - name: Set up npm ${{ steps.node-engine-versions.outputs.npmVersion }}
+        run: npm i -g npm@"${{ steps.node-engine-versions.outputs.npmVersion }}"
+
+      - name: Install dependencies & build
+        run: |
+          npm ci
+          npm run build --if-present
+
+      - name: Upload node artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-artifacts
+          path: |
+            js/
+            img/
+
+  php:
+    runs-on: ubuntu-latest
+    name: php
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+          extensions: curl
+
+      - name: Run composer install
+        run: composer install --prefer-dist
+
+      - name: Upload PHP artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: php-artifacts
+          path: |
+            appinfo/
+            l10n/
+            lib/
+            templates/
+            vendor/
+
+  uploade-release-asset:
+    # TODO: add condition
+    needs: [node, php]
+    runs-on: ubuntu-latest
+    name: Upload release asset
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: cfg_share_links
+          sparse-checkout: |
+            CHANGELOG.md
+            COPYING
+            README.md
+
+      - name: Download node and PHP artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: cfg_share_links
+          merge-multiple: true
+
+      - name: Create release tarball
+        run: tar -czvf cfg_share_links.tar.gz --exclude-vcs cfg_share_links
+      # TODO: upload to release
