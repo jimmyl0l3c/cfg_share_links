@@ -4,9 +4,10 @@ run-name: ${{ github.actor }} is building new release 🚀
 on:
   pull_request:
   push:
+    tags:
+      - "v*.*.*"
     branches:
       - master
-      - stable*
 
 jobs:
   node:
@@ -62,11 +63,6 @@ jobs:
       - name: Run composer install
         run: composer install --prefer-dist
 
-      - name: Test secret
-        run: echo $signing_key
-        env:
-          signing_key: ${{ secrets.SIGNING_KEY }}
-
       - name: Upload PHP artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -79,7 +75,7 @@ jobs:
             vendor/
 
   uploade-release-asset:
-    # TODO: add condition
+    if: startsWith(github.ref, 'refs/tags/')
     needs: [node, php]
     runs-on: ubuntu-latest
     name: Sign and upload release asset
@@ -104,7 +100,15 @@ jobs:
         run: tar -czvf cfg_share_links.tar.gz --exclude-vcs cfg_share_links
 
       - name: Sign release tarball
-        run: echo $signing_key
+        run: |
+          echo "$SIGNING_KEY" > private.key
+          openssl dgst -sha512 -sign private.key cfg_share_links.tar.gz | openssl base64 > release_signature.base64
         env:
-          signing_key: ${{ secrets.SIGNING_KEY }}
-      # TODO: upload to release
+          SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            cfg_share_links.tar.gz
+            release_signature.base64
