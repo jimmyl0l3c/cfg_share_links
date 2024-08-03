@@ -11,7 +11,7 @@ on:
 jobs:
   node:
     runs-on: ubuntu-latest
-    name: node
+    name: Build and upload node artifacts
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -47,7 +47,7 @@ jobs:
 
   php:
     runs-on: ubuntu-latest
-    name: php
+    name: Get and upload PHP artifacts
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -72,6 +72,23 @@ jobs:
             lib/
             templates/
             vendor/
+
+  sparse-checkout:
+    # TODO: add condition
+    runs-on: ubuntu-latest
+    steps:
+      - name: test ls
+        run: ls -la .
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          path: cfg_share_links
+          sparse-checkout: |
+            CHANGELOG.md
+            COPYING
+            README.md
+      - name: test ls2
+        run: ls -la cfg_share_links
 
   uploade-release-asset:
     # TODO: add condition
