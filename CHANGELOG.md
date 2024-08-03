@@ -268,7 +268,7 @@ Backport from version 3.0.0
 - Initial release
 
 [Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.1...HEAD
-[5.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.0...v5.1.1
+[5.1.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.0...v5.1.1
 [5.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.0.0...v5.1.0
 [5.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v4.2.0...v5.0.0
 [4.2.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v4.1.0...v4.2.0
