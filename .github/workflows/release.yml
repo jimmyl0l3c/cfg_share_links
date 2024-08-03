@@ -7,7 +7,7 @@ on:
       - "v*.*.*"
 
 env:
-  ARCHIVE_NAME: cfg_share_links
+  NC_APP_NAME: cfg_share_links
   SIGNATURE_NAME: release_signature.base64
 
 jobs:
@@ -80,11 +80,12 @@ jobs:
     needs: [node, php]
     runs-on: ubuntu-latest
     name: Sign and upload release asset
+    environment: release
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          path: ${{ env.ARCHIVE_NAME }}
+          path: ${{ env.NC_APP_NAME }}
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             CHANGELOG.md
@@ -94,23 +95,25 @@ jobs:
       - name: Download node and PHP artifacts
         uses: actions/download-artifact@v4
         with:
-          path: ${{ env.ARCHIVE_NAME }}
+          path: ${{ env.NC_APP_NAME }}
           merge-multiple: true
 
       - name: Create release tarball
-        run: tar -czvf ${{ env.ARCHIVE_NAME }}.tar.gz --exclude-vcs ${{ env.ARCHIVE_NAME }}
+        run: tar -czvf ${{ env.NC_APP_NAME }}.tar.gz --exclude-vcs ${{ env.NC_APP_NAME }}
 
       - name: Sign release tarball
+        shell: bash
         run: |
-          echo "$SIGNING_KEY" > private.key
-          openssl dgst -sha512 -sign private.key ${{ env.ARCHIVE_NAME }}.tar.gz | openssl base64 > ${{ env.SIGNATURE_NAME }}
+          echo "$SIGNING_KEY" | base64 --decode > private.key
+          openssl dgst -sha512 -sign private.key ${{ env.NC_APP_NAME }}.tar.gz | openssl base64 > ${{ env.SIGNATURE_NAME }}
         env:
           SIGNING_KEY: ${{ secrets.SIGNING_KEY }}
 
       - name: Release
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           draft: true
           files: |
-            ${{ env.ARCHIVE_NAME }}.tar.gz
+            ${{ env.NC_APP_NAME }}.tar.gz
             ${{ env.SIGNATURE_NAME }}
