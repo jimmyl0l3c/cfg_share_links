@@ -83,6 +83,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           path: cfg_share_links
+          sparse-checkout-cone-mode: false
           sparse-checkout: |
             CHANGELOG.md
             COPYING
