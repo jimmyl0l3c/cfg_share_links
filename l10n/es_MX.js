@@ -6,6 +6,7 @@ OC.L10N.register(
     "Wrong path, file/folder does not exist" : "Ruta incorrecta, el archivo/carpeta no existe",
     "Could not create share" : "No fue posible crear el elemento compartido",
     "Share not found" : "No se encontró el elemento compartido",
+    "Insufficient permission" : "Permisos insuficientes",
     "Saving..." : "Guardando...",
     "Miscellaneous" : "Misceláneo",
     "None" : "Ninguno",
