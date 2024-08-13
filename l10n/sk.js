@@ -38,7 +38,7 @@ OC.L10N.register(
     "Enter custom token" : "Vložte vlastný token",
     "Password protection enforced" : "Vynútená ochrana heslom",
     "Enter a password" : "Zadajte heslo",
-    "Link copied" : "Odkaz skopírovaný",
+    "Link copied" : "Odkaz bol skopírovaný",
     "Create link" : "Vytvoriť odkaz",
     "Invalid token" : "Neplatný token",
     "Custom public link created" : "Vlastný verejný odkaz bol vytvorený",
