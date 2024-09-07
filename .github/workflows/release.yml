@@ -75,7 +75,7 @@ jobs:
             templates/
             vendor/
 
-  uploade-release-asset:
+  upload-release-asset:
     if: startsWith(github.ref, 'refs/tags/')
     needs: [node, php]
     runs-on: ubuntu-latest
@@ -114,6 +114,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           draft: true
+          generate_release_notes: true
           files: |
             ${{ env.NC_APP_NAME }}.tar.gz
             ${{ env.SIGNATURE_NAME }}
