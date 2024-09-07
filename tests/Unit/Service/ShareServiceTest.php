@@ -50,7 +50,7 @@ class ShareServiceTest extends TestCase {
 			$this->mapper,
 			new AppConstants(),
 			new SettingsKey(),
-            new LinkLabelMode(),
+			new LinkLabelMode(),
 			$this->userId,
 		);
 	}
