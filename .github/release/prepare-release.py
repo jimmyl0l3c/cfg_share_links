@@ -14,7 +14,8 @@ GH_REPO_OWNER = "jimmyl0l3c"
 GH_REPO_NAME = "cfg_share_links"
 
 GH_REPO_MAIN_BRANCH = "master"
-CHANGELOG_CONFIG = ".github/release/keep-a-changelog.yml"
+CHANGELOG_CONFIG = ".github/release.yml"
+# CHANGELOG_CONFIG = ".github/release/keep-a-changelog.yml"
 
 
 def parse_args() -> argparse.Namespace:
@@ -70,6 +71,7 @@ def generate_changelog_entry(tag: str) -> str:
 
 def update_changelog(tag: str) -> None:
     changelog_entry, compare_link = finalize_changelog_entry(generate_changelog_entry(tag))
+    print(f"New changelog entry:\n\n{changelog_entry}\n")
     new_version = tag[1:]
     with (changelog_path := REPO_ROOT / "CHANGELOG.md").open("r") as changelog:
         current_changelog = changelog.read()
@@ -93,6 +95,7 @@ def update_changelog(tag: str) -> None:
 def bump_version(tag: str) -> None:
     with (app_info_path := REPO_ROOT / "appinfo" / "info.xml").open("r") as app_info:
         updated_app_info = re.sub(r"<version>\d+\.\d+\.\d+</version>", f"<version>{tag[1:]}</version>", app_info.read())
+    print(f"Updated info.xml:\n\n{updated_app_info}\n")
     with app_info_path.open("w") as app_info:
         app_info.write(updated_app_info)
 
@@ -100,7 +103,9 @@ def bump_version(tag: str) -> None:
 def main() -> None:
     if not re.match(r"v\d+\.\d+\.\d+", new_tag := parse_args().tag):
         raise Exception("Invalid tag passed")
+    print("Updating changelog ...")
     update_changelog(new_tag)
+    print("Bumping version ...")
     bump_version(new_tag)
 
 
