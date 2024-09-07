@@ -101,7 +101,7 @@ export default {
 			tokenCandidate: '',
 			copied: false,
 			passwordPending: false,
-			password: null,
+			password: '',
 		}
 	},
 
