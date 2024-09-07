@@ -4,6 +4,7 @@ namespace OCA\CfgShareLinks\Tests\Unit\Service;
 
 use OCA\CfgShareLinks\AppInfo\AppConstants;
 use OCA\CfgShareLinks\Db\CfgShareMapper;
+use OCA\CfgShareLinks\Enums\LinkLabelMode;
 use OCA\CfgShareLinks\Enums\SettingsKey;
 use OCA\CfgShareLinks\Service\InvalidTokenException;
 use OCA\CfgShareLinks\Service\ShareService;
@@ -49,6 +50,7 @@ class ShareServiceTest extends TestCase {
 			$this->mapper,
 			new AppConstants(),
 			new SettingsKey(),
+            new LinkLabelMode(),
 			$this->userId,
 		);
 	}
