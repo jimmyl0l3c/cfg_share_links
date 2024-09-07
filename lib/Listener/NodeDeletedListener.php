@@ -42,12 +42,12 @@ class NodeDeletedListener implements IEventListener {
 					$this->mapper->delete($c_share);
 					$this->logger->debug('NodeDeletedListener: Successfully deleted custom share');
 				} catch (Exception|InvalidPathException|NotFoundException $e) {
-					$this->logger->debug('NodeDeletedListener: getShareById Exception: ' . $e->getMessage() . " - " . $e->getTraceAsString());
+					$this->logger->debug('NodeDeletedListener: getShareById Exception: ' . $e->getMessage() . ' - ' . $e->getTraceAsString());
 				} catch (ShareNotFound $e) {
 				}
 			}
 		} catch (Exception|InvalidPathException|NotFoundException $e) {
-			$this->logger->debug('NodeDeletedListener: findByNode Exception: ' . $e->getMessage() . " - " . $e->getTraceAsString());
+			$this->logger->debug('NodeDeletedListener: findByNode Exception: ' . $e->getMessage() . ' - ' . $e->getTraceAsString());
 		}
 	}
 }

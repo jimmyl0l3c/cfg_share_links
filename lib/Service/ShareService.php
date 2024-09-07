@@ -85,7 +85,7 @@ class ShareService {
 	 * @throws InvalidPathException
 	 * @throws NotFoundException
 	 */
-	public function create(string|null $path, int $shareType, string $tokenCandidate, string $userId, string $password = ""): array {
+	public function create(string|null $path, int $shareType, string $tokenCandidate, string $userId, string $password = ''): array {
 		if ($userId != null && $this->currentUserId != $userId) {
 			$this->currentUserId = $userId;
 		}

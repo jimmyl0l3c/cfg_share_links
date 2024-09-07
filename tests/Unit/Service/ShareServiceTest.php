@@ -32,7 +32,7 @@ class ShareServiceTest extends TestCase {
 		$this->l10n = $this->getMockBuilder(IL10N::class)->getMock();
 
 		$this->appConfig = $this->createStub(IAppConfig::class);
-		$this->appConfig->method("getAppValue")->willReturn('3');
+		$this->appConfig->method('getAppValue')->willReturn('3');
 
 		$this->mapper = $this->getMockBuilder(CfgShareMapper::class)
 			->disableOriginalConstructor()
@@ -59,11 +59,11 @@ class ShareServiceTest extends TestCase {
 
 	public function testTokenValidityCheckThrowsExceptionIfInvalid() {
 		$this->expectException(InvalidTokenException::class);
-		$this->service->raiseIfTokenIsInvalid("Invalid.token#!");
+		$this->service->raiseIfTokenIsInvalid('Invalid.token#!');
 	}
 
 	public function testTokenValidityCheckDoesNotThrowIfValid() {
 		$this->expectNotToPerformAssertions();
-		$this->service->raiseIfTokenIsInvalid("some-VALID_token1");
+		$this->service->raiseIfTokenIsInvalid('some-VALID_token1');
 	}
 }
