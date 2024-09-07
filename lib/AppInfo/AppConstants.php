@@ -3,7 +3,7 @@
 namespace OCA\CfgShareLinks\AppInfo;
 
 class AppConstants {
-	public const DEFAULT_VALID_TOKEN_REGEX = "/^[a-zA-Z0-9_\-+]+$/";
+	public const DEFAULT_VALID_TOKEN_REGEX = '/^[a-zA-Z0-9_]+$/';
 	public const DEFAULT_MIN_TOKEN_LENGTH = 3;
 	public const MAX_TOKEN_LENGTH = 32; // Nextcloud saves the token in VARCHAR(32)
 
