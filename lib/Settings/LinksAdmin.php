@@ -26,7 +26,9 @@
 
 namespace OCA\CfgShareLinks\Settings;
 
+use OCA\CfgShareLinks\AppInfo\AppConstants;
 use OCA\CfgShareLinks\AppInfo\Application;
+use OCA\CfgShareLinks\Enums\SettingsKey;
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\AppFramework\Services\IAppConfig;
 use OCP\Settings\ISettings;
@@ -34,16 +36,18 @@ use OCP\Util;
 
 class LinksAdmin implements ISettings {
 	public function __construct(
-		private IAppConfig $appConfig
+		private IAppConfig $appConfig,
+		private AppConstants $appConstants,
+		private SettingsKey $settingsKey,
 	) {
 	}
 
 	public function getForm(): TemplateResponse {
 		$parameters = [
-			'defaultLabelMode' => $this->appConfig->getAppValue('default_label_mode', 0),
-			'defaultLabel' => $this->appConfig->getAppValue('default_label', 'Custom link'),
-			'minTokenLength' => $this->appConfig->getAppValue('min_token_length', 3),
-			'deleteRemovedShareConflicts' => $this->appConfig->getAppValue('deleteRemovedShareConflicts', false)
+			'defaultLabelMode' => $this->appConfig->getAppValue($this->settingsKey::DefaultLabelMode, $this->appConstants::DEFAULT_LABEL_MODE),
+			'defaultLabel' => $this->appConfig->getAppValue($this->settingsKey::DefaultCustomLabel, $this->appConstants::DEFAULT_CUSTOM_LABEL),
+			'minTokenLength' => $this->appConfig->getAppValue($this->settingsKey::MinTokenLength, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH),
+			'deleteRemovedShareConflicts' => $this->appConfig->getAppValue($this->settingsKey::DeleteRemovedShareConflicts, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)
 		];
 
 		Util::addScript(Application::APP_ID, 'cfg_share_links-settings-admin');
