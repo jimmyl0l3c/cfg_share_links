@@ -70,6 +70,6 @@ class ShareServiceTest extends TestCase {
 
 	public function testTokenValidityCheckDoesNotThrowIfValid() {
 		$this->expectNotToPerformAssertions();
-		$this->service->raiseIfTokenIsInvalid('some-VALID_token1');
+		$this->service->raiseIfTokenIsInvalid('some_VALID_token1');
 	}
 }
