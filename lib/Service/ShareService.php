@@ -27,8 +27,11 @@
 namespace OCA\CfgShareLinks\Service;
 
 use OC\User\NoUserException;
+use OCA\CfgShareLinks\AppInfo\AppConstants;
 use OCA\CfgShareLinks\Db\CfgShare;
 use OCA\CfgShareLinks\Db\CfgShareMapper;
+use OCA\CfgShareLinks\Enums\LinkLabelMode;
+use OCA\CfgShareLinks\Enums\SettingsKey;
 use OCA\Files_Sharing\Exceptions\SharingRightsException;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -69,6 +72,9 @@ class ShareService {
 		private IL10N           $l10n,
 		private IAppConfig      $appConfig,
 		private CfgShareMapper  $mapper,
+		private AppConstants $appConstants,
+		private SettingsKey $settingsKey,
+		private LinkLabelMode $linkLabelMode,
 		private string|null     $currentUserId = null
 	) {
 	}
@@ -154,13 +160,13 @@ class ShareService {
 		}
 
 		// Set label
-		$labelMode = $this->appConfig->getAppValue('default_label_mode', 0);
+		$labelMode = $this->appConfig->getAppValue($this->settingsKey::DefaultLabelMode, $this->appConstants::DEFAULT_LABEL_MODE);
 		switch ($labelMode) {
-			case 1:
+			case $this->linkLabelMode::SameAsToken:
 				$share->setLabel($tokenCandidate);
 				break;
-			case 2:
-				$share->setLabel($this->appConfig->getAppValue('default_label', 'Custom link'));
+			case $this->linkLabelMode::UserSpecified:
+				$share->setLabel($this->appConfig->getAppValue($this->settingsKey::DefaultCustomLabel, $this->appConstants::DEFAULT_CUSTOM_LABEL));
 				break;
 		}
 
@@ -241,8 +247,8 @@ class ShareService {
 		}
 
 		// Update label
-		$labelMode = $this->appConfig->getAppValue('default_label_mode', 0);
-		if ($labelMode == 1 && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
+		$labelMode = $this->appConfig->getAppValue($this->settingsKey::DefaultLabelMode, $this->appConstants::DEFAULT_LABEL_MODE);
+		if ($labelMode == $this->linkLabelMode::SameAsToken && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
 			$share->setLabel($tokenCandidate);
 		}
 
@@ -347,7 +353,7 @@ class ShareService {
 		// Unique check
 		try {
 			$share = $this->shareManager->getShareByToken($tokenCandidate);
-			if ($this->appConfig->getAppValue('deleteRemovedShareConflicts', false)) {
+			if ($this->appConfig->getAppValue($this->settingsKey::DeleteRemovedShareConflicts, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)) {
 				try {
 					$share->getNode();
 				} catch (NotFoundException $e) {
@@ -366,13 +372,17 @@ class ShareService {
 	 * @throws InvalidTokenException
 	 */
 	public function raiseIfTokenIsInvalid(string $token): void {
-		$min_length = $this->appConfig->getAppValue('min_token_length', 3);
+		$min_length = $this->appConfig->getAppValue($this->settingsKey::MinTokenLength, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH);
 
 		if ($token == null || strlen($token) < $min_length) {
 			throw new InvalidTokenException($this->l10n->t('Token is not long enough'));
 		}
 
-		$valid = preg_match("/^[a-zA-Z0-9_\-+]+$/", $token);
+		if (strlen($token) > $this->appConstants::MAX_TOKEN_LENGTH) {
+			throw new InvalidTokenException($this->l10n->t('Token cannot be longer than %1$s characters', [$this->appConstants::MAX_TOKEN_LENGTH]));
+		}
+
+		$valid = preg_match($this->appConstants::DEFAULT_VALID_TOKEN_REGEX, $token);
 
 		if ($valid != 1) {
 			throw new InvalidTokenException($this->l10n->t('Token contains invalid characters'));
