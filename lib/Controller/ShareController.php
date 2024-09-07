@@ -23,7 +23,7 @@ class ShareController extends Controller {
 	/**
 	 * @NoAdminRequired
 	 */
-	public function create(string $path, int $shareType, string $tokenCandidate, string $password = ""): DataResponse {
+	public function create(string $path, int $shareType, string $tokenCandidate, string $password = ''): DataResponse {
 		//        return new DataResponse($this->service->create($path, $shareType, $tokenCandidate,
 		//            $this->userId));
 		return $this->handleException(function () use ($path, $shareType, $tokenCandidate, $password) {

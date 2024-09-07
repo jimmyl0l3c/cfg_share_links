@@ -29,7 +29,7 @@ class ShareDeletedListener implements IEventListener {
 			$this->logger->debug('ShareDeletedListener: Successfully deleted custom share from cfg_shares');
 		} catch (DoesNotExistException $e) {
 		} catch (MultipleObjectsReturnedException|Exception $e) {
-			$this->logger->debug('ShareDeletedListener: Exception: ' . $e->getMessage() . " - " . $e->getTraceAsString());
+			$this->logger->debug('ShareDeletedListener: Exception: ' . $e->getMessage() . ' - ' . $e->getTraceAsString());
 		}
 	}
 }
