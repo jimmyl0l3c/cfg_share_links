@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r .github/release/requirements.txt
-      - run: python .github/release/prepare_release.py ${{ github.ref_name }}
+      - run: python .github/release/prepare_release.py v5.2.0
         env:
           GITHUB_TOKEN: ${{ github.token }}
       - name: Commit changes
