@@ -1,0 +1,31 @@
+name: Push to NC appstore
+run-name: ${{ github.actor }} is pushing new release ${{ github.ref_name }} to NC AppStore 🚀
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  push-to-appstore:
+    runs-on: ubuntu-latest
+    name: Publish to NC appstore
+    environment: release
+    steps:
+      - name: Publish to NC appstore
+        run: |
+          echo '${{ toJson(github.event.release.assets) }}' > assets.json
+          DOWNLOAD_URL=$(cat assets.json | jq -r 'map(select(.name == "cfg_share_links.tar.gz")) | .[0] | .browser_download_url')
+          
+          SIGNATURE_LINK=$(cat assets.json | jq -r 'map(select(.name == "release_signature.base64")) | .[0] | .browser_download_url')
+          wget $SIGNATURE_LINK
+          SIGNATURE=$(cat release_signature.base64 | tr -d " \t\n\r")
+          
+          curl -s --fail --show-error \
+            -X POST $APPSTORE_URL \
+            -H "Authorization: Token ${APPSTORE_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{\"download\": \"${DOWNLOAD_URL}\", \"signature\": \"${SIGNATURE}\", \"nightly\": ${NIGHTLY} }"
+        env:
+          APPSTORE_URL: "https://apps.nextcloud.com/api/v1/apps/releases"
+          APPSTORE_TOKEN: ${{ secrets.NC_TOKEN }}
+          NIGHTLY: ${{ github.event.release.prerelease }}
