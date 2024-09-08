@@ -2,7 +2,7 @@ name: Release
 run-name: ${{ github.actor }} is building new release ${{ github.ref_name }} 🚀
 
 on:
-  pull_request:
+  pull_request:  # TODO: remove
   push:
     tags:
       - "v*.*.*"
