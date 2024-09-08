@@ -14,8 +14,8 @@ GH_REPO_OWNER = "jimmyl0l3c"
 GH_REPO_NAME = "cfg_share_links"
 
 GH_REPO_MAIN_BRANCH = "master"
-CHANGELOG_CONFIG = ".github/release.yml"
-# CHANGELOG_CONFIG = ".github/release/keep-a-changelog.yml"
+# CHANGELOG_CONFIG = ".github/release.yml"
+CHANGELOG_CONFIG = ".github/release/keep-a-changelog.yml"
 
 
 def parse_args() -> argparse.Namespace:
