@@ -108,7 +108,7 @@ jobs:
         with:
           name: php-artifacts
           path: |
-            appinfo/
+            appinfo/routes.php
             l10n/
             lib/
             templates/
