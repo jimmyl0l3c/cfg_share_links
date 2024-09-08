@@ -29,15 +29,24 @@ jobs:
       - run: python .github/release/prepare_release.py ${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
+
       - name: Commit changes and update tag
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add appinfo/info.xml CHANGELOG.md
-          git commit -m "Bump version"
+          git commit -m "Bump version: ${{ github.ref_name }}"
           git push
           git tag -f ${{ github.ref_name }}
           git push origin -f --tags
+
+      - name: Upload info.xml and changelog
+        uses: actions/upload-artifact@v4
+        with:
+          name: updated-files
+          path: |
+            appinfo/info.xml
+            CHANGELOG.md
 
   node:
     needs: [prepare-new-version]
@@ -118,7 +127,6 @@ jobs:
           path: ${{ env.NC_APP_NAME }}
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            CHANGELOG.md
             COPYING
             README.md
 
