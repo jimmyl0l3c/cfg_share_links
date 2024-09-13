@@ -40,8 +40,8 @@ class ShareOcsController extends OCSController {
 	 * @throws OCSBadRequestException if the token or password is invalid
 	 * @throws OCSException if unauthorized or unexpected exception occurred (differentiated by the response code)
 	 * @throws OCSNotFoundException if the path was not found
-     *
-     * 200: Share with custom token created
+	 *
+	 * 200: Share with custom token created
 	 */
 	#[NoAdminRequired]
 	#[NoCSRFRequired]
@@ -67,9 +67,9 @@ class ShareOcsController extends OCSController {
 	 * @throws OCSBadRequestException if the token is invalid
 	 * @throws OCSException if unauthorized or unexpected exception occurred (differentiated by the response code)
 	 * @throws OCSNotFoundException if the share was not found
-     *
-     *  200: Token of a share updated
-     */
+	 *
+	 *  200: Token of a share updated
+	 */
 	#[NoAdminRequired]
 	#[NoCSRFRequired]
 	#[CORS]
@@ -90,9 +90,9 @@ class ShareOcsController extends OCSController {
 	 * @throws OCSBadRequestException if the token is invalid
 	 * @throws OCSException if unauthorized or unexpected exception occurred (differentiated by the response code)
 	 * @throws OCSNotFoundException if the share was not found
-     *
-     * 200: Token of a share updated
-     */
+	 *
+	 * 200: Token of a share updated
+	 */
 	#[NoAdminRequired]
 	#[NoCSRFRequired]
 	#[CORS]
