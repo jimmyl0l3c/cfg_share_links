@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @psalm-type CfgShareLinksShare = array{
+ * @psalm-type CfgShareLinks_Share = array{
  *     id: string,
  *     share_type: int,
  *     uid_owner: string,

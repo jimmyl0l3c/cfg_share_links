@@ -18,7 +18,7 @@ use OCP\IRequest;
 use ResponseDefinitions;
 
 /**
- * @psalm-import-type CfgShareLinksShare from ResponseDefinitions
+ * @psalm-import-type CfgShareLinks_Share from ResponseDefinitions
  */
 class ShareOcsController extends OCSController {
 	use Errors;
@@ -36,10 +36,12 @@ class ShareOcsController extends OCSController {
 	 * Create new share with custom token, currently only supports sharing links
 	 *
 	 * @param int $shareTypeId Share type id (Link=3, currently only one supported)
-	 * @return DataResponse<Http::STATUS_OK, CfgShareLinksShare, array{}> Detail of the newly created share
+	 * @return DataResponse<Http::STATUS_OK, CfgShareLinks_Share, array{}> Detail of the newly created share
 	 * @throws OCSBadRequestException if the token or password is invalid
 	 * @throws OCSException if unauthorized or unexpected exception occurred (differentiated by the response code)
 	 * @throws OCSNotFoundException if the path was not found
+     *
+     * 200: Share with custom token created
 	 */
 	#[NoAdminRequired]
 	#[NoCSRFRequired]
@@ -61,11 +63,13 @@ class ShareOcsController extends OCSController {
 	 *
 	 * @param string $id Share id to update
 	 * @param string $tokenCandidate New token
-	 * @return DataResponse<Http::STATUS_OK, CfgShareLinksShare, array{}> Detail of the updated share
+	 * @return DataResponse<Http::STATUS_OK, CfgShareLinks_Share, array{}> Detail of the updated share
 	 * @throws OCSBadRequestException if the token is invalid
 	 * @throws OCSException if unauthorized or unexpected exception occurred (differentiated by the response code)
 	 * @throws OCSNotFoundException if the share was not found
-	 */
+     *
+     *  200: Token of a share updated
+     */
 	#[NoAdminRequired]
 	#[NoCSRFRequired]
 	#[CORS]
@@ -82,11 +86,13 @@ class ShareOcsController extends OCSController {
 	 *
 	 * @param string $token The (current) token to update
 	 * @param string $tokenCandidate New token
-	 * @return DataResponse<Http::STATUS_OK, CfgShareLinksShare, array{}> Detail of the updated share
+	 * @return DataResponse<Http::STATUS_OK, CfgShareLinks_Share, array{}> Detail of the updated share
 	 * @throws OCSBadRequestException if the token is invalid
 	 * @throws OCSException if unauthorized or unexpected exception occurred (differentiated by the response code)
 	 * @throws OCSNotFoundException if the share was not found
-	 */
+     *
+     * 200: Token of a share updated
+     */
 	#[NoAdminRequired]
 	#[NoCSRFRequired]
 	#[CORS]
