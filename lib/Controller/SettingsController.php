@@ -27,61 +27,62 @@
 namespace OCA\CfgShareLinks\Controller;
 
 use OCA\CfgShareLinks\AppInfo\AppConstants;
-use OCA\CfgShareLinks\AppInfo\Application;
+use OCA\CfgShareLinks\Enums\LinkLabelMode;
 use OCA\CfgShareLinks\Enums\SettingsKey;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Services\IAppConfig;
 use OCP\IRequest;
+use ValueError;
 
 class SettingsController extends Controller {
 	public function __construct(
-		private IAppConfig $appConfig,
-		private AppConstants $appConstants,
-		private SettingsKey $settingsKey,
-		IRequest           $request
+		string                        $appName,
+		private readonly IAppConfig   $appConfig,
+		private readonly AppConstants $appConstants,
+		IRequest                      $request
 	) {
-		parent::__construct(Application::APP_ID, $request);
+		parent::__construct($appName, $request);
 	}
 
 	public function save(string $key, string $value): DataResponse {
-		switch ($key) {
-			case 'default_label_mode':
-				if (is_numeric($value) && (int)$value >= 0 && (int)$value <= 2) {
-					$this->appConfig->setAppValue($this->settingsKey::DefaultLabelMode, (int)$value);
+		try {
+			$settings_key = SettingsKey::from($key);
+			switch ($settings_key) {
+				case SettingsKey::DefaultLabelMode:
+					$this->appConfig->setAppValueInt($settings_key->value, LinkLabelMode::from($value)->value);
 					return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
-				}
-				break;
-			case 'default_label':
-				if (strlen($value) >= 1) {
-					$this->appConfig->setAppValue($this->settingsKey::DefaultCustomLabel, $value);
-					return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
-				}
-				break;
-			case 'min_token_length':
-				if (is_numeric($value) && (int)$value >= 1) {
-					$this->appConfig->setAppValue($this->settingsKey::MinTokenLength, (int)$value);
-					return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
-				}
-				break;
-			case 'deleteRemovedShareConflicts':
-				if (is_numeric($value) && (int)$value >= 0) {
-					$this->appConfig->setAppValue($this->settingsKey::DeleteRemovedShareConflicts, (int)$value > 0);
-					return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
-				}
-				break;
+				case SettingsKey::DefaultCustomLabel:
+					if (strlen($value) >= 1) {
+						$this->appConfig->setAppValueString($settings_key->value, $value);
+						return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+					}
+					break;
+				case SettingsKey::MinTokenLength:
+					if (is_numeric($value) && (int)$value >= 1) {
+						$this->appConfig->setAppValueInt($settings_key->value, (int)$value);
+						return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+					}
+					break;
+				case SettingsKey::DeleteRemovedShareConflicts:
+					if (is_numeric($value) && (int)$value >= 0) {
+						$this->appConfig->setAppValueBool($settings_key->value, (int)$value > 0);
+						return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+					}
+					break;
+			}
+		} catch (ValueError) {
 		}
-
 		return new DataResponse(['message' => 'Invalid key or value'], Http::STATUS_BAD_REQUEST);
 	}
 
 	public function fetch(): DataResponse {
 		$settings = [
-			'defaultLabelMode' => $this->appConfig->getAppValue($this->settingsKey::DefaultLabelMode, $this->appConstants::DEFAULT_LABEL_MODE),
-			'defaultLabel' => $this->appConfig->getAppValue($this->settingsKey::DefaultCustomLabel, $this->appConstants::DEFAULT_CUSTOM_LABEL),
-			'minTokenLength' => $this->appConfig->getAppValue($this->settingsKey::MinTokenLength, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH),
-			'deleteRemovedShareConflicts' => $this->appConfig->getAppValue($this->settingsKey::DeleteRemovedShareConflicts, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)
+			'defaultLabelMode' => $this->appConfig->getAppValueInt(SettingsKey::DefaultLabelMode->value, $this->appConstants::DEFAULT_LABEL_MODE),
+			'defaultLabel' => $this->appConfig->getAppValueString(SettingsKey::DefaultCustomLabel->value, $this->appConstants::DEFAULT_CUSTOM_LABEL),
+			'minTokenLength' => $this->appConfig->getAppValueInt(SettingsKey::MinTokenLength->value, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH),
+			'deleteRemovedShareConflicts' => $this->appConfig->getAppValueBool(SettingsKey::DeleteRemovedShareConflicts->value, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)
 		];
 
 		return new DataResponse($settings, Http::STATUS_OK);

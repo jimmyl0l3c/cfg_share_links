@@ -36,18 +36,17 @@ use OCP\Util;
 
 class LinksAdmin implements ISettings {
 	public function __construct(
-		private IAppConfig $appConfig,
-		private AppConstants $appConstants,
-		private SettingsKey $settingsKey,
+		private readonly IAppConfig   $appConfig,
+		private readonly AppConstants $appConstants,
 	) {
 	}
 
 	public function getForm(): TemplateResponse {
 		$parameters = [
-			'defaultLabelMode' => $this->appConfig->getAppValue($this->settingsKey::DefaultLabelMode, $this->appConstants::DEFAULT_LABEL_MODE),
-			'defaultLabel' => $this->appConfig->getAppValue($this->settingsKey::DefaultCustomLabel, $this->appConstants::DEFAULT_CUSTOM_LABEL),
-			'minTokenLength' => $this->appConfig->getAppValue($this->settingsKey::MinTokenLength, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH),
-			'deleteRemovedShareConflicts' => $this->appConfig->getAppValue($this->settingsKey::DeleteRemovedShareConflicts, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)
+			'defaultLabelMode' => $this->appConfig->getAppValueInt(SettingsKey::DefaultLabelMode->value, $this->appConstants::DEFAULT_LABEL_MODE),
+			'defaultLabel' => $this->appConfig->getAppValueString(SettingsKey::DefaultCustomLabel->value, $this->appConstants::DEFAULT_CUSTOM_LABEL),
+			'minTokenLength' => $this->appConfig->getAppValueInt(SettingsKey::MinTokenLength->value, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH),
+			'deleteRemovedShareConflicts' => $this->appConfig->getAppValueBool(SettingsKey::DeleteRemovedShareConflicts->value, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)
 		];
 
 		Util::addScript(Application::APP_ID, 'cfg_share_links-settings-admin');
@@ -55,7 +54,7 @@ class LinksAdmin implements ISettings {
 	}
 
 	public function getSection(): string {
-		return 'cfg_share_links';
+		return Application::APP_ID;
 	}
 
 	public function getPriority(): int {

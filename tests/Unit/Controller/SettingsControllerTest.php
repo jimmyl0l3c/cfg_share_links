@@ -4,24 +4,24 @@ namespace OCA\CfgShareLinks\Tests\Unit\Controller;
 
 use OCA\CfgShareLinks\AppInfo\AppConstants;
 use OCA\CfgShareLinks\Controller\SettingsController;
-use OCA\CfgShareLinks\Enums\SettingsKey;
 use OCP\AppFramework\Http;
 use OCP\AppFramework\Services\IAppConfig;
 use OCP\IRequest;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 class SettingsControllerTest extends TestCase {
-	protected $appConfig;
-	protected $request;
+	protected MockObject|IAppConfig $appConfig;
+	protected IRequest|MockObject $request;
 	protected SettingsController $controller;
 
 	protected function setUp(): void {
 		$this->appConfig = $this->getMockBuilder(IAppConfig::class)->getMock();
 		$this->request = $this->getMockBuilder(IRequest::class)->getMock();
 		$this->controller = new SettingsController(
+			'cfg_share_links',
 			$this->appConfig,
 			new AppConstants(),
-			new SettingsKey(),
 			$this->request,
 		);
 	}

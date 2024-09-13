@@ -26,6 +26,7 @@
 
 namespace OCA\CfgShareLinks\Sections;
 
+use OCA\CfgShareLinks\AppInfo\Application;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\Settings\IIconSection;
@@ -33,13 +34,13 @@ use OCP\Settings\IIconSection;
 class LinksAdmin implements IIconSection {
 
 	public function __construct(
-		private IL10N         $l10n,
-		private IURLGenerator $urlGenerator
+		private readonly IL10N $l10n,
+		private readonly IURLGenerator $urlGenerator
 	) {
 	}
 
 	public function getID(): string {
-		return 'cfg_share_links';
+		return Application::APP_ID;
 	}
 
 	public function getName(): string {
