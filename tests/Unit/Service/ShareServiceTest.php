@@ -25,7 +25,7 @@ class ShareServiceTest extends TestCase {
 	protected MockObject|IRootFolder $rootFolder;
 	protected MockObject|IL10N $l10n;
 	protected IAppConfig|Stub $appConfig;
-    protected MockObject|CfgShareMapper $mapper;
+	protected MockObject|CfgShareMapper $mapper;
 
 	protected function setUp(): void {
 		$this->logger = $this->getMockBuilder(LoggerInterface::class)->getMock();
@@ -66,7 +66,7 @@ class ShareServiceTest extends TestCase {
 		$this->service->raiseIfTokenIsInvalid('Invalid.token#!');
 	}
 
-    public function testTokenValidityCheckDoesNotThrowIfValid() {
+	public function testTokenValidityCheckDoesNotThrowIfValid() {
 		$this->expectNotToPerformAssertions();
 		$this->service->raiseIfTokenIsInvalid('some_VALID_token1');
 	}
