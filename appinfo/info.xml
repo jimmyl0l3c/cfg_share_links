@@ -43,7 +43,7 @@ Výchozí štítek může být: žádný, stejný jako token nebo vlastní (stej
     <screenshot>https://raw.githubusercontent.com/jimmyl0l3c/cfg_share_links/master/screens/nc02.png</screenshot>
     <dependencies>
         <php min-version="8.1" max-version="8.3" />
-        <nextcloud min-version="29" max-version="29"/>
+        <nextcloud min-version="29" max-version="30"/>
     </dependencies>
     <settings>
         <admin>OCA\CfgShareLinks\Settings\LinksAdmin</admin>
