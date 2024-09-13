@@ -95,8 +95,6 @@ export default {
 			}
 
 			await this.renameLink(
-				this.shareId,
-				this.getFullPath,
 				this.currentToken,
 				token,
 			)

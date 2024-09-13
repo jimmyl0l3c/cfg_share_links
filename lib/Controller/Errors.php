@@ -51,6 +51,35 @@ trait Errors {
 		}
 	}
 
+	/**
+	 * Handles:
+	 * - NotFoundException
+	 * - NotPermittedException
+	 * - OCSException
+	 * - NoUserException
+	 * - InvalidTokenException
+	 * - TokenNotUniqueException
+	 * - ShareNotFound
+	 * - SharingRightsException
+	 * @throws OCSNotFoundException
+	 * @throws OCSBadRequestException
+	 * @throws OCSException
+	 * @throws OCSException
+	 */
+	protected function handleOcsException(Closure $callback): DataResponse {
+		try {
+			return new DataResponse($callback());
+		} catch (NotFoundException|ShareNotFound $e) {
+			throw new OCSNotFoundException($e->getMessage(), $e);
+		} catch (InvalidTokenException|TokenNotUniqueException $e) {
+			throw new OCSBadRequestException($e->getMessage(), $e);
+		} catch (NoUserException|SharingRightsException $e) {
+			throw new OCSException($e->getMessage(), Http::STATUS_UNAUTHORIZED, $e);
+		} catch (OCSException|NotPermittedException $e) {
+			throw new OCSException($e->getMessage(), Http::STATUS_INTERNAL_SERVER_ERROR, $e);
+		}
+	}
+
 	private function getDataResponse(Exception $e, int $statusCode): DataResponse {
 		$message = ['message' => $e->getMessage()];
 		return new DataResponse($message, $statusCode);

@@ -26,6 +26,7 @@
 
 namespace OCA\CfgShareLinks\Service;
 
+use Exception as BaseException;
 use OC\User\NoUserException;
 use OCA\CfgShareLinks\AppInfo\AppConstants;
 use OCA\CfgShareLinks\Db\CfgShare;
@@ -56,6 +57,7 @@ use OCP\Share\Exceptions\ShareNotFound;
 use OCP\Share\IManager;
 use OCP\Share\IShare;
 use Psr\Log\LoggerInterface;
+use TypeError as BaseTypeError;
 
 /***
  * Based on ShareAPIController (From Nextcloud's core app files_sharing)
@@ -65,17 +67,15 @@ class ShareService {
 	private Node $lockedNode;
    
 	public function __construct(
-		private LoggerInterface $logger,
-		private IManager        $shareManager,
-		private IGroupManager   $groupManager,
-		private IRootFolder     $rootFolder,
-		private IL10N           $l10n,
-		private IAppConfig      $appConfig,
-		private CfgShareMapper  $mapper,
-		private AppConstants $appConstants,
-		private SettingsKey $settingsKey,
-		private LinkLabelMode $linkLabelMode,
-		private string|null     $currentUserId = null
+		private readonly LoggerInterface $logger,
+		private readonly IManager        $shareManager,
+		private readonly IGroupManager   $groupManager,
+		private readonly IRootFolder     $rootFolder,
+		private readonly IL10N           $l10n,
+		private readonly IAppConfig      $appConfig,
+		private readonly CfgShareMapper  $mapper,
+		private readonly AppConstants    $appConstants,
+		private string|null              $currentUserId = null
 	) {
 	}
 
@@ -91,7 +91,7 @@ class ShareService {
 	 * @throws InvalidPathException
 	 * @throws NotFoundException
 	 */
-	public function create(string|null $path, int $shareType, string $tokenCandidate, string $userId, string $password = ''): array {
+	public function create(?string $path, int $shareType, string $tokenCandidate, ?string $userId, string $password = ''): array {
 		if ($userId != null && $this->currentUserId != $userId) {
 			$this->currentUserId = $userId;
 		}
@@ -115,7 +115,7 @@ class ShareService {
 		$userFolder = $this->rootFolder->getUserFolder($this->currentUserId);
 		try {
 			$node = $userFolder->get($path);
-		} catch (NotFoundException $e) {
+		} catch (NotFoundException) {
 			throw new OCSNotFoundException($this->l10n->t('Wrong path, file/folder does not exist'));
 		}
 
@@ -128,7 +128,7 @@ class ShareService {
 
 		try {
 			$this->lock($share->getNode());
-		} catch (NotFoundException|LockedException $e) {
+		} catch (NotFoundException|LockedException) {
 			throw new OCSNotFoundException($this->l10n->t('Could not create share'));
 		}
 
@@ -154,20 +154,24 @@ class ShareService {
 			$this->logger->warning('Error creating share: ' . $e->getMessage(), ['trace' => $e->getTrace()]);
 			$code = $e->getCode() === 0 ? 403 : $e->getCode();
 			throw new OCSException($e->getHint(), $code);
-		} catch (\Exception $e) {
+		} catch (BaseException $e) {
 			$this->logger->warning('Error creating share: ' . $e->getMessage(), ['trace' => $e->getTrace()]);
 			throw new OCSForbiddenException($e->getMessage(), $e);
 		}
 
 		// Set label
-		$labelMode = $this->appConfig->getAppValue($this->settingsKey::DefaultLabelMode, $this->appConstants::DEFAULT_LABEL_MODE);
+		$labelMode = LinkLabelMode::from(
+			$this->appConfig->getAppValueInt(SettingsKey::DefaultLabelMode->value, $this->appConstants::DEFAULT_LABEL_MODE)
+		);
 		switch ($labelMode) {
-			case $this->linkLabelMode::SameAsToken:
+			case LinkLabelMode::SameAsToken:
 				$share->setLabel($tokenCandidate);
 				break;
-			case $this->linkLabelMode::UserSpecified:
-				$share->setLabel($this->appConfig->getAppValue($this->settingsKey::DefaultCustomLabel, $this->appConstants::DEFAULT_CUSTOM_LABEL));
+			case LinkLabelMode::UserSpecified:
+				$share->setLabel($this->appConfig->getAppValueString(SettingsKey::DefaultCustomLabel->value, $this->appConstants::DEFAULT_CUSTOM_LABEL));
 				break;
+			case LinkLabelMode::NoLabel:
+				break; // Do nothing
 		}
 
 		// Set custom token
@@ -193,7 +197,32 @@ class ShareService {
 
 	/**
 	 * @param string $id
-	 * @param string $path
+	 * @param string $tokenCandidate
+	 * @param string $userId
+	 * @return array
+	 * @throws InvalidTokenException
+	 * @throws OCSBadRequestException
+	 * @throws ShareNotFound
+	 * @throws TokenNotUniqueException
+	 * @throws SharingRightsException
+	 * @throws OCSNotFoundException
+	 */
+	public function updateById(string $id, string $tokenCandidate, string $userId): array {
+		if ($userId != null && $this->currentUserId != $userId) {
+			$this->currentUserId = $userId;
+			$this->logger->debug('currentUser updated');
+		}
+
+		// check token validity
+		$this->tokenChecks($tokenCandidate);
+
+		// Get share
+		$share = $this->shareManager->getShareById($id);
+
+		return $this->update($share, $tokenCandidate);
+	}
+
+	/**
 	 * @param string $currentToken
 	 * @param string $tokenCandidate
 	 * @param string $userId
@@ -205,7 +234,7 @@ class ShareService {
 	 * @throws SharingRightsException
 	 * @throws OCSNotFoundException
 	 */
-	public function update(string $id, string $path, string $currentToken, string $tokenCandidate, string $userId): array {
+	public function updateByToken(string $currentToken, string $tokenCandidate, string $userId): array {
 		if ($userId != null && $this->currentUserId != $userId) {
 			$this->currentUserId = $userId;
 			$this->logger->debug('currentUser updated');
@@ -216,15 +245,27 @@ class ShareService {
 
 		// Get share
 		$share = $this->shareManager->getShareByToken($currentToken);
-		if ($share->getId() != $id) {
-			// TRANSLATORS Trying to update (change token of) Share that does not exist
-			throw new ShareNotFound($this->l10n->t('Share not found'));
-		}
-		//        $share = $this->shareManager->getShareById($id);
+
+		return $this->update($share, $tokenCandidate);
+	}
+
+	/**
+	 * @param IShare $share
+	 * @param string $newToken
+	 * @return array
+	 * @throws InvalidTokenException
+	 * @throws OCSBadRequestException
+	 * @throws OCSNotFoundException
+	 * @throws ShareNotFound
+	 * @throws SharingRightsException
+	 * @throws TokenNotUniqueException
+	 */
+	private function update(IShare $share, string $newToken): array {
+		$currentToken = $share->getToken();
 
 		try {
 			$this->lock($share->getNode());
-		} catch (NotFoundException|LockedException $e) {
+		} catch (NotFoundException|LockedException) {
 			throw new OCSNotFoundException($this->l10n->t('Could not create share'));
 		}
 
@@ -240,20 +281,20 @@ class ShareService {
 				// TRANSLATORS user tried to change token, but he does not have reshare permission
 				throw new SharingRightsException($this->l10n->t('Insufficient permission'));
 			}
-		} catch (NotFoundException $e) {
+		} catch (NotFoundException) {
 			$this->logger->warning('Unable to check permissions');
 			// TRANSLATORS error occurred while checking reshare permission (when updating token)
 			throw new SharingRightsException($this->l10n->t('Unable to check permissions'));
 		}
 
 		// Update label
-		$labelMode = $this->appConfig->getAppValue($this->settingsKey::DefaultLabelMode, $this->appConstants::DEFAULT_LABEL_MODE);
-		if ($labelMode == $this->linkLabelMode::SameAsToken && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
-			$share->setLabel($tokenCandidate);
+		$labelMode = LinkLabelMode::from($this->appConfig->getAppValueInt(SettingsKey::DefaultLabelMode->value, $this->appConstants::DEFAULT_LABEL_MODE));
+		if ($labelMode == LinkLabelMode::SameAsToken && ($share->getLabel() == null || strlen($share->getLabel()) == 0 || $share->getToken() == $share->getLabel())) {
+			$share->setLabel($newToken);
 		}
 
 		// Update token
-		$share->setToken($tokenCandidate);
+		$share->setToken($newToken);
 
 		// Update share in db
 		$this->shareManager->updateShare($share);
@@ -263,7 +304,7 @@ class ShareService {
 			$c_share = $this->mapper->findByToken($currentToken);
 			$c_share->setToken($share->getToken());
 			$this->mapper->update($c_share);
-		} catch (Exception|DoesNotExistException $e) {
+		} catch (Exception|DoesNotExistException) {
 			$this->logger->debug('Cfg_share missing in db, attempting to add.');
 			$c_share = new CfgShare();
 			$c_share->setFullId($share->getFullId());
@@ -271,10 +312,10 @@ class ShareService {
 			try {
 				$c_share->setNodeId($share->getNode()->getId());
 				$this->mapper->insert($c_share);
-			} catch (Exception|NotFoundException|InvalidPathException $e) {
+			} catch (Exception|NotFoundException|InvalidPathException) {
 				$this->logger->error('Unable to add cfg_share to db. Share will not be deleted when file is deleted.');
 			}
-		} catch (MultipleObjectsReturnedException $e) {
+		} catch (MultipleObjectsReturnedException) {
 			$this->logger->error('Db error - multiple objects returned.');
 			// TODO: resolve conflict
 		}
@@ -303,7 +344,7 @@ class ShareService {
 				}
 				$this->logger->debug(sprintf('hasResharingRight: resharePermCheck = false (%s)', $share->getId()));
 			}
-		} catch (\Exception|\TypeError $exception) {
+		} catch (BaseException|BaseTypeError $exception) {
 			$this->logger->debug(sprintf('hasResharingRight: sharesIterable exception (%s)', $exception->getMessage()));
 		}
 		return false;
@@ -353,10 +394,10 @@ class ShareService {
 		// Unique check
 		try {
 			$share = $this->shareManager->getShareByToken($tokenCandidate);
-			if ($this->appConfig->getAppValue($this->settingsKey::DeleteRemovedShareConflicts, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)) {
+			if ($this->appConfig->getAppValueBool(SettingsKey::DeleteRemovedShareConflicts->value, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)) {
 				try {
 					$share->getNode();
-				} catch (NotFoundException $e) {
+				} catch (NotFoundException) {
 					// Remove share if the file/folder does not exist
 					$this->logger->debug('Conflicting token, but node does not exist. Removing conflicting share.');
 					$this->shareManager->deleteShare($share);
@@ -364,7 +405,7 @@ class ShareService {
 				}
 			}
 			throw new TokenNotUniqueException($this->l10n->t('Token is not unique'));
-		} catch (ShareNotFound $e) {
+		} catch (ShareNotFound) {
 		}
 	}
 
@@ -372,7 +413,7 @@ class ShareService {
 	 * @throws InvalidTokenException
 	 */
 	public function raiseIfTokenIsInvalid(string $token): void {
-		$min_length = $this->appConfig->getAppValue($this->settingsKey::MinTokenLength, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH);
+		$min_length = $this->appConfig->getAppValueInt(SettingsKey::MinTokenLength->value, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH);
 
 		if ($token == null || strlen($token) < $min_length) {
 			throw new InvalidTokenException($this->l10n->t('Token is not long enough'));

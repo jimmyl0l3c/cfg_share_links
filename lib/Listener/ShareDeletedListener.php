@@ -13,8 +13,8 @@ use Psr\Log\LoggerInterface;
 
 class ShareDeletedListener implements IEventListener {
 	public function __construct(
-		private LoggerInterface $logger,
-		private CfgShareMapper  $mapper
+		private readonly LoggerInterface $logger,
+		private readonly CfgShareMapper $mapper
 	) {
 	}
 

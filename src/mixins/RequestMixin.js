@@ -49,16 +49,14 @@ export default {
 				return returnValue
 			}
 		},
-		async renameLink(id, path, currentToken, tokenCandidate) {
+		async renameLink(currentToken, tokenCandidate) {
 			const data = {
-				id,
-				path,
 				currentToken,
 				tokenCandidate,
 			}
 
 			try {
-				await axios.post(generateUrl('/apps/cfg_share_links/update'), data)
+				await axios.put(generateUrl('/apps/cfg_share_links/update-by-token'), data)
 				console.debug('CfgShareLinks: Public link renamed')
 				showSuccess(t('cfg_share_links', 'Custom public link renamed'))
 			} catch (e) {
