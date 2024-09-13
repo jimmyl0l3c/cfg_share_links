@@ -103,7 +103,7 @@ class ShareService {
 
 		// Can we even share links?
 		if (!$this->shareManager->shareApiAllowLinks()) {
-			throw new OCSNotFoundException($this->l10n->t('Public link sharing is disabled by the administrator'));
+			throw new OCSForbiddenException($this->l10n->t('Public link sharing is disabled by the administrator'));
 		}
 
 		// Verify path
@@ -462,7 +462,7 @@ class ShareService {
 			// current user permissions on this share
 			'stime' => $share->getShareTime()->getTimestamp(),
 			'parent' => null,
-			'expiration' => null,
+			'expiration' => $share->getExpirationDate()?->getTimestamp(),
 			'token' => $share->getToken(),
 			'uid_file_owner' => $share->getShareOwner(),
 			'note' => $share->getNote(),
