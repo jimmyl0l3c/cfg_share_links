@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.0.0] - 2024-09-13
+
+### Added
+
+- Add OCS API, refactoring enums
+
+### Changed
+
+- Updated translations from transifex
+- Drop NC 28 and PHP 8.0 support
+- Build(deps): Bump serve-static and express
+
 ## [5.1.3] - 2024-09-08
 
 ### Fixed
@@ -287,7 +299,8 @@ Backport from version 3.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.3...HEAD
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.0.0...HEAD
+[6.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.3...v6.0.0
 [5.1.3]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.2...v5.1.3
 [5.1.2]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.1...v5.1.2
 [5.1.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.0...v5.1.1
