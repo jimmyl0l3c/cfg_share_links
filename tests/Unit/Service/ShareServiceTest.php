@@ -4,8 +4,6 @@ namespace OCA\CfgShareLinks\Tests\Unit\Service;
 
 use OCA\CfgShareLinks\AppInfo\AppConstants;
 use OCA\CfgShareLinks\Db\CfgShareMapper;
-use OCA\CfgShareLinks\Enums\LinkLabelMode;
-use OCA\CfgShareLinks\Enums\SettingsKey;
 use OCA\CfgShareLinks\Service\InvalidTokenException;
 use OCA\CfgShareLinks\Service\ShareService;
 use OCP\AppFramework\Services\IAppConfig;
@@ -13,19 +11,21 @@ use OCP\Files\IRootFolder;
 use OCP\IGroupManager;
 use OCP\IL10N;
 use OCP\Share\IManager;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
 class ShareServiceTest extends TestCase {
 	protected ShareService $service;
 	protected string $userId = 'user';
-	protected $logger;
-	protected $shareManager;
-	protected $groupManager;
-	protected $rootFolder;
-	protected $l10n;
-	protected $appConfig;
-	protected $mapper;
+	protected LoggerInterface|MockObject $logger;
+	protected MockObject|IManager $shareManager;
+	protected MockObject|IGroupManager $groupManager;
+	protected MockObject|IRootFolder $rootFolder;
+	protected MockObject|IL10N $l10n;
+	protected IAppConfig|Stub $appConfig;
+    protected MockObject|CfgShareMapper $mapper;
 
 	protected function setUp(): void {
 		$this->logger = $this->getMockBuilder(LoggerInterface::class)->getMock();
@@ -35,7 +35,7 @@ class ShareServiceTest extends TestCase {
 		$this->l10n = $this->getMockBuilder(IL10N::class)->getMock();
 
 		$this->appConfig = $this->createStub(IAppConfig::class);
-		$this->appConfig->method('getAppValue')->willReturn('3');
+		$this->appConfig->method('getAppValueInt')->willReturn(3);
 
 		$this->mapper = $this->getMockBuilder(CfgShareMapper::class)
 			->disableOriginalConstructor()
@@ -49,8 +49,6 @@ class ShareServiceTest extends TestCase {
 			$this->appConfig,
 			$this->mapper,
 			new AppConstants(),
-			new SettingsKey(),
-			new LinkLabelMode(),
 			$this->userId,
 		);
 	}
@@ -68,7 +66,7 @@ class ShareServiceTest extends TestCase {
 		$this->service->raiseIfTokenIsInvalid('Invalid.token#!');
 	}
 
-	public function testTokenValidityCheckDoesNotThrowIfValid() {
+    public function testTokenValidityCheckDoesNotThrowIfValid() {
 		$this->expectNotToPerformAssertions();
 		$this->service->raiseIfTokenIsInvalid('some_VALID_token1');
 	}

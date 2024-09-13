@@ -34,7 +34,7 @@ use OCP\AppFramework\Http;
 use OCP\AppFramework\Http\DataResponse;
 use OCP\AppFramework\Services\IAppConfig;
 use OCP\IRequest;
-use TypeError;
+use ValueError;
 
 class SettingsController extends Controller {
 	public function __construct(
@@ -72,7 +72,7 @@ class SettingsController extends Controller {
 					}
 					break;
 			}
-		} catch (TypeError) {
+		} catch (ValueError) {
 		}
 		return new DataResponse(['message' => 'Invalid key or value'], Http::STATUS_BAD_REQUEST);
 	}
