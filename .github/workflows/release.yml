@@ -113,6 +113,7 @@ jobs:
             lib/
             templates/
             vendor/
+            openapi.json
 
   upload-release-asset:
     if: startsWith(github.ref, 'refs/tags/')
