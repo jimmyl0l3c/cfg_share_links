@@ -309,7 +309,35 @@
                         }
                     },
                     "400": {
-                        "description": "if the token is invalid",
+                        "description": "if the token is invalid or the share type is unsupported",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "ocs"
+                                    ],
+                                    "properties": {
+                                        "ocs": {
+                                            "type": "object",
+                                            "required": [
+                                                "meta",
+                                                "data"
+                                            ],
+                                            "properties": {
+                                                "meta": {
+                                                    "$ref": "#/components/schemas/OCSMeta"
+                                                },
+                                                "data": {}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "if user has insufficient permissions or checking permissions failed",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -441,7 +469,35 @@
                         }
                     },
                     "400": {
-                        "description": "if the token is invalid",
+                        "description": "if the token is invalid or the share type is unsupported",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "required": [
+                                        "ocs"
+                                    ],
+                                    "properties": {
+                                        "ocs": {
+                                            "type": "object",
+                                            "required": [
+                                                "meta",
+                                                "data"
+                                            ],
+                                            "properties": {
+                                                "meta": {
+                                                    "$ref": "#/components/schemas/OCSMeta"
+                                                },
+                                                "data": {}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "if user has insufficient permissions or checking permissions failed",
                         "content": {
                             "application/json": {
                                 "schema": {
