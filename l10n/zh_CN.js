@@ -5,7 +5,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "请指定一个文件或文件夹路径",
     "Wrong path, file/folder does not exist" : "错误的路径，文件/文件夹不存在",
     "Could not create share" : "无法创建共享",
-    "Share not found" : "未找到共享",
     "Saving..." : "正在保存…",
     "Miscellaneous" : "杂项",
     "None" : "无",

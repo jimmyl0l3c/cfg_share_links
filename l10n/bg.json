@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Моля, посочете път до файл или папка",
     "Wrong path, file/folder does not exist" : "Грешен път, файл/папка не съществува",
     "Could not create share" : "Неуспешно създаване на споделяне",
-    "Share not found" : "Споделянето не е открито",
     "Insufficient permission" : "Недостатъчно право",
     "Unable to check permissions" : "Невъзможност за проверка на права",
     "Token is not unique" : "Токенът не е уникален",

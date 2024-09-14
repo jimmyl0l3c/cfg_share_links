@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "يرجى تحديد مسار ملف أو مجلد",
     "Wrong path, file/folder does not exist" : "إمّا أن المسار خاطيء، أو أن الملف/المجلد غير موجود",
     "Could not create share" : "لا يمكن انشاء مشاركة",
-    "Share not found" : "مشاركة غير موجودة",
     "Insufficient permission" : "الصلاحيّات غير كافية",
     "Unable to check permissions" : "تعذّر فحص الصلاحيّات",
     "Token is not unique" : "الأَمَارَة token غير مُميّزة",

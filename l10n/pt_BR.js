@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Por favor especifique um arquivo ou caminho da pasta",
     "Wrong path, file/folder does not exist" : "Caminho errado, arquivo/pasta não existe",
     "Could not create share" : "Não foi possível criar compartilhamento",
-    "Share not found" : "Compartilhamento não encontrado",
     "Insufficient permission" : "Permissão insuficiente",
     "Unable to check permissions" : "Checar permissões desabilitado",
     "Token is not unique" : "Token não é único",

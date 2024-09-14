@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Zvoľte prosím súbor alebo cestu k priečinku",
     "Wrong path, file/folder does not exist" : "Neplatná cesta, súbor alebo priečinok neexistuje",
     "Could not create share" : "Nie je možné sprístupniť",
-    "Share not found" : "Sprístupnenie sa nenašlo",
     "Insufficient permission" : "Nedostatočné oprávnenia",
     "Unable to check permissions" : "Nepodarilo sa overiť oprávnenia",
     "Token is not unique" : "Token nie je unikátny",

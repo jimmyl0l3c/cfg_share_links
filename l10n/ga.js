@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Sonraigh cosán comhaid nó fillteáin",
     "Wrong path, file/folder does not exist" : "Cosán mícheart, níl an comhad/fillteán ann",
     "Could not create share" : "Níorbh fhéidir sciar a chruthú",
-    "Share not found" : "Ní bhfuarthas an sciar",
     "Insufficient permission" : "Cead neamhleor",
     "Unable to check permissions" : "Ní féidir ceadanna a sheiceáil",
     "Token is not unique" : "Níl comhartha uathúil",

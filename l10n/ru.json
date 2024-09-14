@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Укажите путь к файлу или каталогу",
     "Wrong path, file/folder does not exist" : "Неверный путь, файл или каталог не существует",
     "Could not create share" : "Не удалось создать общий ресурс",
-    "Share not found" : "Общий доступ не найден",
     "Insufficient permission" : "Недостаточно прав доступа",
     "Unable to check permissions" : "Невозможно проверить права доступа",
     "Token is not unique" : "Токен не уникален",

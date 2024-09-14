@@ -3,7 +3,6 @@
     "Please specify a file or folder path" : "Especifica'l camín d'un ficheru o una carpeta",
     "Wrong path, file/folder does not exist" : "El camín ye incorreutu, el ficheru/carpeta nun esiste",
     "Could not create share" : "Nun se pudo crear la compartición",
-    "Share not found" : "Nun s'atopó la compartición",
     "Unable to check permissions" : "Nun ye posible comprobar los permisos",
     "Token is not unique" : "El pase nun ye únicu",
     "Token is not long enough" : "El pase nun ye llongu abondo",

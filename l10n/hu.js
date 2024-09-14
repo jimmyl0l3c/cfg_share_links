@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Adjon meg egy fájl- vagy mappaútvonalat",
     "Wrong path, file/folder does not exist" : "Hibás útvonal, a fájl vagy mappa nem létezik",
     "Could not create share" : "Nem sikerült létrehozni a megosztást",
-    "Share not found" : "A megosztás nem található",
     "Insufficient permission" : "Elégtelen jogosultság",
     "Unable to check permissions" : "Nem lehet ellenőrizni a jogosultságokat",
     "Token is not unique" : "A token nem egyedi",

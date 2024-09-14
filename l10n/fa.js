@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "لطفاً مسیر فایل یا پوشه را مشخص کنید",
     "Wrong path, file/folder does not exist" : "Wrong path, file/folder does not exist",
     "Could not create share" : "امکان ایجاد اشتراک گذاری وجود ندارد",
-    "Share not found" : "اشتراک گذاری یافت نشد",
     "Insufficient permission" : "Insufficient permission",
     "Unable to check permissions" : "Unable to check permissions",
     "Token is not unique" : "Token is not unique",

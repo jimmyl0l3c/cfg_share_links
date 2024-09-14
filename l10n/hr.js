@@ -4,7 +4,6 @@ OC.L10N.register(
     "Public link sharing is disabled by the administrator" : "Administrator je onemogućio dijeljenje javnih poveznica",
     "Please specify a file or folder path" : "Navedite put datoteke ili mape",
     "Could not create share" : "Nije moguće stvoriti dijeljenje",
-    "Share not found" : "Dijeljenje nije pronađeno",
     "Saving..." : "Spremanje...",
     "Miscellaneous" : "Razno",
     "None" : "Nema",

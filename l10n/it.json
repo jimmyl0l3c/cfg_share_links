@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Specifica un percorso di un file o di una cartella",
     "Wrong path, file/folder does not exist" : "Percorso errato, file/cartella inesistente",
     "Could not create share" : "Impossibile creare la condivisione",
-    "Share not found" : "Condivisione non trovata",
     "Insufficient permission" : "Autorizzazione insufficiente",
     "Unable to check permissions" : "Impossibile controllare le autorizzazioni",
     "Token is not unique" : "Il token non è unico",

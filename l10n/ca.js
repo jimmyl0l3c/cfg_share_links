@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Si us plau, especifiqueu un camí de fitxer o carpeta",
     "Wrong path, file/folder does not exist" : "Camí incorrecte, fitxer/carpeta no existeix",
     "Could not create share" : "No s'ha pogut crear la compartició",
-    "Share not found" : "No s'ha trobat l'element compartit",
     "Insufficient permission" : "Permís insuficient",
     "Unable to check permissions" : "No es poden comprovar els permisos",
     "Token is not unique" : "El testimoni no és únic",

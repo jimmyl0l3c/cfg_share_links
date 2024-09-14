@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Oppgi en fil eller mappe-sti",
     "Wrong path, file/folder does not exist" : "Feil bane, fil/mappe eksisterer ikke",
     "Could not create share" : "Kunne ikke opprette deling",
-    "Share not found" : "Deling ikke funnet",
     "Insufficient permission" : "Utilstrekkelige rettigheter",
     "Unable to check permissions" : "Klarte ikke sjekke rettigheter",
     "Token is not unique" : "Polett er ikke unik",

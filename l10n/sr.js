@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Молимо одаберите путању до фајла или фасцикле",
     "Wrong path, file/folder does not exist" : "Pogrešna putanja, datoteka/fascikla ne postoji",
     "Could not create share" : "Не могу да направим дељење",
-    "Share not found" : "Дељење није нађено",
     "Insufficient permission" : "Дозволе нису довољне",
     "Unable to check permissions" : "Није успела провера дозвола",
     "Token is not unique" : "Жетон није јединствен",

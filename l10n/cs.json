@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Zadejte popis umístění souboru či složky",
     "Wrong path, file/folder does not exist" : "Nesprávný popis umístění – soubor/složka neexistuje",
     "Could not create share" : "Nepodařilo se vytvořit sdílení",
-    "Share not found" : "Sdílení nenalezeno",
     "Insufficient permission" : "Nedostatečná oprávnění",
     "Unable to check permissions" : "Nepodařilo se zkontrolovat oprávnění",
     "Token is not unique" : "Token už existuje",

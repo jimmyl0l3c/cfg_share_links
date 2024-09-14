@@ -1,7 +1,6 @@
 { "translations": {
     "Configurable Share Links" : "Partiment de ligams configurable",
     "Invalid share type" : "Tipe de partiment invalid",
-    "Share not found" : "Partiment pas trobat",
     "Insufficient permission" : "Permissions insufisentas",
     "Token is not unique" : "Lo geston es pas unic",
     "Token is not long enough" : "Lo geton es pas pro long",

@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Especifique a ruta dun ficheiro ou cartafol",
     "Wrong path, file/folder does not exist" : "Ruta errónea, o ficheiro/cartafol non existe",
     "Could not create share" : "Non foi posíbel crear a compartición",
-    "Share not found" : "Non se atopou a compartición",
     "Insufficient permission" : "Non ten permisos abondo",
     "Unable to check permissions" : "Non é posíbel cambiar os permisos",
     "Token is not unique" : "O testemuño non é único",

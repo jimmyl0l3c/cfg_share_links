@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Nurodykite kelią iki failo ar aplanko",
     "Wrong path, file/folder does not exist" : "Neteisingas kelias, failo/aplanko nėra",
     "Could not create share" : "Nepavyko sukurti viešinio",
-    "Share not found" : "Viešinys nerastas",
     "Insufficient permission" : "Nepakanka leidimų",
     "Unable to check permissions" : "Nepavyko patikrinti leidimų",
     "Token is not unique" : "Prieigos raktas nėra unikalus",

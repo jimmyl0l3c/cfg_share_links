@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Please specify a file or folder path",
     "Wrong path, file/folder does not exist" : "Wrong path, file/folder does not exist",
     "Could not create share" : "Could not create share",
-    "Share not found" : "Share not found",
     "Insufficient permission" : "Insufficient permission",
     "Unable to check permissions" : "Unable to check permissions",
     "Token is not unique" : "Token is not unique",

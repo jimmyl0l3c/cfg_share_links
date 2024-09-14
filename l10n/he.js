@@ -4,7 +4,6 @@ OC.L10N.register(
     "Public link sharing is disabled by the administrator" : "שיתוף ציבורי מנוטרל על ידי המנהל",
     "Please specify a file or folder path" : "יש לספק נתיב לקובץ או תיקייה",
     "Could not create share" : "לא ניתן ליצור שיתוף",
-    "Share not found" : "השיתוף לא נמצא",
     "Saving..." : "מתבצעת שמירה…",
     "Miscellaneous" : "שונות",
     "None" : "ללא",

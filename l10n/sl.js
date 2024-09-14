@@ -6,7 +6,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Določiti je treba datoteko ali pot do mape",
     "Wrong path, file/folder does not exist" : "Napačna pot; datoteka ali mapa ne obstaja",
     "Could not create share" : "Mesta souporabe ni mogoče ustvariti",
-    "Share not found" : "Mesta souporabe ni mogoče najti.",
     "Insufficient permission" : "Neustrezna dovoljenja",
     "Unable to check permissions" : "Ni mogoče preveriti dodeljenih dovoljenj.",
     "Default label" : "Privzeta oznaka",

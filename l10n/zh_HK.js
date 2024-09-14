@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "請指定檔案或資料夾路徑",
     "Wrong path, file/folder does not exist" : "錯誤的路徑，該檔案或資料夾不存在",
     "Could not create share" : "無法建立分享",
-    "Share not found" : "找不到分享",
     "Insufficient permission" : "權限不足",
     "Unable to check permissions" : "無法檢查權限",
     "Token is not unique" : "權杖並不唯一",

@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Podaj ścieżkę do pliku lub katalogu",
     "Wrong path, file/folder does not exist" : "Błędna ścieżka, plik/katalog nie istnieje",
     "Could not create share" : "Nie udało się utworzyć udostępnienia",
-    "Share not found" : "Nie znaleziono udostępnienia",
     "Insufficient permission" : "Niewystarczające uprawnienie",
     "Unable to check permissions" : "Nie można sprawdzić uprawnień",
     "Token is not unique" : "Token nie jest unikalny",

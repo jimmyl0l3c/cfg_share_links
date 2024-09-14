@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Bitte Datei oder Ordner-Pfad eingeben",
     "Wrong path, file/folder does not exist" : "Falscher Pfad, Datei/Ordner existiert nicht",
     "Could not create share" : "Freigabe konnte nicht erstellt werden",
-    "Share not found" : "Freigabe nicht gefunden",
     "Insufficient permission" : "Nicht ausreichende Berechtigung",
     "Unable to check permissions" : "Berechtigungen können nicht überprüft werden.",
     "Token is not unique" : "Token ist nicht eindeutig",

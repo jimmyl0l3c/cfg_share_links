@@ -5,7 +5,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Παρακαλούμε καθορίστε την διαδρομή για το αρχείο ή τον φάκελο",
     "Wrong path, file/folder does not exist" : "Λάθος διαδρομή, το αρχείο/φάκελος δεν υπάρχει",
     "Could not create share" : "Αδυναμία δημιουργίας κοινόχρηστου",
-    "Share not found" : "Δεν βρέθηκε το κονόχρηστο",
     "Insufficient permission" : "Ανεπαρκής άδεια",
     "Saving..." : "Γίνεται αποθήκευση...",
     "Miscellaneous" : "Διάφορα",

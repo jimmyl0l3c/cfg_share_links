@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Zehaztu fitxategi edo karpetaren bide bat",
     "Wrong path, file/folder does not exist" : "Bide okerra, fitxategia/karpeta ez da existitzen",
     "Could not create share" : "Ezin izan da partekatzea sortu",
-    "Share not found" : "Partekatzea ez da aurkitu",
     "Insufficient permission" : "Ez duzu behar adina baimenik",
     "Unable to check permissions" : "Ezin dira egiaztatu baimenak",
     "Token is not unique" : "Tokena ez da bakarra",

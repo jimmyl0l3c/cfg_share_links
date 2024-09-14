@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Будь ласка, вкажіть шлях до файлу або каталогу",
     "Wrong path, file/folder does not exist" : "Неправильний шлях, такий файл або каталог відсутні",
     "Could not create share" : "Не вдалося створити спільний доступ",
-    "Share not found" : "Спільний ресурс не знайдено",
     "Insufficient permission" : "Недостатній дозвіл",
     "Unable to check permissions" : "Не вдалося перевірити дозволи",
     "Token is not unique" : "Токен не є унікальним",

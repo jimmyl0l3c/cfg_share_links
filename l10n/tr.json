@@ -5,7 +5,6 @@
     "Please specify a file or folder path" : "Lütfen bir dosya ya da klasör yolu belirtin",
     "Wrong path, file/folder does not exist" : "Yol yanlış. Dosya ya da klasör bulunamadı",
     "Could not create share" : "Paylaşım oluşturulamadı",
-    "Share not found" : "Paylaşım bulunamadı",
     "Insufficient permission" : "İzinler yetersiz",
     "Unable to check permissions" : "İzinler değiştirilemedi",
     "Token is not unique" : "Kod eşsiz değil",

@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Por favor, especifica la ubicación de un archivo o carpeta",
     "Wrong path, file/folder does not exist" : "Ubicación incorrecta, el archivo/carpeta no existe",
     "Could not create share" : "No se ha podido compartir",
-    "Share not found" : "Recurso compartido no encontrado",
     "Insufficient permission" : "Permisos insuficientes",
     "Unable to check permissions" : "No se han podido comprobar los permisos",
     "Token is not unique" : "El token no es único",

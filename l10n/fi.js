@@ -5,7 +5,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Määritä tiedoston tai kansion polku",
     "Wrong path, file/folder does not exist" : "Väärä polku, tiedostoa/kansiota ei ole olemassa",
     "Could not create share" : "Jaon luominen epäonnistui",
-    "Share not found" : "Jakoa ei löytynyt",
     "Saving..." : "Tallennetaan...",
     "Miscellaneous" : "Sekalaiset",
     "None" : "Ei mitään",

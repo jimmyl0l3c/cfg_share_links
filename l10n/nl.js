@@ -7,7 +7,6 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Geef een bestand of pad van een map op",
     "Wrong path, file/folder does not exist" : "slecht path, file/folder bestaat niet",
     "Could not create share" : "Kan gedeelde folder niet aanmaken",
-    "Share not found" : "Gedeelde map niet gevonden",
     "Insufficient permission" : "Geen toestemming",
     "Unable to check permissions" : "kan toestemming niet checken",
     "Token is not unique" : "token is niet uniek",
