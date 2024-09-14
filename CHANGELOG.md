@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.1.0] - 2024-09-14
+
+### Added
+
+- Add NC 30 support
+
+### Changed
+
+- Updated translations from transifex
+- Add OCS OpenApi support
+
 ## [6.0.0] - 2024-09-13
 
 ### Added
@@ -299,7 +310,8 @@ Backport from version 3.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.0.0...HEAD
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.1.0...HEAD
+[6.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.0.0...v6.1.0
 [6.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.3...v6.0.0
 [5.1.3]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.2...v5.1.3
 [5.1.2]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.1...v5.1.2
