@@ -1,27 +1,17 @@
 import { translate as t, translatePlural as n } from '@nextcloud/l10n'
-import Vue from 'vue'
+import { createApp } from 'vue'
 import NewLink from './components/NewLink.vue'
-
-// Vue.prototype.OC = window.OC
-Vue.prototype.OCA = window.OCA
-
-Vue.mixin({
-	methods: {
-		t,
-		n,
-	},
-})
 
 console.debug('CfgShareLinks: NewLink init')
 
 // Add new section
 let sectionInstance = null
-let props = null
-const View = Vue.extend(NewLink)
+const props = null
 
 window.addEventListener('DOMContentLoaded', function() {
 	if (OCA.Sharing && OCA.Sharing.ShareTabSections) {
 		OCA.Sharing.ShareTabSections.registerSection((el, fileInfo) => {
+			console.debug(el)
 			if (typeof fileInfo !== 'undefined' && typeof el !== 'undefined') {
 				// if instance exists, just update props
 				if (
@@ -33,21 +23,29 @@ window.addEventListener('DOMContentLoaded', function() {
 				} else {
 					// create new instance
 					if (sectionInstance) {
-						// if sectionInstance.$el doesnt exist anymore (after changing folder for example)
-						sectionInstance.$destroy()
+						// if sectionInstance.$el does not exist anymore (after changing folder for example)
+						sectionInstance.unmount()
 					}
 
-					sectionInstance = new View({
-						props: { fileInfo },
+					sectionInstance = createApp({ extends: NewLink }, {
+						// props
+						fileInfo,
 					})
 
-					props = Vue.observable({
-						...sectionInstance._props,
-						...{ fileInfo },
+					sectionInstance.mixin({
+						methods: {
+							t,
+							n,
+						},
 					})
-					sectionInstance._props = props
 
-					sectionInstance.$mount(el[0])
+					// props = Vue.observable({
+					// 	...sectionInstance._props,
+					// 	...{ fileInfo },
+					// })
+					// sectionInstance._props = props
+
+					sectionInstance.mount(el[0])
 				}
 			}
 		})

@@ -15,10 +15,10 @@
 	"license": "agpl",
 	"private": true,
 	"scripts": {
-		"build": "NODE_ENV=production webpack --progress --config webpack.js",
-		"dev": "NODE_ENV=development webpack --progress --config webpack.js",
-		"watch": "NODE_ENV=development webpack --progress --watch --config webpack.js",
-		"serve": "NODE_ENV=development webpack serve --progress --config webpack.js",
+		"build": "vite build --mode production --config vite.config.mjs",
+		"dev": "vite build --mode development --config vite.config.mjs",
+		"watch": "vite build --watch --mode development --config vite.config.mjs",
+		"serve": "vite serve --config vite.config.mjs",
 		"lint": "eslint --ext .js,.vue src",
 		"lint:fix": "eslint --ext .js,.vue src --fix",
 		"stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
@@ -26,11 +26,12 @@
 	},
 	"dependencies": {
 		"@nextcloud/axios": "^2.5.0",
-		"@nextcloud/dialogs": "^5.3.7",
+		"@nextcloud/dialogs": "nextcloud/nextcloud-dialogs#vue3",
 		"@nextcloud/l10n": "^3.1.0",
 		"@nextcloud/router": "^3.0.1",
-		"@nextcloud/vue": "^8.17.1",
-		"vue": "^2.7.16",
+		"@nextcloud/typings": "^1.9.1",
+		"@nextcloud/vue": "^9.0.0-alpha.5",
+		"vue": "^3.5.5",
 		"vue-material-design-icons": "^5.3.0"
 	},
 	"browserslist": [
@@ -41,11 +42,15 @@
 		"npm": "^10.0.0"
 	},
 	"devDependencies": {
-		"@nextcloud/babel-config": "^1.2.0",
-		"@nextcloud/browserslist-config": "^3.0.1",
-		"@nextcloud/eslint-config": "^8.4.1",
-		"@nextcloud/stylelint-config": "^3.0.1",
-		"@nextcloud/webpack-vue-config": "^6.0.1",
-		"prettier": "^3.3.3"
+		"@nextcloud/babel-config": "^1.0.0",
+		"@nextcloud/browserslist-config": "^3.0.0",
+		"@nextcloud/eslint-config": "nextcloud/eslint-config#vue3",
+		"@nextcloud/stylelint-config": "^3.0.0",
+		"@nextcloud/vite-config": "^2.2.2",
+		"@vitejs/plugin-vue": "^5.1.3",
+		"@vue/tsconfig": "^0.5.1",
+		"prettier": "^3.3.3",
+		"typescript": "^5.6.2",
+		"vite": "^5.4.5"
 	}
 }

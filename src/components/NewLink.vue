@@ -12,7 +12,7 @@
 				</NcAvatar>
 			</template>
 			<template #subtitle>
-				<NcTextField :value.sync="tokenCandidate"
+				<NcTextField v-model="tokenCandidate"
 					:disabled="updating"
 					:label="t('cfg_share_links', 'Enter custom token')"
 					:helper-text="inputInvalidMessage"
@@ -28,8 +28,8 @@
 					{{ t('cfg_share_links', 'Password protection enforced') }}
 				</NcActionText>
 				<NcActionInput v-if="passwordPending"
+					v-model="password"
 					:disabled="updating"
-					:value.sync="password"
 					@submit="createCustomLink">
 					{{ t('cfg_share_links', 'Enter a password') }}
 				</NcActionInput>

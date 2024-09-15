@@ -41,8 +41,8 @@
 					</span>
 				</h3>
 				<NcSettingsInputText id="default-label"
+					v-model="customLabel"
 					label=""
-					:value.sync="customLabel"
 					:disabled="updating.status === 1 || loading || labelMode.id !== 2"
 					@submit="onLabelSubmit" />
 			</div>
@@ -61,8 +61,8 @@
 					</span>
 				</h3>
 				<NcSettingsInputText id="min-len"
+					v-model="minLength"
 					label=""
-					:value.sync="minLength"
 					:disabled="updating.status === 1 || loading"
 					@submit="onMinLengthSubmit" />
 				<span v-if="isMinLenValid" class="form-error">
@@ -73,7 +73,8 @@
 		<NcSettingsSection :name="t('cfg_share_links', 'Miscellaneous')"
 			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
 			<div>
-				<NcCheckboxRadioSwitch v-tooltip="{
+				<NcCheckboxRadioSwitch v-model="deleteConflicts"
+					v-tooltip="{
 						content: t(
 							'cfg_share_links',
 							'Keep this option off if you did not use versions lower than 1.2.0',
@@ -82,7 +83,6 @@
 					}"
 					:disabled="updating.status === 1 || loading"
 					:loading="updating.status === 1 || loading"
-					:checked.sync="deleteConflicts"
 					type="switch"
 					@update:checked="onDeleteConflictsChange">
 					{{

@@ -81,8 +81,10 @@ class Application extends App implements IBootstrap {
 		 * Load scripts that mount Vue components
 		 */
 		$appEventDispatcher->addListener(LoadAdditionalScriptsEvent::class, function () {
-			Util::addScript(self::APP_ID, 'cfg_share_links-reg-rename');
-			Util::addScript(self::APP_ID, 'cfg_share_links-reg-new');
+			Util::addScript(self::APP_ID, 'cfg_share_links-regRenameLink');
+			Util::addScript(self::APP_ID, 'cfg_share_links-regNewLink');
+            Util::addStyle(self::APP_ID, 'cfg_share_links-regRenameLink');
+            Util::addStyle(self::APP_ID, 'cfg_share_links-regNewLink');
 		});
 	}
 }

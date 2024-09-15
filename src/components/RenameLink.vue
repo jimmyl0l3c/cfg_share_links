@@ -1,5 +1,5 @@
 <template>
-	<NcActionInput :value.sync="tokenCandidate"
+	<NcActionInput v-model="tokenCandidate"
 		:disabled="updating"
 		type="text"
 		@submit="onSubmit">
@@ -45,7 +45,7 @@ export default {
 	data() {
 		return {
 			updating: false,
-			tokenCandidate: null,
+			tokenCandidate: '',
 		}
 	},
 
@@ -72,7 +72,7 @@ export default {
 	async mounted() {
 		await this.fetchTokenConfig()
 		if (this.share && this.share.token) {
-			this.tokenCandidate = this.share.token
+			this.tokenCandidate = this.share.token ?? ''
 		}
 		this.loading = false
 	},
