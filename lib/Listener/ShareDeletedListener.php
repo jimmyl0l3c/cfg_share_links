@@ -14,7 +14,7 @@ use Psr\Log\LoggerInterface;
 class ShareDeletedListener implements IEventListener {
 	public function __construct(
 		private readonly LoggerInterface $logger,
-		private readonly CfgShareMapper $mapper
+		private readonly CfgShareMapper $mapper,
 	) {
 	}
 

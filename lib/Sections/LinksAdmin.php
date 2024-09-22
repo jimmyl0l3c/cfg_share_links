@@ -35,7 +35,7 @@ class LinksAdmin implements IIconSection {
 
 	public function __construct(
 		private readonly IL10N $l10n,
-		private readonly IURLGenerator $urlGenerator
+		private readonly IURLGenerator $urlGenerator,
 	) {
 	}
 

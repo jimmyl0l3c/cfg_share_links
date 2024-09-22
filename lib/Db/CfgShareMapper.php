@@ -11,7 +11,10 @@ use OCP\IDBConnection;
 use Psr\Log\LoggerInterface;
 
 class CfgShareMapper extends QBMapper {
-	public function __construct(IDBConnection $db, private LoggerInterface $logger) {
+	public function __construct(
+		IDBConnection $db,
+		private LoggerInterface $logger,
+	) {
 		parent::__construct($db, 'cfg_shares', CfgShare::class);
 	}
 
