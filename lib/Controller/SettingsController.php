@@ -41,7 +41,7 @@ class SettingsController extends Controller {
 		string                        $appName,
 		private readonly IAppConfig   $appConfig,
 		private readonly AppConstants $appConstants,
-		IRequest                      $request
+		IRequest                      $request,
 	) {
 		parent::__construct($appName, $request);
 	}

@@ -75,7 +75,7 @@ class ShareService {
 		private readonly IAppConfig      $appConfig,
 		private readonly CfgShareMapper  $mapper,
 		private readonly AppConstants    $appConstants,
-		private string|null              $currentUserId = null
+		private ?string              $currentUserId = null,
 	) {
 	}
 

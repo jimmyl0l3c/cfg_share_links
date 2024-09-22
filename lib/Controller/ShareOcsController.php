@@ -34,7 +34,7 @@ class ShareOcsController extends OCSController {
 		string                        $appName,
 		IRequest                      $request,
 		private readonly ShareService $service,
-		private readonly ?string      $userId
+		private readonly ?string      $userId,
 	) {
 		parent::__construct($appName, $request, 'PUT, POST, OPTIONS');
 	}
