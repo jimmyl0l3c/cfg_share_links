@@ -10,6 +10,7 @@ use OCP\AppFramework\Services\IAppConfig;
 use OCP\Files\IRootFolder;
 use OCP\IGroupManager;
 use OCP\IL10N;
+use OCP\IUserManager;
 use OCP\Share\IManager;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
@@ -22,6 +23,7 @@ class ShareServiceTest extends TestCase {
 	protected LoggerInterface|MockObject $logger;
 	protected MockObject|IManager $shareManager;
 	protected MockObject|IGroupManager $groupManager;
+	protected IUserManager|Stub $userManager;
 	protected MockObject|IRootFolder $rootFolder;
 	protected MockObject|IL10N $l10n;
 	protected IAppConfig|Stub $appConfig;
@@ -34,6 +36,9 @@ class ShareServiceTest extends TestCase {
 		$this->rootFolder = $this->getMockBuilder(IRootFolder::class)->getMock();
 		$this->l10n = $this->getMockBuilder(IL10N::class)->getMock();
 
+		$this->userManager = $this->createStub(IUserManager::class);
+		$this->userManager->method('searchDisplayName')->willReturn([]);
+
 		$this->appConfig = $this->createStub(IAppConfig::class);
 		$this->appConfig->method('getAppValueInt')->willReturn(3);
 
@@ -44,6 +49,7 @@ class ShareServiceTest extends TestCase {
 			$this->logger,
 			$this->shareManager,
 			$this->groupManager,
+			$this->userManager,
 			$this->rootFolder,
 			$this->l10n,
 			$this->appConfig,
