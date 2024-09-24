@@ -50,6 +50,7 @@ use OCP\Files\NotFoundException;
 use OCP\Files\NotPermittedException;
 use OCP\IGroupManager;
 use OCP\IL10N;
+use OCP\IUserManager;
 use OCP\Lock\ILockingProvider;
 use OCP\Lock\LockedException;
 use OCP\Share\Exceptions\GenericShareException;
@@ -70,6 +71,7 @@ class ShareService {
 		private readonly LoggerInterface $logger,
 		private readonly IManager        $shareManager,
 		private readonly IGroupManager   $groupManager,
+		private readonly IUserManager    $userManager,
 		private readonly IRootFolder     $rootFolder,
 		private readonly IL10N           $l10n,
 		private readonly IAppConfig      $appConfig,
@@ -427,6 +429,14 @@ class ShareService {
 
 		if ($valid != 1) {
 			throw new InvalidTokenException($this->l10n->t('Token contains invalid characters'));
+		}
+
+		$username_conflict_candidates = $this->userManager->searchDisplayName($token);
+		foreach ($username_conflict_candidates as $user) {
+			// Check if it is an exact match
+			if ($user->getDisplayName() == $token) {
+				throw new InvalidTokenException($this->l10n->t('This token cannot be used'));
+			}
 		}
 	}
 
