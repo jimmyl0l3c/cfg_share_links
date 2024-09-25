@@ -11,6 +11,7 @@ OC.L10N.register(
     "Unable to check permissions" : "Nepodařilo se zkontrolovat oprávnění",
     "Token is not unique" : "Token už existuje",
     "Token is not long enough" : "Token není dostatečně dlouhý",
+    "Token cannot be longer than %1$s characters" : "Token nemůže být delší než %1$sznaků",
     "Token contains invalid characters" : "Token obsahuje neplatné znaky",
     "App adding the ability to specify share tokens" : "Aplikace přidávající možnost zadat podobu tokenů pro sdílení",
     "Default share label" : "Výchozí štítek pro sdílení",
