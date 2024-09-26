@@ -6,6 +6,21 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [6.1.1] - 2024-09-26
+
+### Fixed
+
+- Dont create links with token same as username
+
+### Changed
+
+- Updated translations from transifex
+- Build(deps): Bump @nextcloud/axios from 2.5.0 to 2.5.1
+- Build(deps-dev): Bump @nextcloud/webpack-vue-config from 6.0.1 to 6.1.0
+- Build(deps): Bump @nextcloud/vue from 8.18.0 to 8.19.0
+- Build(deps): Bump dompurify from 3.1.2 to 3.1.6
+- Build(deps-dev): Bump nextcloud/coding-standard from 1.2.3 to 1.3.1
+
 ## [6.1.0] - 2024-09-14
 
 ### Added
@@ -310,7 +325,8 @@ Backport from version 3.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.1.0...HEAD
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.1.1...HEAD
+[6.1.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.1.0...v6.1.1
 [6.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.0.0...v6.1.0
 [6.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.3...v6.0.0
 [5.1.3]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.2...v5.1.3
