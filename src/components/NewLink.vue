@@ -25,7 +25,7 @@
 					<template #icon>
 						<LockIcon />
 					</template>
-					{{ t('cfg_share_links', 'Password protection enforced') }}
+					{{ passwordPrompt }}
 				</NcActionText>
 				<NcActionInput v-if="passwordPending"
 					:disabled="updating"
@@ -101,6 +101,7 @@ export default {
 			tokenCandidate: '',
 			copied: false,
 			passwordPending: false,
+			enforcePassword: false,
 			password: '',
 		}
 	},
@@ -136,6 +137,11 @@ export default {
 				: t('cfg_share_links', 'Create link')
 			// return { content: message, show: this.copied, placement: 'bottom' }
 		},
+		passwordPrompt() {
+			return this.enforcePassword
+				? t('cfg_share_links', 'Password protection enforced')
+				: t('cfg_share_links', 'Enter password (optional)')
+		},
 		isMenuOpened() {
 			return this.$refs.newItem.$refs.actions.opened
 		},
@@ -150,7 +156,8 @@ export default {
 	methods: {
 		async createCustomLink() {
 			this.updating = true
-			const enforcePassword = OC.appConfig.core.enforcePasswordForPublicLink
+			const alwaysAskForPassword = OC.appConfig.core.enableLinkPasswordByDefault
+			this.enforcePassword = OC.appConfig.core.enforcePasswordForPublicLink
 			const token = this.tokenCandidate
 			const password = this.password
 
@@ -168,8 +175,8 @@ export default {
 				return
 			}
 
-			if (enforcePassword) {
-				console.debug('CfgShareLinks: EnforcePassword enabled')
+			if (this.enforcePassword || alwaysAskForPassword) {
+				console.debug(`CfgShareLinks: EnforcePassword=${this.enforcePassword}, AlwaysAskForPassword=${alwaysAskForPassword}`)
 
 				if (!this.passwordPending || !this.isMenuOpened) {
 					// Open menu with password prompt
@@ -186,6 +193,7 @@ export default {
 			this.requestPending = true
 			const response = await this.createLink(this.getFullPath, token, password)
 			this.requestPending = false
+			this.password = ''
 
 			if (response && response.ret === 0) {
 				this.passwordPending = false
