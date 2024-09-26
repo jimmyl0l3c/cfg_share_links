@@ -21,7 +21,7 @@ export default {
 				path,
 				shareType: 3,
 				tokenCandidate: token,
-				password,
+				password: password?.trim() ?? '',
 			}
 
 			try {
