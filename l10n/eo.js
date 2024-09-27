@@ -7,8 +7,8 @@ OC.L10N.register(
     "Saving..." : "Konservado...",
     "None" : "Nenio",
     "Custom" : "Propra",
-    "Password protection enforced" : "Pasvorta protekto efektiva",
     "Enter a password" : "Entajpu pasvorton",
-    "Link copied" : "Ligilo kopiita"
+    "Link copied" : "Ligilo kopiita",
+    "Password protection enforced" : "Pasvorta protekto efektiva"
 },
 "nplurals=2; plural=(n != 1);");

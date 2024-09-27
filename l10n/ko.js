@@ -10,8 +10,8 @@ OC.L10N.register(
     "None" : "없음",
     "Custom" : "사용자 정의",
     "Label cannot be empty" : "레이블은 비워 둘 수 없습니다.",
-    "Password protection enforced" : "암호 보호 적용",
     "Enter a password" : "암호 입력",
-    "Link copied" : "링크 복사됨"
+    "Link copied" : "링크 복사됨",
+    "Password protection enforced" : "암호 보호 적용"
 },
 "nplurals=1; plural=0;");

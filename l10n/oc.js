@@ -12,10 +12,10 @@ OC.L10N.register(
     "None" : "Cap",
     "Same as token" : "Identic al geton",
     "Custom" : "Personalizar",
-    "Password protection enforced" : "Proteccion per senhal refortida",
     "Enter a password" : "Picatz un senhal",
     "Link copied" : "Ligam copiat",
     "Create link" : "Crear ligam",
+    "Password protection enforced" : "Proteccion per senhal refortida",
     "Invalid token" : "Geton invalid"
 },
 "nplurals=2; plural=(n > 1);");

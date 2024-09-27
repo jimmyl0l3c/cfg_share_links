@@ -10,8 +10,8 @@ OC.L10N.register(
     "None" : "Niciuna",
     "Custom" : "Particularizat",
     "Label cannot be empty" : "Eticheta nu poate fi goală",
-    "Password protection enforced" : "Protejare cu parolă impusă",
     "Enter a password" : "Enter a password",
-    "Link copied" : "Link copiat"
+    "Link copied" : "Link copiat",
+    "Password protection enforced" : "Protejare cu parolă impusă"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

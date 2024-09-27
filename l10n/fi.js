@@ -10,9 +10,9 @@ OC.L10N.register(
     "None" : "Ei mitään",
     "Custom" : "Omavalintainen",
     "Label cannot be empty" : "Nimike ei voi olla tyhjä",
-    "Password protection enforced" : "Salasanasuojaus pakotettu",
     "Enter a password" : "Syötä salasana",
     "Link copied" : "Linkki kopioitu",
-    "Create link" : "Luo linkki"
+    "Create link" : "Luo linkki",
+    "Password protection enforced" : "Salasanasuojaus pakotettu"
 },
 "nplurals=2; plural=(n != 1);");

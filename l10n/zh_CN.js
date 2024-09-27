@@ -10,9 +10,9 @@ OC.L10N.register(
     "None" : "无",
     "Custom" : "自定义",
     "Label cannot be empty" : "标签不能是空白",
-    "Password protection enforced" : "强制密码保护",
     "Enter a password" : "输入密码",
     "Link copied" : "已复制链接",
+    "Password protection enforced" : "强制密码保护",
     "Invalid token" : "令牌无效"
 },
 "nplurals=1; plural=0;");
