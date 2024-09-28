@@ -40,6 +40,7 @@
     "Link copied" : "已複製連結",
     "Create link" : "建立連結",
     "Password protection enforced" : "已啟用密碼防護",
+    "Enter password (optional)" : "輸入密碼（選擇性）",
     "Invalid token" : "無效的權杖",
     "Custom public link created" : "已建立自訂公開連結",
     "Error occurred while creating public link" : "建立公開連結時發生錯誤",

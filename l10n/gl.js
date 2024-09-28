@@ -42,6 +42,7 @@ OC.L10N.register(
     "Link copied" : "Ligazón copiada",
     "Create link" : "Crear ligazón",
     "Password protection enforced" : "Protección obrigada por contrasinal",
+    "Enter password (optional)" : "Introduza o contrasinal (opcional)",
     "Invalid token" : "Testemuño non válido",
     "Custom public link created" : "Creouse unha ligazón pública personalizada",
     "Error occurred while creating public link" : "Produciuse un erro ao crear a ligazón pública",

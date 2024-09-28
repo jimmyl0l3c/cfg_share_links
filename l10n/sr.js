@@ -42,6 +42,7 @@ OC.L10N.register(
     "Link copied" : "Веза ископирана",
     "Create link" : "Креирај линк",
     "Password protection enforced" : "Захтевана заштита лозинком",
+    "Enter password (optional)" : "Унесите лозинка (није обавезно)",
     "Invalid token" : "Неисправан жетон",
     "Custom public link created" : "Креиран је прилагођени јавни линк",
     "Error occurred while creating public link" : "Дошло је до грешле током креирања јавног линка",

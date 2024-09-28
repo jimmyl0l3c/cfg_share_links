@@ -41,6 +41,7 @@ OC.L10N.register(
     "Link copied" : "Länken har kopierats",
     "Create link" : "Skapa länk",
     "Password protection enforced" : "Lösenordsskydd obligatorisk",
+    "Enter password (optional)" : "Ange lösenord (valfritt)",
     "Invalid token" : "Ogiltig token",
     "Custom public link created" : "Anpassad offentlig länk skapad",
     "Error occurred while creating public link" : "Fel uppstod när offentlig länk skapades",

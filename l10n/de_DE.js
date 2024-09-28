@@ -42,6 +42,7 @@ OC.L10N.register(
     "Link copied" : "Link kopiert",
     "Create link" : "Link erstellen",
     "Password protection enforced" : "Passwortschutz erzwungen",
+    "Enter password (optional)" : "Passwort eingeben (optional)",
     "Invalid token" : "Ungültiger Token",
     "Custom public link created" : "Benutzerdefinierter öffentlicher Link erstellt",
     "Error occurred while creating public link" : "Fehler beim Erstellen des öffentlichen Links aufgetreten",

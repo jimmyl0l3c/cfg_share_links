@@ -40,6 +40,7 @@
     "Link copied" : "تمّ نسخ الرابط",
     "Create link" : "أنشِئ رابطاً",
     "Password protection enforced" : "تمّ فرض الحماية بكلمة المرور",
+    "Enter password (optional)" : "أدخِل كلمة المرور (اختيارياً)",
     "Invalid token" : "أَمَارَة token غير صالحة",
     "Custom public link created" : "تمّ إنشاء رابط عمومي مخصص",
     "Error occurred while creating public link" : "حدث خطأ أثناء إنشاء الرابط العمومي",
