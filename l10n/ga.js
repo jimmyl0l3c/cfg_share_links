@@ -42,6 +42,7 @@ OC.L10N.register(
     "Link copied" : "Cóipeáladh an nasc",
     "Create link" : "Cruthaigh nasc",
     "Password protection enforced" : "Cosaint pasfhocail curtha i bhfeidhm",
+    "Enter password (optional)" : "Iontráil pasfhocal (roghnach)",
     "Invalid token" : "Comhartha neamhbhailí",
     "Custom public link created" : "Cruthaíodh nasc poiblí saincheaptha",
     "Error occurred while creating public link" : "Tharla earráid agus nasc poiblí á chruthú",
