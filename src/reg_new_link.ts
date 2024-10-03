@@ -1,18 +1,10 @@
-import { translate as t, translatePlural as n } from '@nextcloud/l10n'
 import Vue from 'vue'
 import NewLink from './components/NewLink.vue'
 
 // Vue.prototype.OC = window.OC
 Vue.prototype.OCA = window.OCA
 
-Vue.mixin({
-	methods: {
-		t,
-		n,
-	},
-})
-
-console.debug('CfgShareLinks: NewLink init')
+console.info('CfgShareLinks: NewLink init')
 
 // Add new section
 let sectionInstance = null
@@ -33,7 +25,7 @@ window.addEventListener('DOMContentLoaded', function() {
 				} else {
 					// create new instance
 					if (sectionInstance) {
-						// if sectionInstance.$el doesnt exist anymore (after changing folder for example)
+						// if sectionInstance.$el doesn't exist anymore (after changing folder for example)
 						sectionInstance.$destroy()
 					}
 

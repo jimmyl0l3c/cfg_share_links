@@ -1,6 +1,7 @@
 import '@nextcloud/dialogs/style.css'
 import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
+import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
 
 export default {
@@ -56,7 +57,10 @@ export default {
 			}
 
 			try {
-				await axios.put(generateUrl('/apps/cfg_share_links/update-by-token'), data)
+				await axios.put(
+					generateUrl('/apps/cfg_share_links/update-by-token'),
+					data,
+				)
 				console.debug('CfgShareLinks: Public link renamed')
 				showSuccess(t('cfg_share_links', 'Custom public link renamed'))
 			} catch (e) {

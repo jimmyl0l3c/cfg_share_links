@@ -1,6 +1,7 @@
 <template>
 	<div id="cfgshare-admin-settings">
-		<NcSettingsSection :name="t('cfg_share_links', 'Default share label')"
+		<NcSettingsSection
+			:name="t('cfg_share_links', 'Default share label')"
 			:description="
 				t(
 					'cfg_share_links',
@@ -10,16 +11,19 @@
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Default label') }}:
-					<span v-if="updating.key === 'default_label_mode'"
+					<span
+						v-if="updating.key === 'default_label_mode'"
 						class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+						<NcLoadingIcon
+							v-if="updating.status === 1"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
 				</h3>
-				<NcSelect v-model="labelMode"
+				<NcSelect
+					v-model="labelMode"
 					:options="labelOptions"
 					track-by="id"
 					label="label"
@@ -33,34 +37,39 @@
 				<h3>
 					{{ t('cfg_share_links', 'Custom label') }}:
 					<span v-if="updating.key === 'default_label'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+						<NcLoadingIcon
+							v-if="updating.status === 1"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
 				</h3>
-				<NcSettingsInputText id="default-label"
+				<NcSettingsInputText
+					id="default-label"
 					label=""
 					:value.sync="customLabel"
 					:disabled="updating.status === 1 || loading || labelMode.id !== 2"
 					@submit="onLabelSubmit" />
 			</div>
 		</NcSettingsSection>
-		<NcSettingsSection :name="t('cfg_share_links', 'Token settings')"
+		<NcSettingsSection
+			:name="t('cfg_share_links', 'Token settings')"
 			:description="t('cfg_share_links', 'Configure requirements for tokens')">
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Minimal token length') }}:
 					<span v-if="updating.key === 'min_token_length'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+						<NcLoadingIcon
+							v-if="updating.status === 1"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
 						<AlertIcon v-else-if="updating.status === 3" :size="20" />
 					</span>
 				</h3>
-				<NcSettingsInputText id="min-len"
+				<NcSettingsInputText
+					id="min-len"
 					label=""
 					:value.sync="minLength"
 					:disabled="updating.status === 1 || loading"
@@ -70,10 +79,12 @@
 				</span>
 			</div>
 		</NcSettingsSection>
-		<NcSettingsSection :name="t('cfg_share_links', 'Miscellaneous')"
+		<NcSettingsSection
+			:name="t('cfg_share_links', 'Miscellaneous')"
 			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
 			<div>
-				<NcCheckboxRadioSwitch v-tooltip="{
+				<NcCheckboxRadioSwitch
+					v-tooltip="{
 						content: t(
 							'cfg_share_links',
 							'Keep this option off if you did not use versions lower than 1.2.0',
@@ -91,9 +102,11 @@
 							'Delete shares of deleted files during token checks (when creating/updating share)',
 						)
 					}}
-					<span v-if="updating.key === 'deleteRemovedShareConflicts'"
+					<span
+						v-if="updating.key === 'deleteRemovedShareConflicts'"
 						class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+						<NcLoadingIcon
+							v-if="updating.status === 1"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
 						<CheckIcon v-else-if="updating.status === 2" :size="20" />
@@ -106,6 +119,10 @@
 </template>
 
 <script>
+import axios from '@nextcloud/axios'
+import { showError } from '@nextcloud/dialogs'
+import { t } from '@nextcloud/l10n'
+import { generateUrl } from '@nextcloud/router'
 import {
 	NcCheckboxRadioSwitch,
 	NcLoadingIcon,
@@ -114,16 +131,13 @@ import {
 	NcSettingsSection,
 	Tooltip,
 } from '@nextcloud/vue'
+import AlertIcon from 'vue-material-design-icons/AlertCircle.vue'
 
 import CheckIcon from 'vue-material-design-icons/Check.vue'
-import AlertIcon from 'vue-material-design-icons/AlertCircle.vue'
 
 import SettingsMixin from '../mixins/SettingsMixin.js'
 
 import '@nextcloud/dialogs/style.css'
-import { generateUrl } from '@nextcloud/router'
-import { showError } from '@nextcloud/dialogs'
-import axios from '@nextcloud/axios'
 
 const labelOptions = [
 	{ id: 0, label: t('cfg_share_links', 'None') },
@@ -193,6 +207,7 @@ export default {
 	},
 
 	methods: {
+		t,
 		setUpdate(key, status) {
 			this.updating.status = status
 			this.updating.key = key

@@ -1,3 +1,4 @@
+import { t } from '@nextcloud/l10n'
 import SettingsMixin from './SettingsMixin.js'
 
 export default {

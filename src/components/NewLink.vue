@@ -1,6 +1,7 @@
 <template>
 	<ul v-if="canShare">
-		<CustomListItem ref="newItem"
+		<CustomListItem
+			ref="newItem"
 			:title="t('cfg_share_links', 'Custom public link')"
 			:bold="false"
 			:force-display-actions="true">
@@ -12,7 +13,8 @@
 				</NcAvatar>
 			</template>
 			<template #subtitle>
-				<NcTextField :value.sync="tokenCandidate"
+				<NcTextField
+					:value.sync="tokenCandidate"
 					:disabled="updating"
 					:label="t('cfg_share_links', 'Enter custom token')"
 					:helper-text="inputInvalidMessage"
@@ -27,7 +29,8 @@
 					</template>
 					{{ passwordPrompt }}
 				</NcActionText>
-				<NcActionInput v-if="passwordPending"
+				<NcActionInput
+					v-if="passwordPending"
 					:disabled="updating"
 					:value.sync="password"
 					@submit="createCustomLink">
@@ -47,6 +50,7 @@
 
 <script>
 import { showError } from '@nextcloud/dialogs'
+import { t } from '@nextcloud/l10n'
 
 import { generateUrl } from '@nextcloud/router'
 import '@nextcloud/dialogs/style.css'
@@ -154,6 +158,7 @@ export default {
 	},
 
 	methods: {
+		t,
 		async createCustomLink() {
 			this.updating = true
 			const alwaysAskForPassword = OC.appConfig.core.enableLinkPasswordByDefault
@@ -176,7 +181,9 @@ export default {
 			}
 
 			if (this.enforcePassword || alwaysAskForPassword) {
-				console.debug(`CfgShareLinks: EnforcePassword=${this.enforcePassword}, AlwaysAskForPassword=${alwaysAskForPassword}`)
+				console.debug(
+					`CfgShareLinks: EnforcePassword=${this.enforcePassword}, AlwaysAskForPassword=${alwaysAskForPassword}`,
+				)
 
 				if (!this.passwordPending || !this.isMenuOpened) {
 					// Open menu with password prompt
