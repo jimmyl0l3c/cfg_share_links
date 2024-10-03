@@ -49,7 +49,7 @@ class LinksAdmin implements ISettings {
 			'deleteRemovedShareConflicts' => $this->appConfig->getAppValueBool(SettingsKey::DeleteRemovedShareConflicts->value, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)
 		];
 
-		Util::addScript(Application::APP_ID, 'cfg_share_links-settings-admin');
+		Util::addScript(Application::APP_ID, 'cfg_share_links-settingsAdmin');
 		return new TemplateResponse(Application::APP_ID, 'admin', $parameters, '');
 	}
 
