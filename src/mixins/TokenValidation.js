@@ -39,7 +39,7 @@ export default {
 				return 1
 			}
 
-			if (token.match(/^[a-zA-Z0-9_\-+]+$/) == null) {
+			if (token.match(/^[a-zA-Z0-9_]+$/) == null) {
 				return 2
 			}
 
