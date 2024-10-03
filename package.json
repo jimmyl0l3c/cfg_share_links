@@ -11,14 +11,15 @@
 		"url": "https://github.com/jimmyl0l3c/cfg_share_links",
 		"type": "git"
 	},
+	"type": "module",
 	"homepage": "https://github.com/jimmyl0l3c/cfg_share_links",
 	"license": "agpl",
 	"private": true,
 	"scripts": {
-		"build": "NODE_ENV=production webpack --progress --config webpack.js",
-		"dev": "NODE_ENV=development webpack --progress --config webpack.js",
-		"watch": "NODE_ENV=development webpack --progress --watch --config webpack.js",
-		"serve": "NODE_ENV=development webpack serve --progress --config webpack.js",
+		"build": "NODE_ENV=production vite build --mode production",
+		"dev": "NODE_ENV=development vite build --mode development",
+		"watch": "NODE_ENV=development vite build --watch --mode development",
+		"serve": "NODE_ENV=development vite serve",
 		"lint": "eslint --ext .js,.vue src",
 		"lint:fix": "eslint --ext .js,.vue src --fix",
 		"stylelint": "stylelint css/*.css css/*.scss src/**/*.scss src/**/*.vue",
@@ -37,15 +38,19 @@
 		"extends @nextcloud/browserslist-config"
 	],
 	"engines": {
-		"node": "^20.0.0",
-		"npm": "^10.0.0"
+		"node": "^20",
+		"npm": "^10"
 	},
 	"devDependencies": {
 		"@nextcloud/babel-config": "^1.2.0",
 		"@nextcloud/browserslist-config": "^3.0.1",
 		"@nextcloud/eslint-config": "^8.4.1",
 		"@nextcloud/stylelint-config": "^3.0.1",
-		"@nextcloud/webpack-vue-config": "^6.1.1",
-		"prettier": "^3.3.3"
+		"@nextcloud/vite-config": "^1.4.2",
+		"@vue/tsconfig": "^0.5.1",
+		"prettier": "^3.3.3",
+		"vite": "^5.4.8",
+		"vite-plugin-eslint": "^1.8.1",
+		"vite-plugin-stylelint": "^5.3.1"
 	}
 }
