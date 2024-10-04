@@ -18,8 +18,8 @@ import { NcActionInput } from '@nextcloud/vue'
 import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
 
 import '@nextcloud/dialogs/style.css'
-import RequestMixin from '../mixins/RequestMixin.js'
-import TokenValidation from '../mixins/TokenValidation.js'
+import RequestMixin from '../mixins/RequestMixin.ts'
+import TokenValidation from '../mixins/TokenValidation.ts'
 
 export default {
 	id: 'rename-link',

@@ -135,7 +135,7 @@ import AlertIcon from 'vue-material-design-icons/AlertCircle.vue'
 
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 
-import SettingsMixin from '../mixins/SettingsMixin.js'
+import SettingsMixin from '../mixins/SettingsMixin.ts'
 
 import '@nextcloud/dialogs/style.css'
 

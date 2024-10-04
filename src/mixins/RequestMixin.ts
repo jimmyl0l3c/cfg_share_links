@@ -6,7 +6,7 @@ import { generateUrl } from '@nextcloud/router'
 
 export default {
 	methods: {
-		refreshSidebar(fileInfo) {
+		refreshSidebar(fileInfo: unknown): void {
 			const shareTab = OCA.Files.Sidebar.state.tabs.find(
 				(e) => e.id === 'sharing',
 			)
@@ -17,7 +17,7 @@ export default {
 				console.debug('CfgShareLinks: No share tab to update')
 			}
 		},
-		async createLink(path, token, password = '') {
+		async createLink(path: string, token: string, password: string | null = '') {
 			const data = {
 				path,
 				shareType: 3,
@@ -50,7 +50,7 @@ export default {
 				return returnValue
 			}
 		},
-		async renameLink(currentToken, tokenCandidate) {
+		async renameLink(currentToken: string, tokenCandidate: string): Promise<void> {
 			const data = {
 				currentToken,
 				tokenCandidate,

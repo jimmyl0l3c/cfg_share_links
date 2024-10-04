@@ -66,8 +66,8 @@ import CheckIcon from 'vue-material-design-icons/Check.vue'
 import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
 import LockIcon from 'vue-material-design-icons/Lock.vue'
 import PlusIcon from 'vue-material-design-icons/Plus.vue'
-import RequestMixin from '../mixins/RequestMixin.js'
-import TokenValidation from '../mixins/TokenValidation.js'
+import RequestMixin from '../mixins/RequestMixin.ts'
+import TokenValidation from '../mixins/TokenValidation.ts'
 
 import CustomListItem from './CustomListItem.vue'
 

@@ -9,7 +9,7 @@ export default {
 	},
 
 	methods: {
-		async fetchSettings() {
+		async fetchSettings(): Promise<void> {
 			try {
 				const response = await axios.get(
 					generateUrl('/apps/cfg_share_links/settings'),
@@ -29,7 +29,7 @@ export default {
 				return this.settings
 			}
 		},
-		async getLabelMode() {
+		async getLabelMode(): Promise<number> {
 			const settings = await this.getSettings()
 			return settings
 				&& settings.defaultLabelMode
@@ -38,23 +38,23 @@ export default {
 				? settings.defaultLabelMode
 				: 0
 		},
-		async getCustomLabel() {
+		async getCustomLabel(): Promise<string> {
 			const settings = await this.getSettings()
 			return settings && settings.defaultLabel
 				? settings.defaultLabel
 				: 'Custom link'
 		},
-		async getMinTokenLength() {
+		async getMinTokenLength(): Promise<string> {
 			const settings = await this.getSettings()
 			return settings && settings.minTokenLength
 				? settings.minTokenLength.toString()
 				: '3'
 		},
-		async getMinTokenLengthInt() {
+		async getMinTokenLengthInt(): Promise<number> {
 			const length = parseInt(await this.getMinTokenLength())
 			return isNaN(length) ? 3 : length
 		},
-		async getDeleteRemovedShareConflicts() {
+		async getDeleteRemovedShareConflicts(): Promise<boolean> {
 			const settings = await this.getSettings()
 			return !!(settings && settings.deleteRemovedShareConflicts)
 		},
