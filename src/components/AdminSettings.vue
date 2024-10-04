@@ -199,6 +199,9 @@ export default {
 	},
 
 	computed: {
+		LabelMode() {
+			return LabelMode
+		},
 		UpdateState() {
 			return UpdateState
 		},
