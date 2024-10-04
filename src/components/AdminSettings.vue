@@ -1,6 +1,7 @@
 <template>
 	<div id="cfgshare-admin-settings">
-		<NcSettingsSection :name="t('cfg_share_links', 'Default share label')"
+		<NcSettingsSection
+			:name="t('cfg_share_links', 'Default share label')"
 			:description="
 				t(
 					'cfg_share_links',
@@ -10,78 +11,104 @@
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Default label') }}:
-					<span v-if="updating.key === 'default_label_mode'"
+					<span
+						v-if="updating.key === SettingsKey.DefaultLabelMode"
 						class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+						<NcLoadingIcon
+							v-if="updating.status === UpdateState.Updating"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
-						<CheckIcon v-else-if="updating.status === 2" :size="20" />
-						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+						<CheckIcon
+							v-else-if="updating.status === UpdateState.Completed"
+							:size="20" />
+						<AlertIcon
+							v-else-if="updating.status === UpdateState.Error"
+							:size="20" />
 					</span>
 				</h3>
-				<NcSelect v-model="labelMode"
+				<NcSelect
+					v-model="labelMode"
 					:options="labelOptions"
 					track-by="id"
 					label="label"
 					:multiple="false"
 					:allow-empty="false"
-					:disabled="updating.status === 1 || loading"
+					:disabled="updating.status === UpdateState.Updating || loading"
 					:placeholder="t('cfg_share_links', 'Select label type')"
 					@option:selected="onLabelModeChange" />
 			</div>
-			<div v-if="labelMode.id === 2">
+			<div v-if="labelMode.id === LabelMode.UserSpecified">
 				<h3>
 					{{ t('cfg_share_links', 'Custom label') }}:
-					<span v-if="updating.key === 'default_label'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+					<span
+						v-if="updating.key === SettingsKey.DefaultCustomLabel"
+						class="status-icon">
+						<NcLoadingIcon
+							v-if="updating.status === UpdateState.Updating"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
-						<CheckIcon v-else-if="updating.status === 2" :size="20" />
-						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+						<CheckIcon
+							v-else-if="updating.status === UpdateState.Completed"
+							:size="20" />
+						<AlertIcon
+							v-else-if="updating.status === UpdateState.Error"
+							:size="20" />
 					</span>
 				</h3>
-				<NcSettingsInputText id="default-label"
+				<NcSettingsInputText
+					id="default-label"
 					label=""
 					:value.sync="customLabel"
-					:disabled="updating.status === 1 || loading || labelMode.id !== 2"
+					:disabled="
+						updating.status === UpdateState.Updating ||
+							loading ||
+							labelMode.id !== LabelMode.UserSpecified
+					"
 					@submit="onLabelSubmit" />
 			</div>
 		</NcSettingsSection>
-		<NcSettingsSection :name="t('cfg_share_links', 'Token settings')"
+		<NcSettingsSection
+			:name="t('cfg_share_links', 'Token settings')"
 			:description="t('cfg_share_links', 'Configure requirements for tokens')">
 			<div>
 				<h3>
 					{{ t('cfg_share_links', 'Minimal token length') }}:
-					<span v-if="updating.key === 'min_token_length'" class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+					<span
+						v-if="updating.key === SettingsKey.MinTokenLength"
+						class="status-icon">
+						<NcLoadingIcon
+							v-if="updating.status === UpdateState.Updating"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
-						<CheckIcon v-else-if="updating.status === 2" :size="20" />
-						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+						<CheckIcon v-else-if="updating.status === UpdateState.Completed" :size="20" />
+						<AlertIcon v-else-if="updating.status === UpdateState.Error" :size="20" />
 					</span>
 				</h3>
-				<NcSettingsInputText id="min-len"
+				<NcSettingsInputText
+					id="min-len"
 					label=""
 					:value.sync="minLength"
-					:disabled="updating.status === 1 || loading"
+					:disabled="updating.status === UpdateState.Updating || loading"
 					@submit="onMinLengthSubmit" />
 				<span v-if="isMinLenValid" class="form-error">
 					{{ isMinLenValid }}
 				</span>
 			</div>
 		</NcSettingsSection>
-		<NcSettingsSection :name="t('cfg_share_links', 'Miscellaneous')"
+		<NcSettingsSection
+			:name="t('cfg_share_links', 'Miscellaneous')"
 			:description="t('cfg_share_links', 'Miscellaneous tweaks')">
 			<div>
-				<NcCheckboxRadioSwitch v-tooltip="{
+				<NcCheckboxRadioSwitch
+					v-tooltip="{
 						content: t(
 							'cfg_share_links',
 							'Keep this option off if you did not use versions lower than 1.2.0',
 						),
 						placement: 'top-start',
 					}"
-					:disabled="updating.status === 1 || loading"
-					:loading="updating.status === 1 || loading"
+					:disabled="updating.status === UpdateState.Updating || loading"
+					:loading="updating.status === UpdateState.Updating || loading"
 					:checked.sync="deleteConflicts"
 					type="switch"
 					@update:checked="onDeleteConflictsChange">
@@ -91,13 +118,15 @@
 							'Delete shares of deleted files during token checks (when creating/updating share)',
 						)
 					}}
-					<span v-if="updating.key === 'deleteRemovedShareConflicts'"
+					<span
+						v-if="updating.key === SettingsKey.DeleteRemovedShareConflicts"
 						class="status-icon">
-						<NcLoadingIcon v-if="updating.status === 1"
+						<NcLoadingIcon
+							v-if="updating.status === UpdateState.Updating"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
-						<CheckIcon v-else-if="updating.status === 2" :size="20" />
-						<AlertIcon v-else-if="updating.status === 3" :size="20" />
+						<CheckIcon v-else-if="updating.status === UpdateState.Completed" :size="20" />
+						<AlertIcon v-else-if="updating.status === UpdateState.Error" :size="20" />
 					</span>
 				</NcCheckboxRadioSwitch>
 			</div>
@@ -105,7 +134,11 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
+import axios from '@nextcloud/axios'
+import { showError } from '@nextcloud/dialogs'
+import { t } from '@nextcloud/l10n'
+import { generateUrl } from '@nextcloud/router'
 import {
 	NcCheckboxRadioSwitch,
 	NcLoadingIcon,
@@ -114,21 +147,21 @@ import {
 	NcSettingsSection,
 	Tooltip,
 } from '@nextcloud/vue'
-
-import CheckIcon from 'vue-material-design-icons/Check.vue'
 import AlertIcon from 'vue-material-design-icons/AlertCircle.vue'
 
-import SettingsMixin from '../mixins/SettingsMixin.js'
+import CheckIcon from 'vue-material-design-icons/Check.vue'
+import { LabelMode } from '../enums/LabelMode.ts'
+import { SettingsKey } from '../enums/SettingsKey.ts'
+import { UpdateState } from '../enums/UpdateState.ts'
+
+import SettingsMixin from '../mixins/SettingsMixin.ts'
 
 import '@nextcloud/dialogs/style.css'
-import { generateUrl } from '@nextcloud/router'
-import { showError } from '@nextcloud/dialogs'
-import axios from '@nextcloud/axios'
 
 const labelOptions = [
-	{ id: 0, label: t('cfg_share_links', 'None') },
-	{ id: 1, label: t('cfg_share_links', 'Same as token') },
-	{ id: 2, label: t('cfg_share_links', 'Custom') },
+	{ id: LabelMode.NoLabel, label: t('cfg_share_links', 'None') },
+	{ id: LabelMode.SameAsToken, label: t('cfg_share_links', 'Same as token') },
+	{ id: LabelMode.UserSpecified, label: t('cfg_share_links', 'Custom') },
 ]
 
 export default {
@@ -153,7 +186,7 @@ export default {
 	data() {
 		return {
 			updating: {
-				status: 0,
+				status: UpdateState.Idle,
 				key: null,
 			},
 			loading: true,
@@ -166,6 +199,12 @@ export default {
 	},
 
 	computed: {
+		UpdateState() {
+			return UpdateState
+		},
+		SettingsKey() {
+			return SettingsKey
+		},
 		isMinLenValid() {
 			const parsedMinLength = parseInt(this.minLength)
 
@@ -193,6 +232,7 @@ export default {
 	},
 
 	methods: {
+		t,
 		setUpdate(key, status) {
 			this.updating.status = status
 			this.updating.key = key
@@ -203,7 +243,7 @@ export default {
 				return
 			}
 			// validity check?
-			await this.saveSettings('default_label', this.customLabel)
+			await this.saveSettings(SettingsKey.DefaultCustomLabel, this.customLabel)
 		},
 		async onMinLengthSubmit() {
 			const minLength = this.minLength
@@ -214,16 +254,19 @@ export default {
 				return
 			}
 
-			await this.saveSettings('min_token_length', minLength)
+			await this.saveSettings(SettingsKey.MinTokenLength, minLength)
 		},
 		async onLabelModeChange(value) {
 			if (value == null) {
 				return
 			}
-			await this.saveSettings('default_label_mode', value.id.toString())
+			await this.saveSettings(SettingsKey.DefaultLabelMode, value.id.toString())
 		},
 		async onDeleteConflictsChange(value) {
-			await this.saveSettings('deleteRemovedShareConflicts', value ? '1' : '0')
+			await this.saveSettings(
+				SettingsKey.DeleteRemovedShareConflicts,
+				value ? '1' : '0',
+			)
 		},
 		async saveSettings(key, value) {
 			const data = {
@@ -231,13 +274,13 @@ export default {
 				value,
 			}
 
-			this.setUpdate(key, 1)
+			this.setUpdate(key, UpdateState.Updating)
 			try {
 				await axios.post(
 					generateUrl('/apps/cfg_share_links/settings/save'),
 					data,
 				)
-				this.setUpdate(key, 2)
+				this.setUpdate(key, UpdateState.Completed)
 			} catch (e) {
 				if (e.response.data && e.response.data.message) {
 					showError(t('cfg_share_links', e.response.data.message))
@@ -247,7 +290,7 @@ export default {
 					)
 					console.error(e.response)
 				}
-				this.setUpdate(key, 3)
+				this.setUpdate(key, UpdateState.Error)
 			}
 		},
 	},

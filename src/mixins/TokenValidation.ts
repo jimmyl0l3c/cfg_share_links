@@ -1,4 +1,5 @@
-import SettingsMixin from './SettingsMixin.js'
+import { t } from '@nextcloud/l10n'
+import SettingsMixin from './SettingsMixin'
 
 export default {
 	mixins: [SettingsMixin],
@@ -10,10 +11,10 @@ export default {
 	},
 
 	methods: {
-		async fetchTokenConfig() {
+		async fetchTokenConfig(): Promise<void> {
 			this.minLength = await this.getMinTokenLengthInt()
 		},
-		isTokenValidString(token) {
+		isTokenValidString(token?: string | null): string {
 			switch (this.tokenValidityCheck(token)) {
 			case 1:
 				return t('cfg_share_links', 'Token is not long enough')
@@ -27,10 +28,10 @@ export default {
 				return ''
 			}
 		},
-		isTokenValid(token) {
+		isTokenValid(token?: string | null): boolean {
 			return this.tokenValidityCheck(token) === 0
 		},
-		tokenValidityCheck(token) {
+		tokenValidityCheck(token?: string | null): number {
 			if (!token || token.length === 0) {
 				return 3
 			}

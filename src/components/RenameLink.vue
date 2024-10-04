@@ -1,5 +1,6 @@
 <template>
-	<NcActionInput :value.sync="tokenCandidate"
+	<NcActionInput
+		:value.sync="tokenCandidate"
 		:disabled="updating"
 		type="text"
 		@submit="onSubmit">
@@ -12,12 +13,13 @@
 
 <script>
 import { showError } from '@nextcloud/dialogs'
+import { t } from '@nextcloud/l10n'
 import { NcActionInput } from '@nextcloud/vue'
 import LinkVariantIcon from 'vue-material-design-icons/LinkVariant.vue'
 
 import '@nextcloud/dialogs/style.css'
-import RequestMixin from '../mixins/RequestMixin.js'
-import TokenValidation from '../mixins/TokenValidation.js'
+import RequestMixin from '../mixins/RequestMixin.ts'
+import TokenValidation from '../mixins/TokenValidation.ts'
 
 export default {
 	id: 'rename-link',
@@ -78,6 +80,7 @@ export default {
 	},
 
 	methods: {
+		t,
 		async onSubmit(_) {
 			this.updating = true
 			const token = this.tokenCandidate
@@ -94,10 +97,7 @@ export default {
 				return
 			}
 
-			await this.renameLink(
-				this.currentToken,
-				token,
-			)
+			await this.renameLink(this.currentToken, token)
 
 			this.refreshSidebar(this.fileInfo)
 

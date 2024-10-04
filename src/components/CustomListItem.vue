@@ -1,9 +1,11 @@
 <template>
 	<!-- This wrapper can be either a router link or a `<li>` -->
-	<nav-element class="list-item__wrapper"
+	<nav-element
+		class="list-item__wrapper"
 		:class="{ 'list-item__wrapper--active': active }"
 		v-bind="navElement">
-		<div :id="anchorId"
+		<div
+			:id="anchorId"
 			ref="list-item"
 			class="list-item"
 			:aria-label="linkAriaLabel"
@@ -14,14 +16,16 @@
 			@keydown.tab.exact="handleTab"
 			@click="onClick"
 			@keydown.esc="hideActions">
-			<div class="list-item-content__wrapper"
+			<div
+				class="list-item-content__wrapper"
 				:class="{ 'list-item-content__wrapper--compact': compact }">
 				<!-- @slot This slot is used for the NcAvatar or icon -->
 				<slot name="icon" />
 
 				<!-- Main content -->
 				<div class="list-item-content">
-					<div class="list-item-content__main"
+					<div
+						class="list-item-content__main"
 						:class="{ 'list-item-content__main--oneline': oneLine }">
 						<!-- First line, title and details -->
 						<div class="line-one">
@@ -41,9 +45,11 @@
 							</span>
 
 							<!-- Counter and indicator -->
-							<span v-if="showAdditionalElements"
+							<span
+								v-if="showAdditionalElements"
 								class="line-two__additional_elements">
-								<NcCounterBubble v-if="counterNumber !== 0"
+								<NcCounterBubble
+									v-if="counterNumber !== 0"
 									class="line-two__counter"
 									:type="counterType">
 									{{ counterNumber }}
@@ -58,10 +64,12 @@
 					</div>
 
 					<!-- Actions -->
-					<div v-show="displayActionsOnHoverFocus && !forceDisplayActions"
+					<div
+						v-show="displayActionsOnHoverFocus && !forceDisplayActions"
 						class="list-item-content__actions"
 						@click.prevent.stop="">
-						<NcActions ref="actions"
+						<NcActions
+							ref="actions"
 							menu-align="right"
 							:aria-label="actionsAriaLabel"
 							@update:open="handleActionsUpdateOpen">
@@ -71,10 +79,12 @@
 					</div>
 				</div>
 				<!-- Actions -->
-				<div v-show="forceDisplayActions"
+				<div
+					v-show="forceDisplayActions"
 					class="list-item-content__actions"
 					@click.prevent.stop="">
-					<NcActions ref="actions"
+					<NcActions
+						ref="actions"
 						menu-align="right"
 						:aria-label="actionsAriaLabel"
 						@update:open="handleActionsUpdateOpen">

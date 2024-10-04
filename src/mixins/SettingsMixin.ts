@@ -1,5 +1,7 @@
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+import { LabelMode } from '../enums/LabelMode'
+import type { AppSettings } from '../interfaces/responses/AppSettings'
 
 export default {
 	data() {
@@ -9,7 +11,7 @@ export default {
 	},
 
 	methods: {
-		async fetchSettings() {
+		async fetchSettings(): Promise<void> {
 			try {
 				const response = await axios.get(
 					generateUrl('/apps/cfg_share_links/settings'),
@@ -21,7 +23,7 @@ export default {
 				console.error(e.response)
 			}
 		},
-		async getSettings() {
+		async getSettings(): Promise<AppSettings | null> {
 			if (this.settings) {
 				return this.settings
 			} else {
@@ -29,32 +31,32 @@ export default {
 				return this.settings
 			}
 		},
-		async getLabelMode() {
+		async getLabelMode(): Promise<number> {
 			const settings = await this.getSettings()
 			return settings
 				&& settings.defaultLabelMode
 				&& settings.defaultLabelMode >= 0
 				&& settings.defaultLabelMode <= 2
 				? settings.defaultLabelMode
-				: 0
+				: LabelMode.NoLabel
 		},
-		async getCustomLabel() {
+		async getCustomLabel(): Promise<string> {
 			const settings = await this.getSettings()
 			return settings && settings.defaultLabel
 				? settings.defaultLabel
 				: 'Custom link'
 		},
-		async getMinTokenLength() {
+		async getMinTokenLength(): Promise<string> {
 			const settings = await this.getSettings()
 			return settings && settings.minTokenLength
 				? settings.minTokenLength.toString()
 				: '3'
 		},
-		async getMinTokenLengthInt() {
+		async getMinTokenLengthInt(): Promise<number> {
 			const length = parseInt(await this.getMinTokenLength())
 			return isNaN(length) ? 3 : length
 		},
-		async getDeleteRemovedShareConflicts() {
+		async getDeleteRemovedShareConflicts(): Promise<boolean> {
 			const settings = await this.getSettings()
 			return !!(settings && settings.deleteRemovedShareConflicts)
 		},
