@@ -11,15 +11,15 @@ let sectionInstance = null
 let props = null
 const View = Vue.extend(NewLink)
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 	if (OCA.Sharing && OCA.Sharing.ShareTabSections) {
 		OCA.Sharing.ShareTabSections.registerSection((el, fileInfo) => {
 			if (typeof fileInfo !== 'undefined' && typeof el !== 'undefined') {
 				// if instance exists, just update props
 				if (
-					sectionInstance
-					&& window.document.contains(sectionInstance.$el)
-					&& props
+					sectionInstance &&
+					window.document.contains(sectionInstance.$el) &&
+					props
 				) {
 					props.fileInfo = fileInfo
 				} else {

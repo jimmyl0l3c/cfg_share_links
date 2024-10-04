@@ -61,8 +61,8 @@
 					:value.sync="customLabel"
 					:disabled="
 						updating.status === UpdateState.Updating ||
-							loading ||
-							labelMode.id !== LabelMode.UserSpecified
+						loading ||
+						labelMode.id !== LabelMode.UserSpecified
 					"
 					@submit="onLabelSubmit" />
 			</div>
@@ -80,8 +80,12 @@
 							v-if="updating.status === UpdateState.Updating"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
-						<CheckIcon v-else-if="updating.status === UpdateState.Completed" :size="20" />
-						<AlertIcon v-else-if="updating.status === UpdateState.Error" :size="20" />
+						<CheckIcon
+							v-else-if="updating.status === UpdateState.Completed"
+							:size="20" />
+						<AlertIcon
+							v-else-if="updating.status === UpdateState.Error"
+							:size="20" />
 					</span>
 				</h3>
 				<NcSettingsInputText
@@ -119,14 +123,20 @@
 						)
 					}}
 					<span
-						v-if="updating.key === SettingsKey.DeleteRemovedShareConflicts"
+						v-if="
+							updating.key === SettingsKey.DeleteRemovedShareConflicts
+						"
 						class="status-icon">
 						<NcLoadingIcon
 							v-if="updating.status === UpdateState.Updating"
 							:name="t('cfg_share_links', 'Saving...')"
 							:size="20" />
-						<CheckIcon v-else-if="updating.status === UpdateState.Completed" :size="20" />
-						<AlertIcon v-else-if="updating.status === UpdateState.Error" :size="20" />
+						<CheckIcon
+							v-else-if="updating.status === UpdateState.Completed"
+							:size="20" />
+						<AlertIcon
+							v-else-if="updating.status === UpdateState.Error"
+							:size="20" />
 					</span>
 				</NcCheckboxRadioSwitch>
 			</div>
@@ -199,6 +209,9 @@ export default {
 	},
 
 	computed: {
+		LabelMode() {
+			return LabelMode
+		},
 		UpdateState() {
 			return UpdateState
 		},
@@ -260,7 +273,10 @@ export default {
 			if (value == null) {
 				return
 			}
-			await this.saveSettings(SettingsKey.DefaultLabelMode, value.id.toString())
+			await this.saveSettings(
+				SettingsKey.DefaultLabelMode,
+				value.id.toString(),
+			)
 		},
 		async onDeleteConflictsChange(value) {
 			await this.saveSettings(

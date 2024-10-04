@@ -33,10 +33,10 @@ export default {
 		},
 		async getLabelMode(): Promise<number> {
 			const settings = await this.getSettings()
-			return settings
-				&& settings.defaultLabelMode
-				&& settings.defaultLabelMode >= 0
-				&& settings.defaultLabelMode <= 2
+			return settings &&
+				settings.defaultLabelMode &&
+				settings.defaultLabelMode >= 0 &&
+				settings.defaultLabelMode <= 2
 				? settings.defaultLabelMode
 				: LabelMode.NoLabel
 		},

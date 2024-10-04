@@ -1,0 +1,34 @@
+# version control systems directories
+**/.git
+**/.svn
+**/.hg
+
+# 3rdparty dependencies
+**/node_modules
+**/vendor
+
+# Compiled JS output
+js/
+
+# L10n
+l10n/
+
+# PHP
+lib/
+**/*.php
+
+# Generated files
+CHANGELOG.md
+
+# Unrelated
+.github/
+
+composer.json
+composer.lock
+
+package.json
+package-lock.json
+
+openapi.json
+
+*.md

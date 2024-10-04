@@ -124,9 +124,9 @@ export default {
 		},
 		isInputInvalid() {
 			return (
-				this.tokenCandidate != null
-				&& this.tokenCandidate.length > 0
-				&& !this.isTokenValid(this.tokenCandidate)
+				this.tokenCandidate != null &&
+				this.tokenCandidate.length > 0 &&
+				!this.isTokenValid(this.tokenCandidate)
 			)
 		},
 		inputInvalidMessage() {
@@ -161,7 +161,8 @@ export default {
 		t,
 		async createCustomLink() {
 			this.updating = true
-			const alwaysAskForPassword = OC.appConfig.core.enableLinkPasswordByDefault
+			const alwaysAskForPassword =
+				OC.appConfig.core.enableLinkPasswordByDefault
 			this.enforcePassword = OC.appConfig.core.enforcePasswordForPublicLink
 			const token = this.tokenCandidate
 			const password = this.password
@@ -209,12 +210,12 @@ export default {
 				if (response.data && response.data.token) {
 					resultToken = response.data.token
 				}
-				const shareLink
-					= window.location.protocol
-					+ '//'
-					+ window.location.host
-					+ generateUrl('/s/')
-					+ resultToken
+				const shareLink =
+					window.location.protocol +
+					'//' +
+					window.location.host +
+					generateUrl('/s/') +
+					resultToken
 
 				if (!navigator.clipboard) {
 					this.fallbackCopyTextToClipboard(shareLink)
@@ -259,7 +260,9 @@ export default {
 			try {
 				const successful = document.execCommand('copy')
 				const msg = successful ? 'successful' : 'unsuccessful'
-				console.debug('CfgShareLinks_Fallback: Copying text command was ' + msg)
+				console.debug(
+					'CfgShareLinks_Fallback: Copying text command was ' + msg,
+				)
 
 				// Notify that link was copied
 				this.copied = true

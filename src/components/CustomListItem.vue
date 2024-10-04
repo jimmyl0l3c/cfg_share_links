@@ -55,7 +55,9 @@
 									{{ counterNumber }}
 								</NcCounterBubble>
 
-								<span v-if="hasIndicator" class="line-two__indicator">
+								<span
+									v-if="hasIndicator"
+									class="line-two__indicator">
 									<!-- @slot This slot is used for some indicator in form of icon -->
 									<slot name="indicator" />
 								</span>
@@ -255,8 +257,8 @@ export default {
 		},
 		showDetails() {
 			return (
-				this.hasDetails
-				&& (!this.displayActionsOnHoverFocus || this.forceDisplayActions)
+				this.hasDetails &&
+				(!this.displayActionsOnHoverFocus || this.forceDisplayActions)
 			)
 		},
 	},

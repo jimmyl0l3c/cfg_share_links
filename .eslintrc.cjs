@@ -5,7 +5,7 @@ module.exports = {
 	parserOptions: {
 		requireConfigFile: false,
 	},
-	extends: ['@nextcloud'],
+	extends: ['@nextcloud', 'prettier'],
 	rules: {
 		'jsdoc/require-jsdoc': 'off',
 		'jsdoc/tag-lines': 'off',
