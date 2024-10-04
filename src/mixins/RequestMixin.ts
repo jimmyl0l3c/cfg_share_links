@@ -3,6 +3,12 @@ import axios from '@nextcloud/axios'
 import { showError, showSuccess } from '@nextcloud/dialogs'
 import { t } from '@nextcloud/l10n'
 import { generateUrl } from '@nextcloud/router'
+import { ShareType } from '@nextcloud/sharing'
+import type { CreateLinkRequest } from '../interfaces/requests/CreateLinkRequest'
+import type { RenameByTokenRequest } from '../interfaces/requests/RenameByTokenRequest'
+import type { ApiError } from '../interfaces/responses/ApiError'
+import type { CustomShare } from '../interfaces/responses/CustomShare'
+import type { ShareResponse } from '../interfaces/responses/ShareResponse'
 
 export default {
 	methods: {
@@ -17,25 +23,29 @@ export default {
 				console.debug('CfgShareLinks: No share tab to update')
 			}
 		},
-		async createLink(path: string, token: string, password: string | null = '') {
-			const data = {
+		async createLink(
+			path: string,
+			token: string,
+			password: string | null = '',
+		): Promise<ShareResponse | ApiError> {
+			const data: CreateLinkRequest = {
 				path,
-				shareType: 3,
+				shareType: ShareType.Link,
 				tokenCandidate: token,
 				password: password?.trim() ?? '',
 			}
 
 			try {
-				const response = await axios.post(
+				const response: CustomShare = await axios.post(
 					generateUrl('/apps/cfg_share_links/new'),
 					data,
 				)
-				const returnValue = { ret: 0, data: response.data }
+				const returnValue: ShareResponse = { ret: 0, data: response.data }
 				console.debug('CfgShareLinks: Custom public link created')
 				showSuccess(t('cfg_share_links', 'Custom public link created'))
 				return returnValue
 			} catch (e) {
-				const returnValue = { ret: 1, data: e.response.data }
+				const returnValue: ApiError = { ret: 1, data: e.response.data?.message }
 				if (e.response.data && e.response.data.message) {
 					showError(t('cfg_share_links', e.response.data.message))
 				} else {
@@ -50,8 +60,11 @@ export default {
 				return returnValue
 			}
 		},
-		async renameLink(currentToken: string, tokenCandidate: string): Promise<void> {
-			const data = {
+		async renameLink(
+			currentToken: string,
+			tokenCandidate: string,
+		): Promise<void> {
+			const data: RenameByTokenRequest = {
 				currentToken,
 				tokenCandidate,
 			}

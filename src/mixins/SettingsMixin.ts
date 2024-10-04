@@ -1,5 +1,7 @@
 import axios from '@nextcloud/axios'
 import { generateUrl } from '@nextcloud/router'
+import { LabelMode } from '../enums/LabelMode'
+import type { AppSettings } from '../interfaces/responses/AppSettings'
 
 export default {
 	data() {
@@ -21,7 +23,7 @@ export default {
 				console.error(e.response)
 			}
 		},
-		async getSettings() {
+		async getSettings(): Promise<AppSettings | null> {
 			if (this.settings) {
 				return this.settings
 			} else {
@@ -36,7 +38,7 @@ export default {
 				&& settings.defaultLabelMode >= 0
 				&& settings.defaultLabelMode <= 2
 				? settings.defaultLabelMode
-				: 0
+				: LabelMode.NoLabel
 		},
 		async getCustomLabel(): Promise<string> {
 			const settings = await this.getSettings()
