@@ -90,7 +90,9 @@ export default {
 				showError(
 					t(
 						'cfg_share_links',
-						message != null && message.length > 1 ? message : 'Invalid token',
+						message != null && message.length > 1
+							? message
+							: 'Invalid token',
 					),
 				)
 				this.updating = false

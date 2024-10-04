@@ -19,7 +19,6 @@ interface ActionData {
 }
 
 export class RenameShareAction {
-
 	get id() {
 		return 'rename-token'
 	}
@@ -50,5 +49,4 @@ export class RenameShareAction {
 	get handlers() {
 		return {}
 	}
-
 }

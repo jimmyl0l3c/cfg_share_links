@@ -16,16 +16,16 @@ export default {
 		},
 		isTokenValidString(token?: string | null): string {
 			switch (this.tokenValidityCheck(token)) {
-			case 1:
-				return t('cfg_share_links', 'Token is not long enough')
-			case 2:
-				return t('cfg_share_links', 'Token contains invalid characters')
-			case 3:
-				return ''
-			case 0:
-				return ''
-			default:
-				return ''
+				case 1:
+					return t('cfg_share_links', 'Token is not long enough')
+				case 2:
+					return t('cfg_share_links', 'Token contains invalid characters')
+				case 3:
+					return ''
+				case 0:
+					return ''
+				default:
+					return ''
 			}
 		},
 		isTokenValid(token?: string | null): boolean {

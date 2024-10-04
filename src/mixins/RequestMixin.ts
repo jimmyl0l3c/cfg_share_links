@@ -45,12 +45,18 @@ export default {
 				showSuccess(t('cfg_share_links', 'Custom public link created'))
 				return returnValue
 			} catch (e) {
-				const returnValue: ApiError = { ret: 1, data: e.response.data?.message }
+				const returnValue: ApiError = {
+					ret: 1,
+					message: e.response.data?.message,
+				}
 				if (e.response.data && e.response.data.message) {
 					showError(t('cfg_share_links', e.response.data.message))
 				} else {
 					showError(
-						t('cfg_share_links', 'Error occurred while creating public link'),
+						t(
+							'cfg_share_links',
+							'Error occurred while creating public link',
+						),
 					)
 				}
 				console.error(
@@ -81,7 +87,10 @@ export default {
 					showError(t('cfg_share_links', e.response.data.message))
 				} else {
 					showError(
-						t('cfg_share_links', 'Error occurred while renaming public link'),
+						t(
+							'cfg_share_links',
+							'Error occurred while renaming public link',
+						),
 					)
 					console.error('CfgShareLinks: Error while renaming public link')
 					console.error(e.response)
