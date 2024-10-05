@@ -33,6 +33,8 @@ use OCA\CfgShareLinks\Db\CfgShare;
 use OCA\CfgShareLinks\Db\CfgShareMapper;
 use OCA\CfgShareLinks\Enums\LinkLabelMode;
 use OCA\CfgShareLinks\Enums\SettingsKey;
+use OCA\CfgShareLinks\Enums\ShareCreatePermissions;
+use OCA\CfgShareLinks\Enums\ShareRenamePermissions;
 use OCA\Files_Sharing\Exceptions\SharingRightsException;
 use OCP\AppFramework\Db\DoesNotExistException;
 use OCP\AppFramework\Db\MultipleObjectsReturnedException;
@@ -66,7 +68,7 @@ use TypeError as BaseTypeError;
 class ShareService {
 	/** @var Node */
 	private Node $lockedNode;
-   
+
 	public function __construct(
 		private readonly LoggerInterface $logger,
 		private readonly IManager        $shareManager,
@@ -77,7 +79,7 @@ class ShareService {
 		private readonly IAppConfig      $appConfig,
 		private readonly CfgShareMapper  $mapper,
 		private readonly AppConstants    $appConstants,
-		private ?string              $currentUserId = null,
+		private ?string                  $currentUserId = null,
 	) {
 	}
 
@@ -107,6 +109,10 @@ class ShareService {
 		if (!$this->shareManager->shareApiAllowLinks()) {
 			throw new OCSForbiddenException($this->l10n->t('Public link sharing is disabled by the administrator'));
 		}
+
+        if ($this->isMissingCreatePermissions()) {
+            throw new OCSForbiddenException($this->l10n->t('Insufficient permission'));
+        }
 
 		// Verify path
 		if ($path === null) {
@@ -278,7 +284,7 @@ class ShareService {
 
 		// Check whether user can reshare
 		try {
-			if (!$this->hasResharingRight($share)) {
+			if (!$this->hasRenamePermissions($share)) {
 				$this->logger->warning('Insufficient permission');
 				// TRANSLATORS user tried to change token, but he does not have reshare permission
 				throw new SharingRightsException($this->l10n->t('Insufficient permission'));
@@ -328,11 +334,29 @@ class ShareService {
 	/**
 	 * @throws NotFoundException
 	 */
-	private function hasResharingRight(IShare $qShare): bool {
-		//        if (is_iterable($shares)) {
-		//            $this->logger->debug('hasResharingRight: notIterable');
-		//            return false;
-		//        }
+	private function hasRenamePermissions(IShare $qShare): bool {
+		if ($this->groupManager->isAdmin($this->currentUserId)) {
+			return true;
+		}
+
+		$renamePermissions = $this->appConfig->getAppValueInt(SettingsKey::RenamePermissions->value, $this->appConstants::DEFAULT_RENAME_PERMISSIONS);
+
+		if ($renamePermissions === 0) {
+			return false;
+		}
+
+		if ($this->isPermissionMode($renamePermissions, ShareRenamePermissions::ShareOwner) && $qShare->getShareOwner() === $this->currentUserId) {
+			return true;
+		}
+
+		if ($this->isPermissionMode($renamePermissions, ShareRenamePermissions::FileOwner) && $qShare->getNode()->getOwner()->getUID() === $this->currentUserId) {
+			return true;
+		}
+
+		if (!$this->isPermissionMode($renamePermissions, ShareRenamePermissions::UserThatCanShare)) {
+			return false;
+		}
+
 		try {
 			$shares = $this->shareManager->getAllShares();
 			foreach ($shares as $share) {
@@ -350,6 +374,21 @@ class ShareService {
 			$this->logger->debug(sprintf('hasResharingRight: sharesIterable exception (%s)', $exception->getMessage()));
 		}
 		return false;
+	}
+
+	private function isMissingCreatePermissions(): bool {
+        $adminOnly = $this->appConfig->getAppValueInt(SettingsKey::CreatePermissions->value, $this->appConstants::DEFAULT_CREATE_PERMISSIONS) === ShareCreatePermissions::AdminOnly->value;
+
+        if ($adminOnly && !$this->groupManager->isAdmin($this->currentUserId)) {
+            return true;
+        }
+
+		return false;
+	}
+
+	private function isPermissionMode(int $permissions, ShareRenamePermissions $permissionsToCheck): bool {
+		$permissionToCheckValue = $permissionsToCheck->value;
+		return ($permissions & $permissionToCheckValue) === $permissionToCheckValue;
 	}
 
 	private function canReshare(IShare $share): bool {

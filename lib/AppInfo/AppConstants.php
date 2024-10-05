@@ -10,5 +10,8 @@ class AppConstants {
 	public const DEFAULT_LABEL_MODE = 0;
 	public const DEFAULT_CUSTOM_LABEL = 'Custom link';
 
+	public const DEFAULT_CREATE_PERMISSIONS = 2;
+	public const DEFAULT_RENAME_PERMISSIONS = 1 << 2;
+
 	public const DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS = false;
 }

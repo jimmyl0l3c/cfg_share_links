@@ -71,6 +71,17 @@ class SettingsController extends Controller {
 						return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
 					}
 					break;
+				case SettingsKey::CreatePermissions:
+					if (is_numeric($value) && (int)$value >= 0) {
+						$this->appConfig->setAppValueInt(SettingsKey::CreatePermissions->value, (int)$value);
+						return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+					}
+					break;
+				case SettingsKey::RenamePermissions:
+					if (is_numeric($value) && (int)$value >= 0) {
+						$this->appConfig->setAppValueInt(SettingsKey::RenamePermissions->value, (int)$value);
+						return new DataResponse(['message' => 'Saved'], Http::STATUS_OK);
+					}
 			}
 		} catch (ValueError) {
 		}
@@ -82,6 +93,8 @@ class SettingsController extends Controller {
 			'defaultLabelMode' => $this->appConfig->getAppValueInt(SettingsKey::DefaultLabelMode->value, $this->appConstants::DEFAULT_LABEL_MODE),
 			'defaultLabel' => $this->appConfig->getAppValueString(SettingsKey::DefaultCustomLabel->value, $this->appConstants::DEFAULT_CUSTOM_LABEL),
 			'minTokenLength' => $this->appConfig->getAppValueInt(SettingsKey::MinTokenLength->value, $this->appConstants::DEFAULT_MIN_TOKEN_LENGTH),
+			'createPermissions' => $this->appConfig->getAppValueInt(SettingsKey::CreatePermissions->value, $this->appConstants::DEFAULT_CREATE_PERMISSIONS),
+			'renamePermissions' => $this->appConfig->getAppValueInt(SettingsKey::RenamePermissions->value, $this->appConstants::DEFAULT_RENAME_PERMISSIONS),
 			'deleteRemovedShareConflicts' => $this->appConfig->getAppValueBool(SettingsKey::DeleteRemovedShareConflicts->value, $this->appConstants::DEFAULT_DELETE_REMOVED_SHARE_CONFLICTS)
 		];
 
