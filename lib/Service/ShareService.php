@@ -110,9 +110,9 @@ class ShareService {
 			throw new OCSForbiddenException($this->l10n->t('Public link sharing is disabled by the administrator'));
 		}
 
-        if ($this->isMissingCreatePermissions()) {
-            throw new OCSForbiddenException($this->l10n->t('Insufficient permission'));
-        }
+		if ($this->isMissingCreatePermissions()) {
+			throw new OCSForbiddenException($this->l10n->t('Insufficient permission'));
+		}
 
 		// Verify path
 		if ($path === null) {
@@ -377,11 +377,11 @@ class ShareService {
 	}
 
 	private function isMissingCreatePermissions(): bool {
-        $adminOnly = $this->appConfig->getAppValueInt(SettingsKey::CreatePermissions->value, $this->appConstants::DEFAULT_CREATE_PERMISSIONS) === ShareCreatePermissions::AdminOnly->value;
+		$adminOnly = $this->appConfig->getAppValueInt(SettingsKey::CreatePermissions->value, $this->appConstants::DEFAULT_CREATE_PERMISSIONS) === ShareCreatePermissions::AdminOnly->value;
 
-        if ($adminOnly && !$this->groupManager->isAdmin($this->currentUserId)) {
-            return true;
-        }
+		if ($adminOnly && !$this->groupManager->isAdmin($this->currentUserId)) {
+			return true;
+		}
 
 		return false;
 	}
