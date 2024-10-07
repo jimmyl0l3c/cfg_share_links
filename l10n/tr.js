@@ -42,6 +42,7 @@ OC.L10N.register(
     "Link copied" : "Bağlantı kopyalandı",
     "Create link" : "Bağlantı oluştur",
     "Password protection enforced" : "Parola koruması dayatılıyor",
+    "Enter password (optional)" : "Parolayı yazın (isteğe bağlı)",
     "Invalid token" : "Kod geçersiz",
     "Custom public link created" : "Özel herkese açık bağlantı oluşturuldu",
     "Error occurred while creating public link" : "Herkese açık bağlantı oluşturulurken sorun çıktı",
