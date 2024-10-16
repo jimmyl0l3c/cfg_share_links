@@ -7,7 +7,7 @@
     "Could not create share" : "لا يمكن انشاء مشاركة",
     "Insufficient permission" : "الصلاحيّات غير كافية",
     "Unable to check permissions" : "تعذّر فحص الصلاحيّات",
-    "Token is not unique" : "الأَمَارَة token غير مُميّزة",
+    "Token is not unique" : "رمز Token غير فريد",
     "Token is not long enough" : "الأَمَارَة token ليست بالطول الكافي",
     "Token cannot be longer than %1$s characters" : "يجب ألّا يتعدى طول الأَمَارَة %1$s حرفاً",
     "Token contains invalid characters" : "الأَمَارَة token تحوي أحرفاً غير صحيحة",
