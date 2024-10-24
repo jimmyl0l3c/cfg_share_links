@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Configurable Share Links" : "روابط مشاركة قابلة للتهيئة",
     "Invalid share type" : "نوع مشاركة غير صحيح",
-    "Public link sharing is disabled by the administrator" : "المشاركة عن طريق الروابط العامة مُعطّلة من قبل المشرف",
+    "Public link sharing is disabled by the administrator" : "المشاركة عن طريق الروابط العامة مُعطّلة من قبل مسؤول النظام",
     "Please specify a file or folder path" : "يرجى تحديد مسار ملف أو مجلد",
     "Wrong path, file/folder does not exist" : "إمّا أن المسار خاطيء، أو أن الملف/المجلد غير موجود",
     "Could not create share" : "لا يمكن انشاء مشاركة",
