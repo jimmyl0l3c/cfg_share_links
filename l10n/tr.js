@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Configurable Share Links" : "Yapılandırılabilir paylaşım bağlantıları",
     "Invalid share type" : "Paylaşım türü geçersiz",
-    "Public link sharing is disabled by the administrator" : "Herkese açık bağlantı paylaşımı BT yöneticisi tarafından devre dışı bırakılmış",
+    "Public link sharing is disabled by the administrator" : "Herkese açık bağlantı paylaşımı BT yöneticisi tarafından kullanımdan kaldırılmış",
     "Please specify a file or folder path" : "Lütfen bir dosya ya da klasör yolu belirtin",
     "Wrong path, file/folder does not exist" : "Yol yanlış. Dosya ya da klasör bulunamadı",
     "Could not create share" : "Paylaşım oluşturulamadı",
@@ -27,7 +27,7 @@ OC.L10N.register(
     "Minimal token length" : "En kısa kod uzunluğu",
     "Miscellaneous" : "Diğer",
     "Miscellaneous tweaks" : "Diğer ayarlar",
-    "Keep this option off if you did not use versions lower than 1.2.0" : "1.2.0 öncesindeki bir sürümü kullanıyorsanız bu seçeneği devre dışı bırakın",
+    "Keep this option off if you did not use versions lower than 1.2.0" : "1.2.0 öncesindeki bir sürümü kullanıyorsanız bu seçeneği kullanımdan kaldırın",
     "Delete shares of deleted files during token checks (when creating/updating share)" : "Kod denetimleri sırasında silinen dosyaların paylaşımları silinsin (paylaşım oluşturulurken/güncellenirken)",
     "None" : "Yok",
     "Same as token" : "Kod ile aynı",
