@@ -11,7 +11,7 @@ OC.L10N.register(
     "Unable to check permissions" : "ئىجازەتلەرنى تەكشۈرەلمىدى",
     "Token is not unique" : "توكەن بىردىنبىر ئەمەس",
     "Token is not long enough" : "توكەن يېتەرلىك ئەمەس",
-    "Token cannot be longer than %1$s characters" : "توكەن% 1 $ s ھەرپتىن ئۇزۇن بولمايدۇ",
+    "Token cannot be longer than %1$s characters" : "توكەن%1 $ s ھەرپتىن ئۇزۇن بولمايدۇ",
     "Token contains invalid characters" : "توكەن ئىناۋەتسىز ھەرپلەرنى ئۆز ئىچىگە ئالىدۇ",
     "This token cannot be used" : "بۇ بەلگە ئىشلىتىشكە بولمايدۇ",
     "App adding the ability to specify share tokens" : "ئورتاقلىشىش بەلگىسىنى بەلگىلەش ئىقتىدارىنى قوشقان ئەپ",
