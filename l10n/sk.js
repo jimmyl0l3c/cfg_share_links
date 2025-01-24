@@ -6,7 +6,7 @@ OC.L10N.register(
     "Public link sharing is disabled by the administrator" : "Zdieľanie pomocou verejných odkazov je zakázané administrátorom",
     "Please specify a file or folder path" : "Zvoľte prosím súbor alebo cestu k priečinku",
     "Wrong path, file/folder does not exist" : "Neplatná cesta, súbor alebo priečinok neexistuje",
-    "Could not create share" : "Nie je možné sprístupniť",
+    "Could not create share" : "Nie je možné zdieľať",
     "Insufficient permission" : "Nedostatočné oprávnenia",
     "Unable to check permissions" : "Nepodarilo sa overiť oprávnenia",
     "Token is not unique" : "Token nie je unikátny",
