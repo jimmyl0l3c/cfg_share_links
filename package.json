@@ -53,7 +53,7 @@
 		"@vue/tsconfig": "^0.5.1",
 		"eslint-config-prettier": "^9.1.0",
 		"prettier": "^3.4.2",
-		"vite": "^5.4.11",
+		"vite": "^6.1.0",
 		"vite-plugin-eslint": "^1.8.1",
 		"vite-plugin-stylelint": "^5.3.1"
 	}
