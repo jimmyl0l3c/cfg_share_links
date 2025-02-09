@@ -8,10 +8,10 @@ OC.L10N.register(
     "Saving..." : "Gemmer...",
     "Miscellaneous" : "Diverse",
     "None" : "Ingen",
-    "Custom" : "Valgfrit",
+    "Custom" : "Brugerdefineret",
     "Label cannot be empty" : "Etiketten kan ikke være tom",
-    "Enter a password" : "Enter a password",
+    "Enter a password" : "Angiv en adgangskode",
     "Link copied" : "Link kopieret",
-    "Password protection enforced" : "Tvungen beskyttelse med kodeord"
+    "Password protection enforced" : "Beskyttelse med adgangskode gennemtvunget"
 },
 "nplurals=2; plural=(n != 1);");
