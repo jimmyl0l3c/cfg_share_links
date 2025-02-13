@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Tiltaktu skrá eða slóð á möppu",
     "Wrong path, file/folder does not exist" : "Röng slóð, skráin/mappan er ekki til",
     "Could not create share" : "Ekki tókst að búa til sameign",
+    "Insufficient permission" : "Ónógar heimildir",
     "Saving..." : "Vista...",
     "Miscellaneous" : "Ýmislegt",
     "None" : "Ekkert",
