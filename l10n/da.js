@@ -15,6 +15,6 @@ OC.L10N.register(
     "Enter a password" : "Angiv en adgangskode",
     "Link copied" : "Link kopieret",
     "Password protection enforced" : "Beskyttelse med adgangskode gennemtvunget",
-    "Invalid token" : "Ugyldig token "
+    "Invalid token" : "Ugyldigt token "
 },
 "nplurals=2; plural=(n != 1);");
