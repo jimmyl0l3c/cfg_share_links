@@ -3,7 +3,7 @@ OC.L10N.register(
     {
     "Configurable Share Links" : "Konfigurierbare Freigabelinks",
     "Invalid share type" : "Ungültiger Freigabetyp",
-    "Public link sharing is disabled by the administrator" : "Die öffentliche Freigabe von Links ist durch den Administrator deaktiviert",
+    "Public link sharing is disabled by the administrator" : "Die öffentliche Freigabe von Links ist durch die Administration deaktiviert",
     "Please specify a file or folder path" : "Bitte gib eine Datei oder Ordner-Pfad an",
     "Wrong path, file/folder does not exist" : "Falscher Pfad, Datei/Ordner existiert nicht",
     "Could not create share" : "Freigabe konnte nicht erstellt werden",
