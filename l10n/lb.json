@@ -1,8 +1,8 @@
 { "translations": {
-    "Saving..." : "Speicheren...",
     "None" : "Keng",
     "Custom" : "Individualiséier",
-    "Enter a password" : "Enter a password",
-    "Link copied" : "Link kopéiert"
+    "Saving..." : "Speicheren...",
+    "Link copied" : "Link kopéiert",
+    "Enter a password" : "Enter a password"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

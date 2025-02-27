@@ -1,9 +1,9 @@
 OC.L10N.register(
     "cfg_share_links",
     {
-    "Saving..." : "Lagrar …",
     "None" : "Ingen",
-    "Enter a password" : "Skriv inn eit passord",
-    "Link copied" : "Lenkje kopiert"
+    "Saving..." : "Lagrar …",
+    "Link copied" : "Lenkje kopiert",
+    "Enter a password" : "Skriv inn eit passord"
 },
 "nplurals=2; plural=(n != 1);");

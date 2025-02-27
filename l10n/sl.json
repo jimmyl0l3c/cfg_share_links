@@ -6,17 +6,17 @@
     "Could not create share" : "Mesta souporabe ni mogoče ustvariti",
     "Insufficient permission" : "Neustrezna dovoljenja",
     "Unable to check permissions" : "Ni mogoče preveriti dodeljenih dovoljenj.",
+    "None" : "Brez",
+    "Custom" : "Po meri",
+    "Label cannot be empty" : "Oznaka ne sme biti prazno polje",
     "Default label" : "Privzeta oznaka",
     "Saving..." : "Poteka shranjevanje ...",
     "Custom label" : "Oznaka po meri",
     "Token settings" : "Nastavitve žetona",
     "Miscellaneous" : "Razno",
-    "None" : "Brez",
-    "Custom" : "Po meri",
-    "Label cannot be empty" : "Oznaka ne sme biti prazno polje",
-    "Enter a password" : "Vpis gesla",
     "Link copied" : "Povezava je kopirana",
     "Create link" : "Ustvari povezavo",
-    "Password protection enforced" : "Zaščita z geslom je vsiljeno omogočena"
+    "Password protection enforced" : "Zaščita z geslom je vsiljeno omogočena",
+    "Enter a password" : "Vpis gesla"
 },"pluralForm" :"nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);"
 }

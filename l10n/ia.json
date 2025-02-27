@@ -1,7 +1,7 @@
 { "translations": {
-    "Saving..." : "Salveguardante...",
     "None" : "Nulle",
     "Custom" : "Personalisate",
+    "Saving..." : "Salveguardante...",
     "Enter a password" : "Enter a password"
 },"pluralForm" :"nplurals=2; plural=(n != 1);"
 }

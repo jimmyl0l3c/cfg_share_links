@@ -7,13 +7,13 @@ OC.L10N.register(
     "Please specify a file or folder path" : "ファイルかフォルダーパスを指定して下さい",
     "Wrong path, file/folder does not exist" : "パスが間違っています。ファイル/フォルダーがありません",
     "Could not create share" : "共有を作成できませんでした",
-    "Saving..." : "保存中...",
-    "Miscellaneous" : "その他",
     "None" : "なし",
     "Custom" : "カスタム",
     "Label cannot be empty" : "ラベルは空にできません",
-    "Enter a password" : "パスワードを入力",
+    "Saving..." : "保存中...",
+    "Miscellaneous" : "その他",
     "Link copied" : "リンクをコピーしました",
-    "Password protection enforced" : "パスワード保護が強制される"
+    "Password protection enforced" : "パスワード保護が強制される",
+    "Enter a password" : "パスワードを入力"
 },
 "nplurals=1; plural=0;");

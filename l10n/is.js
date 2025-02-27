@@ -6,13 +6,13 @@ OC.L10N.register(
     "Wrong path, file/folder does not exist" : "Röng slóð, skráin/mappan er ekki til",
     "Could not create share" : "Ekki tókst að búa til sameign",
     "Insufficient permission" : "Ónógar heimildir",
-    "Saving..." : "Vista...",
-    "Miscellaneous" : "Ýmislegt",
     "None" : "Ekkert",
     "Custom" : "Sérsniðið",
     "Label cannot be empty" : "Merki má ekki vera tómt",
-    "Enter a password" : "Settu inn lykilorð",
+    "Saving..." : "Vista...",
+    "Miscellaneous" : "Ýmislegt",
     "Link copied" : "Tengill afritaður",
-    "Password protection enforced" : "Gerði verndun með lykilorði nauðsynlega"
+    "Password protection enforced" : "Gerði verndun með lykilorði nauðsynlega",
+    "Enter a password" : "Settu inn lykilorð"
 },
 "nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);");

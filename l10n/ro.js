@@ -5,13 +5,13 @@ OC.L10N.register(
     "Please specify a file or folder path" : "Specifică un fișier sau o cale către un director",
     "Wrong path, file/folder does not exist" : "Cale eronată, fișier/folder inexistent",
     "Could not create share" : "Nu s-a putut crea partajarea",
-    "Saving..." : "Se salvează...",
-    "Miscellaneous" : "Diverse",
     "None" : "Niciuna",
     "Custom" : "Particularizat",
     "Label cannot be empty" : "Eticheta nu poate fi goală",
-    "Enter a password" : "Enter a password",
+    "Saving..." : "Se salvează...",
+    "Miscellaneous" : "Diverse",
     "Link copied" : "Link copiat",
-    "Password protection enforced" : "Protejare cu parolă impusă"
+    "Password protection enforced" : "Protejare cu parolă impusă",
+    "Enter a password" : "Enter a password"
 },
 "nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));");

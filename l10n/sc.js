@@ -4,12 +4,12 @@ OC.L10N.register(
     "Public link sharing is disabled by the administrator" : "Sa cumpartzidura de ligòngios pùblicos est disativada dae s'amministratzione",
     "Please specify a file or folder path" : "Ispetzìfica unu percursu de una cartella o un'archìviu",
     "Could not create share" : "No at fatu a creare sa cumpartzidura",
-    "Saving..." : "Sarvende...",
-    "Miscellaneous" : "Vàriu",
     "None" : "Perunu",
     "Custom" : "Personaliza",
     "Label cannot be empty" : "S'eticheta non podet èssere bòida",
-    "Enter a password" : "Dìgita una crae noa",
-    "Link copied" : "Ligòngiu copiadu"
+    "Saving..." : "Sarvende...",
+    "Miscellaneous" : "Vàriu",
+    "Link copied" : "Ligòngiu copiadu",
+    "Enter a password" : "Dìgita una crae noa"
 },
 "nplurals=2; plural=(n != 1);");
