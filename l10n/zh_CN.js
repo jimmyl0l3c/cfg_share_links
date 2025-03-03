@@ -11,6 +11,7 @@ OC.L10N.register(
     "Saving..." : "正在保存…",
     "Miscellaneous" : "杂项",
     "Link copied" : "已复制链接",
+    "Create link" : "创建链接",
     "Password protection enforced" : "强制密码保护",
     "Invalid token" : "令牌无效",
     "Enter a password" : "输入密码"
