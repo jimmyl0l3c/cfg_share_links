@@ -5,6 +5,7 @@ OC.L10N.register(
     "Please specify a file or folder path" : "请指定一个文件或文件夹路径",
     "Wrong path, file/folder does not exist" : "错误的路径，文件/文件夹不存在",
     "Could not create share" : "无法创建共享",
+    "Insufficient permission" : "权限不足",
     "None" : "无",
     "Custom" : "自定义",
     "Label cannot be empty" : "标签不能是空白",
