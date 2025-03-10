@@ -10,6 +10,9 @@ use OCP\DB\Exception;
 use OCP\IDBConnection;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @template-extends QBMapper<CfgShare>
+ */
 class CfgShareMapper extends QBMapper {
 	public function __construct(
 		IDBConnection $db,
@@ -18,29 +21,12 @@ class CfgShareMapper extends QBMapper {
 		parent::__construct($db, 'cfg_shares', CfgShare::class);
 	}
 
-	public function insert(Entity $entity): Entity {
-		$qb = $this->db->getQueryBuilder();
-		$qb->insert($this->getTableName())
-			->values(
-				[
-					'full_id' => "'" . $entity->getFullId() . "'",
-					'token' => "'" . $entity->getToken() . "'",
-					'node_id' => $entity->getNodeId()
-				]
-			);
-
-		$this->logger->debug($qb->getSQL());
-
-		$qb->executeStatement();
-		return $entity;
-	}
-
 	/**
 	 * @throws DoesNotExistException
 	 * @throws MultipleObjectsReturnedException
 	 * @throws Exception
 	 */
-	public function find(int $id) {
+	public function find(int $id) : CfgShare {
 		$qb = $this->db->getQueryBuilder();
 
 		$qb->select('*')
@@ -76,7 +62,7 @@ class CfgShareMapper extends QBMapper {
 	 * @throws Exception
 	 * @throws MultipleObjectsReturnedException
 	 */
-	public function findByFullId(string $fullId) {
+	public function findByFullId(string $fullId): CfgShare {
 		$qb = $this->db->getQueryBuilder();
 
 		$qb->select('*')
@@ -95,7 +81,7 @@ class CfgShareMapper extends QBMapper {
 	 * @throws Exception
 	 * @throws MultipleObjectsReturnedException
 	 */
-	public function findByToken(string $token) {
+	public function findByToken(string $token): CfgShare {
 		$qb = $this->db->getQueryBuilder();
 
 		$qb->select('*')

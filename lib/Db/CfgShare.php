@@ -3,39 +3,39 @@
 namespace OCA\CfgShareLinks\Db;
 
 use JsonSerializable;
-
 use OCP\AppFramework\Db\Entity;
+use OCP\DB\Types;
 
 class CfgShare extends Entity implements JsonSerializable {
-	protected string $full_id;
+	protected string $fullId;
 	protected string $token;
-	protected int $node_id;
+	protected int $nodeId;
 
 	public function __construct() {
-		$this->addType('id', 'integer');
-		$this->addType('full_id', 'string');
-		$this->addType('token', 'string');
-		$this->addType('node_id', 'integer');
+		$this->addType('id', Types::INTEGER);
+		$this->addType('fullId', Types::STRING);
+		$this->addType('token', Types::STRING);
+		$this->addType('nodeId', Types::INTEGER);
 	}
 
-	public function setFullId($fullId): void {
-		$this->full_id = $fullId;
+	public function setFullId(string $fullId): void {
+		$this->fullId = $fullId;
 	}
 
-	public function setNodeId($node_id): void {
-		$this->node_id = $node_id;
+	public function setNodeId(int $nodeId): void {
+		$this->nodeId = $nodeId;
 	}
 
-	public function setToken($token): void {
+	public function setToken(string $token): void {
 		$this->token = $token;
 	}
 
 	public function getFullId(): string {
-		return $this->full_id;
+		return $this->fullId;
 	}
 
 	public function getNodeId(): int {
-		return $this->node_id;
+		return $this->nodeId;
 	}
 
 	public function getToken(): string {
@@ -45,9 +45,9 @@ class CfgShare extends Entity implements JsonSerializable {
 	public function jsonSerialize(): array {
 		return [
 			'id' => $this->id,
-			'full_id' => $this->full_id,
+			'fullId' => $this->fullId,
 			'token' => $this->token,
-			'node_id' => $this->node_id
+			'nodeId' => $this->nodeId
 		];
 	}
 }
