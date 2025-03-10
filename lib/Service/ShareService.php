@@ -69,15 +69,15 @@ class ShareService {
    
 	public function __construct(
 		private readonly LoggerInterface $logger,
-		private readonly IManager        $shareManager,
-		private readonly IGroupManager   $groupManager,
-		private readonly IUserManager    $userManager,
-		private readonly IRootFolder     $rootFolder,
-		private readonly IL10N           $l10n,
-		private readonly IAppConfig      $appConfig,
-		private readonly CfgShareMapper  $mapper,
-		private readonly AppConstants    $appConstants,
-		private ?string              $currentUserId = null,
+		private readonly IManager $shareManager,
+		private readonly IGroupManager $groupManager,
+		private readonly IUserManager $userManager,
+		private readonly IRootFolder $rootFolder,
+		private readonly IL10N $l10n,
+		private readonly IAppConfig $appConfig,
+		private readonly CfgShareMapper $mapper,
+		private readonly AppConstants $appConstants,
+		private ?string $currentUserId = null,
 	) {
 	}
 

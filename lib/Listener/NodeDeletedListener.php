@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
 class NodeDeletedListener implements IEventListener {
 	public function __construct(
 		private readonly LoggerInterface $logger,
-		private readonly CfgShareMapper  $mapper,
+		private readonly CfgShareMapper $mapper,
 		private readonly IManager $shareManager,
 	) {
 	}

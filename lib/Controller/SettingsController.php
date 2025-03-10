@@ -38,10 +38,10 @@ use ValueError;
 
 class SettingsController extends Controller {
 	public function __construct(
-		string                        $appName,
-		private readonly IAppConfig   $appConfig,
+		string $appName,
+		private readonly IAppConfig $appConfig,
 		private readonly AppConstants $appConstants,
-		IRequest                      $request,
+		IRequest $request,
 	) {
 		parent::__construct($appName, $request);
 	}

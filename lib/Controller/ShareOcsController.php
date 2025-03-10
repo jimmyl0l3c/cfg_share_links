@@ -31,10 +31,10 @@ use ResponseDefinitions;
  */
 class ShareOcsController extends OCSController {
 	public function __construct(
-		string                        $appName,
-		IRequest                      $request,
+		string $appName,
+		IRequest $request,
 		private readonly ShareService $service,
-		private readonly ?string      $userId,
+		private readonly ?string $userId,
 	) {
 		parent::__construct($appName, $request, 'PUT, POST, OPTIONS');
 	}
