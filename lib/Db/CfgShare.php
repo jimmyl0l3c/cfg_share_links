@@ -18,8 +18,8 @@ class CfgShare extends Entity implements JsonSerializable {
 		$this->addType('node_id', 'integer');
 	}
 
-	public function setFullId($full_id): void {
-		$this->full_id = $full_id;
+	public function setFullId($fullId): void {
+		$this->full_id = $fullId;
 	}
 
 	public function setNodeId($node_id): void {

@@ -13,8 +13,8 @@ class ShareController extends Controller {
 	use Errors;
 
 	public function __construct(
-		string                        $appName,
-		IRequest                      $request,
+		string $appName,
+		IRequest $request,
 		private readonly ShareService $service,
 		private readonly ?string $userId,
 	) {

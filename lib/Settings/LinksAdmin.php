@@ -36,7 +36,7 @@ use OCP\Util;
 
 class LinksAdmin implements ISettings {
 	public function __construct(
-		private readonly IAppConfig   $appConfig,
+		private readonly IAppConfig $appConfig,
 		private readonly AppConstants $appConstants,
 	) {
 	}
