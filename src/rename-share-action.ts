@@ -30,7 +30,10 @@ export class RenameShareAction {
 	data({ share, fileInfo }: ActionData) {
 		// Only works for files and existing shares
 		//  || share.owner !== getCurrentUser()?.uid
-		if (typeof share.token !== 'string' || fileInfo.type !== 'file') {
+		if (
+			typeof share.token !== 'string' ||
+			(fileInfo.type !== 'file' && fileInfo.type !== 'dir')
+		) {
 			return {}
 		}
 
