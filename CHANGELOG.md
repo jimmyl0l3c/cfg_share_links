@@ -6,6 +6,43 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [7.0.0] - 2025-03-12
+
+### Added
+
+- Support "always ask for password" without enforcing password
+- Add NC 31 support
+- Add PHP 8.4 support
+
+### Fixed
+
+- Fix settings and configure prettier
+- Fix updating shares in DB
+- Fix renaming link
+
+### Changed
+
+- Updated translations from transifex
+- Build(deps-dev): Bump @nextcloud/webpack-vue-config from 6.1.0 to 6.1.1
+- Update frontend token validation to match backend
+- Migrate to Vite
+- Migrate to TS
+- Build(deps-dev): Bump vite from 5.4.8 to 5.4.9
+- Build(deps): Bump vue-material-design-icons from 5.3.0 to 5.3.1
+- Build(deps-dev): Bump cross-spawn from 7.0.3 to 7.0.6
+- Build(deps-dev): Bump vite from 5.4.9 to 5.4.11
+- Build(deps-dev): Bump elliptic from 6.5.7 to 6.6.0
+- Build(deps): Bump @nextcloud/sharing from 0.2.3 to 0.2.4
+- Build(deps-dev): Bump prettier from 3.3.3 to 3.4.2
+- Build(deps): Bump nanoid from 3.3.7 to 3.3.8
+- Drop NC 29 support
+- Build(deps): Bump axios from 1.7.7 to 1.8.2
+- Build(deps-dev): Bump eslint-config-prettier from 9.1.0 to 10.1.1
+- Build(deps-dev): Bump prettier from 3.4.2 to 3.5.3
+- Build(deps-dev): Bump elliptic from 6.6.0 to 6.6.1
+- Build(deps): Bump dompurify from 3.1.6 to 3.2.4
+- Build(deps): Bump @nextcloud/dialogs from 5.3.7 to 6.1.1
+
 ## [6.1.1] - 2024-09-26
 
 ### Fixed
@@ -325,7 +362,8 @@ Backport from version 3.0.0
 
 - Initial release
 
-[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.1.1...HEAD
+[Unreleased]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v7.0.0...HEAD
+[7.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.1.1...v7.0.0
 [6.1.1]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.1.0...v6.1.1
 [6.1.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v6.0.0...v6.1.0
 [6.0.0]: https://github.com/jimmyl0l3c/cfg_share_links/compare/v5.1.3...v6.0.0
