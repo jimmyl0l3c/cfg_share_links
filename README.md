@@ -1,3 +1,8 @@
+# ⚠️ Archiving repo ⚠️
+
+Specifying custom share tokens was added in Nextcloud 31 (Hub 10) ([issue details](https://github.com/nextcloud/server/issues/45440)) so this app is no longer needed.
+There will be no future updates to this app.
+
 # Configurable Share Links
 
 App for Nextcloud that adds the ability to specify share tokens when creating new public links and change tokens of existing links.
